@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { updateUserAvatar } from "../redux/user/userActions";
 import { getUser } from "./selectors";
 import { fetchUser,updateUserProfile } from "./user-operations";
 import userImage from "./image.png"
@@ -44,7 +43,7 @@ const UserPage = () => {
           alt="User Avatar"
         />
         <input type="file" onChange={handleAvatarChange} />
-        <button onClick={() => dispatch(updateUserAvatar(avatar))}>
+        <button>
           Upload Avatar
         </button>
       </div>
