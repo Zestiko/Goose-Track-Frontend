@@ -12,11 +12,6 @@ const Navigation = () => {
 
   // const isActiveToken
   return (
-    <div>
-      <div>
-        <img></img>
-        <p>GooseTrack</p>
-      </div>
       <div className="userPanel">
         {/* {isActiveToken && <h2 className="">Please SignIn</h2>} */}
         <p>User Panel</p>
@@ -28,7 +23,6 @@ const Navigation = () => {
         </NavLink>
         <button>Log out </button>
       </div>
-    </div>
   );
 };
 

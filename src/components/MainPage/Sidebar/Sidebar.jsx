@@ -1,10 +1,16 @@
 import Navigation from './Navigation/Navigation';
-import css from './Sidebar.module.css';
+import css from './Sidebar.module.scss';
+import logoImg from '../../../images/logoImg.png';
+
 const Sidebar = () => (
   <side className={css.sidebar}>
-    <div className={css.nav}>
-      <Navigation />
+    <div className={css.logo}>
+      <img className={css.logoImg} src={logoImg}></img>
+      <p className={css.logoText}>
+        G<i>oo</i>seTrack
+      </p>
     </div>
+    <Navigation />
   </side>
 );
 

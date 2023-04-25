@@ -1,4 +1,7 @@
 @import-normalize;
+@import './styles/fonts.scss';
+@import './styles/vars.scss';
+@import './styles/common.scss';
 
 * {
   margin: 0;
@@ -25,6 +28,3 @@ svg {
   width: 1em;
 }
 
-@import './styles/fonts.scss';
-@import './styles/vars.scss';
-@import './styles/common.scss';
