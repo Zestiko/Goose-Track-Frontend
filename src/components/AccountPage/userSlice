@@ -1,0 +1,33 @@
+import { createSlice } from "@reduxjs/toolkit";
+
+const userInitialState = {
+  user: {},
+  isLoading: false,
+  error: null,
+};
+
+const userSlice = createSlice({
+    name: "user",
+    initialState: userInitialState,
+    reducers: {
+        fetchInProgress(state) {
+            state.isLoading = true;
+        },
+        fetchSuccess(state, action) {
+            state.isLoading = false;
+            state.error = null;
+            state.items = action.payload;
+        },
+        fetchError(state, action) {
+            state.isLoading = false;
+            state.error = action.payload;
+        },
+    },
+});
+
+export const {
+  fetchInProgress,
+  fetchSuccess,
+  fetchError,
+} = userSlice.actions;
+export const userReducer = userSlice.reducer;
