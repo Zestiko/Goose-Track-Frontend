@@ -1,4 +1,4 @@
-import css from './MainPage.module.css'
+import css from './MainPage.module.css';
 
 const MainPage = ({ children }) => (
   <>

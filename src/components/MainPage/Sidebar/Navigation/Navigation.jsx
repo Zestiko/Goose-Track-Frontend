@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
 
 // Для теста
-isActive = true;
+const isActive = true;
 const getActiveClassName = ({ isActive }) =>
   isActive ? 'selected' : 'unselected';
 
@@ -10,7 +10,7 @@ const Navigation = () => {
   //    const dispatch = useDispatch()
   //    const location = useLocation()
 
-  //const isActiveToken
+  // const isActiveToken
   return (
     <div>
       <div>
