@@ -1,3 +1,52 @@
-.userPanel{
-    color: black;
+.userPanel {
+  font-weight: 600;
 }
+
+.navLabel {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: calc(17px / 14px);
+
+  color: #7e7d82;
+
+  margin-bottom: 32px;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  padding: 16px 20px;
+  color: #84828a;
+
+  &:hover,
+  &:focus,
+  selected {
+    background: #e3f3ff;
+    border-radius: 8px;
+    color: #3e85f3;
+  }
+}
+.navItem>svg{
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+// .navItem_1:before {
+//   content: url('../../../../images/icons/user-check-01.svg');
+// }
+
+// .navItem_2:before {
+//   content: url('../../../../images/icons/user-check-01.svg');
+// }
+
+// .navItem_1:before,
+// .navItem_2:before {
+//   display: inline-block;
+//   width: 24px;
+//   height: 24px;
+//   margin-right: 10px;
+// }
