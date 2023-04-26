@@ -1,13 +1,25 @@
 {
   "files": {
-    "main.css": "/Goose-Track-Frontend/static/css/main.7acaea2f.css",
+    "main.css": "/Goose-Track-Frontend/static/css/main.396d73a6.css",
     "main.js": "/Goose-Track-Frontend/static/js/main.07d3183d.js",
+    "static/media/Inter-Bold.woff": "/Goose-Track-Frontend/static/media/Inter-Bold.d863298c035ae887b7d6.woff",
+    "static/media/Inter-SemiBold.woff": "/Goose-Track-Frontend/static/media/Inter-SemiBold.133ad17891ba17ce4b7e.woff",
+    "static/media/Inter-Medium.woff": "/Goose-Track-Frontend/static/media/Inter-Medium.5aebe1f6c4605768582d.woff",
+    "static/media/Inter-Regular.woff": "/Goose-Track-Frontend/static/media/Inter-Regular.16cbea275b2ab28453af.woff",
+    "static/media/Inter-Bold.woff2": "/Goose-Track-Frontend/static/media/Inter-Bold.33a5a4566bb3413901e3.woff2",
+    "static/media/Inter-SemiBold.woff2": "/Goose-Track-Frontend/static/media/Inter-SemiBold.f8f55aa9d497b7683ed5.woff2",
+    "static/media/Inter-Medium.woff2": "/Goose-Track-Frontend/static/media/Inter-Medium.3b9cdcf0bbb18875523f.woff2",
+    "static/media/Inter-Regular.woff2": "/Goose-Track-Frontend/static/media/Inter-Regular.582d8a8e254ad87ea376.woff2",
+    "static/media/CoolveticaRg-Italic.woff": "/Goose-Track-Frontend/static/media/CoolveticaRg-Italic.3c946da17c9b327cdb07.woff",
+    "static/media/CoolveticaRg-Regular.woff": "/Goose-Track-Frontend/static/media/CoolveticaRg-Regular.18553089a0255bf3ff57.woff",
+    "static/media/CoolveticaRg-Italic.woff2": "/Goose-Track-Frontend/static/media/CoolveticaRg-Italic.303f6d191c54ca2d8032.woff2",
+    "static/media/CoolveticaRg-Regular.woff2": "/Goose-Track-Frontend/static/media/CoolveticaRg-Regular.527dd81079648bc83492.woff2",
     "index.html": "/Goose-Track-Frontend/index.html",
-    "main.7acaea2f.css.map": "/Goose-Track-Frontend/static/css/main.7acaea2f.css.map",
+    "main.396d73a6.css.map": "/Goose-Track-Frontend/static/css/main.396d73a6.css.map",
     "main.07d3183d.js.map": "/Goose-Track-Frontend/static/js/main.07d3183d.js.map"
   },
   "entrypoints": [
-    "static/css/main.7acaea2f.css",
+    "static/css/main.396d73a6.css",
     "static/js/main.07d3183d.js"
   ]
 }
