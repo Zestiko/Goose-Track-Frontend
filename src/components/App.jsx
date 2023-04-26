@@ -1,14 +1,19 @@
-// import CalendarPage from 'pages/CalendarPage/CalendarPage';
-// import { lazy } from 'react';
-// import { Route, Routes } from 'react-router-dom';
-
-import RegisterPage from "pages/RegisterPage/RegisterPage";
+import { lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
 
 
-// const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
+
+
+const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
+const LoginPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
+const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 
 export const App = () => {
   return (
-    <RegisterPage />
+    <Routes>
+      <Route path="" element={<HomePage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
+    </Routes>
   )
 };
