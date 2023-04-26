@@ -1,0 +1,12 @@
+.user-page{
+    position: absolute;
+    width: 335px;
+    height: 653px;
+    left: 20px;
+    top: 151px;
+    padding: 18px;
+    padding-bottom: 40px;
+    
+    background: #FFFFFF;
+    border-radius: 16px;
+}

@@ -14,7 +14,7 @@ const UserPage = () => {
         phone,
         telegram
     } = useSelector(getUser)
-    const [avatar,setAvatar] = useState(userImage)
+    const [avatar] = useState(userImage)
     
     useEffect(() => {
     dispatch(fetchUser())
@@ -46,6 +46,7 @@ const UserPage = () => {
         <button>
           Upload Avatar
         </button>
+        <h3>${name}</h3>
       </div>
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Name:</label>
