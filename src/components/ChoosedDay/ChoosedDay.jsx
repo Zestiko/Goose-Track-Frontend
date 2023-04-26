@@ -1,31 +1,21 @@
-import { useParams } from "react-router-dom";
-import PropTypes from 'prop-types';
-import {box} from "./ChoosedDay.module.css";
+// import { useParams } from 'react-router-dom';
+import css from './ChoosedDay.module.css';
+
+import TasksColumnsList from 'components/TasksColumnsList/TasksColumnsList';
+import DayCalendarHead from 'components/DayCalendarHead/DayCalendarHead';
+import { useTasksByChoosedDay } from '../../hooks/useTasksByChoosedDay';
 
 const ChoosedDay = () => {
-    const { currentDay } = useParams();
-    const { tasks } = useTasksByChoosedDay();
-    return (
-      <div className={box}>
-      <DayCalendarHead day={currentDay} />
-      <TasksColumnsList tasks={tasks}>
-        <TasksColumn />
-      </TasksColumnsList>
-      </div>
-    );
-  };
-  
-  export default ChoosedDay;
-  
-ChoosedDay.propTypes = {
-    tasks: PropTypes.arrayOf(
-      PropTypes.exact({
-        id: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        startTime: PropTypes.number.isRequired,
-        endTime: PropTypes.number.isRequired,
-        priority: PropTypes.string.isRequired,
-        column: PropTypes.string.isRequired,
-      })
-    ),
-  };
+  // const { currentDay } = useParams();
+  const currentDay = '2023-04-25';
+
+  const tasks = useTasksByChoosedDay() || [];
+  return (
+    <div className={css.boxChoosedDay}>
+      <DayCalendarHead selectedDay={currentDay} />
+      <TasksColumnsList selectedDay={currentDay} tasks={tasks} />
+    </div>
+  );
+};
+
+export default ChoosedDay;

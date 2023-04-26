@@ -1,0 +1,36 @@
+.listBox {
+  display: flex;
+  overflow-x: scroll;
+  flex-wrap: nowrap;
+  margin: auto;
+  gap: 16px;
+}
+
+@media (min-width: 1280px) {
+  .listBox {
+    justify-content: center;
+    overflow-x: hidden;
+  }
+}
+
+/* width */
+::-webkit-scrollbar {
+  /* width: 14px;  */
+  height: 14px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-bg-color);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-color);
+  border-radius: 12px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #c6c5c5;
+}
