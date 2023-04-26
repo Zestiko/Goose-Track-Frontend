@@ -1,12 +1,12 @@
 import { useDispatch } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
-import userCheckSvg from '../../../../images/icons/user-check-01.svg';
-import calendarCheckSvg from '../../../../images/icons/calendar-check.svg';
+import {ReactComponent as UserCheckSvg} from '../../../../images/icons/user-check-01.svg';
+import { ReactComponent as CalendarCheckSvg } from '../../../../images/icons/calendar-check.svg';
 
 
 import css from './Navigation.module.scss';
-console.log(userCheckSvg);
+// console.log(userCheckSvg);
 // Для теста
 const isActive = true;
 const getActiveClassName = ({ isActive }) =>
@@ -26,21 +26,19 @@ const Navigation = () => {
         className={classNames(
           { getActiveClassName },
           `${css.navItem}`,
-          `${css.navItem_1}`
         )}
       >
-        <svg>
+        <UserCheckSvg />
+        {/* <svg>
           <use href={userCheckSvg}></use>
-        </svg>
+        </svg> */}
         My account
       </NavLink>
       <NavLink
         to="/calendar"
         className={classNames({ getActiveClassName }, `${css.navItem}`)}
       >
-        <svg>
-          <use href={calendarCheckSvg}></use>
-        </svg>
+       <CalendarCheckSvg/>
         Calendar
       </NavLink>
       <button>Log out </button>

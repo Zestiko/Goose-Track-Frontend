@@ -33,6 +33,13 @@
   width: 24px;
   height: 24px;
   margin-right: 10px;
+  stroke:#84828a;
+  &:hover,
+  &:focus,
+  selected{
+  stroke:#3e85f3;
+
+  }
 }
 
 // .navItem_1:before {

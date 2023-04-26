@@ -2,7 +2,7 @@ import Header from './Header/Header';
 import css from './MainPage.module.scss';
 import Sidebar from './Sidebar/Sidebar';
 
-const MainPage = ({header, children }) => (
+const MainPage = ({children}) => (
   <>
     <div className={css.mainPage}>
       <Sidebar />
