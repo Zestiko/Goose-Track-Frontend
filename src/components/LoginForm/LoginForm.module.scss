@@ -1,0 +1,208 @@
+@import './../../styles/vars';
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    background-color: $auth-bg-color;
+    height: 100vh;
+    width: 100%;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    background-color: $btn-text-color;
+    border-radius: 8px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-right: 24px;
+    padding-left: 24px;
+
+    @media screen and (min-width: 768px) {
+        margin: 0 auto;
+        width: 480px;
+    }
+}
+
+.title {
+    text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07), 0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
+    color: $accent-background-color;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.33;
+
+    @media screen and (min-width: 768px) {
+        font-size: 24px;
+        line-height: 1;
+    }
+}
+
+.label {
+    font-family:$primary-font;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.25;
+    color: $close-btn-color;
+    margin-bottom: 8px;
+    margin-top: 24px;
+
+    @media screen and (min-width: 768px) {
+        font-size: 14px;
+        line-height: 1.2;
+        margin-top: 18px;
+    }
+}
+
+.input {
+    background: $btn-text-color;
+    border: $border-auth;
+    border-radius: 8px;
+    padding: 14px;
+    width: 100%;
+    font-size: 14px;
+    line-height: 1.29;
+    color: $primary-text-color;
+
+    &:focus {
+        border: 1px solid #111111;
+    }
+
+    &:hover {
+        border: 1px solid #111111;
+    }
+
+    &::placeholder {
+        color: $auth-placeholder-color;
+        font-size: 14px;
+    }
+
+    @media screen and (min-width: 768px) {
+        padding: 18px;
+    }
+}
+
+.button {
+    background: $accent-background-color;
+    box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
+    border-radius: 16px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    color: $btn-text-color;
+    padding: 14px;
+    width: 100%;
+    margin-top: 32px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    &:focus {
+        background: #2B78EF;
+        box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
+    }
+
+    &:hover {
+        background: #2B78EF;
+        box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
+    }
+
+
+    @media screen and (min-width: 768px) {
+        font-size: 18px;
+        line-height: 1.33;
+    }
+}
+
+.link {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.16;
+    color: $accent-background-color;
+    text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07), 0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
+    margin: 18px auto;
+    text-decoration: underline;
+}
+
+.icon {
+    width: 18px;
+    height: 18px;
+    margin-left: 11px;
+
+    @media screen and (min-width: 768px) {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+
+.bgimages {
+    @media screen and (min-width: 1200px) {
+        background-image: url('./../../images/loginPage/rocket-goose-2x.png');
+        background-repeat: no-repeat;
+        top: calc(50% - (424px / 2) + 80px);
+        left: calc(50% + (480px / 2) + 52px);
+        position: absolute;
+        width:400px;
+        height: 442px;
+        background-size: 365px 442px;
+        // transform: rotate(-31.56deg);
+    }
+
+    @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+        background-image: url('./../../images/loginPage/rocket-goose-3x.png');
+    }
+}
+
+.bgImagesMsg {
+    @media screen and (min-width: 1200px) {
+        background-image: url('./../../images/loginPage/clouds-2x.png');
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 177px;
+        height: 125px;
+        background-size: 177px 125px;
+        top: calc(50% - (424px / 2) + 20px);
+        left: calc(50% + (480px / 2) + 156px);
+    }
+}
+
+.bgImagesText {
+    display: none;
+
+    @media screen and (min-width: 1200px) {
+        display: block;
+        text-align: center;
+        margin-top: 32px;
+        margin-left: 20px;
+        font-family: $primary-font;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 1.14;
+        color: #111111;
+        transform: rotate(15deg);
+        width: 138px;
+        height: 48px;
+    }
+}
+
+.span {
+    color: $accent-background-color;
+}
+
+
+.invalid-feedback {
+    color: #dc3545;
+    margin-top: 8px;
+    font-size: 12px;
+}
+
+
+.is-invalid {
+    border-color: #dc3545;
+    color: #dc3545;
+
+}
