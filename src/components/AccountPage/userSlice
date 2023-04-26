@@ -1,4 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import {
+    fetchUser,
+    updateUserProfile
+} from "./user-operations"
 
 const userInitialState = {
   user: {},
@@ -9,25 +13,36 @@ const userInitialState = {
 const userSlice = createSlice({
     name: "user",
     initialState: userInitialState,
-    reducers: {
-        fetchInProgress(state) {
-            state.isLoading = true;
-        },
-        fetchSuccess(state, action) {
-            state.isLoading = false;
-            state.error = null;
-            state.items = action.payload;
-        },
-        fetchError(state, action) {
-            state.isLoading = false;
-            state.error = action.payload;
-        },
-    },
-});
+    extraReducers: builder => {
+        builder
+            .addCase(fetchUser.pending, state => {
+                state.isLoading = true;
+                state.error = null;
+            })
+            .addCase(fetchUser.fulfilled, (state, { payload }) => {
+                state.user = payload;
+                state.isLoading = false;
+                state.error = null;
+            })
+            .addCase(fetchUser.rejected, (state, { payload }) => {
+                state.isLoading = false;
+                state.error = payload;
+            })
+            .addCase(updateUserProfile.pending, state => {
+                return { ...state, isLoading: true, error: null };
+            })
+            .addCase(updateUserProfile.fulfilled, (state, { payload }) => {
+                return {
+                    ...state,
+                    user: [...state.user, payload],
+                    isLoading: false,
+                    error: null,
+                };
+            })
+            .addCase(updateUserProfile.rejected, (state, { payload }) => {
+                return { ...state, isLoading: false, error: payload };
+            })
+    }
+})
 
-export const {
-  fetchInProgress,
-  fetchSuccess,
-  fetchError,
-} = userSlice.actions;
 export const userReducer = userSlice.reducer;
