@@ -1,9 +1,19 @@
 .header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  
   & > svg {
     width: 24px;
     height: 24px;
+  }
+}
+
+.user{
+  margin-left: auto;
+}
+
+@media screen and (min-width: 769px) {
+  .burger {
+    display: none;
   }
 }

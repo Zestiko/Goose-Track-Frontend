@@ -4,21 +4,22 @@ import css from './MainPage.module.scss';
 import { useState, useEffect } from 'react';
 
 const MainPage = ({ children }) => {
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  // const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  useEffect(() => {
-    const handleResize = () => setScreenWidth(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+  // useEffect(() => {
+  //   const handleResize = () => setScreenWidth(window.innerWidth);
+  //   window.addEventListener('resize', handleResize);
+  //   return () => {
+  //     window.removeEventListener('resize', handleResize);
+  //   };
+  // }, []);
 
   const handleBurgerMenuClick = () => {
     console.log('isSidebarOpen', isSidebarOpen);
     setIsSidebarOpen(!isSidebarOpen);
   };
+
 
   return (
     <>
@@ -31,10 +32,10 @@ const MainPage = ({ children }) => {
         <main className={css.appPage}>
           <Header
             header="HEADER"
-            screenWidth={screenWidth}
+            // screenWidth={screenWidth}
             handleBurgerMenuClick={handleBurgerMenuClick}
           />
-          <div className="">{children}</div>
+          <div>{children}</div>
         </main>
       </div>
     </>
