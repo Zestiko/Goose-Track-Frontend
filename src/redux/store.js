@@ -14,6 +14,7 @@ export const store = configureStore({
   devTools: true,
   reducer: {
     auth: authReducer,
+    user: userReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
@@ -28,9 +29,5 @@ export const persistor = persistStore(store);
 
 
 
-export const store = configureStore({
-  reducer: {
-    user: userReducer,
-  },
-});
+
 
