@@ -19,9 +19,10 @@ export const App = () => {
     <>
       <Suspense>
         <Routes>
-      <Header />
-      <Main />
-
+      
+    
+          <Route component={<Header />} />
+          <Route component={<Main />} />
           <Route index element={<HomePage />} />
           <Route
             path="/login"
