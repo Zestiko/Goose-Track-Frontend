@@ -68,6 +68,44 @@
   }
 
   .closeIcon {
+    display:block;
+    width: 24px;
+    height: 24px;
+    stroke: #000;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sidebar {
+    width: 289px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: -290px;
+    transition: left 250ms ease-in;
+
+    & > .logo {
+      height: 58px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 50px;
+    }
+  }
+
+  .logoText {
+    font-size: 18px;
+    color: #3e85f3;
+    padding-left: 6px;
+    line-height: calc(24px / 18px);
+    margin-right: auto;
+  }
+
+  .sidebar.open {
+    left: 0;
+  }
+
+  .closeIcon {
+    display:block;
     width: 24px;
     height: 24px;
     stroke: #000;

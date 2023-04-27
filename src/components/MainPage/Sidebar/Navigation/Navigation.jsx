@@ -37,7 +37,7 @@ const Navigation = () => {
       </NavLink>
 
       <NavLink
-        to="/calendar"
+        to="/logout"
         className={classNames({ getActiveClassName }, `${css.button}`)}
       >
         Log out
