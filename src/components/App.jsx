@@ -11,6 +11,7 @@ const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 
 export const App = () => {
   return (
+
     <Routes>
       <Route path="" element={<HomePage />} />
       <Route path="/login" element={<LoginPage />} />
@@ -20,4 +21,5 @@ export const App = () => {
     <UserPage />
     </>
   )
+
 };
