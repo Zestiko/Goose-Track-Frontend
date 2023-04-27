@@ -1,6 +1,7 @@
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
-
+import RegisterPage from "pages/RegisterPage/RegisterPage";
+import UserPage from "./AccountPage/accountPage";
 
 
 
@@ -15,5 +16,8 @@ export const App = () => {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
     </Routes>
+    <>
+    <UserPage />
+    </>
   )
 };
