@@ -24,12 +24,4 @@ export const store = configureStore({
 
 export const persistor = persistStore(store);
 
-import { configureStore } from "@reduxjs/toolkit";
-import { userReducer } from "./user/userSlice";
-
-export const store = configureStore({
-  reducer: {
-    user: userReducer,
-  },
-});
 
