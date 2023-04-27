@@ -1,0 +1,1 @@
+export const selectorAuthStatus = (state) => state.auth.status;
