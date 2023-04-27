@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/680.b4bb8eab.chunk.js","mappings":"wKACe,SAASA,IACpB,OACI,0BACI,uCAGX,C","sources":["pages/HomePage/HomePage.jsx"],"sourcesContent":["\nexport default function RegisterPage() {\n    return (\n        <div>\n            <h1>Home Page</h1>\n        </div>\n    );\n}"],"names":["RegisterPage"],"sourceRoot":""}
