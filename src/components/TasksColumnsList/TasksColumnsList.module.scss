@@ -1,13 +1,14 @@
+@import './../../styles/vars';
+
 .listBox {
   display: flex;
-  overflow-x: scroll;
   flex-wrap: nowrap;
-  margin: auto;
   gap: 16px;
-}
 
-@media (min-width: 1280px) {
-  .listBox {
+  overflow-x: scroll;
+  margin: auto;
+
+  @media screen and (min-width: 1280px) {
     justify-content: center;
     overflow-x: hidden;
   }
@@ -15,18 +16,17 @@
 
 /* width */
 ::-webkit-scrollbar {
-  /* width: 14px;  */
   height: 14px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: var(--scrollbar-bg-color);
+  background: $scrollbar-bg-color;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-color);
+  background: $scrollbar-color;
   border-radius: 12px;
 }
 

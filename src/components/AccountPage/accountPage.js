@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUser } from "../../redux/user/selectors";
 import { fetchUser,updateUserProfile } from "../../redux/user/user-operations";
-import userImage from "./image.png"
+import userAvatar from "../../images/icons/ph_user.svg"
 
 
 const UserPage = () => {
@@ -12,9 +12,9 @@ const UserPage = () => {
         email,
         birthday,
         phone,
-        telegram
+        telegram,
+        avatar
     } = useSelector(getUser)
-    const [avatar] = useState(userImage)
     
     useEffect(() => {
     dispatch(fetchUser())
@@ -39,52 +39,59 @@ const UserPage = () => {
       <div className="user-page__avatar-container">
         <img
           className="user-page__avatar"
-          src={avatar || "/src/components/AccountPage/image.png"}
+          src={avatar || userAvatar}
           alt="User Avatar"
         />
-        <input type="file" onChange={handleAvatarChange} />
-        <button>
-          Upload Avatar
+        <button onClick={handleAvatarChange} className="user_page-button">
+          <svg>
+
+          </svg>
         </button>
-        <h3>${name}</h3>
+        <h3 className="user-page__name">{name || "Username"}</h3>
+        <p className="user-page__role">User</p>
       </div>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Name:</label>
+      <form onSubmit={handleSubmit} className="username_form">
+        <label htmlFor="name" className="username_form-label">Username</label>
         <input
+          className="username_form-input"
           id="name"
           type="text"
           value={name}
           placeholder="Enter your name"
         />
-        <label htmlFor="email">Email:</label>
+        <label htmlFor="birthday" className="username_form-label">Birthday:</label>
         <input
-          id="email"
-          type="email"
-          value={email}
-          placeholder="Enter your email"
-        />
-        <label htmlFor="birthday">Birthday:</label>
-        <input
+          className="username_form-input"
           id="birthday"
           type="date"
           value={birthday}
           placeholder="Enter your birthday"
         />
-        <label htmlFor="phone">Phone:</label>
+        <label htmlFor="email" className="username_form-label">Email</label>
         <input
+          className="username_form-input"
+          id="email"
+          type="email"
+          value={email}
+          placeholder="Enter your email"
+        />
+        <label htmlFor="phone" className="username_form-label">Phone:</label>
+        <input
+          className="username_form-input"
           id="phone"
           type="text"
           value={phone}
           placeholder="Enter your phone"
         />
-        <label htmlFor="telegram">Telegram:</label>
+        <label htmlFor="telegram" className="username_form-label">Telegram:</label>
         <input
+          className="username_form-input username_form-input--last"
           id="telegram"
           type="text"
           value={telegram}
           placeholder="Enter your telegram username"
         />
-        <button type="submit">Save</button>
+        <button type="submit" className="username__form-submit">Save</button>
       </form>
     </section>
   );

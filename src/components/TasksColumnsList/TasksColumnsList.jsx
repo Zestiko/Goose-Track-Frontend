@@ -1,24 +1,23 @@
 import PropTypes from 'prop-types';
+import { useTasksByChoosedDay } from 'hooks/useTasksByChoosedDay';
 import TasksColumn from 'components/TasksColumn/TasksColumn';
-import css from './TasksColumnsList.module.css';
+import scss from './TasksColumnsList.module.scss';
 
-const TasksColumnsList = ({ selectedDay, tasks }) => {
-  const columns = ['toDo', 'inProgress', 'done'];
-  const tasksByColumns = columns.reduce((acc, column) => {
+const COLUMNS = ['toDo', 'inProgress', 'done'];
+
+const TasksColumnsList = ({ selectedDay }) => {
+  const { tasks } = useTasksByChoosedDay(selectedDay) || [];
+
+  const tasksByColumns = COLUMNS.reduce((acc, column) => {
     return {
       ...acc,
-      [column]: tasks.filter(task => {
-        const taskDate = new Date(task.taskDate).toLocaleDateString();
-        const userSelectedDay = new Date(selectedDay).toLocaleDateString();
-        return task.column === column && taskDate === userSelectedDay;
-      }),
+      [column]: tasks.filter(task => task.column === column),
     };
   }, {});
 
   return (
-    <div className={css.listBox}>
-      {columns.map(column => {
-        console.log('column', column);
+    <div className={scss.listBox}>
+      {COLUMNS.map(column => {
         return (
           <TasksColumn
             key={column}
@@ -34,16 +33,5 @@ const TasksColumnsList = ({ selectedDay, tasks }) => {
 export default TasksColumnsList;
 
 TasksColumnsList.propTypes = {
-  tasks: PropTypes.arrayOf(
-    PropTypes.exact({
-      _id: PropTypes.string.isRequired,
-      taskDate: PropTypes.string.isRequired,
-      column: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      startTime: PropTypes.number.isRequired,
-      endTime: PropTypes.number.isRequired,
-      priority: PropTypes.string.isRequired,
-    })
-  ),
   selectedDay: PropTypes.string.isRequired,
 };

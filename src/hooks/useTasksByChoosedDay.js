@@ -1,8 +1,7 @@
 import { useSelector } from 'react-redux';
-import {
-    selectTasks,
-} from 'redux/tasks/tasks-selectors';
+import { selectTasksByDay } from 'redux/tasks/tasks-selectors';
 
-export const useTasksByChoosedDay = () => {
-  return {tasks: useSelector(selectTasks)}
+export const useTasksByChoosedDay = currentDay => {
+  const tasksByCurrentDay = selectTasksByDay(currentDay);
+  return { tasks: useSelector(tasksByCurrentDay) };
 };
