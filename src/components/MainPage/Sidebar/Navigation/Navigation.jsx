@@ -1,9 +1,9 @@
 import { useDispatch } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
-import {ReactComponent as UserCheckSvg} from '../../../../images/icons/user-check-01.svg';
+import { ReactComponent as UserCheckSvg } from '../../../../images/icons/user-check-01.svg';
 import { ReactComponent as CalendarCheckSvg } from '../../../../images/icons/calendar-check.svg';
-
+import { ReactComponent as LoginOutSvg } from '../../../../images/icons/log-out.svg';
 
 import css from './Navigation.module.scss';
 // console.log(userCheckSvg);
@@ -18,30 +18,31 @@ const Navigation = () => {
 
   // const isActiveToken
   return (
-    <div className="userPanel">
+    <div className={css.userPanel}>
       {/* {isActiveToken && <h2 className="">Please SignIn</h2>} */}
       <p className={css.navLabel}>User Panel</p>
       <NavLink
         to="/myAccount"
-        className={classNames(
-          { getActiveClassName },
-          `${css.navItem}`,
-        )}
+        className={classNames({ getActiveClassName }, `${css.navItem}`)}
       >
         <UserCheckSvg />
-        {/* <svg>
-          <use href={userCheckSvg}></use>
-        </svg> */}
         My account
       </NavLink>
       <NavLink
         to="/calendar"
         className={classNames({ getActiveClassName }, `${css.navItem}`)}
       >
-       <CalendarCheckSvg/>
+        <CalendarCheckSvg />
         Calendar
       </NavLink>
-      <button>Log out </button>
+
+      <NavLink
+        to="/calendar"
+        className={classNames({ getActiveClassName }, `${css.button}`)}
+      >
+        Log out
+        <LoginOutSvg />
+      </NavLink>
     </div>
   );
 };

@@ -1,4 +1,7 @@
 .sidebar {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
   height: auto;
   width: 289px;
   padding: 32px 24px 24px;
@@ -9,7 +12,6 @@
 
   & > .logo {
     height: 68px;
-    width: 201px;
     display: flex;
     align-items: center;
     margin-bottom: 32px;
@@ -27,4 +29,41 @@
   text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07),
     0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
   padding-left: 10px;
+  margin-right: auto;
 }
+
+.closeIcon {
+  display:none
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .sidebar {
+    width: 225px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: -100vw;
+    transition: left 250ms ease-in;
+
+    & > .logo {
+    height: 35px;
+    display: flex;
+    align-items: center;
+    //margin-bottom: 32px;
+  }
+  }
+
+  .sidebar.open {
+    left: 0;
+  }
+
+  .closeIcon {
+
+  width: 24px;
+  height: 24px;
+  stroke: #000;
+}
+}
+
