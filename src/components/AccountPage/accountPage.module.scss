@@ -1,0 +1,135 @@
+@import './../../styles/vars';
+
+
+.user-page{
+    position: relative;
+    display: block;
+    margin: 20px;
+    width: 335px;
+    height: 653px;
+    left: 20px;
+    top: 151px;
+    padding: 18px;
+    border: 2px solid red;
+    background: #FFFFFF;
+    border-radius: 16px;
+}
+.user-page__avatar-container{
+    position: absolute;
+box-sizing: border-box;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border: 2px solid #3E85F3;
+}
+.user-page__avatar{
+    width: 72px;
+    height: 72px;
+    left: 0px;
+    top: 0px;
+    border: 2px solid #3E85F3;
+    border-radius: 50%;
+    margin-bottom: 18px;
+}
+.user_page-button{
+    position: absolute;
+        width: 14px;
+        height: 14px;
+        left: 60%;
+        top: 48%;
+        background: #3E85F3;
+}
+.user-page__name{
+    display: block;
+    width: 74px;
+        height: 18px;
+    
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 18px;
+    
+        /* identical to box height, or 129% */
+    
+        color: #343434;
+    
+    
+        /* Inside auto layout */
+        flex: none;
+        order: 0;
+        flex-grow: 0;
+        margin-bottom: 4px;
+}
+.user-page__role{
+    display: block;
+    width: 28px;
+    height: 14px;
+    
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 14px;
+    
+        /* identical to box height, or 117% */
+    
+        color: #616161;
+    
+    
+        /* Inside auto layout */
+        flex: none;
+        order: 1;
+        flex-grow: 0;
+}
+.username_form{
+    position: absolute;
+    top: 135px;
+    display: flex;
+    flex-direction: column;
+}
+.username_form-label{
+    margin-bottom: 8px;
+    width: 64px;
+    height: 14px;
+    
+    font-family: $primary-font;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: #111111;
+}
+.username_form-input{
+    box-sizing: border-box;
+        width: 299px;
+        height: 42px;
+        left: 0px;
+        top: 0px;
+        margin-bottom: 18px;
+    
+        border: 1px solid rgba(17, 17, 17, 0.1);
+        border-radius: 8px;
+    
+}
+.username_form-input--last{
+    margin-bottom: 0;
+}
+.username__form-submit{
+    display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 20px 10px 20px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        isolation: isolate;
+
+        width: 195px;
+        height: 46px;
+        left: calc(50% - 195px/2);
+        top: 567px;
+    
+        background: #3E85F3;
+        border-radius: 16px
+}
