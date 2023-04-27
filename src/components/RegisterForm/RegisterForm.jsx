@@ -27,42 +27,49 @@ export const RegisterForm = () => {
             validationSchema={registerUserSchema}
             onSubmit={handleSubmit}
         >
+            {({ errors, touched, resetForm }) => (
             <Form autoComplete="off" className={scss.form}>
                 <h1 className={scss.title}>Sing Up</h1>
-                <label className={scss.label}>
+                <label className={scss.label +
+                            (errors.name && touched.name ? ' is-invalid' : '')}>
                     Name
                     <Field
                         id="name"
                         name="name"
                         type="name"
                         placeholder="Enter your name"
-                        className={scss.input} />
-                    <ErrorMessage name="name" component="div">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>
+                        className={scss.input  +
+                            (errors.name && touched.name ? ' is-invalid' : '')} />
+                    <ErrorMessage name="name" component="div" className="invalid-feedback"></ErrorMessage>
                 </label>
-                <label className={scss.label}>
+                <label className={scss.label +
+                            (errors.email && touched.email ? ' is-invalid' : '')}>
                     Email
                     <Field
                         id="email"
                         name="email"
                         type="email"
                         placeholder="Enter email"
-                        className={scss.input} />
-                    <ErrorMessage name="email" component="div">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>
+                        className={scss.input  +
+                            (errors.email && touched.email ? ' is-invalid' : '')} />
+                    <ErrorMessage name="email" component="div" className="invalid-feedback"></ErrorMessage>
                 </label>
-                <label className={scss.label}>
+                <label className={scss.label+
+                            (errors.password && touched.password ? ' is-invalid' : '')}>
                     Password
                     <Field
                         id="password"
                         name="password"
                         type={'password'}
                         placeholder="Enter password"
-                        className={scss.input} />
-                    <ErrorMessage name="password" component="div">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>
+                        className={scss.input  +
+                            (errors.password && touched.password ? ' is-invalid' : '')} />
+                    <ErrorMessage name="password" component="div" className="invalid-feedback"></ErrorMessage>
                 </label>
                 <button className={scss.button} type="submit">Sing Up
                     <FiLogIn className={scss.icon} />
                 </button>
-            </Form>
+            </Form>)}
         </Formik>
         <Link className={scss.link} to="/login">
             Log In

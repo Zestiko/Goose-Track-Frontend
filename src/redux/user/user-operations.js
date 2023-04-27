@@ -4,7 +4,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 axios.defaults.baseURL = 'https://goose-track-backend.herokuapp.com';
 
 export const fetchUser = createAsyncThunk(
-  'user/info',
+  'user/fetchUser',
   async (_, { rejectWithValue }) => {
     try {
       const { data } = await axios.get('/user');
