@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getUser } from "./selectors";
-import { fetchUser,updateUserProfile } from "./user-operations";
+import { getUser } from "../../redux/user/selectors";
+import { fetchUser,updateUserProfile } from "../../redux/user/user-operations";
 import userImage from "./image.png"
 
 
