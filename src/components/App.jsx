@@ -3,6 +3,9 @@ import { Route, Routes } from 'react-router-dom';
 import { AuthNav } from './AuthNavigate/AuthNavigate';
 import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
+// start page
+import { Header } from './header_b/header_b';
+import { Main } from './main_c/main_c';
 
 // import UserPage from './AccountPage/accountPage';
 
@@ -16,6 +19,9 @@ export const App = () => {
     <>
       <Suspense>
         <Routes>
+      <Header />
+      <Main />
+
           <Route index element={<HomePage />} />
           <Route
             path="/login"

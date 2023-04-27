@@ -1,0 +1,248 @@
+@font-face {
+    font-family: 'Coolvetica';
+    src: url('../../assets/coolvetica/coolvetica_rg.otf ');
+    
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+/* font-family: 'Inter', sans-serif; */
+
+.container {
+    
+    margin: 0 auto;
+    height: auto;
+    max-width: 1440px;
+    background-color: rgb(66, 76, 89);
+    box-sizing: border-box;
+}
+
+.box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.block{
+    width: 48%;
+    min-height: 50px;
+    border: 2px dashed green;
+}
+
+.but_LogIn {
+    
+}
+
+
+@media screen and (min-width: 375px) {
+    .box_btn{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+       
+}
+
+    .but_SignUp02 {
+        margin-top: 200px;
+        display: block;
+        background-color: transparent;
+        border: 0;
+        color: #fff;
+
+        font-size: 12px;
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        line-height: 14px;
+    }
+
+    .box {
+        margin: 0 auto;
+        height: 812px;
+        max-width: 100%;
+        background-color: #3E85F3;
+        border: 1px solid rgb(251 251 251 / 0%);
+    }
+
+    .logo{
+        display: block;
+        margin-top: 232px;
+
+        width: auto;
+        height: 142px;
+       
+    }
+
+    .main_title {
+        margin-top: 20px;
+        color: #fff;
+        font-size: 44px;
+        font-family: 'Coolvetica';
+        font-weight: 400;
+        line-height: 48px;
+       
+    }
+
+    .oo_title{
+        font-style: italic;
+    }
+
+        .but_LogIn {
+    
+        width: 131px;
+        height: 46px;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        border-radius: 15px;
+
+        color: #3E85F3;
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 18px;
+
+        position: relative;
+            
+        }
+
+        .svgIcon {
+            
+            position: absolute;
+            top: 16px;
+            right: 22px;
+            z-index: 10;
+        }
+    
+        .but_SignUp {
+        display: none;
+        }
+
+        .block {
+            width: 98%;
+            min-height: 50px;
+            
+        }
+
+        .main {
+            box-sizing: border-box;
+            margin: 0 auto;
+            min-height: 100px;
+            max-width: 375px;
+            padding: 15px;
+           
+
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+}
+
+@media screen and (min-width: 768px){
+
+    .box_btn {
+            display: flex;
+            flex-direction: row;
+         }
+
+    .box {
+            margin: 0 auto;
+            height: 1024px;
+        }
+
+    .but_LogIn{
+       
+        width: 121px;
+        height: 49px;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        border-radius: 15px;
+
+        color: #3E85F3;
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 18px;
+        
+    }
+
+    .but_SignUp {
+
+        width: 121px;
+        height: 49px;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        border-radius: 15px;
+        background-color: transparent;
+        display: block;
+        text-decoration: underline;
+
+        
+        color: #fff;
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    .but_SignUp02{
+        display: none;
+    }
+
+    .main_title {
+        margin-top: 20px;
+        color: #fff;
+        font-size: 120px;
+        font-family: 'Coolvetica';
+    }
+
+        .logo {
+            margin-top: 331px;
+           
+        }
+
+    .main {
+        box-sizing: border-box;
+        margin: 0 auto;
+        min-height: 100px;
+        max-width: 768px;
+        padding: 15px 128px;
+        
+
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+}
+
+@media screen and (min-width: 1140px) {
+    .box {
+            margin: 0 auto;
+            height: 770px;
+            max-width: 1440px;
+            background-color: #3E85F3;
+        }
+
+    .logo {
+        margin-top: 187px;
+        
+    }
+
+    .main {
+        
+        max-width: 1440px;
+       
+    }
+
+    .block {
+        width: 48%;
+        min-height: 604px;
+    
+    }
+}
