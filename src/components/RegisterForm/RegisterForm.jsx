@@ -3,6 +3,8 @@ import {Formik, Form, Field, ErrorMessage} from "formik";
 import { registerUserSchema } from "components/ValidationUserYup/ValidationUserYup";
 import scss from './RegisterForm.module.scss';
 import { FiLogIn } from 'react-icons/fi';
+import { useDispatch } from 'react-redux'
+import {authRegisterThunk} from '../../redux/auth/auth.thunk'
 
 const initialState = {
     name: '',
@@ -11,9 +13,11 @@ const initialState = {
 };
 
 export const RegisterForm = () => {
+    const dispatch = useDispatch();
 
-    const handleSubmit = async (values, {resetForm}) => {
-        console.log(values);
+    const handleSubmit = async ({name:userName, email, password}, {resetForm}) => {
+        console.log({ userName, email, password });
+        dispatch(authRegisterThunk({ userName, email, password }));
         resetForm();
     };
 
