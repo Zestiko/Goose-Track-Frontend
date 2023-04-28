@@ -3,25 +3,26 @@
 
 .user-page{
     position: relative;
-    width: calc(100% - 40px);
+    display: flex;
+    flex-direction: column;
+    width: 335px;
+    height: 653px;
+    padding: 0 18px 0 18px;
+    margin-top: 120px;
     margin-left: auto;
     margin-right: auto;
     border: 2px solid red;
     background: #FFFFFF;
     border-radius: 16px;
-
     @media screen and (min-width:767px ) {
+        display: flex;
         padding: 40px 175px 40px 175px;
     }
 }
 .user-page__avatar-container{
     display: flex;
     flex-direction:column;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%,-50%);
     margin-bottom: 40px;
-
     @media screen and (min-width:767px) {
         position: relative;
         display: flex;
@@ -31,11 +32,15 @@
     }
 }
 .user-page__avatar{
+    position: relative;
     width: 72px;
     height: 72px;
     border: 2px solid #3E85F3;
     border-radius: 50%;
     margin-bottom: 18px;
+    left: 50%;
+    top: -20%;
+    transform: translate(-50%,-50%);
 
     @media screen and (min-width:767px) {
         width: 124px;
@@ -47,8 +52,8 @@
     position: absolute;
         width: 14px;
         height: 14px;
-        left: 60%;
-        top: 48%;
+        left: 52%;
+        top: 3%;
     background-image: url(../../images/avatarPlus.svg);
 
     @media screen and (min-width:767px) {
@@ -98,7 +103,6 @@
         flex-grow: 0;
 }
 .username_form{
-    position: absolute;
     display: flex;
     flex-direction:column;
     width: calc(100% - 36px);
