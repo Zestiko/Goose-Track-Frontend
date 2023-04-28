@@ -5,7 +5,7 @@ module.exports = {
     node: true,
   },
   extends: ['prettier'],
-  parser: 'babel-eslint',
+  
   parserOptions: {
     sourceType: 'module',
     allowImportExportEverywhere: true,
