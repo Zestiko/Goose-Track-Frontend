@@ -3,13 +3,9 @@
 
 .user-page{
     position: relative;
-    display: block;
-
     width: calc(100% - 40px);
-    height: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding: 18px;
     border: 2px solid red;
     background: #FFFFFF;
     border-radius: 16px;
@@ -19,8 +15,9 @@
     }
 }
 .user-page__avatar-container{
+    display: flex;
+    flex-direction:column;
     position: absolute;
-box-sizing: border-box;
     left: 50%;
     transform: translate(-50%,-50%);
     margin-bottom: 40px;
@@ -36,8 +33,6 @@ box-sizing: border-box;
 .user-page__avatar{
     width: 72px;
     height: 72px;
-    left: 0px;
-    top: 0px;
     border: 2px solid #3E85F3;
     border-radius: 50%;
     margin-bottom: 18px;
@@ -52,7 +47,7 @@ box-sizing: border-box;
     position: absolute;
         width: 14px;
         height: 14px;
-        left: 500%;
+        left: 60%;
         top: 48%;
     background-image: url(../../images/avatarPlus.svg);
 
@@ -68,7 +63,8 @@ box-sizing: border-box;
 }
 
 .user-page__name{
-    display: block;
+    display: flex;
+    flex-direction:column;
     width: 74px;
 
         height: 18px;
@@ -85,7 +81,8 @@ box-sizing: border-box;
         margin-bottom: 4px;
 }
 .user-page__role{
-    display: block;
+    display: flex;
+    flex-direction:column;
     margin-left: auto;
     margin-right: auto;
     width: 28px;
@@ -96,23 +93,18 @@ box-sizing: border-box;
     font-size: 12px;
     line-height: 14px;
     color: #616161;
-    
-    
-        /* Inside auto layout */
         flex: none;
         order: 1;
         flex-grow: 0;
 }
 .username_form{
     position: absolute;
-    width: calc(100% - 36px);
-    top: 135px;
     display: flex;
-    flex-direction: column;
+    flex-direction:column;
+    width: calc(100% - 36px);
 
     @media screen and (min-width:767px) {
         position: relative;
-        display: block;
         top: auto;
     }
 
