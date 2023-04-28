@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import { AuthNav } from './AuthNavigate/AuthNavigate';
 import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
+import UserPage from './AccountPage/accountPage';
 
 // import UserPage from './AccountPage/accountPage';
 
@@ -33,6 +34,12 @@ export const App = () => {
             path="/calendar/month"
             element={
               <PrivateRoute redirectTo="/login" component={<AuthNav />} />
+            }
+          />
+          <Route
+            path="/user/info"
+            element={
+              <RestrictedRoute redirectTo="/" component={<UserPage />} />
             }
           />
         </Routes>

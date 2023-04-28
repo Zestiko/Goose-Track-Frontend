@@ -1,13 +1,11 @@
-import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-
-axios.defaults.baseURL = 'https://goose-track-backend.herokuapp.com';
+import { publicApi } from 'http/http';
 
 export const fetchUser = createAsyncThunk(
   'user/fetchUser',
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get('/user');
+      const { data } = await publicApi.get('/user');
       return data;
     } catch (error) {
       return rejectWithValue(
@@ -23,7 +21,7 @@ export const updateUserProfile = createAsyncThunk(
   'user/info',
   async (formData, { rejectWithValue }) => {
     try {
-      const { data } = await axios.patch('/user/info', formData);
+      const { data } = await publicApi.patch('/user/info', formData);
       return data;
     } catch (error) {
       return rejectWithValue(
@@ -33,4 +31,4 @@ export const updateUserProfile = createAsyncThunk(
       );
     }
   }
-);
+); 

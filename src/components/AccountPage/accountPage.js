@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUser } from "../../redux/user/selectors";
 import { fetchUser,updateUserProfile } from "../../redux/user/user-operations";
@@ -21,6 +21,13 @@ const UserPage = () => {
 },[dispatch])
 
   const handleAvatarChange = (e) => {
+    e.preventDefault();
+  const file = e.target.files[0];
+  if (!file) return;
+
+  const formData = new FormData();
+  formData.append("avatar", file);
+  dispatch(updateUserProfile(formData));
   };
 
   const handleSubmit = (e) => {
@@ -42,11 +49,16 @@ const UserPage = () => {
           src={avatar || userAvatar}
           alt="User Avatar"
         />
-        <button onClick={handleAvatarChange} className="user_page-button">
-          <svg>
-
-          </svg>
-        </button>
+        <div className="avatar-upload-container">
+          <input
+            id="avatar-upload"
+            type="file"
+            accept="image/*"
+            onChange={handleAvatarChange}
+            style={{ display: "none" }}
+          />
+          <label htmlFor="avatar-upload" className="avatar-upload-btn"></label>
+        </div>
         <h3 className="user-page__name">{name || "Username"}</h3>
         <p className="user-page__role">User</p>
       </div>

@@ -4,22 +4,34 @@
 .user-page{
     position: relative;
     display: block;
-    margin: 20px;
-    width: 335px;
-    height: 653px;
-    left: 20px;
-    top: 151px;
+
+    width: calc(100% - 40px);
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
     padding: 18px;
     border: 2px solid red;
     background: #FFFFFF;
     border-radius: 16px;
+
+    @media screen and (min-width:767px ) {
+        padding: 40px 175px 40px 175px;
+    }
 }
 .user-page__avatar-container{
     position: absolute;
 box-sizing: border-box;
     left: 50%;
     transform: translate(-50%,-50%);
-    border: 2px solid #3E85F3;
+    margin-bottom: 40px;
+
+    @media screen and (min-width:767px) {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        transform: none;
+
+    }
 }
 .user-page__avatar{
     width: 72px;
@@ -29,32 +41,44 @@ box-sizing: border-box;
     border: 2px solid #3E85F3;
     border-radius: 50%;
     margin-bottom: 18px;
+
+    @media screen and (min-width:767px) {
+        width: 124px;
+        height: 124px;
+        margin-bottom: 20px;
+    }
 }
-.user_page-button{
+.avatar-upload-btn{
     position: absolute;
         width: 14px;
         height: 14px;
-        left: 60%;
+        left: 500%;
         top: 48%;
-        background: #3E85F3;
+    background-image: url(../../images/avatarPlus.svg);
+
+    @media screen and (min-width:767px) {
+        width: 24px;
+        height: 24px;
+        top: 18%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
+        
 }
+
 .user-page__name{
     display: block;
     width: 74px;
+
         height: 18px;
-    
         font-family: 'Inter';
         font-style: normal;
         font-weight: 700;
         font-size: 14px;
         line-height: 18px;
-    
-        /* identical to box height, or 129% */
-    
+
         color: #343434;
-    
-    
-        /* Inside auto layout */
         flex: none;
         order: 0;
         flex-grow: 0;
@@ -62,18 +86,16 @@ box-sizing: border-box;
 }
 .user-page__role{
     display: block;
+    margin-left: auto;
+    margin-right: auto;
     width: 28px;
     height: 14px;
-    
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 600;
-        font-size: 12px;
-        line-height: 14px;
-    
-        /* identical to box height, or 117% */
-    
-        color: #616161;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 14px;
+    color: #616161;
     
     
         /* Inside auto layout */
@@ -83,9 +105,17 @@ box-sizing: border-box;
 }
 .username_form{
     position: absolute;
+    width: calc(100% - 36px);
     top: 135px;
     display: flex;
     flex-direction: column;
+
+    @media screen and (min-width:767px) {
+        position: relative;
+        display: block;
+        top: auto;
+    }
+
 }
 .username_form-label{
     margin-bottom: 8px;
@@ -101,7 +131,6 @@ box-sizing: border-box;
 }
 .username_form-input{
     box-sizing: border-box;
-        width: 299px;
         height: 42px;
         left: 0px;
         top: 0px;
@@ -109,6 +138,16 @@ box-sizing: border-box;
     
         border: 1px solid rgba(17, 17, 17, 0.1);
         border-radius: 8px;
+
+        font-family: 'Inter';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 18px;
+        
+            /* identical to box height, or 129% */
+        
+            color: #111111;
     
 }
 .username_form-input--last{
