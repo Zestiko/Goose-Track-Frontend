@@ -1,16 +1,37 @@
 import PropTypes from 'prop-types';
-import {listBox} from "./TasksColumnsList.module.css";
+import { useTasksByChoosedDay } from 'hooks/useTasksByChoosedDay';
+import TasksColumn from 'components/TasksColumn/TasksColumn';
+import scss from './TasksColumnsList.module.scss';
 
-const TasksColumnsList = ({tasks}) => {
-    return (
-      <div className={listBox}>
-      {tasks.map(task => (
-          <TasksColumn key={task.id} item={task} />
-        ))}
-    </div>    );
-  };
-  
-  export default TasksColumnsList;
-  
+const COLUMNS = ['toDo', 'inProgress', 'done'];
+
+const TasksColumnsList = ({ selectedDay }) => {
+  const { tasks } = useTasksByChoosedDay(selectedDay) || [];
+
+  const tasksByColumns = COLUMNS.reduce((acc, column) => {
+    return {
+      ...acc,
+      [column]: tasks.filter(task => task.column === column),
+    };
+  }, {});
+
+  return (
+    <div className={scss.listBox}>
+      {COLUMNS.map(column => {
+        return (
+          <TasksColumn
+            key={column}
+            tasks={tasksByColumns[column]}
+            title={column}
+          />
+        );
+      })}
+    </div>
+  );
+};
+
+export default TasksColumnsList;
+
 TasksColumnsList.propTypes = {
-  };
+  selectedDay: PropTypes.string.isRequired,
+};
