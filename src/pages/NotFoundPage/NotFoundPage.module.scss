@@ -1,87 +1,64 @@
-
-/*======================
-    404 page
-=======================*/
 @import './../../styles/vars';
 
-.page_404{ 
-    padding:40px 0; 
-    background:#fff; 
-    font-family: $secondary-font;
-    text-align: center;
+.pageBox {
+  padding: 40px 0;
+  text-align: center;
+  background: #fff;
+  font-family: $secondary-font;
+}
+.sectionTitle {
+  font-size: 80px;
+  color: $secondary-text-color;
 }
 
-.page_404  img{
-     width:100%;}
-
-.four_zero_four_bg{
- 
- background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
-    height: 400px;
-    background-position: center;
-    background-repeat: no-repeat;
- }
- 
- 
- .four_zero_four_bg h1{
- font-size:80px;
- color: $secondary-text-color;
- }
- 
-  .info{
- font-size:24px;
- color: $secondary-text-color;
-  }
-  .info2{
- color: $secondary-text-color;
- margin-bottom: 32px;
-  }
-.link_404{			 
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 1.16;
-    color: $accent-background-color;
-    text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07), 0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
-    margin: 18px auto;
-    text-decoration: underline;
-    margin: 20px 0;
-    display: inline-block;
+.wrapper {
+  background-image: url('../../images/notFoundPage/backgroundImage.gif');
+  height: 400px;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.contant_box_404{ 
-    margin-top:-50px;}
+.infoTitle {
+  font-size: 24px;
+  color: $secondary-text-color;
+}
+.infoMeta {
+  color: $secondary-text-color;
+  margin-bottom: 32px;
+}
 
-    .button {
-        background: $accent-background-color;
-        box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
-        border-radius: 16px;
-        font-weight: 600;
-        font-size: 14px;
-        line-height: 18px;
-        color: $btn-text-color;
-        padding: 14px;
-        width: 220px;
-        margin-top: 64px;
-        align-items: center;
-        display: flex;
-        justify-content: center;
-        margin-left:auto;
-        margin-right:auto;
-    
-        &:focus {
-            background: #2B78EF;
-            box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
-        }
-    
-        &:hover {
-            background: #2B78EF;
-            box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
-        }
-    
-    
-        @media screen and (min-width: 768px) {
-            font-size: 18px;
-            line-height: 1.33;
-        }
-    }
-    
+.infoInner {
+  margin-top: -50px;
+}
+
+.returnButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 220px;
+  padding: 14px;
+  color: $btn-text-color;
+  background: $accent-background-color;
+  box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
+  border-radius: 16px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+
+  &:focus {
+    background: #2b78ef;
+    box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
+  }
+
+  &:hover {
+    background: #2b78ef;
+    box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+    line-height: 1.33;
+  }
+}
