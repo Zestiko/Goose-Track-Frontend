@@ -6,6 +6,7 @@ import { RestrictedRoute } from './RestrictedRoute';
 import MainPage from './MainPage/MainPage';
 import KillMe from './KillMe';
 
+
 // import UserPage from './AccountPage/accountPage';
 
 const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
@@ -36,7 +37,9 @@ export const App = () => {
             element={
               <PrivateRoute redirectTo="/login" component={<AuthNav />} />
             }
+
           /> */}
+
         </Routes>
       </Suspense>
 
