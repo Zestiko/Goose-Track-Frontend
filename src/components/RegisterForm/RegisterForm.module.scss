@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     padding: 20px;
     background-color: $auth-bg-color;
     height: 100vh;
@@ -19,9 +20,10 @@
     padding-bottom: 40px;
     padding-right: 24px;
     padding-left: 24px;
+    width: 100%;
     @media screen and (min-width: 768px) {
         margin: 0 auto;
-        max-width: 480px;
+        width: 480px;
     }
 }
 
@@ -131,7 +133,7 @@
 
 
 .bgimages {
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: 1300px) {
         background-image: url('./../../images/signUp1x.png'); 
         background-repeat: no-repeat;
         bottom: 0;
@@ -151,7 +153,7 @@
 }
 
 .bgImagesMsg {
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: 1300px) {
         background-image: url('./../../images/singUpMsg.png'); 
         background-repeat: no-repeat;
         position: absolute;
@@ -164,7 +166,7 @@
 }
 .bgImagesText {
     display: none;
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: 1300px) {
     display: block;
     text-align: center;
     margin-top: 35px;
@@ -192,11 +194,6 @@
 .is-invalid {
     border-color: #dc3545;
     color: #dc3545;
-
 }
 
-.is-valid {
-    border-color: #3CBC81;
-    color: #3CBC81;
-}
 
