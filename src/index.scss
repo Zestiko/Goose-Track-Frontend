@@ -1,21 +1,37 @@
-@import-normalize; /* bring in normalize.css styles */
+@import-normalize;
+@import './styles/fonts.scss';
+@import './styles/vars.scss';
+@import './styles/common.scss';
+
+//ЮЮЮЮЮЮЮЮЮЮ
+//Зачем ЭТО???
+//ЮЮЮЮЮЮЮЮЮЮЮЮЮ
+@import '/src/components/RegisterForm/RegisterForm.module.scss';
+@import '/src/components/AccountPage/accountPage.module.scss';
+
+
+* {
+  margin: 0;
+  padding: 0;
+}
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+a,
+button {
+  display: block;
+  background: none;
+  border: none;
 }
 
-@import './styles/fonts.scss';
-@import './styles/vars.scss';
-@import './styles/common.scss';
-@import '/src/components/RegisterForm/RegisterForm.module.scss';
-@import '/src/components/AccountPage/accountPage.module.scss'
+svg {
+  display: block;
+  height: 1em;
+  width: 1em;
+}
+

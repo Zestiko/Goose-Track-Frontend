@@ -1,0 +1,64 @@
+@import './../../styles/vars';
+
+.pageBox {
+  padding: 40px 0;
+  text-align: center;
+  background: #fff;
+  font-family: $secondary-font;
+}
+.sectionTitle {
+  font-size: 80px;
+  color: $secondary-text-color;
+}
+
+.wrapper {
+  background-image: url('../../images/notFoundPage/backgroundImage.gif');
+  height: 400px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.infoTitle {
+  font-size: 24px;
+  color: $secondary-text-color;
+}
+.infoMeta {
+  color: $secondary-text-color;
+  margin-bottom: 32px;
+}
+
+.infoInner {
+  margin-top: -50px;
+}
+
+.returnButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 220px;
+  padding: 14px;
+  color: $btn-text-color;
+  background: $accent-background-color;
+  box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
+  border-radius: 16px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+
+  &:focus {
+    background: #2b78ef;
+    box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
+  }
+
+  &:hover {
+    background: #2b78ef;
+    box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+    line-height: 1.33;
+  }
+}

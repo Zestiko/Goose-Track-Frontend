@@ -22,7 +22,7 @@ export const RegisterForm = () => {
     };
 
     return (
-    <div className={scss.container}>
+    <><div className={scss.container}>
         <div className={scss.bgimages}></div>
         <div className={scss.bgImagesMsg}>
             <p className={scss.bgImagesText}>Quickly <span className={scss.span}>register</span> and familiarize yourself with the application!</p>
@@ -31,7 +31,7 @@ export const RegisterForm = () => {
             validationSchema={registerUserSchema}
             onSubmit={handleSubmit}
         >
-            {({ errors, touched, resetForm }) => (
+            {({ errors, touched }) => (
             <Form autoComplete="off" className={scss.form}>
                 <h1 className={scss.title}>Sing Up</h1>
                 <label className={scss.label +
@@ -58,16 +58,14 @@ export const RegisterForm = () => {
                             (errors.email && touched.email ? ' is-invalid' : '')} />
                     <ErrorMessage name="email" component="div" className="invalid-feedback"></ErrorMessage>
                 </label>
-                <label className={scss.label+
-                            (errors.password && touched.password ? ' is-invalid' : '')}>
+                <label className={scss.label + (errors.password && touched.password ? ' is-invalid' : '')}>
                     Password
                     <Field
                         id="password"
                         name="password"
                         type={'password'}
                         placeholder="Enter password"
-                        className={scss.input  +
-                            (errors.password && touched.password ? ' is-invalid' : '')} />
+                        className={scss.input  + (errors.password && touched.password ? ' is-invalid' : '')} />
                     <ErrorMessage name="password" component="div" className="invalid-feedback"></ErrorMessage>
                 </label>
                 <button className={scss.button} type="submit">Sing Up
@@ -79,5 +77,6 @@ export const RegisterForm = () => {
             Log In
         </Link>
     </div>
+    </>
     );
 };

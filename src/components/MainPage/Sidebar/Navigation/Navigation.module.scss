@@ -1,0 +1,137 @@
+.userPanel {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  height: 100%;
+}
+
+.navLabel {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: calc(17px / 14px);
+  color: #7e7d82;
+  margin-bottom: 32px;
+}
+
+.navItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  padding: 16px 20px;
+  color: #84828a;
+
+  & > svg {
+    width: 24px;
+    height: 24px;
+    stroke: #84828a;
+    fill: none;
+  }
+
+  &:hover,
+  &:focus,
+  &.selected {
+    background: #e3f3ff;
+    border-radius: 8px;
+    color: #3e85f3;
+
+    & > svg {
+      stroke: #3e85f3;
+    }
+  }
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  color: #ffffff;
+  padding: 16px 23px;
+  background-color: #3e85f3;
+  box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
+  border-radius: 16px;
+
+  margin-top: auto;
+
+  width: fit-content;
+
+  & > svg {
+    width: 20px;
+    height: 20px;
+    stroke: #ffffff;
+    fill: none;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .navLabel {
+    font-size: 12px;
+    line-height: calc(15px / 12px);
+    margin-bottom: 24px;
+  }
+
+  .navItem {
+    gap: 8px;
+    font-size: 14px;
+    line-height: calc(17px / 14px);
+    padding: 10px 14px;
+
+    & > svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    &:hover,
+    &:focus,
+    &.selected {
+      background: #e3f3ff;
+      border-radius: 8px;
+      color: #3e85f3;
+
+      & > svg {
+        stroke: #3e85f3;
+      }
+    }
+  }
+
+  .button {
+    gap: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: calc(18px / 14px);
+    padding: 14px 28px;
+
+    & > svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .navLabel {
+    font-size: 14px;
+    line-height: calc(15px / 12px);
+    margin-bottom: 32px;
+  }
+
+  .navItem {
+    gap: 8px;
+    font-size: 16px;
+    line-height: calc(19px / 16px);
+    padding: 16px 20px;
+
+    
+  }
+
+  .button {
+    gap: 6px;
+    padding: 14px 28px;
+  }
+}
