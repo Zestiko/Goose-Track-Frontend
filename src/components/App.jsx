@@ -51,6 +51,7 @@
 // ЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮ
 // не уверен в маршрутах - Проверь. специально закоментарил ранишний код
 // ЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮ
+
 import { Suspense, lazy } from 'react';
 import { Route, Routes, Navigate, BrowserRouter } from 'react-router-dom';
 import { AuthNav } from './AuthNavigate/AuthNavigate';
