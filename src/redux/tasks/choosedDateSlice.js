@@ -1,16 +1,15 @@
-const { createSlice } = require('@reduxjs/toolkit');
+import { createSlice } from '@reduxjs/toolkit';
+import { changeMonth } from './tasksOperations';
 
-const choosedDateSlice = createSlice({
-  name: 'choosedDate',
-  initialState: { value: Date.now() },
-  reducers: {
-    updateChoosedDate: {
-      reducer(state, action) {
-        state.value = action.payload;
-      },
-    },
+const monthSlice = createSlice({
+  name: 'month',
+  initialState: Date.now(),
+  reducers: {},
+  extraReducers: builder => {
+    builder.addCase(changeMonth.fulfilled, (state, action) => {
+      return action.payload.month;
+    });
   },
 });
 
-export const { updateChoosedDate } = choosedDateSlice.actions;
-export const choosedDateReducer = choosedDateSlice.reducer;
+export default monthSlice.reducer;
