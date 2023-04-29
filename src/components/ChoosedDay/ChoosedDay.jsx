@@ -19,20 +19,3 @@ const ChoosedDay = () => {
 };
 
 export default ChoosedDay;
-
-/**
- * import { useSelector, useDispatch } from 'react-redux';
-import { changeMonth } from '../redux/monthSlice';
-
-const Calendar = () => {
-  const month = useSelector(state => state.month);
-  const dispatch = useDispatch();
-
-//=========newMonth - змінна котра отримує дату коли юзер клікає по калндарю у форматі'YYYY-MM'
-const newMonthFormatted = moment(newMonth).format('YYYY-MM');
-  if (newMonth !== month) {
-    dispatch(changeMonth(newMonthFormatted));
-  }
-  ..............................
-};
- */
