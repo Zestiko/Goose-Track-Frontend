@@ -5,11 +5,16 @@ import { authReducer } from './auth/authSlice';
 import { userReducer } from './user/userSlice';
 import { tasksReducer } from './tasks/taskSlice';
 import { persistStore, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
+import { userInitialState } from './user/user.init-state';
+
+
 
 
 const initState = {
   auth: authInitState,
   tasks: tasksInitState,
+  user: userInitialState,
+
 };
 
 export const store = configureStore({

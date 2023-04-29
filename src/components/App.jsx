@@ -12,6 +12,7 @@ import KillMe from './KillMe';
 const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
+const UserPage = lazy(() => import('../pages/AccountPage/AccountPage'))
 
 
 export const App = () => {
@@ -37,7 +38,7 @@ export const App = () => {
             element={
               <PrivateRoute redirectTo="/login" component={<AuthNav />} />
             }
-
+            
           /> */}
 
         </Routes>

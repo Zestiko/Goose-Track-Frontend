@@ -1,12 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUser } from "../../redux/user/selectors";
 import { fetchUser,updateUserProfile } from "../../redux/user/user-operations";
 import userAvatar from "../../images/icons/ph_user.svg"
 
 
-const UserPage = () => {
+const UserForm = () => {
   const dispatch = useDispatch();
+  const [previewImageUrl, setPreviewImageUrl] = useState(null);
     const {
         name,
         email,
@@ -28,6 +29,9 @@ const UserPage = () => {
   const formData = new FormData();
   formData.append("avatar", file);
   dispatch(updateUserProfile(formData));
+    const imageUrl = window.URL.createObjectURL(file);
+    console.log(imageUrl)
+  setPreviewImageUrl(imageUrl);
   };
 
   const handleSubmit = (e) => {
@@ -46,7 +50,7 @@ const UserPage = () => {
       <div className="user-page__avatar-container">
         <img
           className="user-page__avatar"
-          src={avatar || userAvatar}
+          src={avatar || previewImageUrl || userAvatar}
           alt="User Avatar"
         />
         <div className="avatar-upload-container">
@@ -109,4 +113,4 @@ const UserPage = () => {
   );
 };
 
-export default UserPage;
+export default UserForm;

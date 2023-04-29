@@ -5,18 +5,21 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 335px;
-    height: 653px;
+    width: calc(100% - 40px);
     padding: 0 18px 0 18px;
     margin-top: 120px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 38px;
     border: 2px solid red;
     background: #FFFFFF;
     border-radius: 16px;
     @media screen and (min-width:767px ) {
         display: flex;
         padding: 40px 175px 40px 175px;
+    }
+    @media screen and (min-width: 1200px){
+        padding: 60px 165px 60px 165px;
     }
 }
 .user-page__avatar-container{
@@ -25,7 +28,7 @@
     margin-bottom: 40px;
     @media screen and (min-width:767px) {
         position: relative;
-        display: flex;
+        display: block;
         flex-direction: column;
         transform: none;
 
@@ -35,31 +38,40 @@
     position: relative;
     width: 72px;
     height: 72px;
-    border: 2px solid #3E85F3;
+    border: 2px solid $accent-btn-background;
     border-radius: 50%;
-    margin-bottom: 18px;
+    object-fit: cover;
     left: 50%;
-    top: -20%;
+    top: 0%;
     transform: translate(-50%,-50%);
+    z-index: 1;
 
     @media screen and (min-width:767px) {
+        position: relative;
         width: 124px;
         height: 124px;
         margin-bottom: 20px;
+        transform: translate(-50%, 0);
     }
+        @media screen and (min-width:1200px) {
+
+        }
 }
+
+    
 .avatar-upload-btn{
     position: absolute;
         width: 14px;
         height: 14px;
         left: 52%;
         top: 3%;
+        z-index: 2;
     background-image: url(../../images/avatarPlus.svg);
 
     @media screen and (min-width:767px) {
         width: 24px;
         height: 24px;
-        top: 18%;
+        top: 60%;
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
@@ -73,17 +85,19 @@
     width: 74px;
 
         height: 18px;
-        font-family: 'Inter';
+        font-family: $primary-font;
         font-style: normal;
         font-weight: 700;
         font-size: 14px;
         line-height: 18px;
 
-        color: #343434;
+        color: $userpage-text;
         flex: none;
         order: 0;
         flex-grow: 0;
-        margin-bottom: 4px;
+        margin-bottom: 8px;
+        margin-left: auto;
+        margin-right: auto;
 }
 .user-page__role{
     display: flex;
@@ -92,61 +106,55 @@
     margin-right: auto;
     width: 28px;
     height: 14px;
-    font-family: 'Inter';
+    font-family: $primary-font;
     font-style: normal;
     font-weight: 600;
     font-size: 12px;
     line-height: 14px;
-    color: #616161;
+    color: $secondary-text-color;
         flex: none;
         order: 1;
         flex-grow: 0;
 }
-.username_form{
+.username_form {
     display: flex;
-    flex-direction:column;
-    width: calc(100% - 36px);
-
-    @media screen and (min-width:767px) {
-        position: relative;
-        top: auto;
-    }
-
+    flex-direction: column;
 }
-.username_form-label{
+
+@media screen and (min-width: 1200px) {
+    .username_form {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 10px;
+    }
+}
+
+.username_form-label {
+    display: block;
     margin-bottom: 8px;
-    width: 64px;
-    height: 14px;
-    
     font-family: $primary-font;
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
     line-height: 14px;
-    color: #111111;
+    color: $primary-text-color;
 }
-.username_form-input{
-    box-sizing: border-box;
-        height: 42px;
-        left: 0px;
-        top: 0px;
-        margin-bottom: 18px;
-    
-        border: 1px solid rgba(17, 17, 17, 0.1);
-        border-radius: 8px;
 
-        font-family: 'Inter';
-            font-style: normal;
-            font-weight: 600;
-            font-size: 14px;
-            line-height: 18px;
-        
-            /* identical to box height, or 129% */
-        
-            color: #111111;
-    
+.username_form-input {
+    box-sizing: border-box;
+    height: 42px;
+    margin-bottom: 18px;
+    border: 1px solid rgba(17, 17, 17, 0.1);
+    border-radius: 8px;
+    font-family: $primary-font;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    color: $primary-text-color;
 }
-.username_form-input--last{
+
+.username_form-input--last {
     margin-bottom: 0;
 }
 .username__form-submit{
@@ -163,8 +171,7 @@
         width: 195px;
         height: 46px;
         left: calc(50% - 195px/2);
-        top: 567px;
     
-        background: #3E85F3;
+        background: $accent-background-color;
         border-radius: 16px
 }
