@@ -5,7 +5,7 @@ export const fetchUser = createAsyncThunk(
   'user/fetchUser',
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await publicApi.get('/user');
+      const { data } = await publicApi.get('/users');
       return data;
     } catch (error) {
       return rejectWithValue(
@@ -21,7 +21,7 @@ export const updateUserProfile = createAsyncThunk(
   'user/info',
   async (formData, { rejectWithValue }) => {
     try {
-      const { data } = await publicApi.patch('/user/info', formData);
+      const { data } = await publicApi.patch('/users/info', formData);
       return data;
     } catch (error) {
       return rejectWithValue(
