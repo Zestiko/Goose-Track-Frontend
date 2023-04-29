@@ -5,7 +5,7 @@ import axios from 'axios';
 // });
 
 export const publicApi = axios.create({
-  baseURL: 'http://127.0.0.1:7777',
+  baseURL: 'https://goose-track-backend-68sm.onrender.com/api/',
 });
 
 export const token = {

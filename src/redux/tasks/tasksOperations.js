@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { publicApi } from 'http/http';
+import { setDate } from './taskSlice';
 
 export const fetchTasks = createAsyncThunk(
   'tasks/fetchAll',
@@ -17,6 +18,7 @@ export const changeMonth = createAsyncThunk(
   async (month, thunkAPI) => {
     try {
       const response = await thunkAPI.dispatch(fetchTasks(month));
+      await thunkAPI.dispatch(setDate(month));
       return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
