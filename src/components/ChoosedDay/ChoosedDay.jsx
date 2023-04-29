@@ -1,10 +1,10 @@
 import { useParams } from 'react-router-dom';
+import moment from 'moment/moment';
 
 import scss from './ChoosedDay.module.scss';
 
 import TasksColumnsList from 'components/TasksColumnsList/TasksColumnsList';
 import DayCalendarHead from 'components/DayCalendarHead/DayCalendarHead';
-import moment from 'moment/moment';
 
 const ChoosedDay = () => {
   const { currentDay } = useParams();
