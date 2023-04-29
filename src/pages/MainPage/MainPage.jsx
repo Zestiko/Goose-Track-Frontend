@@ -1,7 +1,8 @@
 import Header from './Header/Header';
 import Sidebar from './Sidebar/Sidebar';
 import css from './MainPage.module.scss';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
+import { Outlet } from 'react-router-dom';
 
 const MainPage = ({ children }) => {
   // const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -34,7 +35,11 @@ const MainPage = ({ children }) => {
             // screenWidth={screenWidth}
             handleBurgerMenuClick={handleBurgerMenuClick}
           />
-          <div>{children}</div>
+          <div>
+            <Suspense>
+              <Outlet />
+            </Suspense>
+          </div>
         </main>
       </div>
     </>

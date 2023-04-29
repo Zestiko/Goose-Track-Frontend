@@ -22,14 +22,14 @@ const Navigation = () => {
       {/* {isActiveToken && <h2 className="">Please SignIn</h2>} */}
       <p className={css.navLabel}>User Panel</p>
       <NavLink
-        to="/myAccount"
+        to="/main/user"
         className={classNames({ getActiveClassName }, `${css.navItem}`)}
       >
         <UserCheckSvg />
         My account
       </NavLink>
       <NavLink
-        to="/calendar/month"
+        to="/main/calendar"
         className={classNames({ getActiveClassName }, `${css.navItem}`)}
       >
         <CalendarCheckSvg />

@@ -1,100 +1,74 @@
 import { Suspense, lazy } from 'react';
-import { Route, Routes,BrowserRouter } from 'react-router-dom';
-import { AuthNav } from './AuthNavigate/AuthNavigate';
+import { Outlet, Route, Routes } from 'react-router-dom';
 import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
-import MainPage from './MainPage/MainPage';
-import KillMe from './KillMe';
 
-
-// import UserPage from './AccountPage/accountPage';
 
 const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
-const UserPage = lazy(() => import('../pages/AccountPage/AccountPage'))
-
+const UserPage = lazy(() => import('../pages/AccountPage/AccountPage'));
+const MainPage = lazy(() => import('../pages/MainPage/MainPage'));
+const NotFoundPage = lazy(() => import('../pages/NotFoundPage/NotFoundPage'));
 
 export const App = () => {
   return (
     <>
-      <Suspense>
+      <Suspense >
         <Routes>
-          <Route index element={<MainPage />} />
+          <Route path="" index element={<HomePage />} />
           <Route
             path="/login"
             element={
-              <RestrictedRoute redirectTo="/" component={<LoginPage />} />
+              <RestrictedRoute redirectTo="/main" component={<LoginPage />} />
             }
           />
           <Route
             path="/register"
             element={
-              <RestrictedRoute redirectTo="/" component={<RegisterPage />} />
+              <RestrictedRoute
+                redirectTo="/main"
+                component={<RegisterPage />}
+              />
             }
           />
-          {/* <Route
-            path="/calendar/month"
+          <Route
+            path="/main"
             element={
-              <PrivateRoute redirectTo="/login" component={<AuthNav />} />
+              <PrivateRoute redirectTo="/login" component={<MainPage />} />
             }
-            
-          /> */}
-
+          >
+            <Route path="user" element={<UserPage />} />
+            <Route
+              path="calendar"
+              element={
+                <div>
+                  <h1>CalendarPage</h1>
+                  <Outlet />
+                </div>
+              }
+            >
+              <Route
+                path="month/:currentDate"
+                element={
+                  <div>
+                    <h1>ChooseMonth</h1>
+                  </div>
+                }
+              />
+              <Route
+                path="day/:currentDay"
+                element={
+                  <div>
+                    <h1>ChooseDay</h1>
+                  </div>
+                }
+              />
+            </Route>
+          </Route>
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
-
-      {/* <MainPage>
-        <Routes>
-          <Route path="" element={<KillMe />} />
-        </Routes>
-      </MainPage> */}
     </>
   );
 };
-// ЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮ
-// не уверен в маршрутах - Проверь. специально закоментарил ранишний код
-// ЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮЮ
-
-// import { Suspense, lazy } from 'react';
-// import { Route, Routes, Navigate, BrowserRouter } from 'react-router-dom';
-// import { AuthNav } from './AuthNavigate/AuthNavigate';
-// import { PrivateRoute } from './PrivateRoute';
-// import { RestrictedRoute } from './RestrictedRoute';
-// import MainPage from './MainPage/MainPage';
-// import KillMe from './KillMe';
-
-// const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
-// const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
-// const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
-
-// export const App = () => {
-//   return (
-
-//       <Suspense fallback={<div>Loading...</div>}>
-//         <Routes>
-//           <Route path="/" element={<Navigate to="/home" replace={true} />} />
-//           <Route path="/home" element={<HomePage />} />
-//           <Route
-//             path="/login"
-//             element={
-//               <RestrictedRoute redirectTo="/main" component={<LoginPage />} />
-//             }
-//           />
-//           <Route
-//             path="/register"
-//             element={
-//               <RestrictedRoute
-//                 redirectTo="/main"
-//                 component={<RegisterPage />}
-//               />
-//             }
-//           />
-//           <PrivateRoute path="/main" redirectTo="/login" element={<MainPage />}>
-//             <Route path="/" element={<KillMe />} />
-//           </PrivateRoute>
-//         </Routes>
-//       </Suspense>
-
-//   );
-// };
