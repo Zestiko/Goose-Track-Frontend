@@ -8,6 +8,8 @@ const MainPage = ({ children }) => {
   // const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+  
+
   // useEffect(() => {
   //   const handleResize = () => setScreenWidth(window.innerWidth);
   //   window.addEventListener('resize', handleResize);
