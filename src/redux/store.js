@@ -1,14 +1,20 @@
-
 import { configureStore } from '@reduxjs/toolkit';
 import { authInitState } from './auth/auth.init-state';
+import { tasksInitState } from './tasks/tasks.init-state';
 import { authReducer } from './auth/authSlice';
+import { userReducer } from './user/userSlice';
+import { tasksReducer } from './tasks/taskSlice';
 import { persistStore, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
-import { userReducer } from "./user/userSlice";
 import { userInitialState } from './user/user.init-state';
+
+
+
 
 const initState = {
   auth: authInitState,
-  user: userInitialState
+  tasks: tasksInitState,
+  user: userInitialState,
+
 };
 
 export const store = configureStore({
@@ -17,6 +23,7 @@ export const store = configureStore({
   reducer: {
     auth: authReducer,
     user: userReducer,
+    tasks: tasksReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
@@ -27,9 +34,3 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
-
-
-
-
-
-

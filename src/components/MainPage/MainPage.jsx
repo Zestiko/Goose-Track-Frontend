@@ -20,7 +20,6 @@ const MainPage = ({ children }) => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-
   return (
     <>
       <div className={css.mainPage}>

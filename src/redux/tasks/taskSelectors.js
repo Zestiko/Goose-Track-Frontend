@@ -1,11 +1,10 @@
 import { createSelector } from '@reduxjs/toolkit';
 
 export const selectTasks = state => state.tasks.tasks;
-export const selectIsLoading = state => state.tasks.tasks;
-export const selectError = state => state.tasks.error;
+export const selectMonth = state => state.tasks.date;
+export const selectIsLoading = state => state.tasks.status;
 
-export const selectChoosedDate = state => state.choosedDate.value;
-
+//==========>Update after MAX pull request with CALENDAR component
 export const selectTasksByDay = day =>
   createSelector(selectTasks, tasks =>
     tasks.filter(task => {
