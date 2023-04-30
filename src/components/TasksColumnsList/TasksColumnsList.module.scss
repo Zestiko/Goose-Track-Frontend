@@ -5,32 +5,32 @@
   flex-wrap: nowrap;
   gap: 16px;
 
-  overflow-x: scroll;
+  // overflow-x: scroll;
   margin: auto;
 
   @media screen and (min-width: 1280px) {
     justify-content: center;
-    overflow-x: hidden;
+    // overflow-x: hidden;
   }
 }
 
-/* width */
-::-webkit-scrollbar {
-  height: 14px;
-}
+// /* width */
+// ::-webkit-scrollbar {
+//   height: 14px;
+// }
 
-/* Track */
-::-webkit-scrollbar-track {
-  background: $scrollbar-bg-color;
-}
+// /* Track */
+// ::-webkit-scrollbar-track {
+//   background: $scrollbar-bg-color;
+// }
 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: $scrollbar-color;
-  border-radius: 12px;
-}
+// /* Handle */
+// ::-webkit-scrollbar-thumb {
+//   background: $scrollbar-color;
+//   border-radius: 12px;
+// }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #c6c5c5;
-}
+// /* Handle on hover */
+// ::-webkit-scrollbar-thumb:hover {
+//   background: #c6c5c5;
+// }

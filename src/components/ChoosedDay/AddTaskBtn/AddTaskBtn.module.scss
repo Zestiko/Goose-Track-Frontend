@@ -1,0 +1,36 @@
+@import '../../../styles/vars';
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 48px;
+  border-radius: 8px;
+  background-color: #e3f3ff;
+  border: 1px dashed rgba(62, 133, 243, 1);
+  padding: 16px 20px 16px 20px;
+  font-family: 'Inter';
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  color: #111111;
+
+  &:hover {
+    background-color: #CAE8FF;
+    border: 1px solid #cae8ff;
+  }
+
+  &:focus {
+        background-color: #CAE8FF;
+        border: 1px solid #cae8ff;
+  }
+}
+
+.icon {
+  width: 14px;
+  height: 14px;
+  fill: #111111;
+  margin-right: 13px;
+}

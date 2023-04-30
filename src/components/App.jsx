@@ -5,6 +5,7 @@ import { RestrictedRoute } from './RestrictedRoute';
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
 import { authCurrentThunk } from 'redux/user/user-operations';
+import ChoosedDay from './ChoosedDay/ChoosedDay';
 
 
 const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
@@ -69,14 +70,15 @@ export const App = () => {
                 path="day/:currentDay"
                 element={
                   <div>
-                    <h1>ChooseDay</h1>
+                    <ChoosedDay/>
                   </div>
                 }
               />
             </Route>
           </Route>
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
+          <Route path="/calendar/day/we" element={<ChoosedDay/>} />
+
+                    </Routes>
       </Suspense>
     </>
   );

@@ -1,0 +1,52 @@
+@import './../../styles/vars';
+
+.modalBox{
+position: relative;
+}
+
+.modalOverlay{
+background-color: rgba(208, 208, 208, 0.6);
+position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 10;}
+
+.modalBody{
+    background-color: $primary-background-color;
+    position: absolute;
+    z-index: 20;
+    top: 60%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    max-width: 300px;
+    height: 240px;
+    padding: 40px 18px;
+    border-radius: 8px;
+
+    @media screen and (min-width: 768px) {
+        max-width: 396px;
+        padding: 40px 28px;
+    }
+}
+.closeButton{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: $primary-background-color;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 14px;
+    right: 14px;
+
+}
+.closeButtonIcon{
+    pointer-events: none;
+    color: black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

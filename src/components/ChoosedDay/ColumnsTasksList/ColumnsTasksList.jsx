@@ -1,12 +1,15 @@
 import PropTypes from 'prop-types';
-import { column } from './ColumnsTasksList.module.css';
+import scss from './ColumnsTasksList.module.scss';
+import TaskColumnCard from '../TaskColumnCard/TaskColumnCard';
 
+// const ColumnsTasksList = () => {
 const ColumnsTasksList = ({ tasks }) => {
+
     return (
-        <ul className={column}>
-            {tasks.map((item) => {
-                <div {...item} key={item.id} />
-            })}
+        <ul className={scss.column}>
+            {tasks.map((task) =>
+                <TaskColumnCard task={task} key={task.id} />
+            )}
         </ul>
     );
 };

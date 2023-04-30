@@ -1,0 +1,25 @@
+@import '../../../styles/vars';
+/* (375, 768, 1440) */
+
+.columnBox {
+  background-color: #ffffff;
+  padding: 20px 18px 20px 18px;
+  border-radius: 8px;
+  text-align: center;
+  flex: 1 0 100%;
+  /* на всій ширині на малих екранах */
+  max-width: 335px;
+  border: 1px dashed #3e85f3;
+
+  @media screen and (min-width: 1440px) {
+    flex-basis: calc(100% / 3 - 2 * 16px);
+    /* на третині ширини */
+  }
+
+
+  @media screen and (min-width: 768px) {
+    flex-basis: calc(100% / 2 - 16px);
+    /* на половині ширини */
+    max-width: 344px;
+  }
+}
