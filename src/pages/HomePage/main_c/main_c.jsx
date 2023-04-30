@@ -1,4 +1,4 @@
-import styles from './main.module.css';
+import styles from './main.module.scss';
 import img01 from '../assets/img/img01.png';
 import img02 from '../assets/img/img02.png';
 import img03 from '../assets/img/img03.png';
@@ -8,9 +8,7 @@ let handle;
 export const Main = () => {
     return (
         <div className={styles.container}>
-
             <ul className={styles.main}>
-
                 <li className={styles.block}>
                     <div className={styles.block__text}>
                     <h2 className={styles.block__num}>1.</h2>
@@ -22,7 +20,6 @@ export const Main = () => {
                             CALENDAR
                         </button>
                     <h3 className={styles.block__tl}>VIEW</h3>
-
                     <p className={styles.block__par}>
                         GooseTrack's Calendar view provides a
                         comprehensive overview of your schedule,
@@ -30,11 +27,10 @@ export const Main = () => {
                         and appointments in a visually appealing and
                         intuitive layout.
                         </p>
-                      </div>
+                    </div>
                     
                     <img src={img01} alt={alt} className={styles.block_img}/>
                 </li>
-
                 <li className={styles.block_rev}>
                     <div className={styles.block__text}>
                     <h2 className={styles.block__num}>2.</h2>

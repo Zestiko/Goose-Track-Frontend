@@ -9,37 +9,23 @@
 /* font-family: 'Inter', sans-serif; */
 
 .container {
-
     margin: 0 auto;
     height: auto;
-    max-width: 1440px;
+    width: 100%;
     background-color: rgb(255, 255, 255);
-    box-sizing: border-box;
+    margin-bottom: 65px;
 }
-
 .box {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-
-.block {
-    width: 48%;
-    min-height: 50px;
-    border: 2px dashed green;
+.box_btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-
-.but_LogIn {}
-
-
-@media screen and (min-width: 375px) {
-    .box_btn {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-    }
 
     .but_SignUp02 {
         margin-top: 200px;
@@ -66,11 +52,9 @@
     .logo {
         display: block;
         margin-top: 232px;
-
         width: auto;
         height: 142px;
-
-    }
+}
 
     .main_title {
         margin-top: 20px;
@@ -80,7 +64,6 @@
         font-family: 'Coolvetica';
         font-weight: 400;
         line-height: 48px;
-
     }
 
     .oo_title {
@@ -88,31 +71,31 @@
     }
 
     .but_LogIn {
-
         width: 131px;
         height: 46px;
-       
         padding: 0;
         border: 0;
         border-radius: 15px;
-
         color: #3E85F3;
         font-family: 'Inter', sans-serif;
         font-weight: 600;
         font-size: 14px;
         line-height: 18px;
         background-color: #fff;
-        
-        position: relative;
+        align-items: center;
+        display: flex;
+        justify-content: center;
 
     }
 
     .svgIcon {
-
-        position: absolute;
-        top: 16px;
-        right: 22px;
-        z-index: 10;
+        width: 18px;
+        height: 18px;
+        margin-left: 8px;
+        @media screen and (min-width: 768px) {
+        width: 20px;
+        height: 20px;
+    }
     }
 
     .but_SignUp {
@@ -122,23 +105,17 @@
     .block {
         width: 98%;
         min-height: 50px;
-
     }
 
     .main {
         box-sizing: border-box;
         margin: 0 auto;
         min-height: 100px;
-        max-width: 375px;
         padding: 15px;
-
-
         display: flex;
         flex-wrap: wrap;
         flex-direction: row;
         justify-content: center;
-    }
-
 }
 
 @media screen and (min-width: 768px) {
@@ -146,7 +123,6 @@
     .main_title {
         margin-bottom:80px;
     }
-    
 
     .box_btn {
         display: flex;
@@ -159,11 +135,8 @@
     }
 
     .but_LogIn {
-
-        width: 121px;
-        height: 49px;
         margin: 0;
-        padding: 0;
+        padding: 14px 22px;
         border: 0;
         border-radius: 15px;
 
@@ -173,26 +146,37 @@
         font-size: 14px;
         line-height: 18px;
 
+        &:focus {
+            transform: scale(1.5);
+            transition-duration: 500ms;
+        }
+        &:hover {
+            transform: scale(1.2);
+            transition-duration: 500ms;
+        }
     }
 
     .but_SignUp {
-
         width: 121px;
         height: 49px;
         margin: 0;
-        padding: 0;
         border: 0;
         border-radius: 15px;
-        background-color: transparent;
         display: block;
-        text-decoration: underline;
-
-
+        padding: 14px 22px;
         color: #fff;
         font-family: 'Inter', sans-serif;
         font-weight: 600;
         font-size: 14px;
         line-height: 18px;
+        &:focus {
+            transform: scale(1.5);
+            transition-duration: 500ms;
+        }
+        &:hover {
+            transform: scale(1.2);
+            transition-duration: 500ms;
+        }
     }
 
     .but_SignUp02 {
@@ -205,17 +189,13 @@
         font-size: 120px;
         font-family: 'Coolvetica';
     }
-
     .logo {
         margin-top: 331px;
-
     }
 
     .main {
-        box-sizing: border-box;
         margin: 0 auto;
         min-height: 100px;
-        max-width: 768px;
         padding: 15px 128px;
 
 
@@ -227,28 +207,19 @@
 
 }
 
-@media screen and (min-width: 1140px) {
+@media screen and (min-width: 1200px) {
     .box {
         margin: 0 auto;
         height: 770px;
-        max-width: 1440px;
         background-color: #3E85F3;
     }
 
     .logo {
         margin-top: 187px;
-
-    }
-
-    .main {
-
-        max-width: 1440px;
-
     }
 
     .block {
         width: 48%;
         min-height: 604px;
-
     }
 }
