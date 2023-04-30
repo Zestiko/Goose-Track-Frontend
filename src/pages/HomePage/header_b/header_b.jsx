@@ -1,6 +1,7 @@
-import styles from './header.module.css';
+import styles from './header.module.scss';
 import goose from '../assets/img/GOOSE_2.png';
 import svgIcon from '../assets/img/Icon_arr.svg';
+import { NavLink } from 'react-router-dom';
 
 let handleDel;
 
@@ -15,22 +16,21 @@ export const Header = () => {
         </h1>
 
         <div className={styles.box_btn}>
-          <button
+          <NavLink to={'/register'}
             type="button"
             className={styles.but_SignUp}
             onClick={handleDel}
           >
             Sign up
-          </button>
+          </NavLink>
 
-          <button
+          <NavLink to={'/login'}
             type="button"
             className={styles.but_LogIn}
             onClick={handleDel}
-          >
+          >Log in
             <img className={styles.svgIcon} src={svgIcon} alt="Icon" />
-            Log in
-          </button>
+          </NavLink>
 
           <button
             type="button"
