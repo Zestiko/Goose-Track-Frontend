@@ -1,10 +1,11 @@
 import { Suspense, lazy, useEffect } from 'react';
 import { Outlet, Route, Routes } from 'react-router-dom';
-import { PrivateRoute } from './PrivateRoute';
+// import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
 import { authCurrentThunk } from 'redux/user/user-operations';
+import ModalToggel from './ModalTogel/ModalToggel';
 
 
 const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
@@ -43,10 +44,7 @@ export const App = () => {
               />
             }
           />
-          <Route
-            path="/main"
-            element={<PrivateRoute redirectTo="/login" component={<MainPage />} />}
-          >
+          <Route path="/main" element={<MainPage />}>
             <Route path="user" element={<UserPage />} />
             <Route
               path="calendar"
@@ -61,7 +59,7 @@ export const App = () => {
                 path="month/:currentDate"
                 element={
                   <div>
-                    <h1>ChooseMonth</h1>
+                    <ModalToggel />
                   </div>
                 }
               />

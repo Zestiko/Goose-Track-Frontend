@@ -28,7 +28,7 @@ const LoginForm = () => {
       await dispatch(authLoginThunk(values)).unwrap();
       Notiflix.Notify.success("It's ok!");
       resetForm();
-      navigate('/calendar/month/2023-04');
+      navigate('/main/calendar/month/2023-04');
     } catch (error) {
       console.log(error);
       Notiflix.Notify.failure('Oops! You make some mistake:-(');

@@ -9,10 +9,8 @@ import { userInitialState } from './user/user.init-state';
 
 
 const initState = {
-
-  tasks: tasksInitState,
   user: userInitialState,
-
+  tasks: tasksInitState,
 };
 
 export const store = configureStore({

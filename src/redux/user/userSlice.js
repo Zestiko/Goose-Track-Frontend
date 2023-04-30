@@ -48,7 +48,7 @@ const userSlice = createSlice({
       })
       .addCase(authCurrentThunk.fulfilled, (state, { payload }) => {
         state.user = payload.user;
-        // state.token = payload.token;
+        state.token = payload.token;
         state.isLoggedIn = true;
         state.isRefreshing = false;
         state.status = STATUS.success;

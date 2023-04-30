@@ -3,20 +3,25 @@ import { useState } from 'react';
 import { ReactComponent as Close } from '../../images/icons/x-close.svg';
 import { ReactComponent as Pencil } from '../../images/icons/icon-pencil-01.svg';
 import { ReactComponent as Plus } from '../../images/icons/icon-plus.svg';
+import { useDispatch } from 'react-redux';
+import { addTask } from 'redux/tasks/tasksOperations';
 
 export const TaskForm = ({ data, onClose }) => {
+  const dispatch = useDispatch();
+
+
   const task = null;
 
   const [title, setInTitle] = useState('');
-  const [start, setInStart] = useState('');
-  const [end, setInEnd] = useState('');
-  const [level, setInLevel] = useState('');
+  const [startTime, setstartTime] = useState('09:00');
+  const [endTime, setEndTime] = useState('14:00');
+  const [priority, setPriority] = useState('low');
 
   const dataForm = {
     title,
-    start,
-    end,
-    level,
+    startTime,
+    endTime,
+    priority,
   };
 
   const handleChange = event => {
@@ -24,19 +29,20 @@ export const TaskForm = ({ data, onClose }) => {
     if (name === 'title') {
       setInTitle(value);
     }
-    if (name === 'start') {
-      setInStart(value);
+    if (name === 'startTime') {
+      setstartTime(value);
     }
-    if (name === 'end') {
-      setInEnd(value);
+    if (name === 'endTime') {
+      setEndTime(+value);
     }
-    if (name === 'level') {
-      setInLevel(id);
+    if (name === 'priority') {
+      setPriority(id);
     }
   };
 
   const handleSubmit = evt => {
     evt.preventDefault();
+    dispatch(addTask(dataForm));
     console.log(dataForm);
   };
 
@@ -44,8 +50,8 @@ export const TaskForm = ({ data, onClose }) => {
     <div className={styles.container}>
       <form className={styles.form} onSubmit={handleSubmit}>
         <div className="">
-          <label className={styles.label} for="title">
-            <p>Title</p>
+          <label className={styles.label} htmlFor="title">
+            <p className={styles.title}>Title</p>
           </label>
           <input
             type="text"
@@ -58,27 +64,27 @@ export const TaskForm = ({ data, onClose }) => {
         </div>
         <div className={styles.flex}>
           <div className={styles.start}>
-            <label className={styles.label} for="start">
+            <label className={styles.label} htmlFor="startTime">
               <p>Start</p>
             </label>
             <input
               onChange={handleChange}
               type="time"
-              name="start"
-              className={styles.input}
-              placeholder="9:00"
+              name="startTime"
+              className={styles.timeInput}
+              value={startTime}
             />
           </div>
           <div className="">
-            <label className={styles.label} for="end">
+            <label className={styles.label} htmlFor="endTime">
               <p>End</p>
             </label>
             <input
               onChange={handleChange}
               type="time"
-              name="end"
-              className={styles.input}
-              placeholder="14:00"
+              name="endTime"
+              className={styles.timeInput}
+              value={endTime}
             />
           </div>
         </div>
@@ -89,7 +95,7 @@ export const TaskForm = ({ data, onClose }) => {
                 className={styles.checkbox}
                 type="radio"
                 id="low"
-                name="level"
+                name="priority"
                 onChange={handleChange}
               />
               <span>Low</span>
@@ -101,7 +107,7 @@ export const TaskForm = ({ data, onClose }) => {
                 className={styles.checkbox}
                 type="radio"
                 id="medium"
-                name="level"
+                name="priority"
                 onChange={handleChange}
               />
               <span>Medium</span>
@@ -113,7 +119,7 @@ export const TaskForm = ({ data, onClose }) => {
                 className={styles.checkbox}
                 type="radio"
                 id="higt"
-                name="level"
+                name="priority"
                 onChange={handleChange}
               />
               <span>High</span>
