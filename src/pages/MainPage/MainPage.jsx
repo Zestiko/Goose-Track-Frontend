@@ -5,35 +5,38 @@ import { useState, useEffect, Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
 const MainPage = ({ children }) => {
-  // const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const [theme, setTheme] = useState(
+    localStorage.getItem('theme') || 'lightTheme'
+  );
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  // useEffect(() => {
-  //   const handleResize = () => setScreenWidth(window.innerWidth);
-  //   window.addEventListener('resize', handleResize);
-  //   return () => {
-  //     window.removeEventListener('resize', handleResize);
-  //   };
-  // }, []);
+  useEffect(() => {
+    localStorage.setItem('theme', theme);
+  }, [theme]);
 
   const handleBurgerMenuClick = () => {
-    console.log('isSidebarOpen', isSidebarOpen);
     setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  const handleToggleTheme = () => {
+    setTheme(theme === 'lightTheme' ? 'darkTheme' : 'lightTheme');
   };
 
   return (
     <>
       <div className={css.mainPage}>
-        {/* {screenWidth > 769 ? <Sidebar isSidebarOpen={isSidebarOpen} /> : null} */}
         <Sidebar
           isSidebarOpen={isSidebarOpen}
           handleBurgerMenuClick={handleBurgerMenuClick}
+          theme={theme}
         />
         <main className={css.appPage}>
           <Header
             header="HEADER"
-            // screenWidth={screenWidth}
+            handleToggleThemeClick={handleToggleTheme}
             handleBurgerMenuClick={handleBurgerMenuClick}
+            theme={theme}
           />
           <div>
             <Suspense>
