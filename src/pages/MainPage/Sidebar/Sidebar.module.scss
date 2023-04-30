@@ -1,3 +1,4 @@
+
 .sidebar {
   display: flex;
   flex-direction: column;
@@ -8,6 +9,8 @@
   position: sticky;
   top: 0;
   left: 0;
+
+
 
   .logo {
     height: 68px;
@@ -98,6 +101,11 @@
   }
 }
 
-.darkTheme{
-  background-color: #13151A;
-}
+  .darkTheme {
+    background-color: #13151a;
+  }
+  
+  .lightTheme {
+    background-color: #ffffff;
+  }
+

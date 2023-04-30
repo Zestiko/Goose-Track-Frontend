@@ -3,7 +3,6 @@
   min-height: 100vh;
 }
 .appPage {
-  background-color: #f7f6f9;
   padding: 40px 32px 32px;
   flex: 1;
 
@@ -12,6 +11,10 @@
   }
 }
 
-.darkTheme{
-  background-color: #13151A;
-}
+  .appPage.darkTheme {
+    background-color: #13151a;
+  }
+  
+  .appPage.lightTheme {
+  background-color: #f7f6f9;
+  }

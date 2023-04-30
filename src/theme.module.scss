@@ -1,0 +1,16 @@
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --light-color: #f8f9fa;
+  --dark-color: #13151A;
+}
+
+.lightTheme {
+  --background-color: var(--light-color);
+  --text-color: #212529;
+}
+
+.darkTheme {
+  --background-color: var(--dark-color);
+  --text-color: var(--light-color);
+}

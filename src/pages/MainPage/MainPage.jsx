@@ -1,10 +1,13 @@
 import Header from './Header/Header';
 import Sidebar from './Sidebar/Sidebar';
+
 import css from './MainPage.module.scss';
+// import themeCss from '../../theme.module.scss';
+
 import { useState, useEffect, Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
-const MainPage = ({ children }) => {
+const MainPage = () => {
   const [theme, setTheme] = useState(
     localStorage.getItem('theme') || 'lightTheme'
   );
@@ -25,13 +28,13 @@ const MainPage = ({ children }) => {
 
   return (
     <>
-      <div className={css.mainPage}>
+      <div className={`${css.mainPage}`}>
         <Sidebar
           isSidebarOpen={isSidebarOpen}
           handleBurgerMenuClick={handleBurgerMenuClick}
           theme={theme}
         />
-        <main className={css.appPage}>
+        <main className={`${css.appPage} ${css[theme]}`}>
           <Header
             header="HEADER"
             handleToggleThemeClick={handleToggleTheme}
@@ -40,7 +43,7 @@ const MainPage = ({ children }) => {
           />
           <div>
             <Suspense>
-              <Outlet />
+              <Outlet theme={theme} />
             </Suspense>
           </div>
         </main>
