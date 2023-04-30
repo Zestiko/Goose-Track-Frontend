@@ -2,9 +2,9 @@ import { ReactComponent as BurgerMenuSvg } from '../../../images/icons/burger-me
 import { ReactComponent as DefaultAvatarSvg } from '../../../images/icons/profile-avatar-f.svg';
 
 import css from './Header.module.scss';
-import ThemeIcon from './ThemeIcon/ThemeIcon';
+import ThemeToggler from './ThemeToggler/ThemeToggler';
 
-const Header = ({ handleBurgerMenuClick }) => {
+const Header = ({ handleBurgerMenuClick, handleToggleThemeClick,theme }) => {
   const userName = 'UserName'; //tmp
 
   const avatarPath = null;
@@ -13,7 +13,11 @@ const Header = ({ handleBurgerMenuClick }) => {
     <div className={css.header}>
       <BurgerMenuSvg className={css.burger} onClick={handleBurgerMenuClick} />
       <div className={css.user}>
-        <ThemeIcon className={css.themeIcon } />
+        <ThemeToggler
+          className={css.themeIcon}
+          handleToggleThemeClick={handleToggleThemeClick}
+          theme={theme}
+        />
 
         <p className={css.userName}>{userName}</p>
         {avatarPath === null ? (
