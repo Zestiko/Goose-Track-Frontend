@@ -4,52 +4,62 @@ import { selectorGetUser } from '../../redux/user/selectors';
 import {
   authCurrentThunk,
   updateUserProfile,
-  uploadAvatar
+  uploadAvatar,
 } from '../../redux/user/user-operations';
 import userAvatar from '../../images/icons/ph_user.svg';
 import { Formik, Form, Field } from 'formik';
-
 
 const UserForm = () => {
   const dispatch = useDispatch();
   const [previewImageUrl, setPreviewImageUrl] = useState(null);
   const { userName, email, birthday, phone, telegram, avatar } =
     useSelector(selectorGetUser);
-  const valuesRef = useRef({ userName, email, birthday, phone, telegram, avatar });
+  const valuesRef = useRef({
+    userName,
+    email,
+    birthday,
+    phone,
+    telegram,
+    avatar,
+  });
   const dispatchRef = useRef(dispatch);
 
-
-
   const handleAvatarChange = async e => {
-    /*e.preventDefault();
+    e.preventDefault();
     const file = e.target.files[0];
     if (!file) return;
 
     const formData = new FormData();
     formData.append('avatar', file);
 
+
+
+    await dispatchRef.current(updateUserProfile(formData));
     const imageUrl = window.URL.createObjectURL(file);
     console.log(imageUrl);
-    setPreviewImageUrl(imageUrl);*/
-  e.preventDefault();
-  const file = e.target.files[0];
-  if (!file) return;
-
-  try {
-    const imageUrl = await uploadAvatar(file);
-    console.log(imageUrl);
     setPreviewImageUrl(imageUrl);
-    valuesRef.current = { ...valuesRef.current, avatar: imageUrl };
-  } catch (error) {
-    console.error(error);
-    }
-  
+    // e.preventDefault();
+    // const file = e.target.files[0];
+    // if (!file) return;
+
+    // try {
+    //   const imageUrl = await uploadAvatar(file);
+    //   console.log(imageUrl);
+    //   setPreviewImageUrl(imageUrl);
+    //   valuesRef.current = { ...valuesRef.current, avatar: imageUrl };
+    // } catch (error) {
+    //   console.error(error);
+    //   }
   };
 
-  const handleSubmit = async (values) => {
-    const { userName, email, birthday, phone, telegram, avatar } = valuesRef.current;
-    
-    const formattedBirthday = birthday.replace(/(\d{4})-(\d{2})-(\d{2})/, '$3/$2/$1');
+  const handleSubmit = async values => {
+    const { userName, email, birthday, phone, telegram, avatar } =
+      valuesRef.current;
+
+    // const formattedBirthday = birthday.replace(
+    //   /(\d{4})-(\d{2})-(\d{2})/,
+    //   '$3/$2/$1'
+    // );
     const formData = new FormData();
     formData.append('userName', userName);
     formData.append('email', email);
@@ -57,27 +67,29 @@ const UserForm = () => {
     formData.append('phone', phone);
     formData.append('telegram', telegram);
     formData.append('avatar', avatar);
-    console.log(values)
+    console.log(values.avatar);
     try {
       await dispatchRef.current(updateUserProfile(values));
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   return (
-   <section className="user-page">
+    <section className="user-page">
       <div className="user-page__avatar-container">
         <img
           className="user-page__avatar"
-          src={ avatar || previewImageUrl || userAvatar}
+          src={avatar || previewImageUrl || userAvatar}
           alt="User Avatar"
         />
         <div className="avatar-upload-container">
           <input
             id="avatar-upload"
+            name="avatar"
             type="file"
             accept="image/*"
+        
             onChange={handleAvatarChange}
             style={{ display: 'none' }}
           />
@@ -93,6 +105,7 @@ const UserForm = () => {
           birthday: birthday,
           phone: phone,
           telegram: telegram,
+          avatar: avatar,
         }}
         onSubmit={handleSubmit}
       >
@@ -106,7 +119,8 @@ const UserForm = () => {
               id="userName"
               name="userName"
               type="text"
-              placeholder="Enter your name" 
+              placeholder="Enter your name"
+              value={userName}
             />
             <label htmlFor="birthday" className="username_form-label">
               Birthday:
@@ -118,6 +132,7 @@ const UserForm = () => {
               type="date"
               lang="en"
               placeholder="Enter your birthday"
+              value={birthday.slice(0,9) && `2001-11-11`}
             />
             <label htmlFor="email" className="username_form-label">
               Email
@@ -127,6 +142,7 @@ const UserForm = () => {
               id="email"
               name="email"
               type="email"
+              value={email}
               placeholder="Enter your email"
             />
             <label htmlFor="phone" className="username_form-label">
@@ -138,6 +154,7 @@ const UserForm = () => {
               name="phone"
               type="text"
               placeholder="Enter your phone"
+              value={phone}
             />
             <label htmlFor="telegram" className="username_form-label">
               Telegram:
@@ -148,12 +165,13 @@ const UserForm = () => {
               name="telegram"
               type="text"
               placeholder="Enter your Telegram link"
+              value={telegram}
             />
             <button type="submit" className="username__form-submit">
-            Save
+              Save
             </button>
           </Form>
-          )}
+        )}
       </Formik>
     </section>
   );
