@@ -1,8 +1,7 @@
 @import-normalize;
-@import './styles/fonts.scss';
+@import './fonts/fonts.scss';
 @import './styles/vars.scss';
 @import './styles/common.scss';
-@import './theme.module.scss';
 
 
 //ЮЮЮЮЮЮЮЮЮЮ
@@ -12,8 +11,7 @@
 // @import '/src/components/AccountPage/accountPage.module.scss';
 
 
-
-:root{
+.lightTheme{
 
   /* fonts */
   $primary-font: 'Inter', sans-serif;
@@ -21,9 +19,8 @@
 
   /* background colors */
 
-  $primary-background-color: #ffffff;
+  --primary-background-color: #ffffff;
   $secondary-background-color: #f7f6f9;
-  $sidebar-background-color: #ffffff;
   $accent-background-color: #3e85f3;
   $active-item-sidebar-background: #e3f3ff;
 
@@ -66,6 +63,10 @@
 
   /* decorations */
   $animation: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.darkTheme{
+  --primary-background-color:#13151A
 }
 
 * {
