@@ -4,7 +4,7 @@ import { registerUserSchema } from "components/ValidationUserYup/ValidationUserY
 import scss from './RegisterForm.module.scss';
 import { FiLogIn } from 'react-icons/fi';
 import { useDispatch } from 'react-redux'
-import {authRegisterThunk} from '../../redux/auth/auth.thunk'
+import {authRegisterThunk} from '../../redux/user/user-operations'
 
 const initialState = {
     name: '',

@@ -8,7 +8,7 @@ import Notiflix from 'notiflix';
 import { FiLogIn } from 'react-icons/fi';
 
 // import { selectorAuthStatus } from 'redux/auth/authSelector';
-import { authLoginThunk } from 'redux/auth/auth.thunk';
+import { authLoginThunk } from 'redux/user/user-operations';
 import scss from './LoginForm.module.scss';
 import { loginUserSchema } from 'components/ValidationUserYup/ValidationUserYup';
 
@@ -18,17 +18,8 @@ const initialState = {
 };
 
 const LoginForm = () => {
-  //   const [values, setValues] = useState(initialState);
-  //   const status = useSelector(selectorAuthStatus);
-  //   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  //   const handleClickShowPassword = () => setShowPassword(show => !show);
-
-  //   const handleMouseDownPassword = event => {
-  //     event.preventDefault();
-  //   };
 
   const handleSubmit = async (values, { resetForm }) => {
     console.log(values);
@@ -37,7 +28,7 @@ const LoginForm = () => {
       await dispatch(authLoginThunk(values)).unwrap();
       Notiflix.Notify.success("It's ok!");
       resetForm();
-      navigate('/calendar/month');
+      navigate('/calendar/month/2023-04');
     } catch (error) {
       console.log(error);
       Notiflix.Notify.failure('Oops! You make some mistake:-(');

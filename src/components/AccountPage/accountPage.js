@@ -1,49 +1,45 @@
-import React, { useEffect,useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { getUser } from "../../redux/user/selectors";
-import { fetchUser,updateUserProfile } from "../../redux/user/user-operations";
-import userAvatar from "../../images/icons/ph_user.svg"
-
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectorGetUser } from '../../redux/user/selectors';
+import {
+  authCurrentThunk,
+  updateUserProfile,
+} from '../../redux/user/user-operations';
+import userAvatar from '../../images/icons/ph_user.svg';
 
 const UserForm = () => {
   const dispatch = useDispatch();
   const [previewImageUrl, setPreviewImageUrl] = useState(null);
-    const {
-        name,
-        email,
-        birthday,
-        phone,
-        telegram,
-        avatar
-    } = useSelector(getUser)
-    
-    useEffect(() => {
-    dispatch(fetchUser())
-},[dispatch])
+  const { userName, email, birthday, phone, telegram, avatar } =
+    useSelector(selectorGetUser);
 
-  const handleAvatarChange = (e) => {
+
+
+  const handleAvatarChange = e => {
     e.preventDefault();
-  const file = e.target.files[0];
-  if (!file) return;
+    const file = e.target.files[0];
+    if (!file) return;
 
-  const formData = new FormData();
-  formData.append("avatar", file);
-  dispatch(updateUserProfile(formData));
+    const formData = new FormData();
+    formData.append('avatar', file);
+
     const imageUrl = window.URL.createObjectURL(file);
-    console.log(imageUrl)
-  setPreviewImageUrl(imageUrl);
+    console.log(imageUrl);
+    setPreviewImageUrl(imageUrl);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("name", name);
-    formData.append("email", email);
-    formData.append("birthday", birthday);
-    formData.append("phone", phone);
-    formData.append("telegram", telegram);
-    dispatch(updateUserProfile(formData));
+    formData.append('userName', userName);
+    formData.append('email', email);
+    formData.append('birthday', birthday);
+    formData.append('phone', phone);
+    formData.append('telegram', telegram);
+    dispatch(updateUserProfile({formData}));
+    
   };
+   
 
   return (
     <section className="user-page">
@@ -59,23 +55,27 @@ const UserForm = () => {
             type="file"
             accept="image/*"
             onChange={handleAvatarChange}
-            style={{ display: "none" }}
+            style={{ display: 'none' }}
           />
           <label htmlFor="avatar-upload" className="avatar-upload-btn"></label>
         </div>
-        <h3 className="user-page__name">{name || "Username"}</h3>
+        <h3 className="user-page__name">{userName || 'Username'}</h3>
         <p className="user-page__role">User</p>
       </div>
       <form onSubmit={handleSubmit} className="username_form">
-        <label htmlFor="name" className="username_form-label">Username</label>
+        <label htmlFor="name" className="username_form-label">
+          Username
+        </label>
         <input
           className="username_form-input"
-          id="name"
+          id="userName"
           type="text"
-          value={name}
+          value={userName}
           placeholder="Enter your name"
         />
-        <label htmlFor="birthday" className="username_form-label">Birthday:</label>
+        <label htmlFor="birthday" className="username_form-label">
+          Birthday:
+        </label>
         <input
           className="username_form-input"
           id="birthday"
@@ -83,7 +83,9 @@ const UserForm = () => {
           value={birthday}
           placeholder="Enter your birthday"
         />
-        <label htmlFor="email" className="username_form-label">Email</label>
+        <label htmlFor="email" className="username_form-label">
+          Email
+        </label>
         <input
           className="username_form-input"
           id="email"
@@ -91,7 +93,9 @@ const UserForm = () => {
           value={email}
           placeholder="Enter your email"
         />
-        <label htmlFor="phone" className="username_form-label">Phone:</label>
+        <label htmlFor="phone" className="username_form-label">
+          Phone:
+        </label>
         <input
           className="username_form-input"
           id="phone"
@@ -99,7 +103,9 @@ const UserForm = () => {
           value={phone}
           placeholder="Enter your phone"
         />
-        <label htmlFor="telegram" className="username_form-label">Telegram:</label>
+        <label htmlFor="telegram" className="username_form-label">
+          Telegram:
+        </label>
         <input
           className="username_form-input username_form-input--last"
           id="telegram"
@@ -107,7 +113,9 @@ const UserForm = () => {
           value={telegram}
           placeholder="Enter your telegram username"
         />
-        <button type="submit" className="username__form-submit">Save</button>
+        <button type="submit" className="username__form-submit">
+          Save
+        </button>
       </form>
     </section>
   );

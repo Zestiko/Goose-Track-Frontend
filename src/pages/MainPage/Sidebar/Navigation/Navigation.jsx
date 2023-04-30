@@ -29,7 +29,7 @@ const Navigation = () => {
         My account
       </NavLink>
       <NavLink
-        to="/main/calendar"
+        to="/main/calendar/month/2023-04"
         className={classNames({ getActiveClassName }, `${css.navItem}`)}
       >
         <CalendarCheckSvg />

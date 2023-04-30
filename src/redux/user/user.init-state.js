@@ -1,5 +1,10 @@
+import { STATUS } from "constants/status.constants";
+
 export const userInitialState = {
-  user: {},
-  isLoading: false,
-  error: null,
+
+    status: STATUS.idle,
+    user: {userName: "", email:""},
+    token: null,
+    isLoggedIn: false,
+    isRefreshing: false,
 };
