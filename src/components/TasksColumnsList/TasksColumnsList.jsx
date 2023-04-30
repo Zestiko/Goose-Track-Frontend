@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useTasksByChoosedDay } from 'hooks/useTasksByChoosedDay';
-import TasksColumn from 'components/TasksColumn/TasksColumn';
+import TasksColumn from 'components/ChoosedDay/TasksColumn/TasksColumn';
 import scss from './TasksColumnsList.module.scss';
 
 const COLUMNS = ['toDo', 'inProgress', 'done'];
