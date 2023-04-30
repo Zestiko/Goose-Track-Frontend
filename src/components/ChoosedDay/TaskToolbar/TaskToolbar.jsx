@@ -2,11 +2,11 @@ import { COLUMNS_OPTIONS } from 'constants/columns.constans';
 import { useDispatch } from 'react-redux';
 
 import { spriteIcons } from 'images/icons';
-import ModalClear from 'components/ModalClear/ModalClear';
-import { updateTask } from 'redux/tasks/tasksOperations';
+// import ModalClear from 'components/ModalClear/ModalClear';
+// import { updateTask } from 'redux/tasks/tasksOperations';
 
 const TaskToolbar = ({ task }) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const {
     title,
     // title= 'Find new cool job!',
@@ -22,21 +22,21 @@ const TaskToolbar = ({ task }) => {
   const handleChangeColumn = () => {
     const otherColumns = COLUMNS_OPTIONS.filter(item => item.column !== column);
 
-    return (
-      <ModalClear>
-        {otherColumns.map(item => (
-          <button
-            type="button"
-            onClick={() => {
-              dispatch(updateTask(id, item));
-            }}
-            className=""
-          >
-            {item}
-          </button>
-        ))}
-      </ModalClear>
-    );
+    // return (
+      // <ModalClear>
+      //   {otherColumns.map(item => (
+      //     <button
+      //       type="button"
+      //       onClick={() => {
+      //         dispatch(updateTask(id, item));
+      //       }}
+      //       className=""
+      //     >
+      //       {item}
+      //     </button>
+      //   ))}
+      // </ModalClear>
+    // );
   };
 
   const handleUpdateTaskInfo = task => {};
