@@ -76,7 +76,7 @@ export const App = () => {
               />
             </Route>
           </Route>
-          <Route path="/calendar/day/we" element={<ChoosedDay/>} />
+
 
                     </Routes>
       </Suspense>
