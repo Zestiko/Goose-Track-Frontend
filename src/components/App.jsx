@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
 import { authCurrentThunk } from 'redux/user/user-operations';
 import ModalToggel from './ModalTogel/ModalToggel';
-
+import ChoosedDay from './ChoosedDay/ChoosedDay';
 
 const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
@@ -60,6 +60,7 @@ export const App = () => {
                 element={
                   <div>
                     <ModalToggel />
+                    <ChoosedDay />
                   </div>
                 }
               />
