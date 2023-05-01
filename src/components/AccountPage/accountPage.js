@@ -66,14 +66,14 @@ const UserForm = () => {
   };
 
   return (
-    <section className="user-page">
-      <div className="user-page__avatar-container">
+    <section className={scss.user_page}>
+      <div className={scss.user_page__avatar_container}>
         <img
-          className="user-page__avatar"
+          className={scss.user_page__avatar}
           src={previewImageUrl || userInfo.avatar || userAvatar}
           alt="User Avatar"
         />
-        <div className="avatar-upload-container">
+        <div className={scss.avatar_upload_container}>
           <input
             id="avatar-upload"
             name="avatar"
@@ -82,10 +82,10 @@ const UserForm = () => {
             onChange={handleAvatarChange}
             style={{ display: 'none' }}
           />
-          <label htmlFor="avatar-upload" className="avatar-upload-btn"></label>
+          <label htmlFor="avatar-upload" className={scss.avatar_upload_btn}></label>
         </div>
-        <h3 className="user-page__name">{userInfo.userName || 'Username'}</h3>
-        <p className="user-page__role">User</p>
+        <h3 className={scss.user_page__name}>{userInfo.userName || 'Username'}</h3>
+        <p className={scss.user_page__role}>User</p>
       </div>
       <Formik
         initialValues={updatedUserInfo}
@@ -100,10 +100,9 @@ const UserForm = () => {
         }}
       >
         {formik => {
-          console.log(formik.values);
           return (
-            <Form className="username_form">
-              <label htmlFor="userName" className="username_form-label">
+            <Form className={scss.username_form}>
+              <label htmlFor="userName" className={scss.username_form__label}>
                 Username
                 <Field
                   name="userName"
@@ -111,7 +110,7 @@ const UserForm = () => {
                   className={
                     scss.username_form_input +
                     (formik.errors.userName && formik.touched.userName
-                      ? ' is-invalid'
+                      ? scss.is_invalid
                       : '')
                   }
                   placeholder="User name"
@@ -119,14 +118,14 @@ const UserForm = () => {
                 <ErrorMessage
                   name="userName"
                   component="div"
-                  className="invalid_feedback"
+                  className={scss.invalid_feedback}
                 />
               </label>
 
-              <label htmlFor="birthday" className="username_form-label">
+              <label htmlFor="birthday" className={scss.username_form__label}>
                 Birthday:
                 <Field
-                  className="username_form_input"
+                  className={scss.username_form_input}
                   name="birthday"
                   lang="en"
                   type="date"
@@ -135,27 +134,27 @@ const UserForm = () => {
                 <ErrorMessage
                   name="birthday"
                   component="div"
-                  className="invalid_feedback"
+                  className={scss.invalid_feedback}
                 />
               </label>
 
-              <label htmlFor="email" className="username_form-label">
+              <label htmlFor="email" className={scss.username_form__label}>
                 Email Address
                 <Field
                   name="email"
                   type="email"
-                  className="username_form_input"
+                  className={scss.username_form_input}
                 />
                 <ErrorMessage
                   name="email"
                   component="div"
-                  className="invalid_feedback"
+                  className={scss.invalid_feedback}
                 />
               </label>
-              <label htmlFor="phone" className="username_form-label">
+              <label htmlFor="phone" className={scss.username_form__label}>
                 Phone:
                 <Field
-                  className="username_form_input"
+                  className={scss.username_form_input}
                   id="phone"
                   name="phone"
                   type="text"
@@ -164,14 +163,14 @@ const UserForm = () => {
                 <ErrorMessage
                   name="phone"
                   component="div"
-                  className="invalid_feedback"
+                  className={scss.invalid_feedback}
                 />
               </label>
 
-              <label htmlFor="telegram" className="username_form-label">
+              <label htmlFor="telegram" className={scss.username_form__label}>
                 Telegram:
                 <Field
-                  className="username_form_input username_form_input--last"
+                  className={scss.username_form_input}
                   id="telegram"
                   name="telegram"
                   type="text"
@@ -180,12 +179,12 @@ const UserForm = () => {
                 <ErrorMessage
                   name="telegram"
                   component="div"
-                  className="invalid_feedback"
+                  className={scss.invalid_feedback}
                 />
               </label>
               <button
                 type="submit"
-                className="username__form-submit"
+                className={scss.username_form__submit}
                 disabled={!formik.dirty || !formik.isValid}
               >
                 Submit

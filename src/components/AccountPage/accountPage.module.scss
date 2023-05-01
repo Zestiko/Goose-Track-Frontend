@@ -1,6 +1,6 @@
 @import './../../styles/vars';
 
-.user-page {
+.user_page {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -20,7 +20,7 @@
     padding: 60px 165px 60px 165px;
   }
 }
-.user-page__avatar-container {
+.user_page__avatar_container {
   display: flex;
   flex-direction: column;
   margin-bottom: 40px;
@@ -31,7 +31,7 @@
     transform: none;
   }
 }
-.user-page__avatar {
+.user_page__avatar {
   position: relative;
   width: 72px;
   height: 72px;
@@ -54,7 +54,7 @@
   }
 }
 
-.avatar-upload-btn {
+.avatar_upload_btn {
   position: absolute;
   width: 14px;
   height: 14px;
@@ -73,7 +73,7 @@
   }
 }
 
-.user-page__name {
+.user_page__name {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -88,7 +88,7 @@
   color: $userpage-text;
   margin-bottom: 8px;
 }
-.user-page__role {
+.user_page__role {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -117,7 +117,7 @@
   }
 }
 
-.username_form-label {
+.username_form__label {
   display: flex;
   flex-direction: column;
   margin-bottom: 8px;
@@ -165,7 +165,7 @@
 .username_form-input--last {
   margin-bottom: 0;
 }
-.username__form-submit {
+.username_form__submit {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 600;
@@ -202,7 +202,7 @@
   font-size: 12px;
 }
 
-.is-invalid {
+.is_invalid {
   border-color: #dc3545;
   color: #dc3545;
 }
