@@ -1,0 +1,64 @@
+/* fonts */
+$primary-font: 'Inter', sans-serif;
+$secondary-font: 'Coolvetica', sans-serif;
+
+/* background colors */
+$background-colors: (
+primary: #ffffff,
+secondary: #f7f6f9,
+sidebar: #ffffff,
+accent: #3e85f3,
+active-item-sidebar: #e3f3ff,
+auth-bg: #dcebf7,
+dark-primary:#21222C,
+dark-secondary:#21222C,
+
+);
+
+$border-colors: (
+default: rgba(220, 227, 229, 0.8),
+calendar: rgba(220, 227, 229, 0.5),
+calendar-period-type: rgba(62, 133, 243, 0.2),
+auth: rgba(220, 227, 229, 0.6)
+);
+
+/* text-color */
+$text-colors: (
+primary: #111111,
+secondary: #616161,
+accent: #3e85f3,
+accent-btn-background: #3e85f3,
+btn-text: #ffffff,
+not-active-item-sidebar: #84828a,
+auth-placeholder: #dce3e5,
+userpage: #343434
+);
+
+/* calendar */
+$calendar-colors: (
+digit: #343434,
+priority-low-bg: #ceeefd,
+priority-medium-bg: #fcf0d4,
+priority-high-bg: #ffd2dd,
+active-button-period-type: #CAE8FF,
+button-period-type: #E3F3FF,
+close-btn: #111111
+);
+
+/* tasks */
+$task-colors: (
+priority-low: #72c2f8,
+priority-medium: #f3b249,
+priority-high: #ea3d65,
+input-bg: #f7f7f7,
+btn-cancel-bg: #efefef
+);
+
+/* scroll */
+$scroll-colors: (
+scrollbar: #e7e5e5,
+scrollbar-bg: #f2f2f2
+);
+
+/* decorations */
+$animation: 250ms cubic-bezier(0.4, 0, 0.2, 1);
