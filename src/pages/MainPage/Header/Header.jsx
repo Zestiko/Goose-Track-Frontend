@@ -13,6 +13,7 @@ const Header = ({ handleBurgerMenuClick, handleToggleThemeClick, theme }) => {
   
   const userName = useSelector(selectorGetUserName);
   const avatarPath = useSelector(selectorGetUserAvatar);
+  console.log('avatarPath', avatarPath);
 
   return (
     <div className={css.header}>
@@ -28,7 +29,7 @@ const Header = ({ handleBurgerMenuClick, handleToggleThemeClick, theme }) => {
         />
 
         <p className={css.userName}>{userName}</p>
-        {avatarPath === null ? (
+        {avatarPath === undefined ? (
           <DefaultAvatarSvg className={css.userAvatar} />
         ) : (
           <img className={css.userAvatar} src={avatarPath} alt="avatar" />
