@@ -30,7 +30,6 @@
   // &::first-line{
   //   font-size: 14px;
   // }
-
 }
 
 .block {
@@ -48,6 +47,15 @@
 }
 
 .iconAvatar {
+  margin-right: 8px;
+  box-sizing: border-box;
+  width: 32px;
+  height: 32px;
+  border: 1.8px solid #3e85f3;
+  border-radius: 50%;
+}
+
+.userAvatar {
   margin-right: 8px;
   box-sizing: border-box;
   width: 32px;

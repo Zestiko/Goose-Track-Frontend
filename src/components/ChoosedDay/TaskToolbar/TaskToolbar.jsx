@@ -1,14 +1,16 @@
 import { COLUMNS } from 'constants/columns.constans';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { spriteIcons } from 'images/icons';
 // import ModalClear from 'components/ModalClear/ModalClear';
 // import { updateTask } from 'redux/tasks/tasksOperations';
 import scss from './TaskToolbar.module.scss';
 import { useRef, useState } from 'react';
+import { removeTask } from 'redux/tasks/tasksOperations';
+import ModalToggel from 'components/ModalTogel/ModalToggel';
 
 const TaskToolbar = ({ task }) => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const {
     // title,
     // title= 'Find new cool job!',
@@ -21,6 +23,8 @@ const TaskToolbar = ({ task }) => {
     // taskDate,
     // _id,
   } = task;
+  const [showUpdateModal, setShowUpdateModal] = useState(false);
+  const [openChoice, setOpenChoice] = useState(false);
 
   // const handleChangeColumn = () => {
   //   // return (
@@ -40,12 +44,16 @@ const TaskToolbar = ({ task }) => {
   //   // );
   // };
 
-  const handleUpdateTaskInfo = task => {};
+  const handleUpdateTaskInfo = () => {
+    setShowUpdateModal(!showUpdateModal);
+  };
 
-  const handleDeleteTask = () => {};
+  const handleDeleteTask = async () => {
+    await dispatch(removeTask(task._id));
+  };
+
   const otherColumns = COLUMNS.filter(item => item !== column);
 
-  const [openChoice, setOpenChoice] = useState(false);
   console.log(openChoice);
   const columnRef = useRef();
   const iconRef = useRef();
@@ -54,7 +62,9 @@ const TaskToolbar = ({ task }) => {
       setOpenChoice(true);
     }
   });
+
   return (
+    <>
     <ul className={scss.cardBox}>
       <li className={scss.itemChoice}>
         <button className={scss.button}>
@@ -111,7 +121,9 @@ const TaskToolbar = ({ task }) => {
           </svg>
         </button>
       </li>
-    </ul>
+      </ul>
+      {showUpdateModal && <ModalToggel data={task} />}
+    </>
   );
 };
 

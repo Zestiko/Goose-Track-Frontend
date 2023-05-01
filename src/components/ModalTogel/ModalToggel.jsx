@@ -5,17 +5,17 @@ import { TaskForm } from "components/TaskForm/TaskForm";
 const { useToggle } = require("hooks/useToggle")
 
 const ModalToggel = () => {
-  const { isOpen, onOpen, onClose,  } = useToggle(false);
+  const { isOpen, onClose,  } = useToggle(true);
   console.log("🚀 ~ file: ModalToggel.jsx:8 ~ ModalToggel ~ isOpen:", isOpen)
   return (
     <div>
       <>
-        <button onClick={onOpen}>Open modal</button>
+        {/* <button onClick={onOpen}>Open modal</button> */}
         {isOpen && (
           <Modal isOpen={isOpen} onClose={onClose}>
             <TaskForm title={"title"} onClose={onClose} />
           </Modal>
-        )}
+       )}
       </>
     </div>
   );
