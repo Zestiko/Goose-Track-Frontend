@@ -1,20 +1,22 @@
-import { useDispatch } from 'react-redux';
-import { NavLink, useLocation } from 'react-router-dom';
+import {  useSelector } from 'react-redux';
+import { NavLink} from 'react-router-dom';
 import classNames from 'classnames';
 import { ReactComponent as UserCheckSvg } from '../../../../images/icons/user-check-01.svg';
 import { ReactComponent as CalendarCheckSvg } from '../../../../images/icons/calendar-check.svg';
 import { ReactComponent as LoginOutSvg } from '../../../../images/icons/log-out.svg';
 
 import css from './Navigation.module.scss';
+import { getCurrentDate } from 'redux/calendar/selectors';
 const getActiveClassName = ({ isActive }) =>
   isActive ? 'selected' : 'unselected';
 
-const Navigation = ({theme}) => {
+const Navigation = ({ theme }) => {
+    const currentDate = useSelector(getCurrentDate);
   return (
     <div className={css.userPanel}>
       <p className={css.navLabel}>User Panel</p>
       <NavLink
-        to="/main/user"
+        to="/user"
         className={
           `${css.navItem} ${theme}`
         }
@@ -23,7 +25,7 @@ const Navigation = ({theme}) => {
         My account
       </NavLink>
       <NavLink
-        to="/main/calendar/month/2023-04"
+        to={`/calendar/month/${currentDate.slice(0,7)}`}
         className={
           `${css.navItem} ${theme}`
         }
