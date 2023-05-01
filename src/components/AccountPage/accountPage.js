@@ -9,7 +9,8 @@ import userAvatar from '../../images/icons/ph_user.svg';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import moment from 'moment';
-import scss from './accountPage.module.scss';
+import css from './accountPage.module.scss';
+
 
 export const infoUserSchema = Yup.object().shape({
   userName: Yup.string()
@@ -23,7 +24,7 @@ export const infoUserSchema = Yup.object().shape({
   birthday: Yup.string('Invalid avatar'),
 });
 
-const UserForm = () => {
+const UserForm = ({theme}) => {
   const dispatch = useDispatch();
   const userInfo = useSelector(selectorGetUser);
   const [previewImageUrl, setPreviewImageUrl] = useState(null);
@@ -66,14 +67,14 @@ const UserForm = () => {
   };
 
   return (
-    <section className={scss.user_page}>
-      <div className={scss.user_page__avatar_container}>
+    <section className={`${css.user_page} ${theme}`}>
+      <div className={`${css.user_page__avatar_container} ${theme}`}>
         <img
-          className={scss.user_page__avatar}
+          className={`${css.user_page__avatar} ${theme}`}
           src={previewImageUrl || userInfo.avatar || userAvatar}
           alt="User Avatar"
         />
-        <div className={scss.avatar_upload_container}>
+        <div className={`${css.avatar_upload_container} ${theme}`}>
           <input
             id="avatar-upload"
             name="avatar"
@@ -82,10 +83,10 @@ const UserForm = () => {
             onChange={handleAvatarChange}
             style={{ display: 'none' }}
           />
-          <label htmlFor="avatar-upload" className={scss.avatar_upload_btn}></label>
+          <label htmlFor="avatar-upload" className={`${css.avatar_upload_btn} ${theme}`}></label>
         </div>
-        <h3 className={scss.user_page__name}>{userInfo.userName || 'Username'}</h3>
-        <p className={scss.user_page__role}>User</p>
+        <h3 className={`${css.user_page__name} ${theme}`}>{userInfo.userName || 'Username'}</h3>
+        <p className={`${css.user_page__role} ${theme}`}>User</p>
       </div>
       <Formik
         initialValues={updatedUserInfo}
@@ -101,16 +102,16 @@ const UserForm = () => {
       >
         {formik => {
           return (
-            <Form className={scss.username_form}>
-              <label htmlFor="userName" className={scss.username_form__label}>
+            <Form className={`${css.username_form} ${theme}`}>
+              <label htmlFor="userName" className={`${css.username_form__label} ${theme}`}>
                 Username
                 <Field
                   name="userName"
                   type="text"
                   className={
-                    scss.username_form_input +
+                    `${css.username_form_input} ${theme}` +
                     (formik.errors.userName && formik.touched.userName
-                      ? scss.is_invalid
+                      ? css.is_invalid
                       : '')
                   }
                   placeholder="User name"
@@ -118,14 +119,14 @@ const UserForm = () => {
                 <ErrorMessage
                   name="userName"
                   component="div"
-                  className={scss.invalid_feedback}
+                  className={css.invalid_feedback}
                 />
               </label>
 
-              <label htmlFor="birthday" className={scss.username_form__label}>
+              <label htmlFor="birthday" className={`${css.username_form__label} ${theme}`}>
                 Birthday:
                 <Field
-                  className={scss.username_form_input}
+                  className={`${css.username_form_input} ${theme}`}
                   name="birthday"
                   lang="en"
                   type="date"
@@ -134,27 +135,27 @@ const UserForm = () => {
                 <ErrorMessage
                   name="birthday"
                   component="div"
-                  className={scss.invalid_feedback}
+                  className={css.invalid_feedback}
                 />
               </label>
 
-              <label htmlFor="email" className={scss.username_form__label}>
+              <label htmlFor="email" className={`${css.username_form__label} ${theme}`}>
                 Email Address
                 <Field
                   name="email"
                   type="email"
-                  className={scss.username_form_input}
+                  className={`${css.username_form_input} ${theme}`}
                 />
                 <ErrorMessage
                   name="email"
                   component="div"
-                  className={scss.invalid_feedback}
+                  className={css.invalid_feedback}
                 />
               </label>
-              <label htmlFor="phone" className={scss.username_form__label}>
+              <label htmlFor="phone" className={`${css.username_form__label} ${theme}`}>
                 Phone:
                 <Field
-                  className={scss.username_form_input}
+                  className={`${css.username_form_input} ${theme}`}
                   id="phone"
                   name="phone"
                   type="text"
@@ -163,14 +164,14 @@ const UserForm = () => {
                 <ErrorMessage
                   name="phone"
                   component="div"
-                  className={scss.invalid_feedback}
+                  className={css.invalid_feedback}
                 />
               </label>
 
-              <label htmlFor="telegram" className={scss.username_form__label}>
+              <label htmlFor="telegram" className={`${css.username_form__label} ${theme}`}>
                 Telegram:
                 <Field
-                  className={scss.username_form_input}
+                  className={`${css.username_form_input} ${theme}`}
                   id="telegram"
                   name="telegram"
                   type="text"
@@ -179,15 +180,15 @@ const UserForm = () => {
                 <ErrorMessage
                   name="telegram"
                   component="div"
-                  className={scss.invalid_feedback}
+                  className={css.invalid_feedback}
                 />
               </label>
               <button
                 type="submit"
-                className={scss.username_form__submit}
+                className={`${css.username_form__submit} ${theme}`}
                 disabled={!formik.dirty || !formik.isValid}
               >
-                Submit
+                Save Changes
               </button>
             </Form>
           );
