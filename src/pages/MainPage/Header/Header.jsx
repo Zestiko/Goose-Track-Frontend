@@ -11,7 +11,7 @@ const Header = ({ handleBurgerMenuClick, handleToggleThemeClick,theme }) => {
 
   return (
     <div className={css.header}>
-      <BurgerMenuSvg className={css.burger} onClick={handleBurgerMenuClick} />
+      <BurgerMenuSvg className={`${css.burger} ${theme}`} onClick={handleBurgerMenuClick} />
       <div className={css.user}>
         <ThemeToggler
           className={css.themeIcon}

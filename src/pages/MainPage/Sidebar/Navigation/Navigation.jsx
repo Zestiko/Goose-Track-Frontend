@@ -6,31 +6,27 @@ import { ReactComponent as CalendarCheckSvg } from '../../../../images/icons/cal
 import { ReactComponent as LoginOutSvg } from '../../../../images/icons/log-out.svg';
 
 import css from './Navigation.module.scss';
-// console.log(userCheckSvg);
-// Для теста
-const isActive = true;
 const getActiveClassName = ({ isActive }) =>
   isActive ? 'selected' : 'unselected';
 
-const Navigation = () => {
-  //    const dispatch = useDispatch()
-  //    const location = useLocation()
-
-  // const isActiveToken
+const Navigation = ({theme}) => {
   return (
     <div className={css.userPanel}>
-      {/* {isActiveToken && <h2 className="">Please SignIn</h2>} */}
       <p className={css.navLabel}>User Panel</p>
       <NavLink
         to="/main/user"
-        className={classNames({ getActiveClassName }, `${css.navItem}`)}
+        className={
+          `${css.navItem} ${theme}`
+        }
       >
         <UserCheckSvg />
         My account
       </NavLink>
       <NavLink
         to="/main/calendar/month/2023-04"
-        className={classNames({ getActiveClassName }, `${css.navItem}`)}
+        className={
+          `${css.navItem} ${theme}`
+        }
       >
         <CalendarCheckSvg />
         Calendar
