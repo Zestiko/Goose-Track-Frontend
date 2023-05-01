@@ -1,187 +1,180 @@
 @import './../../styles/vars';
 
-
-.user-page{
-    position: relative;
+.user-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 40px);
+  padding: 0 18px 0 18px;
+  margin-top: 120px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 38px;
+  background: #ffffff;
+  border-radius: 16px;
+  @media screen and (min-width: 767px) {
     display: flex;
+    padding: 40px 175px 40px 175px;
+  }
+  @media screen and (min-width: 1200px) {
+    padding: 60px 165px 60px 165px;
+  }
+}
+.user-page__avatar-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+  @media screen and (min-width: 767px) {
+    position: relative;
+    display: block;
     flex-direction: column;
-    width: calc(100% - 40px);
-    padding: 0 18px 0 18px;
-    margin-top: 120px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 38px;
-    background: #FFFFFF;
-    border-radius: 16px;
-    @media screen and (min-width:767px ) {
-        display: flex;
-        padding: 40px 175px 40px 175px;
-    }
-    @media screen and (min-width: 1200px){
-        padding: 60px 165px 60px 165px;
-    }
+    transform: none;
+  }
 }
-.user-page__avatar-container{
-    display: flex;
-    flex-direction:column;
-    margin-bottom: 40px;
-    @media screen and (min-width:767px) {
-        position: relative;
-        display: block;
-        flex-direction: column;
-        transform: none;
+.user-page__avatar {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  border: 2px solid $accent-btn-background;
+  border-radius: 50%;
+  object-fit: cover;
+  left: 50%;
+  top: 0%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
 
-    }
-}
-.user-page__avatar{
+  @media screen and (min-width: 767px) {
     position: relative;
-    width: 72px;
-    height: 72px;
-    border: 2px solid $accent-btn-background;
-    border-radius: 50%;
-    object-fit: cover;
-    left: 50%;
-    top: 0%;
-    transform: translate(-50%,-50%);
-    z-index: 1;
-
-    @media screen and (min-width:767px) {
-        position: relative;
-        width: 124px;
-        height: 124px;
-        margin-bottom: 20px;
-        transform: translate(-50%, 0);
-    }
-        @media screen and (min-width:1200px) {
-
-        }
+    width: 124px;
+    height: 124px;
+    margin-bottom: 20px;
+    transform: translate(-50%, 0);
+  }
+  @media screen and (min-width: 1200px) {
+  }
 }
 
-    
-.avatar-upload-btn{
-    position: absolute;
-        width: 14px;
-        height: 14px;
-        left: 52%;
-        top: 3%;
-        z-index: 2;
-    background-image: url(../../images/avatarPlus.svg);
+.avatar-upload-btn {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  left: 52%;
+  top: 3%;
+  z-index: 2;
+  background-image: url(../../images/avatarPlus.svg);
 
-    @media screen and (min-width:767px) {
-        width: 24px;
-        height: 24px;
-        top: 58%;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: contain;
-    }
-        
+  @media screen and (min-width: 767px) {
+    width: 24px;
+    height: 24px;
+    top: 58%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
 }
 
-.user-page__name{
-    display: flex;
-    flex-direction:column;
-    justify-content: center;
-    text-align: center;
-        height: 18px;
-        font-family: $primary-font;
-        font-style: normal;
-        font-weight: 700;
-        font-size: 14px;
-        line-height: 18px;
+.user-page__name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  height: 18px;
+  font-family: $primary-font;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
 
-        color: $userpage-text;
-        margin-bottom: 8px;
+  color: $userpage-text;
+  margin-bottom: 8px;
 }
-.user-page__role{
-    display: flex;
-    flex-direction:column;
-    text-align: center;
-    height: 14px;
-    font-family: $primary-font;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 14px;
-    color: $secondary-text-color;
-        flex: none;
-        order: 1;
-        flex-grow: 0;
+.user-page__role {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  height: 14px;
+  font-family: $primary-font;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 14px;
+  color: $secondary-text-color;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
 }
 .username_form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 @media screen and (min-width: 1200px) {
-    .username_form {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-gap: 10px;
-        justify-content: center;
-    }
+  .username_form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    justify-content: center;
+  }
 }
 
 .username_form-label {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 8px;
-    font-family: $primary-font;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 14px;
-    color: $primary-text-color;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+  font-family: $primary-font;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: $primary-text-color;
 }
 
-.username_form-input {
-    box-sizing: border-box;
-    height: 42px;
-    margin-top: 8px;
-    margin-bottom: 18px;
-    padding: 14px 0 14px 18px;
-    border: 1px solid rgba(17, 17, 17, 0.15);
-    border-radius: 8px;
-    font-family: $primary-font;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 18px;
-    color: $primary-text-color;
-    &:hover{
-        border: 1px solid #111111
+.username_form_input {
+  box-sizing: border-box;
+  height: 42px;
+  margin-top: 8px;
+  margin-bottom: 18px;
+  padding: 14px 0 14px 18px;
+  border: 1px solid rgba(17, 17, 17, 0.15);
+  border-radius: 8px;
+  font-family: $primary-font;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  color: $primary-text-color;
+  &:hover {
+    border: 1px solid #111111;
+  }
+  @media screen and (min-width: 1200px) {
+    &:nth-of-type(1),
+    &:nth-of-type(3) {
+      margin-right: 50px;
     }
-    @media screen and (min-width:1200px) {
-        &:nth-of-type(1),
-        &:nth-of-type(3)
-         {
-        margin-right: 50px;
-    }
+  }
 }
-}
-.username_form-input>:placeholder-shown{
-    font-family: $primary-font;
-        font-style: normal;
-        font-weight: 600;
-        font-size: 16px;
-        line-height: 18px;
-        color: rgba(17, 17, 17, 0.15);
+.username_form_input > :placeholder-shown {
+  font-family: $primary-font;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 18px;
+  color: rgba(17, 17, 17, 0.15);
 }
 
 .username_form-input--last {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
-.username__form-submit{
+.username__form-submit {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
 
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 600;
-        font-size: 14px;
-        line-height: 18px;
-        text-align: center;
-    
-        color: #FFFFFF;
-     display: grid;
+  color: #ffffff;
+  display: grid;
   grid-row: 5;
   justify-self: center;
   align-items: center;
@@ -197,4 +190,19 @@
 
   grid-column-start: 1;
   grid-column-end: 3;
+}
+
+.username__form-submit:disabled {
+  background-color: grey;
+}
+
+.invalid_feedback {
+  color: #dc3545;
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+.is-invalid {
+  border-color: #dc3545;
+  color: #dc3545;
 }

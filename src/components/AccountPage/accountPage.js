@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectorGetUser } from '../../redux/user/selectors';
 import {
@@ -6,65 +6,58 @@ import {
   uploadAvatar,
 } from '../../redux/user/user-operations';
 import userAvatar from '../../images/icons/ph_user.svg';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import moment from 'moment';
+import scss from './accountPage.module.scss';
+
+export const infoUserSchema = Yup.object().shape({
+  userName: Yup.string()
+    .min(3, 'Too Short!')
+    .max(36, 'Too Long!')
+    .required('Required'),
+  email: Yup.string().email('Invalid email').required('Required'),
+  phone: Yup.string('Invalid phone'),
+  telegram: Yup.string('Invalid telegram'),
+  avatar: Yup.string('Invalid avatar'),
+  birthday: Yup.string('Invalid avatar'),
+});
 
 const UserForm = () => {
   const dispatch = useDispatch();
-  
-  const { userName, email, birthday, phone, telegram, avatar } =
-    useSelector(selectorGetUser);
-  const [localUser, setLocalUser] = useState("")
-  const [localEmail, setLocalEmail] = useState("")
-  const [localBirthDay, setlocalBirthDay] = useState("")
-  const [localPhone, setLocalPhone] = useState("")
-  const [localTelegram, setLocalTelegram] = useState("")
-  const [previewImageUrl, setPreviewImageUrl] = useState("");
-  const [isImageSaved, setIsImageSaved] = useState(false);
+  const userInfo = useSelector(selectorGetUser);
+  const [previewImageUrl, setPreviewImageUrl] = useState(null);
+  const [file, setFile] = useState(null);
 
-  const handleAvatarChange = async e => {
-    /*e.preventDefault();
-    const file = e.target.files[0];
-    if (!file) return;
-
-    const formData = new FormData();
-    formData.append('avatar', file);
-    const imageUrl = window.URL.createObjectURL(file);
-    console.log(imageUrl);
-    setPreviewImageUrl(imageUrl);*/
-     e.preventDefault();
-     const file = e.target.files[0];
-     if (!file) return;
-
-     try {
-      const imageUrl = await uploadAvatar(file);
-       setPreviewImageUrl(imageUrl);
-       setIsImageSaved(true);
-     } catch (error) {
-       console.error(error);
-       }
+  let updatedUserInfo = {
+    phone: '',
+    telegram: '',
+    avatar: '',
+    ...userInfo,
+    birthday: userInfo?.birthday || moment(new Date()).format('YYYY-MM-DD'),
   };
 
-  const handleSubmit = async values => {
-    // const formattedBirthday = birthday.replace(
-    //   /(\d{4})-(\d{2})-(\d{2})/,
-    //   '$3/$2/$1'
-    // );
-    const response = await fetch(previewImageUrl);
-  const blob = await response.blob();
+  const handleAvatarChange = async e => {
+    const userAvatarPreviewImg = e.target.files[0];
+    setFile(userAvatarPreviewImg);
+    const reader = new FileReader();
+
+    const blob = new Blob([userAvatarPreviewImg], {
+      type: userAvatarPreviewImg.type,
+    });
+    reader.readAsDataURL(blob);
+    reader.onload = () => {
+      setPreviewImageUrl(reader.result);
+    };
+  };
+
+  const submiting = async values => {
     const formData = new FormData();
-     if (previewImageUrl) {
-    formData.append('avatar', blob);
-  } else {
-    formData.append('avatar', avatar);
-    }
-    console.log(previewImageUrl)
-    formData.append('userName', localUser || userName);
-    formData.append('email', localEmail || email);
-    formData.append('birthday', localBirthDay || birthday);
-    formData.append('phone', localPhone || phone);
-    formData.append('telegram', localTelegram || telegram);
-    
-    console.log(values)
+
+    const keys = Object.keys(values);
+    keys.forEach(key => formData.append(key, values[key]));
+    formData.append('avatar', file);
+
     try {
       await dispatch(updateUserProfile(formData));
     } catch (error) {
@@ -77,7 +70,7 @@ const UserForm = () => {
       <div className="user-page__avatar-container">
         <img
           className="user-page__avatar"
-          src={previewImageUrl || avatar || userAvatar}
+          src={previewImageUrl || userInfo.avatar || userAvatar}
           alt="User Avatar"
         />
         <div className="avatar-upload-container">
@@ -86,98 +79,120 @@ const UserForm = () => {
             name="avatar"
             type="file"
             accept="image/*"
-        
             onChange={handleAvatarChange}
             style={{ display: 'none' }}
           />
           <label htmlFor="avatar-upload" className="avatar-upload-btn"></label>
         </div>
-        <h3 className="user-page__name">{userName || 'Username'}</h3>
+        <h3 className="user-page__name">{userInfo.userName || 'Username'}</h3>
         <p className="user-page__role">User</p>
       </div>
       <Formik
-        initialValues={{
-          userName: userName,
-          email: email,
-          birthday: birthday,
-          phone: phone,
-          telegram: telegram,
-          avatar: avatar,
+        initialValues={updatedUserInfo}
+        validationSchema={infoUserSchema}
+        onSubmit={async (values, { setSubmitting }) => {
+          setTimeout(() => {
+            submiting(values).then(() => {
+              setSubmitting(false);
+            });
+          }, 700);
+          updatedUserInfo = { ...values };
         }}
-        onSubmit={handleSubmit}
       >
-        {formik => (
-          <Form className="username_form">
-            <label htmlFor="userName" className="username_form-label">
-              Username
-               <Field
-              className="username_form-input"
-              id="userName"
-              name="userName"
-              type="text"
-              placeholder="Enter your name"
-              onChange={(e) => setLocalUser(e.target.value)}
-              value={localUser || userName}
+        {formik => {
+          console.log(formik.values);
+          return (
+            <Form className="username_form">
+              <label htmlFor="userName" className="username_form-label">
+                Username
+                <Field
+                  name="userName"
+                  type="text"
+                  className={
+                    scss.username_form_input +
+                    (formik.errors.userName && formik.touched.userName
+                      ? ' is-invalid'
+                      : '')
+                  }
+                  placeholder="User name"
+                />
+                <ErrorMessage
+                  name="userName"
+                  component="div"
+                  className="invalid_feedback"
                 />
               </label>
 
-            <label htmlFor="birthday" className="username_form-label">
-              Birthday:
-              <Field
-              className="username_form-input"
-              id="birthday"
-              name="birthday"
-              type="date"
-              lang="en"
-              placeholder="Enter your birthday"
-              onChange={(e) => setlocalBirthDay(e.target.value)}
-              value={localBirthDay || birthday.slice(0,10) || `2001-11-11`}
-            />
+              <label htmlFor="birthday" className="username_form-label">
+                Birthday:
+                <Field
+                  className="username_form_input"
+                  name="birthday"
+                  lang="en"
+                  type="date"
+                  placeholder="Enter your birthday"
+                />
+                <ErrorMessage
+                  name="birthday"
+                  component="div"
+                  className="invalid_feedback"
+                />
               </label>
 
-
-            <label htmlFor="email" className="username_form-label">
-              Email
-              <Field
-              className="username_form-input"
-              id="email"
-              name="email"
-              type="email"
-              onChange={(e)=> setLocalEmail(e.target.value)}
-              value={localEmail || email}
-              placeholder="Enter your email"
-            />
+              <label htmlFor="email" className="username_form-label">
+                Email Address
+                <Field
+                  name="email"
+                  type="email"
+                  className="username_form_input"
+                />
+                <ErrorMessage
+                  name="email"
+                  component="div"
+                  className="invalid_feedback"
+                />
+              </label>
+              <label htmlFor="phone" className="username_form-label">
+                Phone:
+                <Field
+                  className="username_form_input"
+                  id="phone"
+                  name="phone"
+                  type="text"
+                  placeholder="Enter your phone"
+                />
+                <ErrorMessage
+                  name="phone"
+                  component="div"
+                  className="invalid_feedback"
+                />
               </label>
 
-            <label htmlFor="phone" className="username_form-label">
-              Phone:
-             <Field
-              className="username_form-input"
-              id="phone"
-              name="phone"
-              type="text"
-              placeholder="Enter your phone"
-              onChange={(e)=> setLocalPhone(e.target.value)}
-              value={localPhone || phone}
-            />
+              <label htmlFor="telegram" className="username_form-label">
+                Telegram:
+                <Field
+                  className="username_form_input username_form_input--last"
+                  id="telegram"
+                  name="telegram"
+                  type="text"
+                  placeholder="Enter your Telegram link"
+                />
+                <ErrorMessage
+                  name="telegram"
+                  component="div"
+                  className="invalid_feedback"
+                />
               </label>
-            <label htmlFor="telegram" className="username_form-label">
-              Telegram:
-              <Field
-              className="username_form-input username_form-input--last"
-              id="telegram"
-              name="telegram"
-              type="text"
-              placeholder="Enter your Telegram link"
-              onChange={(e)=> setLocalTelegram(e.target.value)}
-              value={localTelegram || telegram}
-            />
-              </label>
-            <button type="submit" className="username__form-submit">
-              Save
+              <button
+                type="submit"
+                className="username__form-submit"
+                disabled={!formik.dirty || !formik.isValid}
+              >
+                Submit
               </button>
-          </Form>
-        )}
+            </Form>
+          );
+        }}
       </Formik>
     </section>
   );
