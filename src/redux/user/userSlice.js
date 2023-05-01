@@ -83,7 +83,7 @@ const userSlice = createSlice({
 const persistConfig = {
   key: 'user',
   storage,
-  whitelist: ['token'],
+  // whitelist: ['token'],
 };
 
 export const userReducer = persistReducer(persistConfig, userSlice.reducer);

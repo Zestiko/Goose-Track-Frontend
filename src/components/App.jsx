@@ -7,6 +7,7 @@ import { useAuth } from 'hooks/useAuth';
 import { authCurrentThunk } from 'redux/user/user-operations';
 import ModalToggel from './ModalTogel/ModalToggel';
 import ChoosedDay from './ChoosedDay/ChoosedDay';
+import { PrivateRoute } from './PrivateRoute';
 
 const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
@@ -44,7 +45,7 @@ export const App = () => {
               />
             }
           />
-          <Route path="/main" element={<MainPage />}>
+          <Route path="/main" element={<PrivateRoute redirectTo ="/" component={<MainPage/>} />}>
             <Route path="user" element={<UserPage />} />
             <Route
               path="calendar"
