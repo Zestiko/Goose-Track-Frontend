@@ -1,6 +1,5 @@
-@import './../../styles/vars';
 
-.user-page {
+.user_page {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -10,7 +9,7 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 38px;
-  background: #ffffff;
+  background: var(--primary-background-color);
   border-radius: 16px;
   @media screen and (min-width: 767px) {
     display: flex;
@@ -20,7 +19,7 @@
     padding: 60px 165px 60px 165px;
   }
 }
-.user-page__avatar-container {
+.user_page__avatar_container {
   display: flex;
   flex-direction: column;
   margin-bottom: 40px;
@@ -31,11 +30,11 @@
     transform: none;
   }
 }
-.user-page__avatar {
+.user_page__avatar {
   position: relative;
   width: 72px;
   height: 72px;
-  border: 2px solid $accent-btn-background;
+  border: 2px solid var(--accent-btn-background);
   border-radius: 50%;
   object-fit: cover;
   left: 50%;
@@ -54,7 +53,7 @@
   }
 }
 
-.avatar-upload-btn {
+.avatar_upload_btn {
   position: absolute;
   width: 14px;
   height: 14px;
@@ -73,32 +72,32 @@
   }
 }
 
-.user-page__name {
+.user_page__name {
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
   height: 18px;
-  font-family: $primary-font;
+  font-family: var(--primary-font);
   font-style: normal;
   font-weight: 700;
   font-size: 14px;
   line-height: 18px;
 
-  color: $userpage-text;
+  color: var(--userpage-text);
   margin-bottom: 8px;
 }
-.user-page__role {
+.user_page__role {
   display: flex;
   flex-direction: column;
   text-align: center;
   height: 14px;
-  font-family: $primary-font;
+  font-family: var(--primary-font);
   font-style: normal;
   font-weight: 600;
   font-size: 12px;
   line-height: 14px;
-  color: $secondary-text-color;
+  color: var(--secondary-text-color);
   flex: none;
   order: 1;
   flex-grow: 0;
@@ -117,16 +116,16 @@
   }
 }
 
-.username_form-label {
+.username_form__label {
   display: flex;
   flex-direction: column;
   margin-bottom: 8px;
-  font-family: $primary-font;
+  font-family: var(--primary-font);
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
   line-height: 14px;
-  color: $primary-text-color;
+  color: var(--primary-text-color);
 }
 
 .username_form_input {
@@ -134,17 +133,18 @@
   height: 42px;
   margin-top: 8px;
   margin-bottom: 18px;
-  padding: 14px 0 14px 18px;
-  border: 1px solid rgba(17, 17, 17, 0.15);
+  padding: 14px 18px 14px 18px;
+  border: 1px solid var(--border-form-input);
   border-radius: 8px;
-  font-family: $primary-font;
+  font-family: var(--primary-font);
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
   line-height: 18px;
-  color: $primary-text-color;
+  background-color: var(--primary-background-color);
+  color: var(--primary-text-color);
   &:hover {
-    border: 1px solid #111111;
+    border: 1px solid var(--close-btn-color);
   }
   @media screen and (min-width: 1200px) {
     &:nth-of-type(1),
@@ -154,26 +154,26 @@
   }
 }
 .username_form_input > :placeholder-shown {
-  font-family: $primary-font;
+  font-family: var(--primary-font);
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
   line-height: 18px;
-  color: rgba(17, 17, 17, 0.15);
+  color: var(--primary-text-color);
 }
 
 .username_form-input--last {
   margin-bottom: 0;
 }
-.username__form-submit {
-  font-family: 'Inter';
+.username_form__submit {
+  font-family: var(--primary-font);
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
   line-height: 18px;
   text-align: center;
 
-  color: #ffffff;
+  color: var(--btn-text-color);
   display: grid;
   grid-row: 5;
   justify-self: center;
@@ -185,7 +185,7 @@
   width: 195px;
   height: 46px;
 
-  background: $accent-background-color;
+  background: var(--accent-btn-background);
   border-radius: 16px;
 
   grid-column-start: 1;
@@ -193,16 +193,17 @@
 }
 
 .username__form-submit:disabled {
-  background-color: grey;
+  background-color: var(--not-active-item-sidebar-text-color);
+  
 }
 
 .invalid_feedback {
-  color: #dc3545;
+  color: var(--task-priority-high-color);
   margin-top: 8px;
   font-size: 12px;
 }
 
-.is-invalid {
-  border-color: #dc3545;
-  color: #dc3545;
+.is_invalid {
+  border-color: var(--task-priority-high-color);
+  color: var(--task-priority-high-color);
 }
