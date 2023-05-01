@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { publicApi, token } from 'http/http';
+import axios from 'axios';
 
 export const authRegisterThunk = createAsyncThunk(
   'user/register',
@@ -92,3 +93,22 @@ export const updateUserProfile = createAsyncThunk(
     }
   }
 ); 
+
+
+
+export const uploadAvatar = async file => {
+  const formData = new FormData();
+  formData.append('file', file);
+  formData.append('upload_preset', 'ml_default');
+  try {
+    const { data } = await axios.post(
+      'https://api.cloudinary.com/v1_1/dyflrqz4u/image/upload',
+      formData
+    );
+    
+    return data.secure_url;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};
