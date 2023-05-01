@@ -4,11 +4,11 @@ import TaskColumnCard from '../TaskColumnCard/TaskColumnCard';
 
 // const ColumnsTasksList = () => {
 const ColumnsTasksList = ({ tasks }) => {
-
+    // console.log('Hi', tasks);
     return (
         <ul className={scss.column}>
             {tasks.map((task) =>
-                <TaskColumnCard task={task} key={task.id} />
+                <TaskColumnCard task={task} key={task._id} />
             )}
         </ul>
     );
@@ -18,13 +18,14 @@ export default ColumnsTasksList;
 
 ColumnsTasksList.propTypes = {
     tasks: PropTypes.arrayOf(
-      PropTypes.exact({
-        id: PropTypes.string.isRequired,
+      PropTypes.shape({
+        _id: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
-        startTime: PropTypes.number.isRequired,
-        endTime: PropTypes.number.isRequired,
+        startTime: PropTypes.string.isRequired,
+        endTime: PropTypes.string.isRequired,
         priority: PropTypes.string.isRequired,
         column: PropTypes.string.isRequired,
+        owner: PropTypes.string.isRequired,
       })
     ),
 };

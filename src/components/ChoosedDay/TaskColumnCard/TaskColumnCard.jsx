@@ -1,13 +1,11 @@
 // import { PRIORITY } from 'constants/priority.constans';
 
 import TaskToolbar from '../TaskToolbar/TaskToolbar';
+import scss from './TaskColumnCard.module.scss';
 
 const TaskColumnCard = ({ task }) => {
-
-
   const {
     title,
-    // title= 'Find new cool job!',
     // startTime,
     // endTime,
     priority,
@@ -15,17 +13,19 @@ const TaskColumnCard = ({ task }) => {
     owner,
     // column,
     // taskDate,
-    // _id: id,
+    // _id,
   } = task;
 
-
   return (
-    <li className="">
-      <p className="">{title}</p>
-      <p>luhjbjhb</p>
-      <div className="">avatar{owner}</div>
-      <p className="">{priority}</p>
-      <TaskToolbar task={task}/>
+    <li className={scss.card}>
+      <p className={scss.title}>{title}</p>
+      <div className={scss.block}>
+        <div className={scss.user}>
+          <div className={scss.avatar}>avatar{owner}</div>
+          <p className="">{priority}</p>
+        </div>
+        <TaskToolbar task={task} />
+      </div>
     </li>
   );
 };

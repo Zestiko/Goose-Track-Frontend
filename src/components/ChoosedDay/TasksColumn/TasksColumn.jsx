@@ -7,17 +7,11 @@ import { ROUTES } from 'constants/routes.constans';
 import AddTaskBtn from '../AddTaskBtn/AddTaskBtn';
 import ColumnHeadBar from '../ColumnHeadBar/ColumnHeadBar';
 import ColumnsTasksList from '../ColumnsTasksList/ColumnsTasksList';
+// import newTasks from '../tasks.json';
 
 const TasksColumn = ({ title, tasks }) => {
   const navigate = useNavigate();
   const { choosedDay } = useParams();
-
-  // const openModalNewColumn = () => {
-  //   navigate({
-  //     pathname: '',
-  //     /** Додавання нового типу завдань */
-  //   });
-  // };
 
   const openModalNewTask = () => {
     navigate({
@@ -28,8 +22,10 @@ const TasksColumn = ({ title, tasks }) => {
   return (
     <li className={scss.columnBox} >
       <ColumnHeadBar title={title} openModalNewTask={openModalNewTask} />
+      {/* <ColumnHeadBar title={tasks.title} openModalNewTask={openModalNewTask} /> */}
 
       {/* {tasks && <ColumnsTasksList tasks={tasks} />} */}
+      {/* <ColumnsTasksList tasks={tasks} /> */}
       <ColumnsTasksList tasks={tasks} />
 
       <AddTaskBtn onClick={openModalNewTask} />
@@ -42,14 +38,15 @@ export default TasksColumn;
 
 TasksColumn.propTypes = {
   tasks: PropTypes.arrayOf(
-    PropTypes.exact({
+    PropTypes.shape({
       _id: PropTypes.string.isRequired,
       taskDate: PropTypes.string.isRequired,
       column: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
-      startTime: PropTypes.number.isRequired,
-      endTime: PropTypes.number.isRequired,
+      startTime: PropTypes.string.isRequired,
+      endTime: PropTypes.string.isRequired,
       priority: PropTypes.string.isRequired,
+      owner: PropTypes.string.isRequired,
     })
   ),
   title: PropTypes.string.isRequired,

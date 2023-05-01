@@ -1,0 +1,101 @@
+@import '../../../styles/vars';
+/* (375, 768, 1440) */
+
+.cardBox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 10px;
+
+}
+
+.button {
+  position: relative;
+}
+
+.iconCircle {
+  display: flex;
+  border-radius: 50%;
+  fill: transparent;
+  width: 16px;
+  height: 16px;
+
+  &:hover {
+    background-color: #cae8ff;
+  }
+
+  &:focus {
+    background-color: #cae8ff;
+  }
+}
+
+.iconButton {
+    display: flex;
+    border-radius: 50%;
+    fill: transparent;
+    width: 16px;
+    height: 16px;
+
+    &:hover {
+        background-color: #cae8ff;
+    }
+
+    &:focus {
+        background-color: #cae8ff;
+    }
+}
+.movesBox {
+  display: flex;
+  position: absolute;
+  background-color: #ffffff;
+  padding: 20px 24px 6px 24px;
+  box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.1);
+  border-radius: 8px;
+  width: 147px;
+  height: 90px;
+  justify-content: space-between;
+  top: 24px;
+  z-index: 10;
+}
+
+.line {
+  width: 100%;
+  padding: 4px 32px 4px 4px;
+  display: flex;
+//   justify-content: space-between;
+  flex-direction: row;
+  margin-bottom: 14px;
+  position: relative;
+  cursor: pointer;
+    border-radius: 25px;
+    &:hover {
+            background-color: #cae8ff;
+        }
+
+        &:focus {
+            background-color: #cae8ff;
+        }
+}
+
+.text {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  color: #616161;
+    display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+}
+.iconChoice {
+    // position: absolute;
+  display: flex;
+  border-radius: 50%;
+  fill: transparent;
+  width: 16px;
+  height: 16px;
+  z-index: 1;
+//   top: 0;
+//   right: -22px;
+}

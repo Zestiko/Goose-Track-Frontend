@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
 import { authCurrentThunk } from 'redux/user/user-operations';
 import ModalToggel from './ModalTogel/ModalToggel';
+import ChoosedDay from './ChoosedDay/ChoosedDay';
 
 
 const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
@@ -70,7 +71,15 @@ export const App = () => {
                     <h1>ChooseDay</h1>
                   </div>
                 }
-              />
+                />
+               <Route
+                path="day/me"
+                element={
+                  <div>
+                    <ChoosedDay/>
+                  </div>
+                }
+                />
             </Route>
           </Route>
           <Route path="*" element={<NotFoundPage />} />

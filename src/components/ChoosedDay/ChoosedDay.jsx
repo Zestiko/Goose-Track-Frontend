@@ -8,16 +8,15 @@ import { changeMonth } from 'redux/tasks/tasksOperations';
 import { useEffect } from 'react';
 import TasksColumnsList from 'components/TasksColumnsList/TasksColumnsList';
 
-// import TasksColumnsList from 'components/TasksColumnsList/TasksColumnsList';
-// import DayCalendarHead from 'components/DayCalendarHead/DayCalendarHead';
+import DayCalendarHead from 'components/DayCalendarHead/DayCalendarHead';
+
 
 const ChoosedDay = () => {
-  // const { currentDay } = useParams();
-  // const day = currentDay || moment(new Date()).format('YYYY-MM-DD');
+  const { currentDay } = useParams();
+  const day = currentDay || moment(new Date()).format('YYYY-MM-DD');
   // const month = useSelector(selectMonth);
 
   const dispatch = useDispatch();
-  const { tasks } = useSelector(state => state.tasks);
   const newMonth = '2023-05';
 
   useEffect(() => {
@@ -25,14 +24,11 @@ const ChoosedDay = () => {
     dispatch(changeMonth(newMonthFormatted));
   }, [dispatch]);
 
-  console.log('tasks, tasks', tasks);
   return (
     <div className={scss.boxChoosedDay}>
-      <p>sdkjfsdfhsdkhfkj</p>
-      {/* <DayCalendarHead selectedDay={day} /> */}
-      {/* <TasksColumnsList selectedDay={day} /> */}
-      <TasksColumnsList tasks={tasks} />
-    </div>
+      <DayCalendarHead selectedDay={day} />
+      <TasksColumnsList selectedDay={day} />
+        </div>
   );
 };
 

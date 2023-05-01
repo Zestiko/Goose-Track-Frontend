@@ -6,6 +6,7 @@ import scss from './TasksColumnsList.module.scss';
 const COLUMNS = ['toDo', 'inProgress', 'done'];
 
 const TasksColumnsList = ({ selectedDay }) => {
+
   const { tasks } = useTasksByChoosedDay(selectedDay) || [];
 
   const tasksByColumns = COLUMNS.reduce((acc, column) => {
