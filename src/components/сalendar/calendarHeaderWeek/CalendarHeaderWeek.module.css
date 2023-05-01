@@ -1,0 +1,58 @@
+.days_wrapper {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(7, 1fr);
+  background: #ffffff;
+  margin-bottom: 16px;
+  border: 1px solid rgba(219, 227, 230, 0.8);
+  border-radius: 8px;
+  min-height: 46px;
+  overflow: hidden;
+}
+.days_wrapp {
+  min-height: 68px;
+}
+
+.days_wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.column {
+  flex-direction: column;
+}
+.back {
+  background-color: #dbe3e6cc;
+}
+.days {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #616161;
+}
+.weekend {
+  color: #3e85f3;
+}
+.current_day {
+  background-color: #3e85f3;
+  color: #ffffff;
+  border-radius: 8px;
+}
+.date {
+  padding: 4px;
+  color: #616161;
+}
+/* .hover_color:hover {
+  background-color: rgb(252, 249, 245);
+  color: #3e85f3;
+} */
+.scale {
+  transform: scale(1.1);
+  border-radius: 14px;
+
+  font-weight: 700;
+}
+.min_scale {
+  transform: scale(1.1);
+}

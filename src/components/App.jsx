@@ -2,12 +2,15 @@ import { Suspense, lazy, useEffect } from 'react';
 import { Outlet, Route, Routes } from 'react-router-dom';
 // import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
 import { authCurrentThunk } from 'redux/user/user-operations';
-import ModalToggel from './ModalTogel/ModalToggel';
-import ChoosedDay from './ChoosedDay/ChoosedDay';
+// import ModalToggel from './ModalTogel/ModalToggel';
+// import ChoosedDay from './ChoosedDay/ChoosedDay';
 import { PrivateRoute } from './PrivateRoute';
+import Calendar from './сalendar/Calendar';
+import CalendarDaysTask from './сalendar/calendarDaysTask/CalendarDaysTask';
+import { getCurrentDate } from '../redux/calendar/selectors';
 
 const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
@@ -23,55 +26,47 @@ export const App = () => {
   useEffect(() => {
     dispatch(authCurrentThunk());
   }, [dispatch]);
+  const currentDate = useSelector(getCurrentDate);
   return isRefreshing ? (
     <b>Refreshing user...</b>
   ) : (
     <>
       <Suspense>
         <Routes>
-          <Route path="" index element={<HomePage />} />
+          <Route path="/welcome" index element={<HomePage />} />
           <Route
             path="/login"
             element={
-              <RestrictedRoute redirectTo="/main" component={<LoginPage />} />
+              <RestrictedRoute redirectTo={`/calendar/month/${currentDate.slice(0,7)}`} component={<LoginPage />} />
             }
           />
           <Route
             path="/register"
             element={
               <RestrictedRoute
-                redirectTo="/main"
+                redirectTo={`/calendar/month/${currentDate.slice(0,7)}`}
                 component={<RegisterPage />}
               />
             }
           />
-          <Route path="/main" element={<PrivateRoute redirectTo ="/" component={<MainPage/>} />}>
+          <Route path="/" element={<PrivateRoute redirectTo ="/welcome" component={<MainPage/>} />}>
             <Route path="user" element={<UserPage />} />
             <Route
               path="calendar"
               element={
                 <div>
-                  <h1>CalendarPage</h1>
+                  <h1>То что делает ваня</h1>
                   <Outlet />
                 </div>
               }
             >
               <Route
                 path="month/:currentDate"
-                element={
-                  <div>
-                    <ModalToggel />
-                    <ChoosedDay />
-                  </div>
-                }
+                element={<Calendar/>}
               />
               <Route
                 path="day/:currentDay"
-                element={
-                  <div>
-                    <h1>ChooseDay</h1>
-                  </div>
-                }
+                element={<CalendarDaysTask/>}
               />
             </Route>
           </Route>
