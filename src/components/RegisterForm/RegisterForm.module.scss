@@ -1,5 +1,4 @@
 @import './../../styles/vars';
-
 .container {
     display: flex;
     flex-direction: column;
@@ -10,7 +9,6 @@
     height: 100vh;
     width: 100%;
 }
-
 .form {
     display: flex;
     flex-direction: column;
@@ -26,35 +24,33 @@
         width: 480px;
     }
 }
-
 .title {
     text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07), 0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
-    color: #3E85F3;
+    color: $accent-background-color;
     font-weight: 600;
     font-size: 18px;
     line-height: 1.33;
+    margin-bottom: 32px;
     @media screen and (min-width: 768px) {
         font-size: 24px;
         line-height: 1;
+        margin-bottom: 40px;
     }
 }
-
 .label {
+    position: relative;
     font-weight: 600;
     font-size: 12px;
     line-height: 1.25;
     color: $close-btn-color;
     margin-bottom: 8px;
-    margin-top: 24px;
-
     @media screen and (min-width: 768px) {
         font-size: 14px;
         line-height: 1.2;
-        margin-top: 18px;
     }
 }
-
 .input {
+    position: relative;
     background: $btn-text-color;
     border: 1px solid rgba(220, 227, 229, 0.6);
     border-radius: 8px;
@@ -63,7 +59,6 @@
     font-size: 14px;
     line-height: 1.29;
     color: $primary-text-color;
-
     &:focus {
         border: 1px solid #111111;
     }
@@ -74,12 +69,10 @@
         color: #DCE3E5;
         font-size: 14px;
     }
-
     @media screen and (min-width: 768px) {
         padding: 18px;
     }
 }
-
 .button {
     background: $accent-background-color;
     box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
@@ -90,11 +83,10 @@
     color: $btn-text-color;
     padding: 14px;
     width: 100%;
-    margin-top: 32px;
+    margin-top: 10px;
     align-items: center;
     display: flex;
     justify-content: center;
-
     &:focus {
         background: #2B78EF;
         box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
@@ -103,14 +95,11 @@
         background: #2B78EF;
         box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
     }
-
-    
     @media screen and (min-width: 768px) {
         font-size: 18px;
         line-height: 1.33;
     }
 }
-
 .link{
     font-weight: 600;
     font-size: 12px;
@@ -119,8 +108,15 @@
     text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07), 0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
     margin: 18px auto;
     text-decoration: underline;
+    &:focus {
+        transform: scale(1.2);
+        transition-duration: 500ms;
+    }
+    &:hover {
+        transform: scale(1.2);
+        transition-duration: 500ms;
+    }
 }
-
 .icon {
     width: 18px;
     height: 18px;
@@ -130,11 +126,9 @@
         height: 20px;
     }
 }
-
-
 .bgimages {
     @media screen and (min-width: 1300px) {
-        background-image: url('./../../images/signUp1x.png'); 
+        background-image: url('./../../images/signUp1x.png');
         background-repeat: no-repeat;
         bottom: 0;
         left: 76px;
@@ -144,17 +138,15 @@
         background-size: 352.8px 329.53px;
         // transform: rotate(-9.2deg);
     }
-
     @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
     background-image: url('./../../images/signUp2x.png');
 }
 }
-
 .bgImagesMsg {
     @media screen and (min-width: 1300px) {
-        background-image: url('./../../images/singUpMsg.png'); 
+        background-image: url('./../../images/singUpMsg.png');
         background-repeat: no-repeat;
         position: absolute;
         width: 174px;
@@ -182,18 +174,66 @@
 .span {
     color: $accent-background-color;
 }
-
-
-.invalid-feedback{
-    color: #dc3545;
-    margin-top: 8px;
+.spanIcon {
+    color: $accent-background-color;
+    &:focus {
+        transform: scale(1.4);
+        transition-duration: 500ms;
+    }
+    &:hover {
+        transform: scale(1.4);
+        transition-duration: 500ms;
+    }
+}
+.invalidFeedback{
+    color: #DC3545;
     font-size: 12px;
 }
-
-
-.is-invalid {
-    border-color: #dc3545;
-    color: #dc3545;
+.feedback{
+    height: 25px;
+    margin-top: 8px;
+    margin-left: 10px;
+}
+.isInvalidLabel {
+    position: relative;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.25;
+    color: #DC3545;
+    margin-bottom: 8px;
+    @media screen and (min-width: 768px) {
+        font-size: 14px;
+        line-height: 1.2;
+    }
+}
+.isInvalid {
+    position: relative;
+    background: $btn-text-color;
+    border: 1px solid #DC3545;
+    border-radius: 8px;
+    padding: 14px;
+    width: 100%;
+    font-size: 14px;
+    line-height: 1.29;
+    color: $primary-text-color;
+    &:focus {
+        border: 1px solid #111111;
+    }
+    &:hover {
+        border: 1px solid #111111;
+    }
+    &::placeholder {
+        color: #DCE3E5;
+        font-size: 14px;
+    }
+    @media screen and (min-width: 768px) {
+        padding: 18px;
+    }
+}
+.btnToggle{
+    position: absolute;
+    right: 20px;
+    bottom: 55px;
 }
 
 

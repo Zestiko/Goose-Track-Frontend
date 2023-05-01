@@ -1,16 +1,14 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import {
-  useDispatch,
-  // useSelector
-} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import Notiflix from 'notiflix';
 import { FiLogIn } from 'react-icons/fi';
-
-// import { selectorAuthStatus } from 'redux/auth/authSelector';
 import { authLoginThunk } from 'redux/user/user-operations';
 import scss from './LoginForm.module.scss';
 import { loginUserSchema } from 'components/ValidationUserYup/ValidationUserYup';
+import {BsEyeSlashFill } from 'react-icons/bs';
+import {BsEyeFill } from 'react-icons/bs';
+import { useState } from 'react';
 
 const initialState = {
   email: '',
@@ -21,9 +19,20 @@ const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleSubmit = async (values, { resetForm }) => {
-    console.log(values);
+  const [type, setType] = useState('password');
+  const [icon, setIcon] = useState(<BsEyeSlashFill/>);
 
+  const handleShowPassword = () => {
+      if(type==='password'){
+          setIcon(<BsEyeFill/>);
+          setType('text')
+      } else {
+          setIcon(<BsEyeSlashFill/>);
+          setType('password')
+      }
+  }
+
+  const handleSubmit = async (values, { resetForm }) => {
     try {
       await dispatch(authLoginThunk(values)).unwrap();
       Notiflix.Notify.success("It's ok!");
@@ -53,53 +62,27 @@ const LoginForm = () => {
         {({ errors, touched, resetForm }) => (
           <Form autoComplete="off" className={scss.form}>
             <h1 className={scss.title}>Log In</h1>
-            <label
-              className={
-                scss.label +
-                (errors.email && touched.email ? ' is-invalid' : '')
-              }
-            >
-              Email
-              <Field
-                id="email"
-                name="email"
-                type="email"
-                placeholder="Enter email"
-                className={
-                  scss.input +
-                  (errors.email && touched.email ? ' is-invalid' : '')
-                }
-                // onChange={handleChange}
-              />
-              <ErrorMessage
-                name="email"
-                component="div"
-                className="invalid-feedback"
-              ></ErrorMessage>
-            </label>
-            <label
-              className={
-                scss.label +
-                (errors.password && touched.password ? ' is-invalid' : '')
-              }
-            >
-              Password
-              <Field
-                id="password"
-                name="password"
-                type={'password'}
-                placeholder="Enter password"
-                className={
-                  scss.input +
-                  (errors.password && touched.password ? ' is-invalid' : '')
-                }
-                // onChange={handleChange}
-              />
-              <ErrorMessage
-                name="password"
-                component="div"
-                className="invalid-feedback"
-              ></ErrorMessage>
+            <label className={(errors.email && touched.email ? scss.isInvalidLabel : scss.label)}>
+                        Email
+                        <Field
+                            id="email"
+                            name="email"
+                            type="email"
+                            placeholder="Enter email"
+                            className={(errors.email && touched.email ? scss.isInvalid : scss.input)} />
+                        <div className={scss.feedback}><ErrorMessage name="email" component="div" className={scss.invalidFeedback}></ErrorMessage></div>
+                    </label>
+            <label className={(errors.password && touched.password ? scss.isInvalidLabel : scss.label)}>
+                        Password
+                        <Field
+                            id="password"
+                            name="password"
+                            type={type}
+                            placeholder="Enter password"
+                            className={(errors.password && touched.password ? scss.isInvalid : scss.input)}
+                            />
+              <button className={scss.btnToggle} type="button" onClick={handleShowPassword} ><div className={scss.spanIcon}>{icon}</div></button>
+              <div className={scss.feedback}><ErrorMessage name="password" component="div" className={scss.invalidFeedback}></ErrorMessage></div>
             </label>
             <button className={scss.button} type="submit">
               Log in
@@ -114,5 +97,4 @@ const LoginForm = () => {
     </div>
   );
 };
-
 export default LoginForm;
