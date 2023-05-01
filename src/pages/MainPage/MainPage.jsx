@@ -10,7 +10,6 @@ const MainPage = () => {
   const [theme, setTheme] = useState(
     localStorage.getItem('theme') || 'lightTheme'
   );
-
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {

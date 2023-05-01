@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import {
-  useDispatch,
+  useDispatch, useSelector,
   // useSelector
 } from 'react-redux';
 import Notiflix from 'notiflix';
@@ -11,6 +11,7 @@ import { FiLogIn } from 'react-icons/fi';
 import { authLoginThunk } from 'redux/user/user-operations';
 import scss from './LoginForm.module.scss';
 import { loginUserSchema } from 'components/ValidationUserYup/ValidationUserYup';
+import { getCurrentDate } from 'redux/calendar/selectors';
 
 const initialState = {
   email: '',
@@ -20,6 +21,7 @@ const initialState = {
 const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+    const currentDate = useSelector(getCurrentDate);
 
   const handleSubmit = async (values, { resetForm }) => {
     console.log(values);
@@ -28,7 +30,7 @@ const LoginForm = () => {
       await dispatch(authLoginThunk(values)).unwrap();
       Notiflix.Notify.success("It's ok!");
       resetForm();
-      navigate('/main/calendar/month/2023-04');
+      navigate(`/calendar/month/${currentDate.slice(0,7)}`);
     } catch (error) {
       console.log(error);
       Notiflix.Notify.failure('Oops! You make some mistake:-(');

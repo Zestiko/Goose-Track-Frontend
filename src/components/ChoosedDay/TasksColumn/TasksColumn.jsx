@@ -9,6 +9,7 @@ import ColumnHeadBar from '../ColumnHeadBar/ColumnHeadBar';
 import ColumnsTasksList from '../ColumnsTasksList/ColumnsTasksList';
 
 const TasksColumn = ({ title, tasks }) => {
+
   const navigate = useNavigate();
   const { choosedDay } = useParams();
 

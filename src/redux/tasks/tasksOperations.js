@@ -1,11 +1,24 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { publicApi } from 'http/http';
+import { publicApi, token } from 'http/http';
 import { setDate } from './taskSlice';
 
 export const fetchTasks = createAsyncThunk(
   'tasks/fetchAll',
   async (date, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.user.token;
+    console.log(
+      '🚀 ~ file: user-operations.js:50 ~ persistedToken:',
+      persistedToken
+    );
+
+    if (persistedToken === null) {
+      // If there is no token, exit without performing any request
+      return thunkAPI.rejectWithValue('Unable to fetch user');
+    }
+
     try {
+      token.set(persistedToken);
       const { data } = await publicApi.get(`/tasks`, { params: { date } });
       return data.tasks;
     } catch (error) {
