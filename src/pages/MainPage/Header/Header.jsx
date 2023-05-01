@@ -13,7 +13,6 @@ const Header = ({ handleBurgerMenuClick, handleToggleThemeClick, theme }) => {
   
   const userName = useSelector(selectorGetUserName);
   const avatarPath = useSelector(selectorGetUserAvatar);
-  console.log('avatarPath', avatarPath);
 
   return (
     <div className={css.header}>
