@@ -1,5 +1,5 @@
-import { COLUMNS, COLUMNS_OPTIONS } from 'constants/columns.constans';
-import { useDispatch } from 'react-redux';
+import { COLUMNS } from 'constants/columns.constans';
+// import { useDispatch } from 'react-redux';
 
 import { spriteIcons } from 'images/icons';
 // import ModalClear from 'components/ModalClear/ModalClear';
@@ -8,32 +8,19 @@ import scss from './TaskToolbar.module.scss';
 import { useRef, useState } from 'react';
 
 const TaskToolbar = ({ task }) => {
-  // console.log('toolbar task', task);
   // const dispatch = useDispatch();
-  const [openChoice, setOpenChoice] = useState(false);
   const {
-    title,
+    // title,
     // title= 'Find new cool job!',
-    startTime,
-    endTime,
-    priority,
+    // startTime,
+    // endTime,
+    // priority,
     // priority=PRIORITY.HIGHT,
     // owner,
     column,
-    taskDate,
-    _id,
+    // taskDate,
+    // _id,
   } = task;
-
-  const otherColumns = COLUMNS.filter(item => item !== column);
-  console.log(openChoice);
-  const columnRef = useRef();
-  const iconRef = useRef();
-
-  window.addEventListener('click', evt => {
-    if (evt.target !== columnRef.current && evt.target !== iconRef.current) {
-      setOpenChoice(false);
-    }
-  });
 
   // const handleChangeColumn = () => {
   //   // return (
@@ -56,26 +43,42 @@ const TaskToolbar = ({ task }) => {
   const handleUpdateTaskInfo = task => {};
 
   const handleDeleteTask = () => {};
+  const otherColumns = COLUMNS.filter(item => item !== column);
 
+  const [openChoice, setOpenChoice] = useState(false);
+  console.log(openChoice);
+  const columnRef = useRef();
+  const iconRef = useRef();
+  window.addEventListener('click', evt => {
+    if (evt.target !== columnRef.current && evt.target !== iconRef.current) {
+      setOpenChoice(true);
+    }
+  });
   return (
     <ul className={scss.cardBox}>
       <li className={scss.itemChoice}>
         <button className={scss.button}>
           <svg
             className={scss.iconCircle}
-            onClick={() => setOpenChoice(!openChoice)}
-            ref={iconRef}
+            // onClick={() => setOpenChoice(!openChoice)}
+            // ref={iconRef}
           >
             <use href={spriteIcons + '#icon-arrow-circle-broken-right'}></use>
           </svg>
-          {openChoice && (
-            <div className={scss.movesBox} ref={columnRef}>
+          {openChoice &&
+            <div
+              className={scss.movesBox}
+              // ref={columnRef}
+            >
               <ul>
                 {otherColumns.map(item => (
                   <li
                     key={item}
                     className={scss.line}
-                    onClick={() => setOpenChoice(false)}
+                    // onClick={e => {
+                    //   setOpenChoice(false);
+                    //   console.log(e.target);
+                    // }}
                   >
                     <p className={scss.text}>
                       {item}
@@ -89,7 +92,7 @@ const TaskToolbar = ({ task }) => {
                 ))}
               </ul>
             </div>
-          )}
+          }
         </button>
       </li>
       <li>

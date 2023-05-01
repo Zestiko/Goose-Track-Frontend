@@ -1,7 +1,9 @@
-// import { PRIORITY } from 'constants/priority.constans';
-
+import { selectorGetUserAvatar } from 'redux/user/selectors';
 import TaskToolbar from '../TaskToolbar/TaskToolbar';
 import scss from './TaskColumnCard.module.scss';
+import { useSelector } from 'react-redux';
+import { spriteIcons } from 'images/icons';
+import clsx from "clsx";
 
 const TaskColumnCard = ({ task }) => {
   const {
@@ -10,21 +12,31 @@ const TaskColumnCard = ({ task }) => {
     // endTime,
     priority,
     // priority=PRIORITY.HIGHT,
-    owner,
+    // owner,
     // column,
     // taskDate,
     // _id,
   } = task;
+
+  const avatarPath = useSelector(selectorGetUserAvatar);
 
   return (
     <li className={scss.card}>
       <p className={scss.title}>{title}</p>
       <div className={scss.block}>
         <div className={scss.user}>
-          <div className={scss.avatar}>avatar{owner}</div>
-          <p className="">{priority}</p>
+          {!avatarPath ? (
+            <svg className={scss.iconAvatar}>
+              <use href={spriteIcons + '#icon-avatar'}></use>
+            </svg>
+          ) : (
+            // <DefaultAvatarSvg className={scss.userAvatar} />
+            <img className={scss.userAvatar} src={avatarPath} alt="avatar" />
+          )}
+
+          <p className={clsx(scss.priority, scss[priority])} >{priority}</p>
+          <TaskToolbar task={task} />
         </div>
-        <TaskToolbar task={task} />
       </div>
     </li>
   );
