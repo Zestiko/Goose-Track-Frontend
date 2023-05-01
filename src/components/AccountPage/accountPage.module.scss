@@ -70,7 +70,7 @@
     @media screen and (min-width:767px) {
         width: 24px;
         height: 24px;
-        top: 60%;
+        top: 58%;
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
@@ -118,11 +118,13 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 10px;
+        justify-content: center;
     }
 }
 
 .username_form-label {
-    display: block;
+    display: flex;
+    flex-direction: column;
     margin-bottom: 8px;
     font-family: $primary-font;
     font-style: normal;
@@ -135,6 +137,7 @@
 .username_form-input {
     box-sizing: border-box;
     height: 42px;
+    margin-top: 8px;
     margin-bottom: 18px;
     padding: 14px 0 14px 18px;
     border: 1px solid rgba(17, 17, 17, 0.15);
@@ -148,6 +151,13 @@
     &:hover{
         border: 1px solid #111111
     }
+    @media screen and (min-width:1200px) {
+        &:nth-of-type(1),
+        &:nth-of-type(3)
+         {
+        margin-right: 50px;
+    }
+}
 }
 .username_form-input>:placeholder-shown{
     font-family: $primary-font;
@@ -162,19 +172,29 @@
     margin-bottom: 0;
 }
 .username__form-submit{
-    display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 10px 20px 10px 20px;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 40px;
-        margin-bottom: 40px;
-        isolation: isolate;
 
-        width: 195px;
-        height: 46px;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 18px;
+        text-align: center;
     
-        background: $accent-background-color;
-        border-radius: 16px
+        color: #FFFFFF;
+     display: grid;
+  grid-row: 5;
+  justify-self: center;
+  align-items: center;
+  padding: 10px 20px;
+  margin: 40px auto;
+  isolation: isolate;
+
+  width: 195px;
+  height: 46px;
+
+  background: $accent-background-color;
+  border-radius: 16px;
+
+  grid-column-start: 1;
+  grid-column-end: 3;
 }
