@@ -10,7 +10,7 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 38px;
-  background: #ffffff;
+  background: $primary-background-color;
   border-radius: 16px;
   @media screen and (min-width: 767px) {
     display: flex;
@@ -135,7 +135,7 @@
   margin-top: 8px;
   margin-bottom: 18px;
   padding: 14px 0 14px 18px;
-  border: 1px solid rgba(17, 17, 17, 0.15);
+  border: 1px solid $border-form-input;
   border-radius: 8px;
   font-family: $primary-font;
   font-style: normal;
@@ -144,7 +144,7 @@
   line-height: 18px;
   color: $primary-text-color;
   &:hover {
-    border: 1px solid #111111;
+    border: 1px solid $border-input-hover;
   }
   @media screen and (min-width: 1200px) {
     &:nth-of-type(1),
@@ -159,21 +159,21 @@
   font-weight: 600;
   font-size: 16px;
   line-height: 18px;
-  color: rgba(17, 17, 17, 0.15);
+  color: $border-form-input;
 }
 
 .username_form-input--last {
   margin-bottom: 0;
 }
 .username_form__submit {
-  font-family: 'Inter';
+  font-family: $primary-font;
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
   line-height: 18px;
   text-align: center;
 
-  color: #ffffff;
+  color: $primary-background-color;
   display: grid;
   grid-row: 5;
   justify-self: center;
@@ -193,16 +193,16 @@
 }
 
 .username__form-submit:disabled {
-  background-color: grey;
+  background-color: $not-active-item-sidebar-text-color;
 }
 
 .invalid_feedback {
-  color: #dc3545;
+  color: $task-priority-high-color;
   margin-top: 8px;
   font-size: 12px;
 }
 
 .is_invalid {
-  border-color: #dc3545;
-  color: #dc3545;
+  border-color: $task-priority-high-color;
+  color: $task-priority-high-color;
 }
