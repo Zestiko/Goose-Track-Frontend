@@ -11,9 +11,9 @@ const Sidebar = ({ isSidebarOpen, handleBurgerMenuClick, theme }) => (
       <p className={css.logoText}>
         G<i>oo</i>seTrack
       </p>
-      <Xclose className={css.closeIcon} onClick={handleBurgerMenuClick} />
+      <Xclose className={`${css.closeIcon} ${theme}`} onClick={handleBurgerMenuClick} />
     </div>
-    <Navigation />
+    <Navigation theme={theme} />
   </div>
 );
 

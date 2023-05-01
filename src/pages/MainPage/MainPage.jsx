@@ -2,7 +2,6 @@ import Header from './Header/Header';
 import Sidebar from './Sidebar/Sidebar';
 
 import css from './MainPage.module.scss';
-// import themeCss from '../../theme.module.scss';
 
 import { useState, useEffect, Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
@@ -34,7 +33,7 @@ const MainPage = () => {
           handleBurgerMenuClick={handleBurgerMenuClick}
           theme={theme}
         />
-        <main className={`${css.appPage} ${css[theme]}`}>
+        <main className={`${css.appPage} ${theme}`}>
           <Header
             header="HEADER"
             handleToggleThemeClick={handleToggleTheme}

@@ -11,10 +11,6 @@
   }
 }
 
-  .appPage.darkTheme {
-    background-color: #13151a;
-  }
-  
-  .appPage.lightTheme {
-  background-color: #f7f6f9;
-  }
+.appPage {
+  background-color: var(--secondary-background-color);
+}

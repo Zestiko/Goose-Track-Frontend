@@ -20,6 +20,7 @@
       font-weight: 700;
       font-size: 18px;
       line-height: 1;
+      color:var(--userpage-text)
     }
     
     & > .userAvatar {
@@ -56,6 +57,11 @@
         width: 44px;
       }
     }
+        .burger {
+      stroke: var(--primary-text-color);
+    }
+ 
+
   }
   
   @media screen and (max-width: 375px) {
