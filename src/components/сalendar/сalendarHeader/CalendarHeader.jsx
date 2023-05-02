@@ -1,5 +1,5 @@
 
-import css from "./CalendarHeader.module.css";
+import css from "./CalendarHeader.module.scss";
 import currentDateFormatted from '../../../redux/calendar/getFormattedDate';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import {  NavLink, useNavigate} from "react-router-dom";

@@ -1,5 +1,5 @@
-import css from "./CalendarGrid.module.css"
-import moment from 'moment/moment'
+import css from "./CalendarGrid.module.scss";
+import moment from 'moment/moment';
 import { useEffect, useState } from "react";
 import { chosedDateAction, swichAction,} from "../../../redux/calendar/actions";
 import { useSelector, useDispatch } from 'react-redux';
@@ -7,13 +7,13 @@ import {  useNavigate } from 'react-router-dom';
 import { getCurrentDate } from "../../../redux/calendar/selectors";
 import { selectTasks } from "redux/tasks/taskSelectors";
 
-const CalendarGrid = () => {
+const CalendarGrid = ({theme}) => {
+    
     const navigate = useNavigate();
     const dispatch = useDispatch()
     const currentDate = useSelector(getCurrentDate);
     const deserialized = moment(currentDate);
     
-
 const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
@@ -68,11 +68,11 @@ const [windowSize, setWindowSize] = useState({
     // console.log("🚀  dataForMonth:", dataForMonth);
     return (
         <>
-            <div className={css.grid}>
+            <div className={`${css.grid} ${theme}`}>
                 
             {arrayDays.map((item) => (
                 <div key={item.unix()}
-                    className={`${css.box}`}
+                    className={`${css.box} ${theme}`}
                     onClick={
                         isCurrentMonth(item)
                             ?
@@ -81,11 +81,11 @@ const [windowSize, setWindowSize] = useState({
                             null
                     }>
                     
-                    <div className={css.box_wrap}>
+                    <div className={`${css.box_wrap} ${theme}`}>
 
                         {isCurrentDay(item)
                                 ?
-                            <div className={`${css.box_day} ${css.current_day}`}>
+                            <div className={`${css.box_day} ${css.current_day} ${theme}`}>
                                 <span>{item.format("D")}</span>
                             </div>
                                 :
@@ -94,7 +94,7 @@ const [windowSize, setWindowSize] = useState({
                             ><span >{item.format("D")}</span></div>}  
                         
                     </div>
-                    <div className={`${css.notice_wrap}` }>
+                    <div className={`${css.notice_wrap} ${theme}` }>
                         {dataAllMonth.filter((itemDay, i) =>
                             (item.format("YYYY-MM-DD") === moment(itemDay.taskDate).format("YYYY-MM-DD"))).slice(0, 3)
                             .map((itemDay, i) => (
