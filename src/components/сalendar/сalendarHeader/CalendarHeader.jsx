@@ -50,7 +50,8 @@ export const CalendarHeader = () => {
                                 `${deserialized.format("D MMMM YYYY")}`
                             }</span>
                </div>
-                    <button type="button" 
+               <div className={`${css.btn_prev_next}`}>
+                        <button type="button" 
                         className={`${css.btn} ${css.prev} ${css.btn_arrow} `}
                         onClick={()=>handlePrev(deserialized.clone().subtract(1, "month"))} 
                         disabled={ currentDateFormatted.slice(0,7) === deserialized.format("YYYY-MM")}
@@ -60,6 +61,7 @@ export const CalendarHeader = () => {
                         className={`${css.btn} ${css.next} ${css.btn_arrow} `}
                         onClick={()=>handleNext(deserialized.clone().add(1, "month"))}
                     ><FaChevronRight /></button>
+                </div>
             </div>
             
             <div className={css.caledr_header_wrapper_btn}>

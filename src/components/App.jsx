@@ -50,14 +50,13 @@ export const App = () => {
             }
           />
           <Route path="/" element={<PrivateRoute redirectTo ="/welcome" component={<MainPage/>} />}>
-            <Route path="user" element={<UserPage />} />
+            <Route path="account" element={<UserPage />} />
             <Route
               path="calendar"
               element={
-                <div>
-                  <h1>То что делает ваня</h1>
-                  <Outlet />
-                </div>
+                  <div>
+                    <Outlet />
+                  </div>
               }
             >
               <Route
