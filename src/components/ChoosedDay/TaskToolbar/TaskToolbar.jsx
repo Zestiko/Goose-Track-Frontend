@@ -1,19 +1,22 @@
-import { COLUMNS } from 'constants/columns.constans';
+// import { COLUMNS } from 'constants/columns.constans';
 import { useDispatch } from 'react-redux';
 
 import { spriteIcons } from 'images/icons';
 
 // import { updateTask } from 'redux/tasks/tasksOperations';
 import scss from './TaskToolbar.module.scss';
+// import { useRef } from 'react';
 import { useRef, useState } from 'react';
-import { removeTask, updateTask } from 'redux/tasks/tasksOperations';
+import { removeTask } from 'redux/tasks/tasksOperations';
+// import { removeTask, updateTask } from 'redux/tasks/tasksOperations';
 import TaskModal from 'components/TaskModal/TaskModal';
 import { useToggle } from 'hooks/useToggle';
 
 const TaskToolbar = ({ task }) => {
   const dispatch = useDispatch();
-  const { column, _id } = task;
-  const [showUpdateModal, setShowUpdateModal] = useState(false);
+  // const { column, _id } = task;
+  // const [showUpdateModal, setShowUpdateModal] = useState(false);
+  // eslint-disable-next-line no-unused-vars
   const [openChoice, setOpenChoice] = useState(false);
   const { isOpen, onOpen, onClose } = useToggle();
   // const handleChangeColumn = () => {
@@ -38,7 +41,7 @@ const TaskToolbar = ({ task }) => {
     await dispatch(removeTask(task._id));
   };
 
-  const otherColumns = COLUMNS.filter(item => item !== column);
+  // const otherColumns = COLUMNS.filter(item => item !== column);
 
   // console.log(openChoice);
   const columnRef = useRef();
