@@ -7,7 +7,7 @@ import { spriteIcons } from 'images/icons';
 import scss from './TaskToolbar.module.scss';
 import { useRef, useState } from 'react';
 import { removeTask, updateTask } from 'redux/tasks/tasksOperations';
-// import ModalToggel from 'components/ModalTogel/ModalToggel';
+import ModalToggel from 'components/ModalTogel/ModalToggel';
 import Modal from 'components/Modal/Modal';
 
 const TaskToolbar = ({ task }) => {
@@ -61,9 +61,7 @@ const TaskToolbar = ({ task }) => {
       <ul className={scss.cardBox}>
         <li className={scss.itemChoice}>
           <button>
-            <svg className={scss.iconCircle}
-
-            >
+            <svg className={scss.iconCircle}>
               <use href={spriteIcons + '#icon-arrow-circle-broken-right'}></use>
             </svg>
           </button>
@@ -125,8 +123,8 @@ const TaskToolbar = ({ task }) => {
           </button>
         </li>
       </ul>
-      {/* {showUpdateModal && <ModalToggel data={task} />} */}
-      {showUpdateModal && <Modal data={task} />}
+      {showUpdateModal && <ModalToggel data={task} />}
+      {/* {showUpdateModal && <Modal data={task} />} */}
     </>
   );
 };

@@ -8,18 +8,16 @@ import { addTask } from 'redux/tasks/tasksOperations';
 // import { useParams } from 'react-router-dom';
 import { getCurrentDate } from 'redux/calendar/selectors';
 
-export const TaskForm = ({ data, onClose }) => {
+export const TaskForm = ({ taskData, onClose }) => {
   const dispatch = useDispatch();
-const currentDate = useSelector(getCurrentDate);
-
-  const task = null;
-
+  const currentDate = useSelector(getCurrentDate);
+  console.log(taskData);
   const [title, setInTitle] = useState('');
   const [startTime, setstartTime] = useState('09:00');
   const [endTime, setEndTime] = useState('14:00');
   const [priority, setPriority] = useState('low');
 
-  const dataForm = {
+  const dataForm = taskData || {
     taskDate: currentDate,
     title,
     startTime,
@@ -129,7 +127,7 @@ const currentDate = useSelector(getCurrentDate);
             </div>
           </label>
         </div>
-        {task === null ? (
+        {!taskData ? (
           <div className={styles.flex}>
             <button type="submit" className={styles.button}>
               <div>

@@ -1,40 +1,22 @@
 import PropTypes from 'prop-types';
-// import { useParams } from 'react-router-dom/dist';
-
 import scss from './TasksColumn.module.scss';
 import AddTaskBtn from '../AddTaskBtn/AddTaskBtn';
 import ColumnHeadBar from '../ColumnHeadBar/ColumnHeadBar';
 import ColumnsTasksList from '../ColumnsTasksList/ColumnsTasksList';
-import { useState } from 'react';
-// import Modal from 'components/Modal/Modal';
-import ModalToggel from 'components/ModalTogel/ModalToggel';
-import { useSelector } from 'react-redux';
-import { getCurrentDate } from 'redux/calendar/selectors';
-import Modal from 'components/Modal/Modal';
-
+import TaskModal from 'components/TaskModal/TaskModal';
+import { useToggle } from 'hooks/useToggle';
 
 const TasksColumn = ({ title, tasks }) => {
-  // const { choosedDay } = useParams();
-  const taskDate = useSelector(getCurrentDate);
-  console.log(taskDate)
-  const [openModal, setOpenModal] = useState(false);
-
-  const openModalNewTask = () => {
-    setOpenModal(true);
-
-  };
+  const { isOpen, onOpen, onClose } = useToggle();
 
   return (
     <>
       <li className={scss.columnBox}>
-        <ColumnHeadBar title={title} openModalNewTask={openModalNewTask} />
-
+        <ColumnHeadBar title={title} openModalNewTask={onClose} />
         {tasks && <ColumnsTasksList tasks={tasks} />}
-
-
-        <AddTaskBtn onClick={openModalNewTask} />
+        <AddTaskBtn onClick={onOpen} />
       </li>
-      {openModal && <Modal taskDate={taskDate} />}
+      {isOpen && <TaskModal onClose={onClose} />}
     </>
   );
 };
