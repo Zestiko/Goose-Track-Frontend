@@ -1,40 +1,35 @@
 import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
-import { useParams } from 'react-router-dom/dist';
+// import { useParams } from 'react-router-dom/dist';
 
 import scss from './TasksColumn.module.scss';
-import { ROUTES } from 'constants/routes.constans';
 import AddTaskBtn from '../AddTaskBtn/AddTaskBtn';
 import ColumnHeadBar from '../ColumnHeadBar/ColumnHeadBar';
 import ColumnsTasksList from '../ColumnsTasksList/ColumnsTasksList';
+import { useState } from 'react';
+import ModalToggel from 'components/ModalTogel/ModalToggel';
+
 
 const TasksColumn = ({ title, tasks }) => {
-
-  const navigate = useNavigate();
-  const { choosedDay } = useParams();
-
-  // const openModalNewColumn = () => {
-  //   navigate({
-  //     pathname: '',
-  //     /** Додавання нового типу завдань */
-  //   });
-  // };
+  // const { choosedDay } = useParams();
+  const [openModal, setOpenModal] = useState(false);
 
   const openModalNewTask = () => {
-    navigate({
-      pathname: `${ROUTES.calendar}${ROUTES.day}/${choosedDay}/add`,
-    });
+
+    setOpenModal(true);
   };
 
   return (
-    <li className={scss.columnBox}>
-      <ColumnHeadBar title={title} openModalNewTask={openModalNewTask} />
+    <>
+      <li className={scss.columnBox}>
+        <ColumnHeadBar title={title} openModalNewTask={openModalNewTask} />
 
-      {/* {tasks && <ColumnsTasksList tasks={tasks} />} */}
-      <ColumnsTasksList tasks={tasks} />
+        {tasks && <ColumnsTasksList tasks={tasks} />}
 
-      <AddTaskBtn onClick={openModalNewTask} />
-    </li>
+
+        <AddTaskBtn onClick={openModalNewTask} />
+      </li>
+      {openModal && <ModalToggel/>}
+    </>
   );
 };
 

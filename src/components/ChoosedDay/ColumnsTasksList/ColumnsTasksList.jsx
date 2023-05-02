@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import scss from './ColumnsTasksList.module.scss';
 import TaskColumnCard from '../TaskColumnCard/TaskColumnCard';
 
-// const ColumnsTasksList = () => {
 const ColumnsTasksList = ({ tasks }) => {
   return (
     <ul className={scss.column}>
