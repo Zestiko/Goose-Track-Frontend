@@ -14,7 +14,7 @@ import styles from './TaskForm.module.scss';
 import { BsPencil } from 'react-icons/bs';
 
 
-export const TaskForm = ({ props, onClose }) => {
+export const TaskForm = ({ props, onClose,  column }) => {
   const theme = localStorage.getItem('theme') || 'lightTheme';
 
   const dispatch = useDispatch();
