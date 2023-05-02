@@ -6,23 +6,13 @@ import { spriteIcons } from 'images/icons';
 // import { updateTask } from 'redux/tasks/tasksOperations';
 import scss from './TaskToolbar.module.scss';
 import { useRef, useState } from 'react';
-import { removeTask } from 'redux/tasks/tasksOperations';
-import ModalToggel from 'components/ModalTogel/ModalToggel';
+import { removeTask, updateTask } from 'redux/tasks/tasksOperations';
+// import ModalToggel from 'components/ModalTogel/ModalToggel';
+import Modal from 'components/Modal/Modal';
 
 const TaskToolbar = ({ task }) => {
   const dispatch = useDispatch();
-  const {
-    // title,
-    // title= 'Find new cool job!',
-    // startTime,
-    // endTime,
-    // priority,
-    // priority=PRIORITY.HIGHT,
-    // owner,
-    column,
-    // taskDate,
-    // _id,
-  } = task;
+  const { column, _id } = task;
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [openChoice, setOpenChoice] = useState(false);
 
@@ -44,8 +34,9 @@ const TaskToolbar = ({ task }) => {
   //   // );
   // };
 
-  const handleUpdateTaskInfo = () => {
+  const handleUpdateTaskInfo = async () => {
     setShowUpdateModal(!showUpdateModal);
+    await dispatch(updateTask(task._id));
   };
 
   const handleDeleteTask = async () => {
@@ -54,41 +45,53 @@ const TaskToolbar = ({ task }) => {
 
   const otherColumns = COLUMNS.filter(item => item !== column);
 
-  console.log(openChoice);
+  // console.log(openChoice);
   const columnRef = useRef();
   const iconRef = useRef();
   window.addEventListener('click', evt => {
     if (evt.target !== columnRef.current && evt.target !== iconRef.current) {
-      setOpenChoice(true);
+      setOpenChoice(false);
+      // console.log(evt.target, columnRef.current);
+      // console.log(evt.target, iconRef.current);
     }
   });
 
   return (
     <>
-    <ul className={scss.cardBox}>
-      <li className={scss.itemChoice}>
-        <button className={scss.button}>
+      <ul className={scss.cardBox}>
+        <li className={scss.itemChoice}>
+          <button>
+            <svg className={scss.iconCircle}
+
+            >
+              <use href={spriteIcons + '#icon-arrow-circle-broken-right'}></use>
+            </svg>
+          </button>
+          {/* <button className={scss.button}>
           <svg
             className={scss.iconCircle}
-            // onClick={() => setOpenChoice(!openChoice)}
-            // ref={iconRef}
+            onClick={() => setOpenChoice(true)}
+            ref={iconRef}
           >
             <use href={spriteIcons + '#icon-arrow-circle-broken-right'}></use>
           </svg>
           {openChoice &&
             <div
               className={scss.movesBox}
-              // ref={columnRef}
+              ref={columnRef}
             >
               <ul>
                 {otherColumns.map(item => (
                   <li
                     key={item}
                     className={scss.line}
-                    // onClick={e => {
-                    //   setOpenChoice(false);
-                    //   console.log(e.target);
-                    // }}
+                    onClick={e => {
+                      setOpenChoice(false);
+                      dispatch(updateTask(_id, column === item));
+                      console.log(e.target);
+                      // console.log(_id, column)
+                      // console.log(task);
+                    }}
                   >
                     <p className={scss.text}>
                       {item}
@@ -103,26 +106,27 @@ const TaskToolbar = ({ task }) => {
               </ul>
             </div>
           }
-        </button>
-      </li>
-      <li>
-        <button onClick={handleUpdateTaskInfo}>
-          <svg className={scss.iconButton}>
-            {/* <use href={iconPencil}></use> */}
-            <use href={spriteIcons + '#icon-pencil'}></use>
-          </svg>
-        </button>
-      </li>
-      <li>
-        <button onClick={handleDeleteTask}>
-          <svg className={scss.iconButton}>
-            {/* <use href={iconTrash}></use> */}
-            <use href={spriteIcons + '#icon-trash'}></use>
-          </svg>
-        </button>
-      </li>
+        </button> */}
+        </li>
+        <li>
+          <button onClick={handleUpdateTaskInfo}>
+            <svg className={scss.iconButton}>
+              {/* <use href={iconPencil}></use> */}
+              <use href={spriteIcons + '#icon-pencil'}></use>
+            </svg>
+          </button>
+        </li>
+        <li>
+          <button onClick={handleDeleteTask}>
+            <svg className={scss.iconButton}>
+              {/* <use href={iconTrash}></use> */}
+              <use href={spriteIcons + '#icon-trash'}></use>
+            </svg>
+          </button>
+        </li>
       </ul>
-      {showUpdateModal && <ModalToggel data={task} />}
+      {/* {showUpdateModal && <ModalToggel data={task} />} */}
+      {showUpdateModal && <Modal data={task} />}
     </>
   );
 };

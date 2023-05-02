@@ -3,12 +3,14 @@ import { useState } from 'react';
 import { ReactComponent as Close } from '../../images/icons/x-close.svg';
 import { ReactComponent as Pencil } from '../../images/icons/icon-pencil-01.svg';
 import { ReactComponent as Plus } from '../../images/icons/icon-plus.svg';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addTask } from 'redux/tasks/tasksOperations';
+// import { useParams } from 'react-router-dom';
+import { getCurrentDate } from 'redux/calendar/selectors';
 
 export const TaskForm = ({ data, onClose }) => {
   const dispatch = useDispatch();
-
+const currentDate = useSelector(getCurrentDate);
 
   const task = null;
 
@@ -18,6 +20,7 @@ export const TaskForm = ({ data, onClose }) => {
   const [priority, setPriority] = useState('low');
 
   const dataForm = {
+    taskDate: currentDate,
     title,
     startTime,
     endTime,
