@@ -17,12 +17,7 @@ export const CalendarHeader = () => {
     const currentDate = useSelector(getCurrentDate);
     const swich = useSelector(getDayOrMonth);
     const deserialized = moment(currentDate);
-
-    // console.log("🚀  currentDate:", currentDate);
-    // console.log("🚀  currentDate:", currentDate.format());
     
-    // console.log("🚀  currentDate:", currentDate.format("D"));
-
     const activeButton = (isDayOrMonth) => {
         if (!isDayOrMonth) {
         navigate(`/calendar/day/${deserialized.format("YYYY-MM-DD")}`);
@@ -58,7 +53,7 @@ export const CalendarHeader = () => {
                     <button type="button" 
                         className={`${css.btn} ${css.prev} ${css.btn_arrow} `}
                         onClick={()=>handlePrev(deserialized.clone().subtract(1, "month"))} 
-                        disabled={ currentDateFormatted === deserialized.format("YYYY-MM")}
+                        disabled={ currentDateFormatted.slice(0,7) === deserialized.format("YYYY-MM")}
                     ><FaChevronLeft /></button>
                     
                     <button type="button"
