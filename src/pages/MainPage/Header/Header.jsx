@@ -1,9 +1,22 @@
+import { useLocation } from 'react-router-dom';
 import { ReactComponent as BurgerMenuSvg } from '../../../images/icons/burger-menu.svg';
 import css from './Header.module.scss';
 import ThemeToggler from './ThemeToggler/ThemeToggler';
 import UserInfoModal from 'components/UserInfoModal/UserInfoModal';
+import { useSelector } from 'react-redux';
+import { selectTasks } from 'redux/tasks/taskSelectors';
 
 const Header = ({ handleBurgerMenuClick, handleToggleThemeClick, theme }) => {
+  const location = useLocation();
+  const tasks = useSelector(selectTasks);
+  let title;
+  if (location.pathname === '/calendar') {
+    title = 'Calendar';
+  } else if (location.pathname === '/account') {
+    title = 'User Profile';
+  } else {
+    title = 'Calendar';
+  }
   return (
     <div className={css.header}>
       <BurgerMenuSvg

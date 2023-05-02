@@ -96,7 +96,7 @@ const [windowSize, setWindowSize] = useState({
                     </div>
                     <div className={`${css.notice_wrap} ${theme}` }>
                         {dataAllMonth.filter((itemDay, i) =>
-                            (item.format("YYYY-MM-DD") === moment(itemDay.taskDate).format("YYYY-MM-DD"))).slice(0, 3)
+                            (item.format("YYYY-MM-DD") === moment(itemDay.taskDate).format("YYYY-MM-DD")))?.slice(0, 3)
                             .map((itemDay, i) => (
                                 <p key={i} className={
                                     itemDay.priority === "high"
