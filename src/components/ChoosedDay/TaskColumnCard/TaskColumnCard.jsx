@@ -26,11 +26,10 @@ const TaskColumnCard = ({ task }) => {
       <div className={scss.block}>
         <div className={scss.user}>
           {!avatarPath ? (
-            <svg className={scss.iconAvatar}>
+            <svg className={scss.userAvatar}>
               <use href={spriteIcons + '#icon-avatar'}></use>
             </svg>
           ) : (
-            // <DefaultAvatarSvg className={scss.userAvatar} />
             <img className={scss.userAvatar} src={avatarPath} alt="avatar" />
           )}
 

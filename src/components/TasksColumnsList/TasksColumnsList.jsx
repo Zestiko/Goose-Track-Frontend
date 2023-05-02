@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchTasks } from 'redux/tasks/tasksOperations';
 import { getCurrentDate } from 'redux/calendar/selectors';
+import { COLUMNS_OPTIONS } from 'constants/columns.constans';
 
 const COLUMNS = ['toDo', 'inProgress', 'done'];
 
@@ -27,7 +28,7 @@ const TasksColumnsList = () => {
 
   return (
     <div className={scss.listBox}>
-      {COLUMNS.map(column => {
+      {/* {COLUMNS.map(column => {
         return (
           <TasksColumn
             key={column}
@@ -35,7 +36,14 @@ const TasksColumnsList = () => {
             title={column}
           />
         );
-      })}
+      })} */}
+      {COLUMNS_OPTIONS.map(item => (
+        <TasksColumn
+          key={item.column}
+          title={item.title}
+          tasks={tasksByColumns[item.column]}
+        />
+      ))}
     </div>
   );
 };

@@ -3,13 +3,13 @@
 
 .columnBox {
   height: 100%;
-  background-color: #ffffff;
+  background-color: var(--background-color-task-column);
   padding: 18px;
   text-align: center;
   flex: 1 0 335px;
   /* на всій ширині на малих екранах */
   width: 335px;
-  border: 1px solid rgba(220, 227, 229, 0.8);
+  border: var(--border-task-column);
   border-radius: 8px;
   box-sizing: border-box;
   display: flex;

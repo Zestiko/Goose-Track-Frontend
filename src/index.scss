@@ -44,16 +44,21 @@ $secondary-font: 'Coolvetica', sans-serif;
 
   --accent-background-color: #3e85f3;
   --active-item-sidebar-background: #e3f3ff;
-
+  --accent-add-btn-background: #3e85f3;
   --auth-bg-color: #dcebf7;
+  --background-color-task-column:#ffffff;
 
-  
+
 
   --border: 1px solid rgba(220, 227, 229, 0.8);
   --border-calendar: 1px solid rgba(220, 227, 229, 0.5);
   --border-calendar-period-type: 1px solid rgba(62, 133, 243, 0.2);
   --border-auth: 1px solid rgba(220, 227, 229, 0.6);
   --border-form-input:rgba(17, 17, 17, 0.15);
+  --border-add-button: 1px dashed rgba(62, 133, 243, 1);
+  --border-task-column: 1px solid rgba(220, 227, 229, 0.8);
+  --border-avatar: 1.8px solid #3e85f3;
+
 
   /* text-color */
   --logo-text-color: #3e85f3;
@@ -82,10 +87,15 @@ $secondary-font: 'Coolvetica', sans-serif;
   --task-priority-high-color: #ea3d65;
   --task-input-bg-color: #f7f7f7;
   --task-btn-cancel-bg-color: #efefef;
+  --task-bg-move-box: #ffffff;
+  --task-text-color-light:#616161;
+
 
   /* scroll */
   --scrollbar-color: #e7e5e5;
   --scrollbar-bg-color: #f2f2f2;
+    --scrollbar-color-task: #e7e5e5;
+      --scrollbar-bg-color-task: #f2f2f2;
 
   /* decorations */
   --animation: 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -98,6 +108,9 @@ $secondary-font: 'Coolvetica', sans-serif;
   --sidebar-background-color: #13151a;
   --active-item-sidebar-background: #3e85f3;
   --border-form-input:rgba(255, 255, 255, 0.15);
+  --accent-add-btn-background: #cae8ff;
+  --background-color-task-column: #21222C;
+
 
   /* text-color */
   --logo-text-color: #e3f3ff;
@@ -126,11 +139,21 @@ $secondary-font: 'Coolvetica', sans-serif;
   --task-priority-high-color: #ea3d65;
   --task-input-bg-color: #f7f7f7;
   --task-btn-cancel-bg-color: #efefef;
+  --border-task-column: 1px solid rgba(255, 255, 255, 0.15);
+  --task-bg-move-box: #171820;
+  --task-text-color-light: #ffffff;
+  --border-avatar: 1.8px solid #3e85f3;
 
   /* scroll */
   --scrollbar-color: #e7e5e5;
   --scrollbar-bg-color: #f2f2f2;
+  --scrollbar-color-task: #171820;
+    --scrollbar-bg-color-task: #2D3037;
 
   /* decorations */
   --animation: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* borders */
+  --border-add-button: 1px solid rgba(62, 133, 243, 1);
+
 }
