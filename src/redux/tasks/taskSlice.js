@@ -43,7 +43,7 @@ const tasksSlice = createSlice({
         const idx = state.tasks.findIndex(
           task => task.id === action.payload.id
         );
-        state.tasks.splice(idx, 1, action.payload);
+        state.tasks.splice(idx, 1, action.payload.task);
       })
       .addCase(removeTask.fulfilled, (state, action) => {
         state.status = STATUS.success;
