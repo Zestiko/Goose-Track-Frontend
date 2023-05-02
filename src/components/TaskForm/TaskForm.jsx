@@ -1,31 +1,17 @@
-import styles from './TaskForm.module.scss';
+import moment from 'moment';
 import { ReactComponent as Plus } from '../../images/icons/icon-plus.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { addTask } from 'redux/tasks/tasksOperations';
+import { taskSchema } from './validationTasks/validationTasks';
+import { PRIORITY_OPTIONS } from 'constants/priority.constans';
+
+import { addTask, fetchTasks } from 'redux/tasks/tasksOperations';
 import { getCurrentDate } from 'redux/calendar/selectors';
-import moment from 'moment';
 import { updateTask } from 'redux/tasks/tasksOperations';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
+
 import CustomRadio from './CustomRadio/CustomRadio';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import styles from './TaskForm.module.scss';
 import { BsPencil } from 'react-icons/bs';
-
-const options = [
-  { label: 'Low', value: 'low', color: 'blue' },
-  { label: 'Medium', value: 'medium', color: 'green' },
-  { label: 'High', value: 'high', color: 'red' },
-];
-
-export const taskSchema = Yup.object().shape({
-  title: Yup.string()
-    .min(3, 'Too Short!')
-    .max(36, 'Too Long!')
-    .required('Type something title'),
-  startTime: Yup.string('Set start time').required('Set start time'),
-  endTime: Yup.string('Invalid endTime').required('Set end time'),
-  taskData: Yup.string('Invalid taskData'),
-  priority: Yup.string('Invalid priority'),
-});
 
 export const TaskForm = ({ props, onClose, theme }) => {
   const dispatch = useDispatch();
@@ -48,6 +34,7 @@ export const TaskForm = ({ props, onClose, theme }) => {
     } else {
       dispatch(addTask(values));
     }
+    dispatch(fetchTasks());
     onClose();
   };
   return (
@@ -64,8 +51,6 @@ export const TaskForm = ({ props, onClose, theme }) => {
         }}
       >
         {formik => {
-          console.log('!formik.dirty', !formik.dirty);
-          console.log('!formik.isValid', !formik.isValid);
           return (
             <Form
               className={`${styles.form} ${theme}`}
@@ -133,7 +118,7 @@ export const TaskForm = ({ props, onClose, theme }) => {
               </div>
               <div className={styles.flex}>
                 <CustomRadio
-                  options={options}
+                  options={PRIORITY_OPTIONS}
                   value={formik.values.priority}
                   setFieldValue={formik.setFieldValue}
                 />
