@@ -65,7 +65,9 @@ export const updateTask = createAsyncThunk(
   'tasks/updateTask',
   async ({ taskId, updatedTask }, thunkAPI) => {
     try {
-      const { data } = await publicApi.delete(`/tasks/${taskId}`, {
+      console.log('REDUX ID', taskId);
+      console.log('REDUX task', updatedTask);
+      const { data } = await publicApi.patch(`/tasks/${taskId}`, {
         ...updatedTask,
       });
       return data;
