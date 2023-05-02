@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { publicApi, token } from 'http/http';
 import { setDate } from './taskSlice';
+import { Notify } from 'notiflix';
 
 export const fetchTasks = createAsyncThunk(
   'tasks/fetchAll',
@@ -40,8 +41,11 @@ export const addTask = createAsyncThunk(
   async (newTask, thunkAPI) => {
     try {
       const { data } = await publicApi.post('/tasks', { ...newTask });
+      Notify.success('Success.Task added');
       return data;
     } catch (error) {
+      Notify.error('Error.Something gone wrong.');
+
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -51,8 +55,12 @@ export const removeTask = createAsyncThunk(
   async (taskId, thunkAPI) => {
     try {
       const { data } = await publicApi.delete(`/tasks/${taskId}`);
+      Notify.success('Success.Task removed');
+
       return data;
     } catch (error) {
+      Notify.error('Error.Something gone wrong.');
+
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -61,12 +69,14 @@ export const updateTask = createAsyncThunk(
   'tasks/updateTask',
   async ({ taskId, updatedTask }, thunkAPI) => {
     try {
-
       const { data } = await publicApi.patch(`/tasks/${taskId}`, {
         ...updatedTask,
       });
+      Notify.success('Success.Task updated.');
+
       return data;
     } catch (error) {
+      Notify.error('Error.Something gone wrong.');
       return thunkAPI.rejectWithValue(error.message);
     }
   }

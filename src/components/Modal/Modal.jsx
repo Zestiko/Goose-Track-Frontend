@@ -2,6 +2,8 @@ import scss from './Modal.module.scss';
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import closeIcon from '../../images/icons/icon-x-close.svg';
+import closeIcon2 from '../../images/icons/icon-x-close-2.svg';
+import clsx from 'clsx';
 
 /**
  *
@@ -21,6 +23,8 @@ import closeIcon from '../../images/icons/icon-x-close.svg';
  */
 
 const Modal = ({ onClose, children }) => {
+  const theme = localStorage.getItem('theme') || 'lightTheme';
+
   useEffect(() => {
     const handleKeyDown = e => {
       if (e.key === 'Escape') {
@@ -45,11 +49,23 @@ const Modal = ({ onClose, children }) => {
   };
 
   return createPortal(
-    <div className={scss.modalBox}>
-      <div className={scss.modalOverlay} onClick={handleClickBackdrop}></div>
-      <div className={scss.modalBody}>
-        <button onClick={handleClose} className={scss.closeButton}>
-          <img src={closeIcon} alt="1" className={scss.closeButtonIcon} />
+    <div className={clsx(scss.modalBox, theme)}>
+      <div
+        className={clsx(scss.modalOverlay, theme)}
+        onClick={handleClickBackdrop}
+      ></div>
+      <div className={clsx(scss.modalBody, theme)}>
+        <button onClick={handleClose} className={clsx(scss.closeButton, theme)}>
+          <img
+            src={closeIcon}
+            alt="1"
+            className={clsx(scss.closeButtonIcon, theme)}
+          />
+          <img
+            src={theme !== 'darkTheme' ? closeIcon : closeIcon2}
+            alt="1"
+            className={clsx(scss.closeButtonIcon, theme)}
+          />
         </button>
         {children}
       </div>
