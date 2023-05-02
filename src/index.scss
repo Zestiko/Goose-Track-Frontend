@@ -30,10 +30,9 @@ svg {
 
 $primary-font: 'Inter', sans-serif;
 $secondary-font: 'Coolvetica', sans-serif;
-:root{
-  --button-background-color:#3e85f3;
-    --button-text-color: #ffffff;
-
+:root {
+  --button-background-color: #3e85f3;
+  --button-text-color: #ffffff;
 }
 
 .lightTheme {
@@ -47,13 +46,11 @@ $secondary-font: 'Coolvetica', sans-serif;
 
   --auth-bg-color: #dcebf7;
 
-  
-
   --border: 1px solid rgba(220, 227, 229, 0.8);
   --border-calendar: 1px solid rgba(220, 227, 229, 0.5);
   --border-calendar-period-type: 1px solid rgba(62, 133, 243, 0.2);
   --border-auth: 1px solid rgba(220, 227, 229, 0.6);
-  --border-form-input:rgba(17, 17, 17, 0.15);
+  --border-form-input: rgba(17, 17, 17, 0.15);
 
   /* text-color */
   --logo-text-color: #3e85f3;
@@ -81,7 +78,11 @@ $secondary-font: 'Coolvetica', sans-serif;
   --task-priority-medium-color: #f3b249;
   --task-priority-high-color: #ea3d65;
   --task-input-bg-color: #f7f7f7;
+  --task-input-bg-color2: #f6f6f6;
+  --task-modal-bg: #fff;
+
   --task-btn-cancel-bg-color: #efefef;
+  --task-text-color: #616161;
 
   /* scroll */
   --scrollbar-color: #e7e5e5;
@@ -97,14 +98,14 @@ $secondary-font: 'Coolvetica', sans-serif;
   --secondary-background-color: #171820;
   --sidebar-background-color: #13151a;
   --active-item-sidebar-background: #3e85f3;
-  --border-form-input:rgba(255, 255, 255, 0.15);
+  --border-form-input: rgba(255, 255, 255, 0.15);
 
   /* text-color */
   --logo-text-color: #e3f3ff;
   --primary-text-color: #ffffff;
   --secondary-text-color: #616161;
   --accent-text-color: #ffffff;
-  --accent-btn-background:#3e85f3;
+  --accent-btn-background: #3e85f3;
 
   --not-active-item-sidebar-text-color: #ffffff;
   --auth-placeholder-color: #dce3e5;
@@ -116,8 +117,8 @@ $secondary-font: 'Coolvetica', sans-serif;
   --priority-low-bg-color: #ceeefd;
   --priority-medium-bg-сolor: #fcf0d4;
   --priority-high-bg-color: #ffd2dd;
-  --active-button-period-type: #3E85F3;
-  --button-period-type: #21222C;
+  --active-button-period-type: #3e85f3;
+  --button-period-type: #21222c;
   --close-btn-color: #111111;
 
   /* tasks */
@@ -125,7 +126,12 @@ $secondary-font: 'Coolvetica', sans-serif;
   --task-priority-medium-color: #f3b249;
   --task-priority-high-color: #ea3d65;
   --task-input-bg-color: #f7f7f7;
+  --task-input-bg-color2: #171820;
+  --task-modal-bg: #171820;
+  --task-input-border-color: rgba(255, 255, 255, 0.149);
+
   --task-btn-cancel-bg-color: #efefef;
+  --task-text-color: #ffffff;
 
   /* scroll */
   --scrollbar-color: #e7e5e5;
