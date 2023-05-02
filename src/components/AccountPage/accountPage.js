@@ -1,43 +1,89 @@
-import React, {  useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectorGetUser } from '../../redux/user/selectors';
-import {
-  updateUserProfile,
-  
-} from '../../redux/user/user-operations';
+import { updateUserProfile } from '../../redux/user/user-operations';
 import userAvatar from '../../images/icons/ph_user.svg';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field, ErrorMessage, useField } from 'formik';
+import DatePicker from 'react-datepicker';
 import * as Yup from 'yup';
 import moment from 'moment';
 import css from './accountPage.module.scss';
 
-
+const today = new Date().toISOString().split('T')[0];
 export const infoUserSchema = Yup.object().shape({
   userName: Yup.string()
     .min(3, 'Too Short!')
     .max(36, 'Too Long!')
     .required('Required'),
   email: Yup.string().email('Invalid email').required('Required'),
-  phone: Yup.string('Invalid phone'),
+  phone: Yup.string()
+    .matches(
+      /^(\+)?((\d{2,3}) ?\d|\d)(([ -]?\d)|( ?(\d{2,3}) ?)){5,12}\d$/,
+      'Invalid phone'
+    )
+    .optional(),
   telegram: Yup.string('Invalid telegram'),
   avatar: Yup.string('Invalid avatar'),
-  birthday: Yup.string('Invalid avatar'),
+  birthday: Yup.date().max(today, 'Selected date cannot be in the future'),
 });
 
-const UserForm = ({theme}) => {
+const MyDatePicker = ({ name = '' }) => {
+  const [field, meta, helpers] = useField(name);
+
+  const { value } = meta;
+  const { setValue } = helpers;
+  const currentDate = moment();
+
+  const isOutsideMonth = date => {
+    return date.getMonth() !== new Date().getMonth();
+  };
+
+  const isWeekend = date => {
+    const day = moment(date).format('dddd');
+    return day === 'Saturday' || day === 'Sunday';
+  };
+
+  const dayClassNames = date => {
+    const classNames = [];
+    // if (isOutsideMonth(date)) {
+    //   classNames.push('outside-month');
+    // }
+
+    if (isWeekend(date)) {
+      classNames.push('highlighted-weekend');
+    }
+    return classNames.join(' ');
+  };
+
+  return (
+    <DatePicker
+      showPopperArrow={false}
+      {...field}
+      selected={value}
+      onChange={date => setValue(date)}
+      dayClassName={dayClassNames}
+      calendarStartDay={1}
+      weekdayShort={['S', 'M', 'T', 'W', 'T', 'F', 'S']}
+    />
+  );
+};
+
+const UserForm = ({ theme }) => {
   const dispatch = useDispatch();
   const userInfo = useSelector(selectorGetUser);
   const [previewImageUrl, setPreviewImageUrl] = useState(null);
   const [file, setFile] = useState(null);
 
   let updatedUserInfo = {
-    phone: userInfo.phone || "" ,
-    telegram: userInfo.telegram|| "",
+    phone: userInfo.phone || '',
+    telegram: userInfo.telegram || '',
     userName: userInfo.userName,
-    email:userInfo.email,
-    birthday: userInfo.birthday ?  moment(userInfo.birthday).format("YYYY-MM-DD"):  moment().format("YYYY-MM-DD"),
+    email: userInfo.email,
+    birthday: userInfo.birthday
+      ? moment(userInfo.birthday).format('YYYY-MM-DD')
+      : moment().format('YYYY-MM-DD'),
   };
-  console.log(updatedUserInfo)
+  console.log(updatedUserInfo);
 
   const handleAvatarChange = async e => {
     const userAvatarPreviewImg = e.target.files[0];
@@ -61,7 +107,6 @@ const UserForm = ({theme}) => {
     if (file) {
       formData.append('avatar', file);
     }
-    
 
     try {
       await dispatch(updateUserProfile(formData));
@@ -87,9 +132,14 @@ const UserForm = ({theme}) => {
             onChange={handleAvatarChange}
             style={{ display: 'none' }}
           />
-          <label htmlFor="avatar-upload" className={`${css.avatar_upload_btn} ${theme}`}></label>
+          <label
+            htmlFor="avatar-upload"
+            className={`${css.avatar_upload_btn} ${theme}`}
+          ></label>
         </div>
-        <h3 className={`${css.user_page__name} ${theme}`}>{userInfo.userName || 'Username'}</h3>
+        <h3 className={`${css.user_page__name} ${theme}`}>
+          {userInfo.userName || 'Username'}
+        </h3>
         <p className={`${css.user_page__role} ${theme}`}>User</p>
       </div>
       <Formik
@@ -107,7 +157,10 @@ const UserForm = ({theme}) => {
         {formik => {
           return (
             <Form className={`${css.username_form} ${theme}`}>
-              <label htmlFor="userName" className={`${css.username_form__label} ${theme}`}>
+              <label
+                htmlFor="userName"
+                className={`${css.username_form__label} ${theme}`}
+              >
                 Username
                 <Field
                   name="userName"
@@ -127,14 +180,14 @@ const UserForm = ({theme}) => {
                 />
               </label>
 
-              <label htmlFor="birthday" className={`${css.username_form__label} ${theme}`}>
+              <label
+                htmlFor="birthday"
+                className={`${css.username_form__label} ${theme}`}
+              >
                 Birthday:
-                <Field
-                  className={`${css.username_form_input} ${theme}`}
-                  name="birthday"
-                  lang="en"
-                  type="date"
-                  placeholder="Enter your birthday"
+                <MyDatePicker
+                  name="date"
+                  calendarClassName={css.my_date_picker}
                 />
                 <ErrorMessage
                   name="birthday"
@@ -143,7 +196,10 @@ const UserForm = ({theme}) => {
                 />
               </label>
 
-              <label htmlFor="email" className={`${css.username_form__label} ${theme}`}>
+              <label
+                htmlFor="email"
+                className={`${css.username_form__label} ${theme}`}
+              >
                 Email Address
                 <Field
                   name="email"
@@ -156,7 +212,10 @@ const UserForm = ({theme}) => {
                   className={css.invalid_feedback}
                 />
               </label>
-              <label htmlFor="phone" className={`${css.username_form__label} ${theme}`}>
+              <label
+                htmlFor="phone"
+                className={`${css.username_form__label} ${theme}`}
+              >
                 Phone:
                 <Field
                   className={`${css.username_form_input} ${theme}`}
@@ -172,7 +231,10 @@ const UserForm = ({theme}) => {
                 />
               </label>
 
-              <label htmlFor="telegram" className={`${css.username_form__label} ${theme}`}>
+              <label
+                htmlFor="telegram"
+                className={`${css.username_form__label} ${theme}`}
+              >
                 Telegram:
                 <Field
                   className={`${css.username_form_input} ${theme}`}
@@ -190,7 +252,7 @@ const UserForm = ({theme}) => {
               <button
                 type="submit"
                 className={`${css.username_form__submit} ${theme}`}
-                disabled={!formik.dirty || !formik.isValid}
+                disabled={!formik.dirty}
               >
                 Save Changes
               </button>
