@@ -6,23 +6,45 @@ import {
   
 } from '../../redux/user/user-operations';
 import userAvatar from '../../images/icons/ph_user.svg';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field, ErrorMessage, useField } from 'formik';
+import DatePicker from "react-datepicker";
 import * as Yup from 'yup';
 import moment from 'moment';
 import css from './accountPage.module.scss';
 
 
+
+
+
+const today = new Date().toISOString().split('T')[0];
 export const infoUserSchema = Yup.object().shape({
   userName: Yup.string()
     .min(3, 'Too Short!')
     .max(36, 'Too Long!')
     .required('Required'),
   email: Yup.string().email('Invalid email').required('Required'),
-  phone: Yup.string('Invalid phone'),
+  phone: Yup.string()
+    .matches(/^(\+)?((\d{2,3}) ?\d|\d)(([ -]?\d)|( ?(\d{2,3}) ?)){5,12}\d$/, 'Invalid phone')
+  .optional(),
   telegram: Yup.string('Invalid telegram'),
   avatar: Yup.string('Invalid avatar'),
-  birthday: Yup.string('Invalid avatar'),
+  birthday: Yup.date().max(today, 'Selected date cannot be in the future'),
 });
+
+const MyDatePicker = ({ name = "" }) => {
+  const [field, meta, helpers] = useField(name);
+
+  const { value } = meta;
+  const { setValue } = helpers;
+
+  return (
+    <DatePicker
+      {...field}
+      selected={value}
+      onChange={(date) => setValue(date)}
+    />
+  );
+};
 
 const UserForm = ({theme}) => {
   const dispatch = useDispatch();
@@ -129,13 +151,7 @@ const UserForm = ({theme}) => {
 
               <label htmlFor="birthday" className={`${css.username_form__label} ${theme}`}>
                 Birthday:
-                <Field
-                  className={`${css.username_form_input} ${theme}`}
-                  name="birthday"
-                  lang="en"
-                  type="date"
-                  placeholder="Enter your birthday"
-                />
+                <MyDatePicker name="date" calendarClassName={css.my_date_picker} />  
                 <ErrorMessage
                   name="birthday"
                   component="div"
@@ -190,7 +206,7 @@ const UserForm = ({theme}) => {
               <button
                 type="submit"
                 className={`${css.username_form__submit} ${theme}`}
-                disabled={!formik.dirty || !formik.isValid}
+                disabled={!formik.dirty }
               >
                 Save Changes
               </button>
