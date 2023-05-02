@@ -3,6 +3,7 @@ import scss from './ColumnHeadBar.module.scss';
 import { spriteIcons } from 'images/icons';
 
 const ColumnHeadBar = ({ title, openModalNewTask }) => {
+
   return (
     <div className={scss.header}>
       <p className={scss.columnTitle}>{title}</p>

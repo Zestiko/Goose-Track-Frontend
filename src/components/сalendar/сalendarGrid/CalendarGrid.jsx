@@ -8,12 +8,12 @@ import { getCurrentDate } from "../../../redux/calendar/selectors";
 import { selectTasks } from "redux/tasks/taskSelectors";
 
 const CalendarGrid = ({theme}) => {
-    
+
     const navigate = useNavigate();
     const dispatch = useDispatch()
     const currentDate = useSelector(getCurrentDate);
     const deserialized = moment(currentDate);
-    
+
 const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
@@ -48,7 +48,7 @@ const [windowSize, setWindowSize] = useState({
         lastDayOfMonth.day() === 1 ? 42 : 35)]
 
         .map(() => day.add(1, "day").clone());
-        
+
         // console.log("🚀  arrayDays:", arrayDays);
 // функция выбора даты из ячейки
     const boxClick = (day) => {
@@ -56,8 +56,8 @@ const [windowSize, setWindowSize] = useState({
         navigate(`/calendar/day/${day.format("YYYY-MM-DD")}`);
         dispatch(chosedDateAction(moment(day).format()));
     };
-    
-    //сравнение это тот день или не тот день 
+
+    //сравнение это тот день или не тот день
     const isCurrentDay = (item) => moment().isSame(item, "D");
     //сравнение это тот месяц или другой не тот который показан или тот который нужно убрать
     const isCurrentMonth = (item) => deserialized.isSame(item, "month");
@@ -69,7 +69,7 @@ const [windowSize, setWindowSize] = useState({
     return (
         <>
             <div className={`${css.grid} ${theme}`}>
-                
+
             {arrayDays.map((item) => (
                 <div key={item.unix()}
                     className={`${css.box} ${theme}`}
@@ -80,7 +80,7 @@ const [windowSize, setWindowSize] = useState({
                             :
                             null
                     }>
-                    
+
                     <div className={`${css.box_wrap} ${theme}`}>
 
                         {isCurrentDay(item)
@@ -91,18 +91,18 @@ const [windowSize, setWindowSize] = useState({
                                 :
                         <div className={isCurrentMonth(item) ? `${css.box_day}`
                                 : `${css.box_day}  ${css.not_current_month}`}
-                            ><span >{item.format("D")}</span></div>}  
-                        
+                            ><span >{item.format("D")}</span></div>}
+
                     </div>
                     <div className={`${css.notice_wrap} ${theme}` }>
                         {dataAllMonth.filter((itemDay, i) =>
                             (item.format("YYYY-MM-DD") === moment(itemDay.taskDate).format("YYYY-MM-DD"))).slice(0, 3)
                             .map((itemDay, i) => (
                                 <p key={i} className={
-                                    itemDay.priority === "High"
+                                    itemDay.priority === "high"
                                         ?`${css.notice} ${css.high}`
                                         :
-                                        itemDay.priority === "Medium"
+                                        itemDay.priority === "medium"
                                         ?
                                         `${css.notice} ${css.medium}`
                                         :
