@@ -24,8 +24,9 @@ const Navigation = ({ theme }) => {
     <div className={css.userPanel}>
       <p className={css.navLabel}>User Panel</p>
       <NavLink
-        to="/user"
+        to="/account"
         className={({ isActive }) =>isActive ? css.activeLink : css.navLink}>
+
         <UserCheckSvg />
         My account
       </NavLink>

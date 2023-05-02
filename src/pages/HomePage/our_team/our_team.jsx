@@ -7,7 +7,10 @@ import ph04 from '../assets/img/ph04.jpg';
 import ph05 from '../assets/img/ph05.jpg';
 import ph06 from '../assets/img/ph06.jpg';
 import ph07 from '../assets/img/ph07.jpg';
-import ph08 from '../assets/img/ph08.jpg';
+// import ph08 from '../assets/img/ph08.jpg';
+import ph09 from '../assets/img/ph09.jpg';
+import ph10 from '../assets/img/ph10.jpg';
+// import ph11 from '../assets/img/ph11.jpg';
 
 export const Team = () => {
     return (
@@ -44,8 +47,9 @@ export const Team = () => {
         alt="team"
     />
 						
-					</div>
-	<div className={styles}>
+	</div>
+	
+    <div className={styles}>
         <h3 className={styles.name__of}>Averkin Maksym</h3>
         <span className={styles}>Scrum master</span>
 	</div>
@@ -129,41 +133,10 @@ export const Team = () => {
 	</div>	
                     
     <div className={styles.square}>
-				
 	<div className={styles}>
         <img
             className={styles.img__style}
-            src={ph08}
-            alt="team"
-        />
-						
-        </div>
-    <div className={styles}>
-        <h3 className={styles.name__of}>Lyakh Nikolay</h3>
-        <span className={styles}>Developer</span>
-    </div>
-	</div>	 
-
-    <div className={styles.square}>
-	<div className={styles}>
-        <img
-            className={styles.img__style}
-            src={ph06}
-            alt="team"
-        />
-						
-    </div>
-    <div className={styles}>
-        <h3 className={styles.name__of}>Lipchanskyi Pavlo</h3>
-        <span className={styles}>Developer</span>
-    </div>
-    </div>	 
-
-    <div className={styles.square}>
-	<div className={styles}>
-        <img
-            className={styles.img__style}
-            src={ph01}
+            src={ph09}
             alt="team"
         />
 						
@@ -178,7 +151,8 @@ export const Team = () => {
 	<div className={styles}>
         <img
             className={styles.img__style}
-            src={ph01}
+            // Litvin Serhii                    
+            src={ph10}
             alt="team"
         />
 						
@@ -189,24 +163,7 @@ export const Team = () => {
     </div>
     </div>
 
-      <div className={styles.square}>
-	<div className={styles}>
-        <img
-            className={styles.img__style}
-            src={ph01}
-            alt="team"
-        />
-						
-    </div>
-    <div className={styles}>
-        <h3 className={styles.name__of}>Nikolin Dmytro</h3>
-        <span className={styles}>Developer</span>
-    </div>
-    </div>	                
-
-                    
-
-	</div>
+   	</div>
     </div>	
             
 </section>

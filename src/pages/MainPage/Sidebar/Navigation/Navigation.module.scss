@@ -57,15 +57,13 @@
   line-height: 17px;
   text-decoration: none;
   color: var(--not-active-item-sidebar-text-color);
-
-
   padding: 12px;
   gap: 8px;
 
   & > svg {
     width: 24px;
     height: 24px;
-    stroke: #84828a;
+    stroke: var(--not-active-item-sidebar-text-color);
     fill: none;
     }
 }

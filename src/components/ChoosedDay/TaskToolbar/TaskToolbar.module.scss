@@ -22,36 +22,16 @@
     position: relative;
 }
 
-.iconCircle {
-    // image
-    display: flex;
-    border-radius: 50%;
-    fill: transparent;
-    width: 16px;
-    height: 16px;
-
-    &:hover {
-        background-color: #cae8ff;
-    }
-
-    &:focus {
-        background-color: #cae8ff;
-    }
-}
-
 .iconButton {
     display: flex;
-    border-radius: 50%;
+    // border-radius: 50%;
+    stroke: black;
     fill: transparent;
     width: 16px;
     height: 16px;
 
-    &:hover {
-        background-color: #cae8ff;
-    }
-
-    &:focus {
-        background-color: #cae8ff;
+    &:hover, &:focus {
+        stroke: #3E85F3
     }
 }
 
@@ -65,8 +45,9 @@
     width: 147px;
     height: 90px;
     justify-content: space-between;
-    top: 24px;
-    z-index: 10;
+    top: 40px;
+    right: -10px;
+    z-index: 99;
 }
 
 .line {
@@ -100,14 +81,3 @@
     justify-content: space-between;
 }
 
-.iconChoice {
-    // position: absolute;
-    display: flex;
-    border-radius: 50%;
-    fill: transparent;
-    width: 16px;
-    height: 16px;
-    z-index: 1;
-    //   top: 0;
-    //   right: -22px;
-}

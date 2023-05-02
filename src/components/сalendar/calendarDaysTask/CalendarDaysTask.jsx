@@ -1,5 +1,5 @@
 
-import css from "../Calendar.module.css";
+import css from "../Calendar.module.scss";
 import { CalendarHeaderWeek } from "../calendarHeaderWeek/CalendarHeaderWeek";
 import { CalendarHeaderTask } from "./сalendarHeaderTask/CalendarHeaderTask";
 
