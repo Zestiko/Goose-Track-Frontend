@@ -1,5 +1,5 @@
 
-import css from "../calendarHeaderWeek/CalendarHeaderWeek.module.css";
+import css from "../calendarHeaderWeek/CalendarHeaderWeek.module.scss";
 import { useEffect, useState } from "react";
 import { daysOfWeek } from "../constants/daysOfWeek";
 
@@ -10,8 +10,6 @@ const CalendarHeaderDays = () => {
     width: window.innerWidth,
     height: window.innerHeight,
   });
-
-    //   console.log("🚀  windowSize:", windowSize);
 
   useEffect(() => {
     function handleResize() {

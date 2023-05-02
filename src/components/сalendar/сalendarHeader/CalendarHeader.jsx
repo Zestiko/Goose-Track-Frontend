@@ -1,5 +1,5 @@
 
-import css from "./CalendarHeader.module.css";
+import css from "./CalendarHeader.module.scss";
 import currentDateFormatted from '../../../redux/calendar/getFormattedDate';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import {  NavLink, useNavigate} from "react-router-dom";
@@ -17,12 +17,7 @@ export const CalendarHeader = () => {
     const currentDate = useSelector(getCurrentDate);
     const swich = useSelector(getDayOrMonth);
     const deserialized = moment(currentDate);
-
-    // console.log("🚀  currentDate:", currentDate);
-    // console.log("🚀  currentDate:", currentDate.format());
     
-    // console.log("🚀  currentDate:", currentDate.format("D"));
-
     const activeButton = (isDayOrMonth) => {
         if (!isDayOrMonth) {
         navigate(`/calendar/day/${deserialized.format("YYYY-MM-DD")}`);
@@ -55,16 +50,18 @@ export const CalendarHeader = () => {
                                 `${deserialized.format("D MMMM YYYY")}`
                             }</span>
                </div>
-                    <button type="button" 
+               <div className={`${css.btn_prev_next}`}>
+                        <button type="button" 
                         className={`${css.btn} ${css.prev} ${css.btn_arrow} `}
                         onClick={()=>handlePrev(deserialized.clone().subtract(1, "month"))} 
-                        disabled={ currentDateFormatted === deserialized.format("YYYY-MM")}
+                        disabled={ currentDateFormatted.slice(0,7) === deserialized.format("YYYY-MM")}
                     ><FaChevronLeft /></button>
                     
                     <button type="button"
                         className={`${css.btn} ${css.next} ${css.btn_arrow} `}
                         onClick={()=>handleNext(deserialized.clone().add(1, "month"))}
                     ><FaChevronRight /></button>
+                </div>
             </div>
             
             <div className={css.caledr_header_wrapper_btn}>

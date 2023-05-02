@@ -2,7 +2,7 @@
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: repeat(7, 1fr);
-  background: #ffffff;
+  background: var(--primary-background-color);
   margin-bottom: 16px;
   border: 1px solid rgba(219, 227, 230, 0.8);
   border-radius: 8px;
@@ -23,6 +23,7 @@
 }
 .back {
   background-color: #dbe3e6cc;
+  border: 2px solid #dbe3e6cc;
 }
 .days {
   text-transform: uppercase;
@@ -35,18 +36,20 @@
   color: #3e85f3;
 }
 .current_day {
-  background-color: #3e85f3;
-  color: #ffffff;
+  background-color: var(--accent-background-color);
+  color: var(--btn-text-color);
   border-radius: 8px;
 }
 .date {
   padding: 4px;
   color: #616161;
 }
-/* .hover_color:hover {
+
+.hover_color:hover {
   background-color: rgb(252, 249, 245);
   color: #3e85f3;
-} */
+}
+
 .scale {
   transform: scale(1.1);
   border-radius: 14px;

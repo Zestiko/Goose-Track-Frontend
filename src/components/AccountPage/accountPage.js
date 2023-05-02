@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectorGetUser } from '../../redux/user/selectors';
 import {
   updateUserProfile,
-  uploadAvatar,
+  
 } from '../../redux/user/user-operations';
 import userAvatar from '../../images/icons/ph_user.svg';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import moment from 'moment';
-import scss from './accountPage.module.scss';
+import css from './accountPage.module.scss';
+
 
 export const infoUserSchema = Yup.object().shape({
   userName: Yup.string()
@@ -23,19 +24,20 @@ export const infoUserSchema = Yup.object().shape({
   birthday: Yup.string('Invalid avatar'),
 });
 
-const UserForm = () => {
+const UserForm = ({theme}) => {
   const dispatch = useDispatch();
   const userInfo = useSelector(selectorGetUser);
   const [previewImageUrl, setPreviewImageUrl] = useState(null);
   const [file, setFile] = useState(null);
 
   let updatedUserInfo = {
-    phone: '',
-    telegram: '',
-    avatar: '',
-    ...userInfo,
-    birthday: userInfo?.birthday || moment(new Date()).format('YYYY-MM-DD'),
+    phone: userInfo.phone || "" ,
+    telegram: userInfo.telegram|| "",
+    userName: userInfo.userName,
+    email:userInfo.email,
+    birthday: userInfo.birthday ?  moment(userInfo.birthday).format("YYYY-MM-DD"):  moment().format("YYYY-MM-DD"),
   };
+  console.log(updatedUserInfo)
 
   const handleAvatarChange = async e => {
     const userAvatarPreviewImg = e.target.files[0];
@@ -56,7 +58,10 @@ const UserForm = () => {
 
     const keys = Object.keys(values);
     keys.forEach(key => formData.append(key, values[key]));
-    formData.append('avatar', file);
+    if (file) {
+      formData.append('avatar', file);
+    }
+    
 
     try {
       await dispatch(updateUserProfile(formData));
@@ -66,14 +71,14 @@ const UserForm = () => {
   };
 
   return (
-    <section className="user-page">
-      <div className="user-page__avatar-container">
+    <section className={`${css.user_page} ${theme}`}>
+      <div className={`${css.user_page__avatar_container} ${theme}`}>
         <img
-          className="user-page__avatar"
+          className={`${css.user_page__avatar} ${theme}`}
           src={previewImageUrl || userInfo.avatar || userAvatar}
           alt="User Avatar"
         />
-        <div className="avatar-upload-container">
+        <div className={`${css.avatar_upload_container} ${theme}`}>
           <input
             id="avatar-upload"
             name="avatar"
@@ -82,10 +87,10 @@ const UserForm = () => {
             onChange={handleAvatarChange}
             style={{ display: 'none' }}
           />
-          <label htmlFor="avatar-upload" className="avatar-upload-btn"></label>
+          <label htmlFor="avatar-upload" className={`${css.avatar_upload_btn} ${theme}`}></label>
         </div>
-        <h3 className="user-page__name">{userInfo.userName || 'Username'}</h3>
-        <p className="user-page__role">User</p>
+        <h3 className={`${css.user_page__name} ${theme}`}>{userInfo.userName || 'Username'}</h3>
+        <p className={`${css.user_page__role} ${theme}`}>User</p>
       </div>
       <Formik
         initialValues={updatedUserInfo}
@@ -100,18 +105,17 @@ const UserForm = () => {
         }}
       >
         {formik => {
-          console.log(formik.values);
           return (
-            <Form className="username_form">
-              <label htmlFor="userName" className="username_form-label">
+            <Form className={`${css.username_form} ${theme}`}>
+              <label htmlFor="userName" className={`${css.username_form__label} ${theme}`}>
                 Username
                 <Field
                   name="userName"
                   type="text"
                   className={
-                    scss.username_form_input +
+                    `${css.username_form_input} ${theme}` +
                     (formik.errors.userName && formik.touched.userName
-                      ? ' is-invalid'
+                      ? css.is_invalid
                       : '')
                   }
                   placeholder="User name"
@@ -119,14 +123,14 @@ const UserForm = () => {
                 <ErrorMessage
                   name="userName"
                   component="div"
-                  className="invalid_feedback"
+                  className={css.invalid_feedback}
                 />
               </label>
 
-              <label htmlFor="birthday" className="username_form-label">
+              <label htmlFor="birthday" className={`${css.username_form__label} ${theme}`}>
                 Birthday:
                 <Field
-                  className="username_form_input"
+                  className={`${css.username_form_input} ${theme}`}
                   name="birthday"
                   lang="en"
                   type="date"
@@ -135,27 +139,27 @@ const UserForm = () => {
                 <ErrorMessage
                   name="birthday"
                   component="div"
-                  className="invalid_feedback"
+                  className={css.invalid_feedback}
                 />
               </label>
 
-              <label htmlFor="email" className="username_form-label">
+              <label htmlFor="email" className={`${css.username_form__label} ${theme}`}>
                 Email Address
                 <Field
                   name="email"
                   type="email"
-                  className="username_form_input"
+                  className={`${css.username_form_input} ${theme}`}
                 />
                 <ErrorMessage
                   name="email"
                   component="div"
-                  className="invalid_feedback"
+                  className={css.invalid_feedback}
                 />
               </label>
-              <label htmlFor="phone" className="username_form-label">
+              <label htmlFor="phone" className={`${css.username_form__label} ${theme}`}>
                 Phone:
                 <Field
-                  className="username_form_input"
+                  className={`${css.username_form_input} ${theme}`}
                   id="phone"
                   name="phone"
                   type="text"
@@ -164,14 +168,14 @@ const UserForm = () => {
                 <ErrorMessage
                   name="phone"
                   component="div"
-                  className="invalid_feedback"
+                  className={css.invalid_feedback}
                 />
               </label>
 
-              <label htmlFor="telegram" className="username_form-label">
+              <label htmlFor="telegram" className={`${css.username_form__label} ${theme}`}>
                 Telegram:
                 <Field
-                  className="username_form_input username_form_input--last"
+                  className={`${css.username_form_input} ${theme}`}
                   id="telegram"
                   name="telegram"
                   type="text"
@@ -180,15 +184,15 @@ const UserForm = () => {
                 <ErrorMessage
                   name="telegram"
                   component="div"
-                  className="invalid_feedback"
+                  className={css.invalid_feedback}
                 />
               </label>
               <button
                 type="submit"
-                className="username__form-submit"
+                className={`${css.username_form__submit} ${theme}`}
                 disabled={!formik.dirty || !formik.isValid}
               >
-                Submit
+                Save Changes
               </button>
             </Form>
           );

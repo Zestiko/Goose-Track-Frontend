@@ -53,6 +53,7 @@ $secondary-font: 'Coolvetica', sans-serif;
   --border-calendar: 1px solid rgba(220, 227, 229, 0.5);
   --border-calendar-period-type: 1px solid rgba(62, 133, 243, 0.2);
   --border-auth: 1px solid rgba(220, 227, 229, 0.6);
+  --border-form-input:rgba(17, 17, 17, 0.15);
 
   /* text-color */
   --logo-text-color: #3e85f3;
@@ -96,12 +97,14 @@ $secondary-font: 'Coolvetica', sans-serif;
   --secondary-background-color: #171820;
   --sidebar-background-color: #13151a;
   --active-item-sidebar-background: #3e85f3;
+  --border-form-input:rgba(255, 255, 255, 0.15);
 
   /* text-color */
   --logo-text-color: #e3f3ff;
   --primary-text-color: #ffffff;
   --secondary-text-color: #616161;
   --accent-text-color: #ffffff;
+  --accent-btn-background:#3e85f3;
 
   --not-active-item-sidebar-text-color: #ffffff;
   --auth-placeholder-color: #dce3e5;
@@ -113,8 +116,8 @@ $secondary-font: 'Coolvetica', sans-serif;
   --priority-low-bg-color: #ceeefd;
   --priority-medium-bg-сolor: #fcf0d4;
   --priority-high-bg-color: #ffd2dd;
-  --active-button-period-type: #cae8ff;
-  --button-period-type: #e3f3ff;
+  --active-button-period-type: #3E85F3;
+  --button-period-type: #21222C;
   --close-btn-color: #111111;
 
   /* tasks */

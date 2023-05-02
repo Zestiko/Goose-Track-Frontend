@@ -1,13 +1,15 @@
 import currentDateFormatted from '../../../../redux/calendar/getFormattedDate';
+
 import {  NavLink, useNavigate} from "react-router-dom";
 import { chosedDateAction, swichAction} from "../../../../redux/calendar/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import css from "./CalendarHeaderTask.module.css";
+import css from "./CalendarHeaderTask.module.scss";
 import moment from "moment/moment";
 import { getCurrentDate, getDayOrMonth} from "redux/calendar/selectors";
 
 export const CalendarHeaderTask = () => {
+    console.log("🚀  currentDateFormatted:", currentDateFormatted);
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -46,16 +48,18 @@ export const CalendarHeaderTask = () => {
                                 `${deserialized.format("D MMMM YYYY")}`
                             }</span>
             </div>
-                    <button type="button" 
+                    <div className={`${css.btn_prev_next}`}>
+                          <button type="button" 
                         className={`${css.btn} ${css.prev} ${css.btn_arrow} `}
-                        onClick={()=>handlePrev(deserialized.clone().subtract(1, 'day'))} 
-                        disabled={ currentDateFormatted === deserialized.format("YYYY-MM")}
+                        onClick={()=>handlePrev(deserialized.clone().subtract(1, "month"))} 
+                        disabled={ currentDateFormatted.slice(0,7) === deserialized.format("YYYY-MM")}
                     ><FaChevronLeft /></button>
                     
                     <button type="button"
                         className={`${css.btn} ${css.next} ${css.btn_arrow} `}
-                        onClick={()=>handleNext(deserialized.clone().add(1, 'day'))}
+                        onClick={()=>handleNext(deserialized.clone().add(1, "month"))}
                     ><FaChevronRight /></button>
+                    </div>
             </div>
             
             <div className={css.caledr_header_wrapper_btn}>

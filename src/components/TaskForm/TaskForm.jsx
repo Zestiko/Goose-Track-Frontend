@@ -5,30 +5,25 @@ import { ReactComponent as Pencil } from '../../images/icons/icon-pencil-01.svg'
 import { ReactComponent as Plus } from '../../images/icons/icon-plus.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTask } from 'redux/tasks/tasksOperations';
-// import { useParams } from 'react-router-dom';
 import { getCurrentDate } from 'redux/calendar/selectors';
+import moment from 'moment';
+import { updateTask } from 'redux/tasks/tasksOperations';
 
-export const TaskForm = ({ data, onClose }) => {
+export const TaskForm = ({ props, onClose }) => {
   const dispatch = useDispatch();
-const currentDate = useSelector(getCurrentDate);
-
-  const task = null;
-
-  const [title, setInTitle] = useState('');
-  const [startTime, setstartTime] = useState('09:00');
-  const [endTime, setEndTime] = useState('14:00');
+  const currentDate = useSelector(getCurrentDate);
+  const [title, setInTitle] = useState(props?.taskData?.title || '');
+  const [startTime, setstartTime] = useState(
+    props?.taskData?.startTime || moment().format('HH:mm')
+  );
+  const [endTime, setEndTime] = useState(
+    props?.taskData?.endTime || moment().add(1, 'hour').format('HH:mm')
+  );
   const [priority, setPriority] = useState('low');
-
-  const dataForm = {
-    taskDate: currentDate,
-    title,
-    startTime,
-    endTime,
-    priority,
-  };
-
+  const { taskData } = props;
   const handleChange = event => {
     const { id, name, value } = event.target;
+
     if (name === 'title') {
       setInTitle(value);
     }
@@ -42,11 +37,22 @@ const currentDate = useSelector(getCurrentDate);
       setPriority(id);
     }
   };
-
   const handleSubmit = evt => {
     evt.preventDefault();
-    dispatch(addTask(dataForm));
-    console.log(dataForm);
+    const newTaskData = {
+      priority,
+      taskDate: currentDate,
+      title,
+      startTime,
+      endTime,
+    };
+    console.log(newTaskData);
+    if (taskData) {
+      dispatch(updateTask({ taskId: taskData._id, updatedTask: newTaskData }));
+    } else {
+      dispatch(addTask(newTaskData));
+    }
+    onClose();
   };
 
   return (
@@ -59,6 +65,7 @@ const currentDate = useSelector(getCurrentDate);
           <input
             type="text"
             name="title"
+            value={title}
             onChange={handleChange}
             className={styles.input}
             placeholder="Enter text"
@@ -76,6 +83,7 @@ const currentDate = useSelector(getCurrentDate);
               name="startTime"
               className={styles.timeInput}
               value={startTime}
+              autoComplete="on"
             />
           </div>
           <div className="">
@@ -99,6 +107,7 @@ const currentDate = useSelector(getCurrentDate);
                 type="radio"
                 id="low"
                 name="priority"
+                checked="checked"
                 onChange={handleChange}
               />
               <span>Low</span>
@@ -129,7 +138,7 @@ const currentDate = useSelector(getCurrentDate);
             </div>
           </label>
         </div>
-        {task === null ? (
+        {!taskData ? (
           <div className={styles.flex}>
             <button type="submit" className={styles.button}>
               <div>
