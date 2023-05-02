@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectorGetUser } from '../../redux/user/selectors';
 import {
   updateUserProfile,
-  uploadAvatar,
+  
 } from '../../redux/user/user-operations';
 import userAvatar from '../../images/icons/ph_user.svg';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
@@ -31,12 +31,13 @@ const UserForm = ({theme}) => {
   const [file, setFile] = useState(null);
 
   let updatedUserInfo = {
-    phone: '',
-    telegram: '',
-    avatar: '',
-    ...userInfo,
-    birthday: userInfo?.birthday || moment(new Date()).format('YYYY-MM-DD'),
+    phone: userInfo.phone || "" ,
+    telegram: userInfo.telegram|| "",
+    userName: userInfo.userName,
+    email:userInfo.email,
+    birthday: userInfo.birthday ?  moment(userInfo.birthday).format("YYYY-MM-DD"):  moment().format("YYYY-MM-DD"),
   };
+  console.log(updatedUserInfo)
 
   const handleAvatarChange = async e => {
     const userAvatarPreviewImg = e.target.files[0];
@@ -57,7 +58,10 @@ const UserForm = ({theme}) => {
 
     const keys = Object.keys(values);
     keys.forEach(key => formData.append(key, values[key]));
-    formData.append('avatar', file);
+    if (file) {
+      formData.append('avatar', file);
+    }
+    
 
     try {
       await dispatch(updateUserProfile(formData));
