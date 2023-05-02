@@ -11,8 +11,6 @@ const CalendarHeaderDays = () => {
     height: window.innerHeight,
   });
 
-    //   console.log("🚀  windowSize:", windowSize);
-
   useEffect(() => {
     function handleResize() {
       setWindowSize({

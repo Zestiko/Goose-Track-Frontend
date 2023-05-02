@@ -1,4 +1,5 @@
 import currentDateFormatted from '../../../../redux/calendar/getFormattedDate';
+
 import {  NavLink, useNavigate} from "react-router-dom";
 import { chosedDateAction, swichAction} from "../../../../redux/calendar/actions";
 import { useSelector, useDispatch } from "react-redux";
@@ -8,6 +9,7 @@ import moment from "moment/moment";
 import { getCurrentDate, getDayOrMonth} from "redux/calendar/selectors";
 
 export const CalendarHeaderTask = () => {
+    console.log("🚀  currentDateFormatted:", currentDateFormatted);
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -49,7 +51,7 @@ export const CalendarHeaderTask = () => {
                     <button type="button" 
                         className={`${css.btn} ${css.prev} ${css.btn_arrow} `}
                         onClick={()=>handlePrev(deserialized.clone().subtract(1, 'day'))} 
-                        disabled={ currentDateFormatted === deserialized.format("YYYY-MM")}
+                        disabled={ currentDateFormatted === deserialized.format("YYYY-MM-DD")}
                     ><FaChevronLeft /></button>
                     
                     <button type="button"
