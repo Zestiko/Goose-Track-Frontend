@@ -1,0 +1,69 @@
+.radioGroup {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.radioLabel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
+  font-family: var(--primary-font);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  color: #616161;
+}
+.radioInput {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.radioButton {
+  display: inline-block;
+  position: relative;
+  width: 10px;
+  height: 10px;
+  margin-right: 8px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  background-color: #72c2f8;
+}
+
+.radioButton.blue {
+  background-color: #72c2f8;
+}
+
+.radioButton.green {
+  background-color: #f3b249;
+}
+
+.radioButton.red {
+  background-color: #ea3d65;
+}
+
+// .radioButton:after {
+//   content: '';
+//   display: none;
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   width: 10px;
+//   height: 10px;
+//   border-radius: 50%;
+//   background-color: white;
+// }
+
+.radioInput:checked ~ .radioButton:after {
+  display: block;
+}
+
+.active {
+  width: 14px;
+  height: 14px;
+  box-shadow: inset 0 0 0 2px white, 0 0 2px 2px white;
+}

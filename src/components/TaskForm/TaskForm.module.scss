@@ -1,5 +1,15 @@
 @import './../../styles/vars';
 @import './../../styles/fonts';
+.container {
+  width: 267px;
+  @media screen and (min-width: 768px) {
+    width: 340px;
+  }
+}
+
+.form {
+  width: 100%;
+}
 .title {
   color: rgba(52, 52, 52, 0.8);
   font-family: 'Inter';
@@ -7,13 +17,17 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 1.14;
+  display: flex;
+  flex-direction: column;
 }
 
 .flex {
   display: flex;
   margin-top: 18px;
+  gap: 14px;
 }
 .start {
+  flex-direction: column;
   margin-right: 14px;
 }
 // .label {
@@ -21,7 +35,7 @@
 //   text-align: left;
 // }
 .input {
-  width: 267px;
+  width: 100%;
   padding: 14px;
   padding-left: 18px;
   margin-top: 8px;
@@ -29,6 +43,13 @@
   color: $secondary-text-color;
   background-color: $task-input-bg-color;
   border-radius: 8px;
+
+  &::placeholder {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    font-family: 'Inter';
+  }
 }
 .timeInput {
   width: 126px;
@@ -39,6 +60,9 @@
   color: $secondary-text-color;
   background-color: $task-input-bg-color;
   border-radius: 8px;
+  @media screen and (min-width: 768px) {
+    width: 163px;
+  }
 }
 .check {
   margin-right: 18px;
@@ -46,14 +70,20 @@
 .checkbox {
   margin-right: 6px;
 }
+.submit {
+  margin-top: 32px;
+  display: flex;
+  gap: 14px;
+}
+
 .button {
+  display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 30px;
   padding: 16px;
-  width: 100%;
   cursor: pointer;
-
+  flex-basis: 55%;
+  height: 48px;
   border: none;
   background: $accent-background-color;
   box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
@@ -62,40 +92,87 @@
   font-family: 'Inter';
   font-style: normal;
   font-weight: 600;
-  font-size: 18px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 18px;
   letter-spacing: -0.02em;
   color: white;
 
   cursor: pointer;
+
+  &:hover {
+    border: 2px solid $accent-background-color;
+  }
 }
-.btn_cansel {
+.buttonEdit {
+  display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 30px;
-  margin-left: 14px;
   padding: 16px;
-  width: 100%;
   cursor: pointer;
-
-  border: 2px solid $accent-background-color;
-  background: white;
+  flex-basis: 100%;
+  height: 48px;
+  border: none;
+  background: $accent-background-color;
   box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
   border-radius: 8px;
 
   font-family: 'Inter';
   font-style: normal;
   font-weight: 600;
-  font-size: 18px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.02em;
+  color: white;
+
+  cursor: pointer;
+
+  &:hover {
+    border: 2px solid $accent-background-color;
+  }
+}
+.btn_cansel {
+  height: 48px;
+  flex-basis: 45%;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  cursor: pointer;
+
+  background: #efefef;
+  box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
+  border-radius: 8px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
   letter-spacing: -0.02em;
   color: black;
 
   cursor: pointer;
 }
-.button:disabled {
+.button:disabled,
+.buttonEdit:disabled {
   opacity: 0.35;
 }
 .logo {
   margin-right: 10px;
+  width: 12px;
+  height: 12px;
+  color: white;
+  fill: white;
+}
+
+.invalid_feedback {
+  color: var(--task-priority-high-color);
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+.is_invalid {
+  border-color: var(--task-priority-high-color);
+  color: var(--task-priority-high-color);
 }
