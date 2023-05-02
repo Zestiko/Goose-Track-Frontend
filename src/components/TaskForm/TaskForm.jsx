@@ -1,165 +1,171 @@
 import styles from './TaskForm.module.scss';
-import { useState } from 'react';
-import { ReactComponent as Close } from '../../images/icons/x-close.svg';
-import { ReactComponent as Pencil } from '../../images/icons/icon-pencil-01.svg';
 import { ReactComponent as Plus } from '../../images/icons/icon-plus.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTask } from 'redux/tasks/tasksOperations';
 import { getCurrentDate } from 'redux/calendar/selectors';
 import moment from 'moment';
 import { updateTask } from 'redux/tasks/tasksOperations';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import CustomRadio from './CustomRadio';
+import { BsPencil } from 'react-icons/bs';
 
-export const TaskForm = ({ props, onClose }) => {
+const options = [
+  { label: 'Low', value: 'low', color: 'blue' },
+  { label: 'Medium', value: 'medium', color: 'green' },
+  { label: 'High', value: 'high', color: 'red' },
+];
+
+export const taskSchema = Yup.object().shape({
+  title: Yup.string().min(3, 'Too Short!').max(36, 'Too Long!'),
+  startTime: Yup.string('Invalid startTime'),
+  endTime: Yup.string('Invalid endTime'),
+  taskData: Yup.string('Invalid taskData'),
+  priority: Yup.string('Invalid priority'),
+});
+
+export const TaskForm = ({ props, onClose, theme }) => {
   const dispatch = useDispatch();
   const currentDate = useSelector(getCurrentDate);
-  const [title, setInTitle] = useState(props?.taskData?.title || '');
-  const [startTime, setstartTime] = useState(
-    props?.taskData?.startTime || moment().format('HH:mm')
-  );
-  const [endTime, setEndTime] = useState(
-    props?.taskData?.endTime || moment().add(1, 'hour').format('HH:mm')
-  );
-  const [priority, setPriority] = useState('low');
   const { taskData } = props;
-  const handleChange = event => {
-    const { id, name, value } = event.target;
 
-    if (name === 'title') {
-      setInTitle(value);
-    }
-    if (name === 'startTime') {
-      setstartTime(value);
-    }
-    if (name === 'endTime') {
-      setEndTime(+value);
-    }
-    if (name === 'priority') {
-      setPriority(id);
-    }
-  };
-  const handleSubmit = evt => {
-    evt.preventDefault();
-    const newTaskData = {
-      priority,
-      taskDate: currentDate,
-      title,
-      startTime,
-      endTime,
-    };
-    console.log(newTaskData);
+  const initialFormikValues = taskData
+    ? { ...taskData }
+    : {
+        title: '',
+        startTime: moment().format('HH:mm'),
+        endTime: moment().add(1, 'hour').format('HH:mm'),
+        taskDate: currentDate,
+        priority: 'low',
+      };
+
+  const submiting = async values => {
     if (taskData) {
-      dispatch(updateTask({ taskId: taskData._id, updatedTask: newTaskData }));
+      dispatch(updateTask({ taskId: taskData._id, updatedTask: values }));
     } else {
-      dispatch(addTask(newTaskData));
+      dispatch(addTask(values));
     }
     onClose();
   };
-
   return (
     <div className={styles.container}>
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <div className="">
-          <label className={styles.label} htmlFor="title">
-            <p className={styles.title}>Title</p>
-          </label>
-          <input
-            type="text"
-            name="title"
-            value={title}
-            onChange={handleChange}
-            className={styles.input}
-            placeholder="Enter text"
-            maxLength={250}
-          />
-        </div>
-        <div className={styles.flex}>
-          <div className={styles.start}>
-            <label className={styles.label} htmlFor="startTime">
-              <p>Start</p>
-            </label>
-            <input
-              onChange={handleChange}
-              type="time"
-              name="startTime"
-              className={styles.timeInput}
-              value={startTime}
-              autoComplete="on"
-            />
-          </div>
-          <div className="">
-            <label className={styles.label} htmlFor="endTime">
-              <p>End</p>
-            </label>
-            <input
-              onChange={handleChange}
-              type="time"
-              name="endTime"
-              className={styles.timeInput}
-              value={endTime}
-            />
-          </div>
-        </div>
-        <div className={styles.flex}>
-          <label className={styles.check}>
-            <div className={styles.flex}>
-              <input
-                className={styles.checkbox}
-                type="radio"
-                id="low"
-                name="priority"
-                checked="checked"
-                onChange={handleChange}
-              />
-              <span>Low</span>
-            </div>
-          </label>
-          <label className={styles.check}>
-            <div className={styles.flex}>
-              <input
-                className={styles.checkbox}
-                type="radio"
-                id="medium"
-                name="priority"
-                onChange={handleChange}
-              />
-              <span>Medium</span>
-            </div>
-          </label>
-          <label className={styles.check}>
-            <div className={styles.flex}>
-              <input
-                className={styles.checkbox}
-                type="radio"
-                id="higt"
-                name="priority"
-                onChange={handleChange}
-              />
-              <span>High</span>
-            </div>
-          </label>
-        </div>
-        {!taskData ? (
-          <div className={styles.flex}>
-            <button type="submit" className={styles.button}>
-              <div>
-                <Plus className={styles.logo} />
-                Add
+      <Formik
+        initialValues={initialFormikValues}
+        validationSchema={taskSchema}
+        onSubmit={async (values, { setSubmitting }) => {
+          setTimeout(() => {
+            submiting(values).then(() => {
+              setSubmitting(false);
+            });
+          }, 700);
+        }}
+      >
+        {formik => {
+          console.log('!formik.dirty', !formik.dirty);
+          console.log('!formik.isValid', !formik.isValid);
+          return (
+            <Form
+              className={`${styles.form} ${theme}`}
+              onSubmit={formik.handleSubmit}
+            >
+              <label htmlFor="title" className={`${styles.title} ${theme}`}>
+                Title
+                <Field
+                  name="title"
+                  type="text"
+                  className={
+                    `${styles.input} ${theme}` +
+                    (formik.errors.userName && formik.touched.userName
+                      ? styles.is_invalid
+                      : '')
+                  }
+                  placeholder="Enter text"
+                />
+                <ErrorMessage
+                  name="title"
+                  component="div"
+                  className={styles.invalid_feedback}
+                />
+              </label>
+              <div className={styles.flex}>
+                <label
+                  htmlFor="startTime"
+                  className={`${styles.title} ${theme}`}
+                >
+                  Start
+                  <Field
+                    name="startTime"
+                    type="time"
+                    className={
+                      `${styles.timeInput} ${theme}` +
+                      (formik.errors.timeInput && formik.touched.timeInput
+                        ? styles.is_invalid
+                        : '')
+                    }
+                  />
+                  <ErrorMessage
+                    name="startTime"
+                    component="div"
+                    className={styles.invalid_feedback}
+                  />
+                </label>
+                <label htmlFor="endTime" className={`${styles.title} ${theme}`}>
+                  End
+                  <Field
+                    name="endTime"
+                    type="time"
+                    className={
+                      `${styles.timeInput} ${theme}` +
+                      (formik.errors.endTime && formik.touched.endTime
+                        ? styles.is_invalid
+                        : '')
+                    }
+                  />
+                  <ErrorMessage
+                    name="endTime"
+                    component="div"
+                    className={styles.invalid_feedback}
+                  />
+                </label>
               </div>
-            </button>
-            <button className={styles.btn_cansel} onClick={onClose}>
-              Cancel
-            </button>
-          </div>
-        ) : (
-          <button type="submit" className={styles.button}>
-            <>
-              <Pencil className={styles.logo} />
-              Edit
-            </>
-          </button>
-        )}
-      </form>
-      <Close onClick={onClose} className={styles.btn_close} />
+              <div className={styles.flex}>
+                <CustomRadio
+                  options={options}
+                  value={formik.values.priority}
+                  setFieldValue={formik.setFieldValue}
+                />
+              </div>
+
+              <div className={`${styles.submit}`}>
+                {!taskData ? (
+                  <>
+                    <button
+                      type="submit"
+                      className={styles.button}
+                      disabled={!formik.dirty || !formik.isValid}
+                    >
+                      <Plus className={styles.logo} />
+                      Add
+                    </button>
+                    <button className={styles.btn_cansel} onClick={onClose}>
+                      Cancel
+                    </button>
+                  </>
+                ) : (
+                  <button
+                    type="submit"
+                    className={styles.buttonEdit}
+                    disabled={!formik.dirty || !formik.isValid}
+                  >
+                    <BsPencil className={styles.logo} />
+                    Edit
+                  </button>
+                )}
+              </div>
+            </Form>
+          );
+        }}
+      </Formik>
     </div>
   );
 };
