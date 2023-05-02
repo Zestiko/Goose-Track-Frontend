@@ -1,5 +1,5 @@
 
-import css from "./CalendarHeaderWeek.module.css"
+import css from "./CalendarHeaderWeek.module.scss"
 import { newWeek} from "components/сalendar/helps/createNewWeek";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment/moment";
