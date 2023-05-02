@@ -24,7 +24,7 @@ const Navigation = ({ theme }) => {
     <div className={css.userPanel}>
       <p className={css.navLabel}>User Panel</p>
       <NavLink
-        to="/user"
+        to="/account"
         className={
           `${css.navItem} ${theme}`
         }

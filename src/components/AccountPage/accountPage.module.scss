@@ -5,18 +5,20 @@
   flex-direction: column;
   width: calc(100% - 40px);
   padding: 0 18px 0 18px;
-  margin-top: 120px;
+  margin-top: 95px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 38px;
   background: var(--primary-background-color);
   border-radius: 16px;
   @media screen and (min-width: 767px) {
+    margin-top: 64px;
     display: flex;
     padding: 40px 175px 40px 175px;
   }
   @media screen and (min-width: 1200px) {
     padding: 60px 165px 60px 165px;
+    margin-top: 32px;
   }
 }
 .user_page__avatar_container {

@@ -1,3 +1,5 @@
+
+
 .header {
   display: flex;
   align-items: center;
@@ -9,6 +11,18 @@
     }
   }
 
+  .title{
+    display: none;
+    @media screen and (min-width: 1400px) {
+    font-family: 'Inter';
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1;
+    color: var(--userpage-text);
+    display: block;
+    margin-left: 32px;
+  }}
+  
   .user {
     display: flex;
     align-items: center;
@@ -20,7 +34,8 @@
       font-weight: 700;
       font-size: 18px;
       line-height: 1;
-      color:var(--userpage-text)
+      color:var(--userpage-text);
+      text-transform: capitalize;
     }
     
     & > .userAvatar {
@@ -31,7 +46,7 @@
     }
   }
   
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1400px) {
     & > svg {
       width: 34px;
       height: 34px;
@@ -93,9 +108,52 @@
   }
 
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 1400px) {
     .burger {
       display: none;
     }
   }
+}
+
+
+.blockMessage {
+  display: none;
+  @media screen and (min-width: 1400px) {
+  margin-left: 32px;
+  display: flex;
+  }
+}
+.img{
+  background-image: url('./Goose.png');
+  background-repeat: no-repeat;
+  width: 64px;
+  height: 60px;
+}
+
+.div{
+  display: flex;
+  flex-direction: column;
+  margin-left: 8px;
+}
+
+.titleTask{
+  font-family: 'Inter';
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1;
+  color: var(--userpage-text);
+  display: block;
+  margin-bottom: 8px;
+}
+
+
+.message{
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.3;
+  color: var(--primary-text-color);
+}
+
+.spanMsg{
+  color: #3E85F3;
 }

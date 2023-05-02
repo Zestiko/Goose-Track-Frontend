@@ -34,7 +34,7 @@
   .closeIcon {
     display: none;
   }
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1400px) {
     width: 289px;
     height: 100%;
     position: fixed;
@@ -65,7 +65,7 @@
     }
   }
 
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 767px) {
     width: 225px;
     height: 100%;
     position: fixed;

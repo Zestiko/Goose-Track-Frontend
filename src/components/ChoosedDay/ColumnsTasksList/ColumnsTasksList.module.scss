@@ -2,25 +2,27 @@
 
 .column {
     width: 100%;
-    height: 100%;
-    // проверить высоту!!!!!!
+    max-height: 334px;
     background-color: #ffffff;
-    margin-bottom: 32px;
+    // margin-bottom: 32px;
     display: flex;
+    // display: block;
     flex-direction: column;
     row-gap: 18px;
+    overflow-y: auto;
 
+    &::-webkit-scrollbar {
+        width: 6px;
 
-    // &::-webkit-scrollbar {
-    //     width: 8px;
-    // }
+    }
 
-    // &::-webkit-scrollbar-track {
-    //     background: #2d3037;
-    // }
+    &::-webkit-scrollbar-track {
+        background: #F2F2F2;
+        border-radius: 12px;
+    }
 
-    // &::-webkit-scrollbar-thumb {
-    //     background-color: #171820;
-    //     border-radius: 12px;
-    // }
+    &::-webkit-scrollbar-thumb {
+        background-color: #E7E5E5;
+                border-radius: 12px;
+    }
 }

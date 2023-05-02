@@ -23,6 +23,7 @@
 }
 .back {
   background-color: #dbe3e6cc;
+  border: 2px solid #dbe3e6cc;
 }
 .days {
   text-transform: uppercase;
@@ -43,10 +44,12 @@
   padding: 4px;
   color: #616161;
 }
-/* .hover_color:hover {
+
+.hover_color:hover {
   background-color: rgb(252, 249, 245);
   color: #3e85f3;
-} */
+}
+
 .scale {
   transform: scale(1.1);
   border-radius: 14px;

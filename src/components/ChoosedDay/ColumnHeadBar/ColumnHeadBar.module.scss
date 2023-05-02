@@ -1,48 +1,45 @@
 @import '../../../styles/vars';
 
 .header {
-    // background-color: white;
-    display: flex;
-    justify-content: space-between;
-    padding: 7px 0px;
-    margin-bottom: 24px;
+  // background-color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 7px 0px;
+  margin-bottom: 24px;
 }
 
 .columnTitle {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    color: #111111;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  color: #111111;
 }
 
 .iconButton {
-    display: flex;
-    border-radius: 50%;
-    background-color: #ffffff;
-    width: 24px;
-    height: 24px;
-    align-items: center;
-    justify-content: center;
-    background-color: transparent;
-    z-index: 1;
+  display: flex;
+  border-radius: 50%;
+  stroke: black;
+  fill: transparent;
+  width: 24px;
+  height: 24px;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
 
-    &:hover {
-        background-color: #CAE8FF;
-    }
-
-    &:focus {
-        background-color: #CAE8FF;
-    }
+  &:hover,
+  &:focus {
+    stroke: #3e85f3;
+  }
 }
 
 .icon {
-    fill: #ffffff;
-    width: 18px;
-    height: 18px;
+  fill: #ffffff;
+  width: 18px;
+  height: 18px;
 }
 
 .iconButton:hover .icon,
 .iconButton:focus .icon {
-    fill: #CAE8FF;
+    stroke: #3E85F3
 }
