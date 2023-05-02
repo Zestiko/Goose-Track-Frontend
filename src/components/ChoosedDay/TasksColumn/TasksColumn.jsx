@@ -12,7 +12,7 @@ const TasksColumn = ({ title, tasks }) => {
   return (
     <>
       <li className={scss.columnBox}>
-        <ColumnHeadBar title={title} openModalNewTask={onClose} />
+        <ColumnHeadBar title={title} openModalNewTask={onOpen} />
         {tasks && <ColumnsTasksList tasks={tasks} />}
         <AddTaskBtn onClick={onOpen} />
       </li>

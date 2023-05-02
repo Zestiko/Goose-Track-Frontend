@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import scss from './ColumnHeadBar.module.scss';
-// import iconPlusCircle from '../../../images/icons/icon-plus-circle.svg';
 import { spriteIcons } from 'images/icons';
 
 const ColumnHeadBar = ({ title, openModalNewTask }) => {
