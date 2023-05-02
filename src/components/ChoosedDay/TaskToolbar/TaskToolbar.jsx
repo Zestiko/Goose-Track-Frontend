@@ -21,7 +21,6 @@ const TaskToolbar = ({ task }) => {
   const currentDate = useSelector(getCurrentDate);
 
   const otherColumns = COLUMNS.filter(item => item !== column);
-
   const columnRef = useRef();
   const iconRef = useRef();
 
@@ -62,7 +61,7 @@ const TaskToolbar = ({ task }) => {
                         dispatch(
                           updateTask({ taskId: _id, updatedTask: newTaskData })
                         );
-                        // console.log(task._id, newTaskData);
+                        dispatch(fetchTasks(currentDate));
                         setOpenChoice(false);
                       }}
                     >
