@@ -1,8 +1,4 @@
-export const COLUMNS = {
-  TODO: 'to do',
-  PROGRESS: 'in progress',
-  DONE: 'done',
-};
+export const COLUMNS = ['toDo', 'inProgress', 'done'];
 
 export const COLUMNS_OPTIONS = [
     { column: COLUMNS.TODO, title: "To do" },
