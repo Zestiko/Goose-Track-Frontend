@@ -8,7 +8,6 @@ export const authRegisterThunk = createAsyncThunk(
     try {
       const { data } = await publicApi.post('/auth/register', values);
       token.set(data.token);
-      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue('Sorry, something went wrong');
@@ -48,7 +47,6 @@ export const authCurrentThunk = createAsyncThunk(
     // Reading the token from the state via getState()
     const state = thunkAPI.getState();
     const persistedToken = state.user.token;
-    console.log("🚀 ~ file: user-operations.js:50 ~ persistedToken:", persistedToken)
 
     if (persistedToken === null) {
       // If there is no token, exit without performing any request
@@ -108,7 +106,6 @@ export const uploadAvatar = async file => {
     
     return data.secure_url;
   } catch (error) {
-    console.error(error);
     return null;
   }
 };

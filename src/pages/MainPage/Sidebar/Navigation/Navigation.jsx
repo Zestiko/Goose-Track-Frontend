@@ -25,19 +25,13 @@ const Navigation = ({ theme }) => {
       <p className={css.navLabel}>User Panel</p>
       <NavLink
         to="/user"
-        className={
-          `${css.navItem} ${theme}`
-        }
-      >
+        className={({ isActive }) =>isActive ? css.activeLink : css.navLink}>
         <UserCheckSvg />
         My account
       </NavLink>
       <NavLink
         to={`/calendar/month/${currentDate.slice(0,7)}`}
-        className={
-          `${css.navItem} ${theme}`
-        }
-      >
+        className={({ isActive }) =>isActive ? css.activeLink : css.navLink}>
         <CalendarCheckSvg />
         Calendar
       </NavLink>

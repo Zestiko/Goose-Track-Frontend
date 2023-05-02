@@ -3,6 +3,7 @@
   flex-direction: column;
   font-weight: 600;
   flex: 1;
+  gap: 16px;
 }
 
 .navLabel {
@@ -13,33 +14,89 @@
   margin-bottom: 32px;
 }
 
-.navItem {
-  display: inline-flex;
+// .navItem {
+//   display: inline-flex;
+//   align-items: center;
+//   gap: 10px;
+//   font-weight: 600;
+//   font-size: 16px;
+//   line-height: 24px;
+//   padding: 16px 20px;
+//   color: #84828a;
+
+//   & > svg {
+//     width: 24px;
+//     height: 24px;
+//     stroke: #84828a;
+//     fill: none;
+//   }
+
+//   &:hover,
+//   &:focus,
+//   &.selected {
+//     background: var(--active-item-sidebar-background);
+//     border-radius: 8px;
+//     color: var(--accent-text-color);
+
+//     & > svg {
+//       stroke: var(--accent-text-color);
+//     }
+//   }
+// }
+
+.navLink {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
-  gap: 10px;
+
+  font-family: var(--primary-font);
+  font-style: normal;
   font-weight: 600;
-  font-size: 16px;
-  line-height: 24px;
-  padding: 16px 20px;
-  color: #84828a;
+  font-size: 14px;
+  line-height: 17px;
+  text-decoration: none;
+  color: var(--not-active-item-sidebar-text-color);
+
+
+  padding: 12px;
+  gap: 8px;
 
   & > svg {
     width: 24px;
     height: 24px;
     stroke: #84828a;
     fill: none;
-  }
-
-  &:hover,
-  &:focus,
-  &.selected {
-    background: var(--active-item-sidebar-background);
-    border-radius: 8px;
-    color: var(--accent-text-color);
-
-    & > svg {
-      stroke: var(--accent-text-color);
     }
+}
+
+.activeLink {
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+  font-family: var(--primary-font);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  text-decoration: none;
+
+  padding: 12px;
+  gap: 8px;
+  color: var(--accent-text-color);
+
+
+  background: var(--active-item-sidebar-background);
+  border-radius: 8px;
+
+& > svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--accent-text-color);
+  fill: none;
   }
 }
 

@@ -7,10 +7,6 @@ export const fetchTasks = createAsyncThunk(
   async (date, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.user.token;
-    console.log(
-      '🚀 ~ file: user-operations.js:50 ~ persistedToken:',
-      persistedToken
-    );
 
     if (persistedToken === null) {
       // If there is no token, exit without performing any request
