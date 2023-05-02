@@ -57,7 +57,7 @@ function UserInfoModal() {
 
             <p className={scss.userName}>{userName}</p>
           </div>
-          <NavLink className={scss.account} to="/user">
+          <NavLink className={scss.account} to="/account">
             <UserCheckSvg />
             My account
           </NavLink>
