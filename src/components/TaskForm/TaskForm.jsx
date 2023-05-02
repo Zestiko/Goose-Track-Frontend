@@ -7,7 +7,7 @@ import moment from 'moment';
 import { updateTask } from 'redux/tasks/tasksOperations';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import CustomRadio from './CustomRadio';
+import CustomRadio from './CustomRadio/CustomRadio';
 import { BsPencil } from 'react-icons/bs';
 
 const options = [
