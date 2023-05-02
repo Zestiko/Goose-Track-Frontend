@@ -99,7 +99,7 @@ const TaskToolbar = ({ task }) => {
         </li>
       </ul>
 
-      {isOpen && <TaskModal taskData={task} />}
+      {isOpen && <TaskModal taskData={task} onClose={onClose} />}
     </>
   );
 };

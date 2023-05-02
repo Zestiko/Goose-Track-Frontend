@@ -13,14 +13,22 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import styles from './TaskForm.module.scss';
 import { BsPencil } from 'react-icons/bs';
 
+
 export const TaskForm = ({ props, onClose }) => {
   const theme = localStorage.getItem('theme') || 'lightTheme';
+
   const dispatch = useDispatch();
   const currentDate = useSelector(getCurrentDate);
   const { taskData } = props;
 
   const initialFormikValues = taskData
-    ? { ...taskData }
+    ? {
+        title: taskData.title,
+        startTime: taskData.startTime,
+        endTime: taskData.endTime,
+        taskDate: taskData.taskDate,
+        priority: taskData.priority,
+      }
     : {
         title: '',
         startTime: moment().format('HH:mm'),
@@ -30,11 +38,6 @@ export const TaskForm = ({ props, onClose }) => {
       };
 
   const submiting = async values => {
-    if (taskData) {
-      dispatch(updateTask({ taskId: taskData._id, updatedTask: values }));
-    } else {
-      dispatch(addTask(values));
-    }
     dispatch(fetchTasks());
     onClose();
   };
@@ -135,6 +138,9 @@ export const TaskForm = ({ props, onClose }) => {
                       type="submit"
                       className={clsx(styles.button, theme)}
                       disabled={!formik.dirty || !formik.isValid}
+                      onClick={() => {
+                        dispatch(addTask({ ...formik.values, column }));
+                      }}
                     >
                       <Plus className={clsx(styles.logo, theme)} />
                       Add
@@ -151,6 +157,14 @@ export const TaskForm = ({ props, onClose }) => {
                     type="submit"
                     className={clsx(styles.buttonEdit, theme)}
                     disabled={!formik.dirty || !formik.isValid}
+                    onClick={() => {
+                      dispatch(
+                        updateTask({
+                          taskId: taskData._id,
+                          updatedTask: formik.values,
+                        })
+                      );
+                    }}
                   >
                     <BsPencil className={clsx(styles.logo, theme)} />
                     Edit

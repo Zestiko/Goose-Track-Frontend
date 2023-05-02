@@ -33,6 +33,7 @@ const TasksColumnsList = () => {
             key={column}
             tasks={tasksByColumns[column]}
             title={column}
+            column={column}
           />
         );
       })}

@@ -7,7 +7,7 @@ import TaskModal from 'components/TaskModal/TaskModal';
 import { useToggle } from 'hooks/useToggle';
 
 
-const TasksColumn = ({ title, tasks }) => {
+const TasksColumn = ({ title, tasks, column }) => {
   const { isOpen, onOpen, onClose } = useToggle();
   return (
     <>
@@ -16,7 +16,7 @@ const TasksColumn = ({ title, tasks }) => {
         {tasks && <ColumnsTasksList tasks={tasks} />}
         <AddTaskBtn onClick={onOpen} />
       </li>
-      {isOpen && <TaskModal onClose={onClose} />}
+      {isOpen && <TaskModal onClose={onClose} column={column} />}
     </>
   );
 };
