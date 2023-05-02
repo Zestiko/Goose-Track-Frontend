@@ -6,16 +6,22 @@ import AddTaskBtn from '../AddTaskBtn/AddTaskBtn';
 import ColumnHeadBar from '../ColumnHeadBar/ColumnHeadBar';
 import ColumnsTasksList from '../ColumnsTasksList/ColumnsTasksList';
 import { useState } from 'react';
+// import Modal from 'components/Modal/Modal';
 import ModalToggel from 'components/ModalTogel/ModalToggel';
+import { useSelector } from 'react-redux';
+import { getCurrentDate } from 'redux/calendar/selectors';
+import Modal from 'components/Modal/Modal';
 
 
 const TasksColumn = ({ title, tasks }) => {
   // const { choosedDay } = useParams();
+  const taskDate = useSelector(getCurrentDate);
+  console.log(taskDate)
   const [openModal, setOpenModal] = useState(false);
 
   const openModalNewTask = () => {
-
     setOpenModal(true);
+
   };
 
   return (
@@ -28,7 +34,7 @@ const TasksColumn = ({ title, tasks }) => {
 
         <AddTaskBtn onClick={openModalNewTask} />
       </li>
-      {openModal && <ModalToggel/>}
+      {openModal && <Modal taskDate={taskDate} />}
     </>
   );
 };
