@@ -8,8 +8,6 @@ const ColumnHeadBar = ({ title, openModalNewTask }) => {
       <p className={scss.columnTitle}>{title}</p>
       <button className={scss.iconButton} onClick={openModalNewTask}>
         <svg className={scss.icon}>
-          {/* <use href={iconPlusCircle}></use> */}
-          {/* I need help */}
           <use href={spriteIcons + '#icon-plus-circle'}></use>
         </svg>
       </button>

@@ -9,12 +9,15 @@ import { useRef, useState } from 'react';
 import { removeTask, updateTask } from 'redux/tasks/tasksOperations';
 import ModalToggel from 'components/ModalTogel/ModalToggel';
 import Modal from 'components/Modal/Modal';
+import TaskModal from 'components/TaskModal/TaskModal';
+import { useToggle } from 'hooks/useToggle';
 
 const TaskToolbar = ({ task }) => {
   const dispatch = useDispatch();
   const { column, _id } = task;
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [openChoice, setOpenChoice] = useState(false);
+  const { isOpen, onOpen, onClose } = useToggle();
 
   // const handleChangeColumn = () => {
   //   // return (
@@ -107,7 +110,7 @@ const TaskToolbar = ({ task }) => {
         </button> */}
         </li>
         <li>
-          <button onClick={handleUpdateTaskInfo}>
+          <button onClick={onOpen}>
             <svg className={scss.iconButton}>
               {/* <use href={iconPencil}></use> */}
               <use href={spriteIcons + '#icon-pencil'}></use>
@@ -123,8 +126,7 @@ const TaskToolbar = ({ task }) => {
           </button>
         </li>
       </ul>
-      {showUpdateModal && <ModalToggel data={task} />}
-      {/* {showUpdateModal && <Modal data={task} />} */}
+      {isOpen && <TaskModal onClose={onClose} taskData={task} />}
     </>
   );
 };

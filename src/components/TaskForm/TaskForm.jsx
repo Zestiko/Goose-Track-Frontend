@@ -5,28 +5,22 @@ import { ReactComponent as Pencil } from '../../images/icons/icon-pencil-01.svg'
 import { ReactComponent as Plus } from '../../images/icons/icon-plus.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTask } from 'redux/tasks/tasksOperations';
-// import { useParams } from 'react-router-dom';
 import { getCurrentDate } from 'redux/calendar/selectors';
+import moment from 'moment';
 
 export const TaskForm = ({ taskData, onClose }) => {
   const dispatch = useDispatch();
   const currentDate = useSelector(getCurrentDate);
-  console.log(taskData);
   const [title, setInTitle] = useState('');
-  const [startTime, setstartTime] = useState('09:00');
-  const [endTime, setEndTime] = useState('14:00');
+  const [startTime, setstartTime] = useState(moment().format('HH:mm'));
+  const [endTime, setEndTime] = useState(
+    moment().add(1, 'hour').format('HH:mm')
+  );
   const [priority, setPriority] = useState('low');
-
-  const dataForm = taskData || {
-    taskDate: currentDate,
-    title,
-    startTime,
-    endTime,
-    priority,
-  };
 
   const handleChange = event => {
     const { id, name, value } = event.target;
+
     if (name === 'title') {
       setInTitle(value);
     }
@@ -43,8 +37,10 @@ export const TaskForm = ({ taskData, onClose }) => {
 
   const handleSubmit = evt => {
     evt.preventDefault();
-    dispatch(addTask(dataForm));
-    console.log(dataForm);
+    dispatch(
+      addTask({ title, startTime, endTime, priority, taskDate: currentDate })
+    );
+    onClose();
   };
 
   return (
@@ -74,6 +70,7 @@ export const TaskForm = ({ taskData, onClose }) => {
               name="startTime"
               className={styles.timeInput}
               value={startTime}
+              autoComplete="on"
             />
           </div>
           <div className="">
@@ -97,6 +94,7 @@ export const TaskForm = ({ taskData, onClose }) => {
                 type="radio"
                 id="low"
                 name="priority"
+                checked="checked"
                 onChange={handleChange}
               />
               <span>Low</span>
