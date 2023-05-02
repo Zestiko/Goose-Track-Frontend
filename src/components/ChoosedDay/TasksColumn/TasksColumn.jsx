@@ -8,7 +8,6 @@ import { useToggle } from 'hooks/useToggle';
 
 const TasksColumn = ({ title, tasks }) => {
   const { isOpen, onOpen, onClose } = useToggle();
-
   return (
     <>
       <li className={scss.columnBox}>

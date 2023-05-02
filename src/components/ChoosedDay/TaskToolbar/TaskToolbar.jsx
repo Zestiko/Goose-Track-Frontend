@@ -7,8 +7,6 @@ import { spriteIcons } from 'images/icons';
 import scss from './TaskToolbar.module.scss';
 import { useRef, useState } from 'react';
 import { removeTask, updateTask } from 'redux/tasks/tasksOperations';
-import ModalToggel from 'components/ModalTogel/ModalToggel';
-import Modal from 'components/Modal/Modal';
 import TaskModal from 'components/TaskModal/TaskModal';
 import { useToggle } from 'hooks/useToggle';
 
@@ -18,7 +16,6 @@ const TaskToolbar = ({ task }) => {
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [openChoice, setOpenChoice] = useState(false);
   const { isOpen, onOpen, onClose } = useToggle();
-
   // const handleChangeColumn = () => {
   //   // return (
   //   // <ModalClear>
@@ -37,11 +34,6 @@ const TaskToolbar = ({ task }) => {
   //   // );
   // };
 
-  const handleUpdateTaskInfo = async () => {
-    setShowUpdateModal(!showUpdateModal);
-    await dispatch(updateTask(task._id));
-  };
-
   const handleDeleteTask = async () => {
     await dispatch(removeTask(task._id));
   };
@@ -58,7 +50,6 @@ const TaskToolbar = ({ task }) => {
       // console.log(evt.target, iconRef.current);
     }
   });
-
   return (
     <>
       <ul className={scss.cardBox}>

@@ -7,17 +7,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addTask } from 'redux/tasks/tasksOperations';
 import { getCurrentDate } from 'redux/calendar/selectors';
 import moment from 'moment';
+import { updateTask } from 'redux/tasks/tasksOperations';
 
-export const TaskForm = ({ taskData, onClose }) => {
+export const TaskForm = ({ props, onClose }) => {
   const dispatch = useDispatch();
   const currentDate = useSelector(getCurrentDate);
-  const [title, setInTitle] = useState('');
-  const [startTime, setstartTime] = useState(moment().format('HH:mm'));
+  const [title, setInTitle] = useState(props?.taskData?.title || '');
+  const [startTime, setstartTime] = useState(
+    props?.taskData?.startTime || moment().format('HH:mm')
+  );
   const [endTime, setEndTime] = useState(
-    moment().add(1, 'hour').format('HH:mm')
+    props?.taskData?.endTime || moment().add(1, 'hour').format('HH:mm')
   );
   const [priority, setPriority] = useState('low');
-
+  const { taskData } = props;
   const handleChange = event => {
     const { id, name, value } = event.target;
 
@@ -34,12 +37,21 @@ export const TaskForm = ({ taskData, onClose }) => {
       setPriority(id);
     }
   };
-
   const handleSubmit = evt => {
     evt.preventDefault();
-    dispatch(
-      addTask({ title, startTime, endTime, priority, taskDate: currentDate })
-    );
+    const newTaskData = {
+      priority,
+      taskDate: currentDate,
+      title,
+      startTime,
+      endTime,
+    };
+    console.log(newTaskData);
+    if (taskData) {
+      dispatch(updateTask({ taskId: taskData._id, updatedTask: newTaskData }));
+    } else {
+      dispatch(addTask(newTaskData));
+    }
     onClose();
   };
 
@@ -53,6 +65,7 @@ export const TaskForm = ({ taskData, onClose }) => {
           <input
             type="text"
             name="title"
+            value={title}
             onChange={handleChange}
             className={styles.input}
             placeholder="Enter text"
