@@ -13,13 +13,12 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import styles from './TaskForm.module.scss';
 import { BsPencil } from 'react-icons/bs';
 
-
-export const TaskForm = ({ props, onClose,  column }) => {
+export const TaskForm = ({ props, onClose }) => {
   const theme = localStorage.getItem('theme') || 'lightTheme';
 
   const dispatch = useDispatch();
   const currentDate = useSelector(getCurrentDate);
-  const { taskData } = props;
+  const { taskData, column } = props;
 
   const initialFormikValues = taskData
     ? {
