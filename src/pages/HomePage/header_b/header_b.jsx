@@ -2,6 +2,11 @@ import styles from './header.module.scss';
 import goose from '../assets/img/GOOSE_2.png';
 import svgIcon from '../assets/img/Icon_arr.svg';
 import { NavLink } from 'react-router-dom';
+// Goose
+import gooseDesk3x from '../../../images/bar/desktop/goose-1-desktop-3x.png';
+import gooseDesk2x from '../../../images/bar/desktop/goose-1-desktop-2x.png';
+import gooseDesk1x from '../../../images/bar/desktop/goose-1-desktop-1x.png';
+
 
 let handleDel;
 
@@ -9,7 +14,17 @@ export const Header = () => {
   return (
     <div className={styles.container}>
       <div className={styles.box}>
-        <img src={goose} alt="logo" className={styles.logo} />
+      
+<picture>
+  <source
+    className={styles}
+    srcSet={`${gooseDesk1x} 1x, ${gooseDesk2x} 2x, ${gooseDesk3x} 3x`} 
+    alt="Goose"
+  />
+  <img className={styles.logo} src={goose} alt="Goose"/>        
+</picture>        
+
+
 
         <h1 className={styles.main_title}>
           G<span className={styles.oo_title}>oo</span>seTrack
