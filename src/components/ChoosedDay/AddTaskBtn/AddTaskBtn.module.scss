@@ -16,6 +16,13 @@
     font-style: normal;
     font-weight: 600;
     color: #111111;
+    // isolation: isolate;
+    cursor: pointer;
+    position: sticky;
+    position: -webkit-sticky;
+    bottom: 0;
+
+
 
     &:hover {
         background-color: #CAE8FF;

@@ -65,8 +65,7 @@ export const updateTask = createAsyncThunk(
   'tasks/updateTask',
   async ({ taskId, updatedTask }, thunkAPI) => {
     try {
-      console.log('REDUX ID', taskId);
-      console.log('REDUX task', updatedTask);
+
       const { data } = await publicApi.patch(`/tasks/${taskId}`, {
         ...updatedTask,
       });

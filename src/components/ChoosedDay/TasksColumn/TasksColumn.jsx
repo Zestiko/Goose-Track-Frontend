@@ -6,6 +6,7 @@ import ColumnsTasksList from '../ColumnsTasksList/ColumnsTasksList';
 import TaskModal from 'components/TaskModal/TaskModal';
 import { useToggle } from 'hooks/useToggle';
 
+
 const TasksColumn = ({ title, tasks }) => {
   const { isOpen, onOpen, onClose } = useToggle();
   return (
@@ -19,6 +20,7 @@ const TasksColumn = ({ title, tasks }) => {
     </>
   );
 };
+
 
 export default TasksColumn;
 
