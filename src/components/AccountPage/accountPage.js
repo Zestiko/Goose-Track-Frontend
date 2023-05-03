@@ -10,14 +10,14 @@ import moment from 'moment';
 import css from './accountPage.module.scss';
 
 const today = new Date().toISOString().split('T')[0];
-const infoUserSchema = Yup.object().shape({
+export const infoUserSchema = Yup.object().shape({
   userName: Yup.string()
     .min(3, 'Too Short!')
-    .max(36, 'Too Long!')
+    .max(16, 'Too Long!')
     .required('Required'),
   email: Yup.string().email('Invalid email').required('Required'),
-  phone:Yup.string().matches(/^\+380\d{9}$/, "Phone number must be in the format +380XXXXXXXXX").required(),
-  telegram: Yup.string().matches(/^\+380\d{9}$/, "Telegram number must be in the format +380XXXXXXXXX"),
+  phone: Yup.string().matches(/^\+380\d{9}$/, "Phone number must be in the format +380XXXXXXXXX"),
+  telegram: Yup.string().max(16, 'Invalid telegram'),
   avatar: Yup.mixed().test(
       "fileType",
       "Avatar must be a valid image file (jpg, jpeg, png)",
