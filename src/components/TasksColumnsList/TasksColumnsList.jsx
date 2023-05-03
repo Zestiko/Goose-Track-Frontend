@@ -8,20 +8,20 @@ import { getCurrentDate } from 'redux/calendar/selectors';
 
 const COLUMNS = ['toDo', 'inProgress', 'done'];
 
-const TasksColumnsList = () => {
+const TasksColumnsList = ({ dayTasks }) => {
   const currentDate = useSelector(getCurrentDate);
 
-  const { tasks } = useTasksByChoosedDay(currentDate) || [];
+  // const { tasks } = useTasksByChoosedDay(currentDate) || [];
 
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchTasks(currentDate));
-  }, [currentDate, dispatch]);
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(fetchTasks(currentDate));
+  // }, [currentDate, dispatch]);
 
   const tasksByColumns = COLUMNS.reduce((acc, column) => {
     return {
       ...acc,
-      [column]: tasks.filter(task => task.column === column),
+      [column]: dayTasks.filter(task => task.column === column),
     };
   }, {});
 

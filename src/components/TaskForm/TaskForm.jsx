@@ -37,7 +37,8 @@ export const TaskForm = ({ props, onClose }) => {
       };
 
   const submiting = async values => {
-    dispatch(fetchTasks());
+    // dispatch(fetchTasks());
+    // dispatch(addTask({ ...values, column }));
     onClose();
   };
   return (
@@ -45,13 +46,14 @@ export const TaskForm = ({ props, onClose }) => {
       <Formik
         initialValues={initialFormikValues}
         validationSchema={taskSchema}
-        onSubmit={async (values, { setSubmitting }) => {
-          setTimeout(() => {
-            submiting(values).then(() => {
-              setSubmitting(false);
-            });
-          }, 700);
-        }}
+        // onSubmit={async (values, { setSubmitting }) => {
+        //   setTimeout(() => {
+        //     submiting(values).then(() => {
+        //       setSubmitting(false);
+        //     });
+        //   }, 700);
+        // }}
+        onSubmit={submiting}
       >
         {formik => {
           return (

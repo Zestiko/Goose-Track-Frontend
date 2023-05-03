@@ -27,7 +27,7 @@ const TaskToolbar = ({ task }) => {
 
   const handleDeleteTask = async () => {
     await dispatch(removeTask(task._id));
-    await dispatch(fetchTasks(currentDate));
+    // await dispatch(fetchTasks(currentDate));
   };
 
   return (

@@ -36,22 +36,24 @@ const tasksSlice = createSlice({
       })
       .addCase(addTask.fulfilled, (state, action) => {
         state.status = STATUS.success;
-        state.tasks.push(action.payload);
+        state.tasks.push(action.payload.task);
       })
       .addCase(updateTask.fulfilled, (state, action) => {
         state.status = STATUS.success;
         const idx = state.tasks.findIndex(
-          task => task.id === action.payload.id
+          task => task._id === action.payload.task._id
         );
-        state.tasks.splice(idx, 1, action.payload.task);
+       state.tasks[idx] = action.payload.task;
       })
       .addCase(removeTask.fulfilled, (state, action) => {
         state.status = STATUS.success;
         const idx = state.tasks.findIndex(
-          task => task.id === action.payload.id
+          task => task._id === action.payload._id
         );
+        
         state.tasks.splice(idx, 1);
       }),
+         
 });
 
 export const { setDate } = tasksSlice.actions;
