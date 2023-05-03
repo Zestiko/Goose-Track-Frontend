@@ -16,13 +16,8 @@ export const infoUserSchema = Yup.object().shape({
     .max(36, 'Too Long!')
     .required('Required'),
   email: Yup.string().email('Invalid email').required('Required'),
-  phone: Yup.string()
-    .matches(
-      /^(\+)?((\d{2,3}) ?\d|\d)(([ -]?\d)|( ?(\d{2,3}) ?)){5,12}\d$/,
-      'Invalid phone'
-    )
-    .optional(),
-  telegram: Yup.string('Invalid telegram'),
+  phone: Yup.string().matches(/^\+380\d{9}$/, "Phone number must be in the format +380XXXXXXXXX"),
+  telegram: Yup.string(),
   avatar: Yup.string('Invalid avatar'),
   birthday: Yup.date(),
 });
