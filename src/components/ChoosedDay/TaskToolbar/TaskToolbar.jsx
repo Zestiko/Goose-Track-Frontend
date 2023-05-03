@@ -1,10 +1,9 @@
 import { COLUMNS } from 'constants/columns.constans';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useRef, useState } from 'react';
 
 import { spriteIcons } from 'images/icons';
 import { useToggle } from 'hooks/useToggle';
-import { getCurrentDate } from 'redux/calendar/selectors';
 import TaskModal from 'components/TaskModal/TaskModal';
 import scss from './TaskToolbar.module.scss';
 import {
@@ -17,7 +16,6 @@ const TaskToolbar = ({ task }) => {
   const { column, _id, title, startTime, endTime, priority, taskDate } = task;
   const [openChoice, setOpenChoice] = useState(false);
   const { isOpen, onOpen, onClose } = useToggle();
-  const currentDate = useSelector(getCurrentDate);
 
   const otherColumns = COLUMNS.filter(item => item !== column);
 
