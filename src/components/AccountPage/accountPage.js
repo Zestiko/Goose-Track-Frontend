@@ -59,11 +59,6 @@ const MyDatePicker = ({ name = '',birthday }) => {
     [currentMonth, isWeekend]
   );
 
-  const formatWeekDay = useCallback(
-    (weekdayShort, dayOfWeek) => weekdayShort.charAt(0),
-    []
-  );
-
   const handleMonthChange = useCallback(date => {
     setCurrentMonth(moment(date));
   }, []);
@@ -72,7 +67,6 @@ const MyDatePicker = ({ name = '',birthday }) => {
     setCurrentMonth(moment());
   }, []);
 
-  const todayHighlight = useMemo(() => false, []);
 
   return (
     <DatePicker
