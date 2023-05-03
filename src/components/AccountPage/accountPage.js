@@ -58,6 +58,7 @@ const MyDatePicker = ({ name = '',birthday }) => {
     },
     [currentMonth, isWeekend]
   );
+  const formatWeekDay = (weekdayShort, dayOfWeek) => weekdayShort.charAt(0);
 
   const handleMonthChange = useCallback(date => {
     setCurrentMonth(moment(date));
@@ -78,6 +79,7 @@ const MyDatePicker = ({ name = '',birthday }) => {
       dayClassName={dayClassNames}
       calendarStartDay={1}
       placeholderText={birthday || 'Choose a date'}
+      formatWeekDay={formatWeekDay}
     />
   );
 };
