@@ -163,6 +163,7 @@ $secondary-font: 'Coolvetica', sans-serif;
   padding: 15px 18px;
   background-color: #3e85f3;
   border-radius: 16px;
+  
 
   .react-datepicker__day-name,
   .react-datepicker__day {
@@ -226,16 +227,23 @@ $secondary-font: 'Coolvetica', sans-serif;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   padding: 0;
 }
-
 .react-datepicker {
   background-color: inherit;
   font-family: 'Inter';
   font-size: 18px;
   line-height: 24px;
+
   border: none;
+
 }
 
 .react-datepicker-wrapper:hover .react-datepicker {
   background-color: #ffffff;
   border-radius: 50%;
 }
+
+.react-datepicker-popper {
+  transform: translate(881.05px, 950.217px); 
+  inset: 0px auto auto 50px;
+}
+
