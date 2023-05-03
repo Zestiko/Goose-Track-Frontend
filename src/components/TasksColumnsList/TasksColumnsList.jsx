@@ -1,23 +1,10 @@
-import { useTasksByChoosedDay } from 'hooks/useTasksByChoosedDay';
+import PropTypes from 'prop-types';
+import { COLUMNS } from 'constants/columns.constans';
+
 import TasksColumn from 'components/ChoosedDay/TasksColumn/TasksColumn';
 import scss from './TasksColumnsList.module.scss';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { fetchTasks } from 'redux/tasks/tasksOperations';
-import { getCurrentDate } from 'redux/calendar/selectors';
-
-const COLUMNS = ['toDo', 'inProgress', 'done'];
 
 const TasksColumnsList = ({ dayTasks }) => {
-  const currentDate = useSelector(getCurrentDate);
-
-  // const { tasks } = useTasksByChoosedDay(currentDate) || [];
-
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(fetchTasks(currentDate));
-  // }, [currentDate, dispatch]);
-
   const tasksByColumns = COLUMNS.reduce((acc, column) => {
     return {
       ...acc,
@@ -42,3 +29,17 @@ const TasksColumnsList = ({ dayTasks }) => {
 };
 
 export default TasksColumnsList;
+
+TasksColumnsList.propTypes = {
+  dayTasks: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string,
+      title: PropTypes.string.isRequired,
+      startTime: PropTypes.string.isRequired,
+      endTime: PropTypes.string.isRequired,
+      column: PropTypes.string.isRequired,
+      priority: PropTypes.string.isRequired,
+      taskDate: PropTypes.string.isRequired,
+    })
+  ),
+};

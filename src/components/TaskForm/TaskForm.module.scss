@@ -17,6 +17,7 @@
   line-height: 1.14;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .flex {
@@ -28,13 +29,18 @@
   flex-direction: column;
   margin-right: 14px;
 }
+
 .input {
   width: 100%;
   padding: 14px;
   padding-left: 18px;
   margin-top: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+
   border: 1px solid var(--task-input-border-color);
-  color: var(--secondary-text-color);
+  color: var(--task-text-color);
   background-color: var(--task-input-bg-color2);
   border-radius: 8px;
 
@@ -45,7 +51,15 @@
     font-family: 'Inter';
     color: var(--task-text-color);
   }
+
+  &.isInvalid {
+    border: 1px solid #dc3545;
+  }
+  &.isValid {
+    border: 1px solid #3cbc81;
+  }
 }
+
 .timeInput {
   width: 126px;
   padding: 14px;
@@ -63,9 +77,6 @@
   @media screen and (min-width: 768px) {
     width: 163px;
   }
-}
-.timeInput::-webkit-calendar-picker-indicator {
-  display: none;
 }
 .check {
   margin-right: 18px;
@@ -178,6 +189,10 @@
   color: var(--task-priority-high-color);
   margin-top: 8px;
   font-size: 12px;
+  padding-left: 18px;
+  position: absolute;
+  bottom: -24px;
+  left: 18px;
 }
 
 .is_invalid {
