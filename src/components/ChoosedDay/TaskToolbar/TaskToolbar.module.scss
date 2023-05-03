@@ -22,11 +22,11 @@
 
 .iconButton {
   display: flex;
-  // border-radius: 50%;
   stroke: var(--primary-text-color);
   fill: transparent;
   width: 16px;
   height: 16px;
+  transition: all linear 350ms;
 
   &:hover,
   &:focus {
@@ -60,6 +60,7 @@
   cursor: pointer;
   border-radius: 8px;
   stroke: var(--primary-text-color);
+  transition: all linear 350ms;
 
   &:first-child {
     margin-bottom: 6px;
@@ -90,8 +91,8 @@
 
 .iconMove {
   display: flex;
-  // border-radius: 50%;
   fill: transparent;
   width: 16px;
   height: 16px;
+  transition: all linear 350ms;
 }
