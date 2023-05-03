@@ -59,11 +59,11 @@ const MyDatePicker = ({ name = '', birthday }) => {
     <DatePicker
       showPopperArrow={false}
       {...field}
-      selected={value|| new Date(birthday) }
+      selected={value || new Date(birthday || today)}
       onChange={date => setValue(date)}
       dayClassName={dayClassNames}
       calendarStartDay={1}
-      placeholderText={birthday || "Choose a date"}
+      placeholderText={birthday || 'Choose a date'}
       weekdayShort={['S', 'M', 'T', 'W', 'T', 'F', 'S']}
     />
   );
