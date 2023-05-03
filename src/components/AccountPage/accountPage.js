@@ -1,4 +1,4 @@
-import React, { useCallback,  useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectorGetUser } from '../../redux/user/selectors';
 import { updateUserProfile } from '../../redux/user/user-operations';
@@ -27,7 +27,7 @@ export const infoUserSchema = Yup.object().shape({
   birthday: Yup.date(),
 });
 
-const MyDatePicker = ({ name = '',birthday }) => {
+const MyDatePicker = ({ name = '', birthday }) => {
   const [field, meta, helpers] = useField(name);
   const [currentMonth, setCurrentMonth] = useState(moment());
 
@@ -66,7 +66,6 @@ const MyDatePicker = ({ name = '',birthday }) => {
   const handleCloseDatePicker = useCallback(() => {
     setCurrentMonth(moment());
   }, []);
-
 
   return (
     <DatePicker
@@ -114,28 +113,25 @@ const UserForm = ({ theme }) => {
   };
 
   const submiting = async values => {
-
-    
     const formData = new FormData();
 
     const keys = Object.keys(values);
     keys.forEach(key => {
-      if (key === "date") {
-        const birthday = moment(values[key]).format('YYYY-MM-DD');       
+      if (key === 'date') {
+        const birthday = moment(values[key]).format('YYYY-MM-DD');
         formData.append('birthday', birthday);
         return;
       }
       if (key === 'birthday') {
-        return
+        return;
       }
-      formData.append(key, values[key])
+      formData.append(key, values[key]);
     });
-    
+
     if (file) {
       formData.append('avatar', file);
-    
     }
-    
+
     try {
       await dispatch(updateUserProfile(formData));
     } catch (error) {

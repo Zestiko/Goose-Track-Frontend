@@ -7,7 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { chosedDateAction, swichAction} from "../../../redux/calendar/actions";
 import moment from "moment/moment";
 import { getCurrentDate, getDayOrMonth} from "../../../redux/calendar/selectors";
-import { setDate } from "redux/tasks/taskSlice";
+// import { setDate } from "redux/tasks/taskSlice";
+// import { fetchTasks } from "redux/tasks/tasksOperations";
 
 
 export const CalendarHeader = () => {
@@ -26,14 +27,17 @@ export const CalendarHeader = () => {
     }
 
     const handleNext = (day) => {
-        dispatch(setDate(day.format("YYYY-MM")))
+        // dispatch(setDate(day.format("YYYY-MM")))
          navigate(`/calendar/month/${day.format("YYYY-MM")}`);
-            dispatch(chosedDateAction(moment(deserialized.clone().add(1, "month")).format()))
+        dispatch(chosedDateAction(moment(deserialized.clone().add(1, "month")).format()))
+        // dispatch(fetchTasks())
     };
     
-  const handlePrev = (day) => {
+    const handlePrev = (day) => {
+    //   dispatch(setDate(day.format("YYYY-MM")))
     navigate(`/calendar/month/${day.format("YYYY-MM")}`);
-    dispatch(chosedDateAction( moment(deserialized.clone().subtract(1, "month")).format())) 
+        dispatch(chosedDateAction(moment(deserialized.clone().subtract(1, "month")).format())) 
+        // dispatch(fetchTasks())
   };
     
     return (

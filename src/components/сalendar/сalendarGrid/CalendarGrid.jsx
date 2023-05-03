@@ -1,4 +1,5 @@
 import css from "./CalendarGrid.module.scss";
+import currentDateFormatted from '../../../redux/calendar/getFormattedDate';
 import moment from 'moment/moment';
 import { useEffect, useState } from "react";
 import { chosedDateAction, swichAction,} from "../../../redux/calendar/actions";
@@ -33,8 +34,6 @@ const [windowSize, setWindowSize] = useState({
 
     const dataAllMonth = useSelector(selectTasks)
 
-    // console.log("🚀  dataAllMonth:", dataAllMonth);
-
     //старт заполнения ячеек датами
     const startDay = deserialized.clone().startOf("month").startOf("week");
     const firstDayOfMonth = deserialized.clone().startOf('month').date(1);
@@ -62,10 +61,6 @@ const [windowSize, setWindowSize] = useState({
     //сравнение это тот месяц или другой не тот который показан или тот который нужно убрать
     const isCurrentMonth = (item) => deserialized.isSame(item, "month");
 
-
-    // console.log("🚀  dataAllMonth:", dataAllMonth);
-    // const dataForMonth = dataAllMonth.filter((item, i) => item.date.slice(0, -3) === deserialized.format("YYYY-MM-DD").slice(0, -3));
-    // console.log("🚀  dataForMonth:", dataForMonth);
     return (
         <>
             <div className={`${css.grid} ${theme}`}>
@@ -75,6 +70,8 @@ const [windowSize, setWindowSize] = useState({
                     className={`${css.box} ${theme}`}
                     onClick={
                         isCurrentMonth(item)
+                            // && (currentDateFormatted.slice(0, 10) <= item.format('YYYY-MM-DD'))
+                        
                             ?
                         () => boxClick(item)
                             :
@@ -98,7 +95,10 @@ const [windowSize, setWindowSize] = useState({
                         {dataAllMonth.filter((itemDay, i) =>
                             (item.format("YYYY-MM-DD") === moment(itemDay.taskDate).format("YYYY-MM-DD")))?.slice(0, 3)
                             .map((itemDay, i) => (
+                                // {isCurrentMonth(itemDay) ? }
                                 <p key={i} className={
+                                    isCurrentMonth(item)
+                                        ?
                                     itemDay.priority === "high"
                                         ?`${css.notice} ${css.high}`
                                         :
@@ -106,7 +106,7 @@ const [windowSize, setWindowSize] = useState({
                                         ?
                                         `${css.notice} ${css.medium}`
                                         :
-                                        `${css.notice}`
+                                        `${css.notice}`: `${css.not_current_month}`
                                 }> {windowSize.width > 768 ? `${itemDay.title.slice(0, 7)}...`
                                         : windowSize.width < 768 ? `${itemDay.title.slice(0, 3)}...`
                                             : windowSize.width < 660 ? `${itemDay.title.slice(0, 3)}...`
