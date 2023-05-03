@@ -8,7 +8,6 @@ import { getCurrentDate } from 'redux/calendar/selectors';
 import TaskModal from 'components/TaskModal/TaskModal';
 import scss from './TaskToolbar.module.scss';
 import {
-  fetchTasks,
   removeTask,
   updateTask,
 } from 'redux/tasks/tasksOperations';
@@ -27,7 +26,6 @@ const TaskToolbar = ({ task }) => {
 
   const handleDeleteTask = async () => {
     await dispatch(removeTask(task._id));
-    // await dispatch(fetchTasks(currentDate));
   };
 
   return (
@@ -62,7 +60,6 @@ const TaskToolbar = ({ task }) => {
                         dispatch(
                           updateTask({ taskId: _id, updatedTask: newTaskData })
                         );
-                        // console.log(task._id, newTaskData);
                         setOpenChoice(false);
                       }}
                     >

@@ -32,11 +32,11 @@ const MyDatePicker = ({ name = '' }) => {
 
   const { value } = meta;
   const { setValue } = helpers;
-  const currentDate = moment();
+  // const currentDate = moment();
 
-  const isOutsideMonth = date => {
-    return date.getMonth() !== new Date().getMonth();
-  };
+  // const isOutsideMonth = date => {
+  //   return date.getMonth() !== new Date().getMonth();
+  // };
 
   const isWeekend = date => {
     const day = moment(date).format('dddd');
@@ -83,7 +83,7 @@ const UserForm = ({ theme }) => {
       ? moment(userInfo.birthday).format('YYYY-MM-DD')
       : moment().format('YYYY-MM-DD'),
   };
-  console.log(updatedUserInfo);
+
 
   const handleAvatarChange = async e => {
     const userAvatarPreviewImg = e.target.files[0];

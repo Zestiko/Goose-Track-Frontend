@@ -6,7 +6,6 @@ const { useToggle } = require("hooks/useToggle")
 
 const ModalToggel = () => {
   const { isOpen, onClose,  } = useToggle(true);
-  console.log("🚀 ~ file: ModalToggel.jsx:8 ~ ModalToggel ~ isOpen:", isOpen)
   return (
     <div>
       <>
