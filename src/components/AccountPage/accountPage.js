@@ -11,17 +11,20 @@ import css from './accountPage.module.scss';
 
 const today = new Date().toISOString().split('T')[0];
 const infoUserSchema = Yup.object().shape({
+  userName: Yup.string()
+    .min(3, 'Too Short!')
+    .max(36, 'Too Long!')
+    .required('Required'),
+  email: Yup.string().email('Invalid email').required('Required'),
+  phone:Yup.string().matches(/^\+380\d{9}$/, "Phone number must be in the format +380XXXXXXXXX").required(),
+  telegram: Yup.string().matches(/^\+380\d{9}$/, "Telegram number must be in the format +380XXXXXXXXX"),
   avatar: Yup.mixed().test(
       "fileType",
       "Avatar must be a valid image file (jpg, jpeg, png)",
       (value) =>
         value && ["image/jpeg", "image/png"].includes(value.type)
     ),
-  username: Yup.string().max(16).required(),
-  email: Yup.string().email().required(),
   birthday: Yup.date().required().max(new Date(), "Birthday can't be in the future"),
-  phone: Yup.string().matches(/^\+380\d{9}$/, "Phone number must be in the format +380XXXXXXXXX").required(),
-  telegram: Yup.string().matches(/^\+380\d{9}$/, "Telegram number must be in the format +380XXXXXXXXX")
 });
 
 
