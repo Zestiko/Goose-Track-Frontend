@@ -44,7 +44,7 @@ const MyDatePicker = ({ name = '' }) => {
   };
 
   const dayClassNames = date => {
-    const classNames = [];
+    const classNames = [''];
     // if (isOutsideMonth(date)) {
     //   classNames.push('outside-month');
     // }
@@ -63,6 +63,7 @@ const MyDatePicker = ({ name = '' }) => {
       onChange={date => setValue(date)}
       dayClassName={dayClassNames}
       calendarStartDay={1}
+      placeholderText="Choose a date"
       weekdayShort={['S', 'M', 'T', 'W', 'T', 'F', 'S']}
     />
   );
@@ -83,7 +84,6 @@ const UserForm = ({ theme }) => {
       ? moment(userInfo.birthday).format('YYYY-MM-DD')
       : moment().format('YYYY-MM-DD'),
   };
-
 
   const handleAvatarChange = async e => {
     const userAvatarPreviewImg = e.target.files[0];
@@ -185,10 +185,7 @@ const UserForm = ({ theme }) => {
                 className={`${css.username_form__label} ${theme}`}
               >
                 Birthday:
-                <MyDatePicker
-                  name="date"
-                  calendarClassName={css.my_date_picker}
-                />
+                <MyDatePicker name="date" className={css.my_date_picker} />
                 <ErrorMessage
                   name="birthday"
                   component="div"
