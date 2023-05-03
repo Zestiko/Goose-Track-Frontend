@@ -60,11 +60,19 @@ export const TaskForm = ({ props, onClose }) => {
         {formik => {
           const handleStartTimeChange = event => {
             const startTime = event.target.value;
-            const newTime = moment(startTime, 'HH:mm')
+            const endTime = moment(startTime, 'HH:mm')
               .add(1, 'hour')
               .format('HH:mm');
             formik.setFieldValue('startTime', startTime);
-            formik.setFieldValue('endTime', newTime);
+            formik.setFieldValue('endTime', endTime);
+          };
+          const handleEndTimeChange = event => {
+            const endTime = event.target.value;
+            const startTime = moment(endTime, 'HH:mm')
+              .subtract(1, 'hour')
+              .format('HH:mm');
+            formik.setFieldValue('endTime', endTime);
+            formik.setFieldValue('startTime', startTime);
           };
           return (
             <Form className={clsx(styles.form, theme)}>
@@ -105,7 +113,7 @@ export const TaskForm = ({ props, onClose }) => {
                     className={clsx(
                       styles.timeInput,
                       theme,
-                      formik.errors.timeInput && formik.touched.timeInput
+                      formik.errors.startTime && formik.touched.startTime
                         ? styles.is_invalid
                         : ''
                     )}
@@ -113,7 +121,7 @@ export const TaskForm = ({ props, onClose }) => {
                   <ErrorMessage
                     name="startTime"
                     component="div"
-                    className={styles.invalid_feedback}
+                    className={styles.invalid_startTime}
                   />
                 </label>
                 <label htmlFor="endTime" className={clsx(styles.title, theme)}>
@@ -121,6 +129,7 @@ export const TaskForm = ({ props, onClose }) => {
                   <Field
                     name="endTime"
                     type="time"
+                    onChange={handleEndTimeChange}
                     min={formik.values.startTime || formik.values.endTime}
                     className={clsx(
                       styles.timeInput,
@@ -133,7 +142,7 @@ export const TaskForm = ({ props, onClose }) => {
                   <ErrorMessage
                     name="endTime"
                     component="div"
-                    className={styles.invalid_feedback}
+                    className={styles.invalid_endTime}
                   />
                 </label>
               </div>
