@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { COLUMNS } from 'constants/columns.constans';
+// import { COLUMNS } from 'constants/columns.constans';
 
 import TasksColumn from 'components/ChoosedDay/TasksColumn/TasksColumn';
 import scss from './TasksColumnsList.module.scss';
