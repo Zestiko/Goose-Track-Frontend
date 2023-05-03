@@ -140,11 +140,22 @@ $secondary-font: 'Coolvetica', sans-serif;
   /* decorations */
   --animation: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-
+.react-datepicker-wrapper{
+  position: relative;
+  width: 100%;
+}
+.react-datepicker-popper{
+  position: absolute;
+  width: 100%;
+}
+.react-datepicker-tab-loop{
+  position: relative;
+}
 .react-datepicker__month-container {
   padding: 15px 18px;
   background-color: #3e85f3;
   border-radius: 16px;
+  
 
   .react-datepicker__day-name,
   .react-datepicker__day {
@@ -209,13 +220,15 @@ $secondary-font: 'Coolvetica', sans-serif;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   padding: 0;
 }
-
 .react-datepicker {
   background-color: inherit;
   font-family: 'Inter';
   font-size: 18px;
   line-height: 24px;
-  border:none
+  border:none;
+  width:100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .react-datepicker-wrapper:hover .react-datepicker {
