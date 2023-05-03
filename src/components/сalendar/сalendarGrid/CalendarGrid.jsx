@@ -1,5 +1,5 @@
 import css from "./CalendarGrid.module.scss";
-import currentDateFormatted from '../../../redux/calendar/getFormattedDate';
+// import currentDateFormatted from '../../../redux/calendar/getFormattedDate';
 import moment from 'moment/moment';
 import { useEffect, useState } from "react";
 import { chosedDateAction, swichAction,} from "../../../redux/calendar/actions";
