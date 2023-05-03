@@ -25,6 +25,7 @@
   align-items: center;
   justify-content: center;
   z-index: 1;
+  transition: all linear 350ms;
 
   &:hover,
   &:focus {
@@ -35,6 +36,7 @@
 .icon {
   width: 20px;
   height: 20px;
+  transition: all linear 350ms;
 }
 
 .iconButton:hover .icon,

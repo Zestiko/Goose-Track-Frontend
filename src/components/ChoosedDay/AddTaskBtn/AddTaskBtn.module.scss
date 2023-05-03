@@ -21,6 +21,7 @@
   position: -webkit-sticky;
   bottom: 0;
   stroke: var(--primary-text-color);
+  transition: all linear 350ms;
 
   &:hover,
   &:focus {

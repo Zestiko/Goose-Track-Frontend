@@ -27,6 +27,7 @@
   fill: transparent;
   width: 16px;
   height: 16px;
+  transition: all linear 350ms;
 
   &:hover,
   &:focus {
@@ -60,6 +61,7 @@
   cursor: pointer;
   border-radius: 8px;
   stroke: var(--primary-text-color);
+  transition: all linear 350ms;
 
   &:first-child {
     margin-bottom: 6px;
@@ -94,4 +96,5 @@
   fill: transparent;
   width: 16px;
   height: 16px;
+  transition: all linear 350ms;
 }
