@@ -3,13 +3,13 @@
 
 .columnBox {
   height: 100%;
-  background-color: var(--background-color-task-column);
+  background-color: #ffffff;
   padding: 18px;
   text-align: center;
   flex: 1 0 335px;
   /* на всій ширині на малих екранах */
   width: 335px;
-  border: var(--border-task-column);
+  border: 1px solid rgba(220, 227, 229, 0.8);
   border-radius: 8px;
   box-sizing: border-box;
   display: flex;
@@ -17,16 +17,17 @@
   // align-items: flex-start;
   gap: 18px;
   // isolation: isolate;
-  position: relative;
+    position: relative;
 
-  @media screen and (min-width: 768px) {
-    flex-basis: calc(100% / 2 - 16px);
-    /* на половині ширини */
-    width: 344px;
-  }
-
+    @media screen and (min-width: 768px) {
+      flex-basis: calc(100% / 2 - 16px);
+      /* на половині ширини */
+      width: 344px;
+    }
   @media screen and (min-width: 1440px) {
     flex-basis: calc(100% / 3 - 2 * 16px);
     /* на третині ширини */
   }
+
+
 }

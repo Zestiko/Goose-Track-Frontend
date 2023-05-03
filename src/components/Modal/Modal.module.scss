@@ -24,9 +24,6 @@
     max-width: 396px;
     padding: 40px 28px;
   }
-  @media screen and (min-width: 1200px) {
-    left: 60%;
-  }
 }
 
 .closeButton {
@@ -42,13 +39,11 @@
   transition: box-shadow linear 350ms;
 
   &:hover {
-    box-shadow: 0px 0px 4px 4px rgba(98, 98, 98, 50%);
+    border: 2px solid var(--accent-background-color);
+    box-shadow: 0px 0px 10px rgba(136, 165, 191, 0.48);
   }
 }
 .closeButtonIcon {
-  width: 16px;
-  height: 16px;
-
   pointer-events: none;
   color: var(--primary-text-color);
   position: absolute;

@@ -1,4 +1,4 @@
-import React, { useCallback,  useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectorGetUser } from '../../redux/user/selectors';
 import { updateUserProfile } from '../../redux/user/user-operations';
@@ -16,65 +16,55 @@ export const infoUserSchema = Yup.object().shape({
     .max(36, 'Too Long!')
     .required('Required'),
   email: Yup.string().email('Invalid email').required('Required'),
-  phone: Yup.string().matches(/^\+380\d{9}$/, "Phone number must be in the format +380XXXXXXXXX"),
-  telegram: Yup.string(),
+  phone: Yup.string()
+    .matches(
+      /^(\+)?((\d{2,3}) ?\d|\d)(([ -]?\d)|( ?(\d{2,3}) ?)){5,12}\d$/,
+      'Invalid phone'
+    )
+    .optional(),
+  telegram: Yup.string('Invalid telegram'),
   avatar: Yup.string('Invalid avatar'),
   birthday: Yup.date(),
 });
 
-const MyDatePicker = ({ name = '',birthday }) => {
+const MyDatePicker = ({ name = '', birthday }) => {
   const [field, meta, helpers] = useField(name);
-  const [currentMonth, setCurrentMonth] = useState(moment());
 
   const { value } = meta;
   const { setValue } = helpers;
+  // const currentDate = moment();
 
-  const isWeekend = useCallback(date => {
+  // const isOutsideMonth = date => {
+  //   return date.getMonth() !== new Date().getMonth();
+  // };
+
+  const isWeekend = date => {
     const day = moment(date).format('dddd');
     return day === 'Saturday' || day === 'Sunday';
-  }, []);
+  };
 
-  const dayClassNames = useCallback(
-    date => {
-      const classNames = [];
+  const dayClassNames = date => {
+    const classNames = [''];
+    // if (isOutsideMonth(date)) {
+    //   classNames.push('outside-month');
+    // }
 
-      const monthStart = moment(currentMonth).startOf('month');
-      const monthEnd = moment(currentMonth).endOf('month');
-
-      if (moment(date).isBefore(monthStart) || moment(date).isAfter(monthEnd)) {
-        classNames.push('outside-month');
-      }
-
-      if (isWeekend(date)) {
-        classNames.push('highlighted-weekend');
-      }
-
-      return classNames.join(' ');
-    },
-    [currentMonth, isWeekend]
-  );
-  const formatWeekDay = (weekdayShort, dayOfWeek) => weekdayShort.charAt(0);
-
-  const handleMonthChange = useCallback(date => {
-    setCurrentMonth(moment(date));
-  }, []);
-
-  const handleCloseDatePicker = useCallback(() => {
-    setCurrentMonth(moment());
-  }, []);
-
+    if (isWeekend(date)) {
+      classNames.push('highlighted-weekend');
+    }
+    return classNames.join(' ');
+  };
 
   return (
     <DatePicker
+      showPopperArrow={false}
       {...field}
       selected={value || new Date(birthday || today)}
       onChange={date => setValue(date)}
-      onMonthChange={handleMonthChange}
-      onFocus={handleCloseDatePicker}
       dayClassName={dayClassNames}
       calendarStartDay={1}
       placeholderText={birthday || 'Choose a date'}
-      formatWeekDay={formatWeekDay}
+      weekdayShort={['S', 'M', 'T', 'W', 'T', 'F', 'S']}
     />
   );
 };

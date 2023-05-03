@@ -1,6 +1,7 @@
 @import '../../../styles/vars';
 
 .header {
+  // background-color: white;
   display: flex;
   justify-content: space-between;
   padding: 7px 0px;
@@ -8,36 +9,37 @@
 }
 
 .columnTitle {
-  font-family: $primary-font;
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
-  color: var(--primary-text-color);
+  color: #111111;
 }
 
 .iconButton {
   display: flex;
   border-radius: 50%;
-  stroke: var(--primary-text-color);
+  stroke: black;
   fill: transparent;
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
   align-items: center;
   justify-content: center;
   z-index: 1;
 
   &:hover,
   &:focus {
-    stroke: var(--accent-background-color);
+    stroke: #3e85f3;
   }
 }
 
 .icon {
-  width: 20px;
-  height: 20px;
+  fill: #ffffff;
+  width: 18px;
+  height: 18px;
 }
 
 .iconButton:hover .icon,
 .iconButton:focus .icon {
-  stroke: #3E85F3
+    stroke: #3E85F3
 }

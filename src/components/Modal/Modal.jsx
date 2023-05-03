@@ -1,9 +1,9 @@
-import { createPortal } from 'react-dom';
-import { useEffect } from 'react';
-import clsx from 'clsx';
-
 import scss from './Modal.module.scss';
-import { MdClose } from 'react-icons/md';
+import { useEffect } from 'react';
+import { createPortal } from 'react-dom';
+import closeIcon from '../../images/icons/icon-x-close.svg';
+import closeIcon2 from '../../images/icons/icon-x-close-2.svg';
+import clsx from 'clsx';
 
 /**
  *
@@ -56,7 +56,16 @@ const Modal = ({ onClose, children }) => {
       ></div>
       <div className={clsx(scss.modalBody, theme)}>
         <button onClick={handleClose} className={clsx(scss.closeButton, theme)}>
-          <MdClose className={clsx(scss.closeButtonIcon, theme)} />
+          <img
+            src={closeIcon}
+            alt="1"
+            className={clsx(scss.closeButtonIcon, theme)}
+          />
+          <img
+            src={theme !== 'darkTheme' ? closeIcon : closeIcon2}
+            alt="1"
+            className={clsx(scss.closeButtonIcon, theme)}
+          />
         </button>
         {children}
       </div>

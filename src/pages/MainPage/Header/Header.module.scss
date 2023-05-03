@@ -20,7 +20,7 @@
     line-height: 1;
     color: var(--userpage-text);
     display: block;
-  
+    margin-left: 32px;
   }}
   
   .user {
@@ -119,7 +119,7 @@
 .blockMessage {
   display: none;
   @media screen and (min-width: 1400px) {
-
+  margin-left: 32px;
   display: flex;
   }
 }

@@ -6,7 +6,17 @@ import { spriteIcons } from 'images/icons';
 import clsx from "clsx";
 
 const TaskColumnCard = ({ task }) => {
-  const { title, priority } = task;
+  const {
+    title,
+    // startTime,
+    // endTime,
+    priority,
+    // priority=PRIORITY.HIGHT,
+    // owner,
+    // column,
+    // taskDate,
+    // _id,
+  } = task;
 
   const avatarPath = useSelector(selectorGetUserAvatar);
 
@@ -16,10 +26,11 @@ const TaskColumnCard = ({ task }) => {
       <div className={scss.block}>
         <div className={scss.user}>
           {!avatarPath ? (
-            <svg className={scss.userAvatar}>
+            <svg className={scss.iconAvatar}>
               <use href={spriteIcons + '#icon-avatar'}></use>
             </svg>
           ) : (
+            // <DefaultAvatarSvg className={scss.userAvatar} />
             <img className={scss.userAvatar} src={avatarPath} alt="avatar" />
           )}
 
