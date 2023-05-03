@@ -43,14 +43,18 @@ $secondary-font: 'Coolvetica', sans-serif;
 
   --accent-background-color: #3e85f3;
   --active-item-sidebar-background: #e3f3ff;
-
+  --accent-add-btn-background: #3e85f3;
   --auth-bg-color: #dcebf7;
+  --background-color-task-column: #ffffff;
 
   --border: 1px solid rgba(220, 227, 229, 0.8);
   --border-calendar: 1px solid rgba(220, 227, 229, 0.5);
   --border-calendar-period-type: 1px solid rgba(62, 133, 243, 0.2);
   --border-auth: 1px solid rgba(220, 227, 229, 0.6);
   --border-form-input: rgba(17, 17, 17, 0.15);
+  --border-add-button: 1px dashed rgba(62, 133, 243, 1);
+  --border-task-column: 1px solid rgba(220, 227, 229, 0.8);
+  --border-avatar: 1.8px solid rgba(62, 133, 243, 1);
 
   /* text-color */
   --logo-text-color: #3e85f3;
@@ -80,13 +84,17 @@ $secondary-font: 'Coolvetica', sans-serif;
   --task-input-bg-color: #f7f7f7;
   --task-input-bg-color2: #f6f6f6;
   --task-modal-bg: #fff;
+  --task-bg-move-box: #ffffff;
 
   --task-btn-cancel-bg-color: #efefef;
   --task-text-color: #616161;
+  --task-text-color-light: #616161;
 
   /* scroll */
   --scrollbar-color: #e7e5e5;
   --scrollbar-bg-color: #f2f2f2;
+  --scrollbar-color-task: #e7e5e5;
+    --scrollbar-bg-color-task: #f2f2f2;
 
   /* decorations */
   --animation: 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -99,6 +107,8 @@ $secondary-font: 'Coolvetica', sans-serif;
   --sidebar-background-color: #13151a;
   --active-item-sidebar-background: #3e85f3;
   --border-form-input: rgba(255, 255, 255, 0.15);
+    --accent-add-btn-background: #cae8ff;
+  --background-color-task-column: #21222c;
 
   /* text-color */
   --logo-text-color: #e3f3ff;
@@ -129,16 +139,24 @@ $secondary-font: 'Coolvetica', sans-serif;
   --task-input-bg-color2: #171820;
   --task-modal-bg: #171820;
   --task-input-border-color: rgba(255, 255, 255, 0.149);
-
+  --border-task-column: 1px solid rgba(255, 255, 255, 0.15);
   --task-btn-cancel-bg-color: #efefef;
   --task-text-color: #ffffff;
+  --task-text-color-light: #ffffff;
+  --task-bg-move-box: #171820;
 
   /* scroll */
   --scrollbar-color: #e7e5e5;
   --scrollbar-bg-color: #f2f2f2;
+  --scrollbar-color-task: #171820;
+  --scrollbar-bg-color-task: #2d3037;
 
   /* decorations */
   --animation: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* borders */
+  --border-add-button: 1px solid rgba(62, 133, 243, 1);
+
 }
 
 .react-datepicker__month-container {
@@ -170,12 +188,11 @@ $secondary-font: 'Coolvetica', sans-serif;
   .react-datepicker__day {
     &.outside-month {
       visibility: hidden;
-  pointer-events: none;
-}
-&.highlighted-weekend{
-  opacity: 0.35;
-
-}
+      pointer-events: none;
+    }
+    &.highlighted-weekend {
+      opacity: 0.35;
+    }
     &:hover,
     &:focus {
       color: #3e85f3;
@@ -215,17 +232,18 @@ $secondary-font: 'Coolvetica', sans-serif;
   font-family: 'Inter';
   font-size: 18px;
   line-height: 24px;
-  border:none;
-  width:100%;
-  margin-left: auto;
-  margin-right: auto;
+
+  border: none;
+
 }
 
 .react-datepicker-wrapper:hover .react-datepicker {
   background-color: #ffffff;
   border-radius: 50%;
 }
+
 .react-datepicker-popper {
   transform: translate(881.05px, 950.217px); 
   inset: 0px auto auto 50px;
 }
+
