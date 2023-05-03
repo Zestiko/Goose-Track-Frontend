@@ -4,6 +4,7 @@ import { COLUMNS } from 'constants/columns.constans';
 import TasksColumn from 'components/ChoosedDay/TasksColumn/TasksColumn';
 import scss from './TasksColumnsList.module.scss';
 
+
 const TasksColumnsList = ({ dayTasks }) => {
   const tasksByColumns = COLUMNS.reduce((acc, column) => {
     return {

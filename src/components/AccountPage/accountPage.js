@@ -24,10 +24,10 @@ export const infoUserSchema = Yup.object().shape({
     .optional(),
   telegram: Yup.string('Invalid telegram'),
   avatar: Yup.string('Invalid avatar'),
-  birthday: Yup.date().max(today, 'Selected date cannot be in the future'),
+  birthday: Yup.date(),
 });
 
-const MyDatePicker = ({ name = '' }) => {
+const MyDatePicker = ({ name = '', birthday }) => {
   const [field, meta, helpers] = useField(name);
 
   const { value } = meta;
@@ -44,7 +44,7 @@ const MyDatePicker = ({ name = '' }) => {
   };
 
   const dayClassNames = date => {
-    const classNames = [];
+    const classNames = [''];
     // if (isOutsideMonth(date)) {
     //   classNames.push('outside-month');
     // }
@@ -59,10 +59,11 @@ const MyDatePicker = ({ name = '' }) => {
     <DatePicker
       showPopperArrow={false}
       {...field}
-      selected={value}
+      selected={value || new Date(birthday || today)}
       onChange={date => setValue(date)}
       dayClassName={dayClassNames}
       calendarStartDay={1}
+      placeholderText={birthday || 'Choose a date'}
       weekdayShort={['S', 'M', 'T', 'W', 'T', 'F', 'S']}
     />
   );
@@ -79,11 +80,11 @@ const UserForm = ({ theme }) => {
     telegram: userInfo.telegram || '',
     userName: userInfo.userName,
     email: userInfo.email,
-    birthday: userInfo.birthday
-      ? moment(userInfo.birthday).format('YYYY-MM-DD')
-      : moment().format('YYYY-MM-DD'),
+    // birthday: userInfo.birthday
+    //   ? moment(userInfo.birthday).format('YYYY-MM-DD')
+    //   : moment().format('YYYY-MM-DD'),
+    birthday: userInfo.birthday,
   };
-
 
   const handleAvatarChange = async e => {
     const userAvatarPreviewImg = e.target.files[0];
@@ -100,14 +101,28 @@ const UserForm = ({ theme }) => {
   };
 
   const submiting = async values => {
+
+    
     const formData = new FormData();
 
     const keys = Object.keys(values);
-    keys.forEach(key => formData.append(key, values[key]));
+    keys.forEach(key => {
+      if (key === "date") {
+        const birthday = moment(values[key]).format('YYYY-MM-DD');       
+        formData.append('birthday', birthday);
+        return;
+      }
+      if (key === 'birthday') {
+        return
+      }
+      formData.append(key, values[key])
+    });
+    
     if (file) {
       formData.append('avatar', file);
+    
     }
-
+    
     try {
       await dispatch(updateUserProfile(formData));
     } catch (error) {
@@ -145,14 +160,7 @@ const UserForm = ({ theme }) => {
       <Formik
         initialValues={updatedUserInfo}
         validationSchema={infoUserSchema}
-        onSubmit={async (values, { setSubmitting }) => {
-          setTimeout(() => {
-            submiting(values).then(() => {
-              setSubmitting(false);
-            });
-          }, 700);
-          updatedUserInfo = { ...values };
-        }}
+        onSubmit={submiting}
       >
         {formik => {
           return (
@@ -187,7 +195,8 @@ const UserForm = ({ theme }) => {
                 Birthday:
                 <MyDatePicker
                   name="date"
-                  calendarClassName={css.my_date_picker}
+                  birthday={formik.values.birthday}
+                  className={css.my_date_picker}
                 />
                 <ErrorMessage
                   name="birthday"
