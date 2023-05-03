@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback,  useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectorGetUser } from '../../redux/user/selectors';
 import { updateUserProfile } from '../../redux/user/user-operations';
