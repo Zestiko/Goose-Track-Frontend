@@ -13,20 +13,19 @@ const today = new Date().toISOString().split('T')[0];
 export const infoUserSchema = Yup.object().shape({
   userName: Yup.string()
     .min(3, 'Too Short!')
-    .max(16, 'Too Long!')
+    .max(36, 'Too Long!')
     .required('Required'),
   email: Yup.string().email('Invalid email').required('Required'),
-  phone: Yup.string().matches(/^\+380\d{9}$/, "Phone number must be in the format +380XXXXXXXXX"),
-  telegram: Yup.string().max(16, 'Invalid telegram'),
-  avatar: Yup.mixed().test(
-      "fileType",
-      "Avatar must be a valid image file (jpg, jpeg, png)",
-      (value) =>
-        value && ["image/jpeg", "image/png"].includes(value.type)
-    ),
-  birthday: Yup.date().required().max(new Date(), "Birthday can't be in the future"),
+  phone: Yup.string()
+    .matches(
+      /^(\+)?((\d{2,3}) ?\d|\d)(([ -]?\d)|( ?(\d{2,3}) ?)){5,12}\d$/,
+      'Invalid phone'
+    )
+    .optional(),
+  telegram: Yup.string('Invalid telegram'),
+  avatar: Yup.string('Invalid avatar'),
+  birthday: Yup.date(),
 });
-
 
 const MyDatePicker = ({ name = '', birthday }) => {
   const [field, meta, helpers] = useField(name);
@@ -57,9 +56,7 @@ const MyDatePicker = ({ name = '', birthday }) => {
   };
 
   return (
-    
     <DatePicker
-      className={css.date_picker}
       showPopperArrow={false}
       {...field}
       selected={value || new Date(birthday || today)}
@@ -68,8 +65,7 @@ const MyDatePicker = ({ name = '', birthday }) => {
       calendarStartDay={1}
       placeholderText={birthday || 'Choose a date'}
       weekdayShort={['S', 'M', 'T', 'W', 'T', 'F', 'S']}
-      />
-      
+    />
   );
 };
 
