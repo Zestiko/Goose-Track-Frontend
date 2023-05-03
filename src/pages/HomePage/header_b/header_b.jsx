@@ -1,8 +1,9 @@
 import styles from './header.module.scss';
+
 import goose from '../assets/img/GOOSE_2.png';
 import svgIcon from '../assets/img/Icon_arr.svg';
 import { NavLink } from 'react-router-dom';
-// Goose
+// Goose Retina
 import gooseDesk3x from '../../../images/bar/desktop/goose-1-desktop-3x.png';
 import gooseDesk2x from '../../../images/bar/desktop/goose-1-desktop-2x.png';
 import gooseDesk1x from '../../../images/bar/desktop/goose-1-desktop-1x.png';
