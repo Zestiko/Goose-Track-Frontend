@@ -25,7 +25,7 @@ export const App = () => {
   const { isRefreshing, isLoggedIn } = useAuth();
   const currentDate = useSelector(getCurrentDate);
   const status = useSelector(selectorAuthStatus);
-  console.log("🚀 ~ file: App.jsx:28 ~ App ~ status:", status)
+  
 
   useEffect(() => {
     dispatch(authCurrentThunk());
