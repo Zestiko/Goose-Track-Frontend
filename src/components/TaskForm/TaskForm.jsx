@@ -33,7 +33,7 @@ export const TaskForm = ({ props, onClose }) => {
         title: '',
         startTime: moment().format('HH:mm'),
         endTime: moment().add(1, 'hour').format('HH:mm'),
-        taskDate: currentDate,
+        taskDate: moment(currentDate).format('YYYY-MM-DD'),
         priority: 'low',
       };
 
