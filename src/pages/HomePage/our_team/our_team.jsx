@@ -309,7 +309,7 @@ export const Team = () => {
 
     </div>
     <div className={styles.block__prof}>
-        <h3 className={styles.name__of}>Ivan</h3>
+        <h3 className={styles.name__of}>Ivan Koshel</h3>
         <span className={styles.profession}>Developer</span>
     </div>
     </div>

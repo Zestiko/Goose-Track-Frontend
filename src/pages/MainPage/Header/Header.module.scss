@@ -12,8 +12,7 @@
   }
 
   .title{
-    display: none;
-    @media screen and (min-width: 1400px) {
+
     font-family: 'Inter';
     font-weight: 700;
     font-size: 32px;
@@ -21,7 +20,7 @@
     color: var(--userpage-text);
     display: block;
     margin-left: 32px;
-  }}
+  }
   
   .user {
     display: flex;
@@ -123,6 +122,16 @@
   display: flex;
   }
 }
+
+.blockHeader{
+    display: none;
+    @media screen and (min-width: 1400px) {
+      display: flex;
+      margin-bottom: 14px;
+      margin-top: 14px;
+    }
+}
+
 .img{
   background-image: url('./Goose.png');
   background-repeat: no-repeat;
