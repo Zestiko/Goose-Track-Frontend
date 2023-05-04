@@ -4,25 +4,24 @@
 .columnBox {
   height: 100%;
   background-color: var(--background-color-task-column);
-  padding: 18px;
   text-align: center;
   flex: 1 0 335px;
   /* на всій ширині на малих екранах */
-  width: 335px;
   border: var(--border-task-column);
   border-radius: 8px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  // align-items: flex-start;
-  gap: 18px;
-  // isolation: isolate;
   position: relative;
+  max-width: 335px;
+  padding-top: 18px;
+  padding-bottom: 20px;
 
   @media screen and (min-width: 768px) {
     flex-basis: calc(100% / 2 - 16px);
     /* на половині ширини */
     width: 344px;
+      padding-top: 20px;
   }
 
   @media screen and (min-width: 1440px) {

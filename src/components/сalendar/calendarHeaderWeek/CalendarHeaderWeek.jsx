@@ -1,5 +1,6 @@
 
 import css from "./CalendarHeaderWeek.module.scss"
+import currentDateFormatted from '../../../redux/calendar/getFormattedDate';
 import { newWeek} from "components/сalendar/helps/createNewWeek";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment/moment";
@@ -49,7 +50,15 @@ const CalendarHeaderWeek = () => {
                             :
                             `${css.days_wrap} ${css.column} ${css.back}  ${css.scale}`
                         }
-                        onClick={() => {clickDay(item)}}
+                        onClick={
+                        (currentDateFormatted.slice(0, 10) <= item.format('YYYY-MM-DD'))
+                        
+                            ?
+                        () => clickDay(item)
+                            :
+                            null
+                    }
+                        // {/* onClick={() => {clickDay(item)}} */}
                         to={`/calendar/day/${item.format("YYYY-MM-DD")}`}
                     >
                         <div className={`${css.days} `}>
