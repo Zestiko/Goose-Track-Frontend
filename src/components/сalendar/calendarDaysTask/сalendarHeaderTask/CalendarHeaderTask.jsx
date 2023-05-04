@@ -59,11 +59,11 @@ export const CalendarHeaderTask = () => {
               type="button"
               className={`${css.btn} ${css.prev} ${css.btn_arrow} `}
               onClick={() =>
-                handlePrev(deserialized.clone().subtract(1, 'month'))
+                handlePrev(deserialized.clone().subtract(1, 'day'))
               }
               disabled={
-                currentDateFormatted.slice(0, 7) ===
-                deserialized.format('YYYY-MM')
+                currentDateFormatted.slice(0, 10) ===
+                deserialized.format('YYYY-MM-DD')
               }
             >
               <FaChevronLeft />
@@ -72,7 +72,7 @@ export const CalendarHeaderTask = () => {
             <button
               type="button"
               className={`${css.btn} ${css.next} ${css.btn_arrow} `}
-              onClick={() => handleNext(deserialized.clone().add(1, 'month'))}
+              onClick={() => handleNext(deserialized.clone().add(1, 'day'))}
             >
               <FaChevronRight />
             </button>

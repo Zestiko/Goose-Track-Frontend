@@ -9,22 +9,19 @@ import { getCurrentDate } from 'redux/calendar/selectors';
 import { useTasksByChoosedDay } from 'hooks/useTasksByChoosedDay';
 
 
-
 const CalendarDaysTask = () => {
-  
   const dispatch = useDispatch();
  const currentDate = useSelector(getCurrentDate);
    useEffect(() => {
-     dispatch(fetchTasks());
+     dispatch(fetchTasks(currentDate));
    }, [currentDate, dispatch]);
-  
-  const { tasks } = useTasksByChoosedDay(currentDate) || [];
+    const { tasks } = useTasksByChoosedDay(currentDate) || [];
 
   return (
     <div className={css.calendar_wrapper}>
       <CalendarHeaderTask />
       <CalendarHeaderWeek />
-      <TasksColumnsList dayTasks={tasks} />
+      <TasksColumnsList dayTasks={tasks}/>
     </div>
   );
 };
