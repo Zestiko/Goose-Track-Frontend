@@ -2,92 +2,97 @@
 /* (375, 768, 1440) */
 
 .cardBox {
-    position: absolute;
-    height: 100%;
-    display: flex;
+  position: absolute;
+  height: 100%;
+  display: flex;
 
-    align-items: flex-end;
-    bottom: 0;
-    right: 0;
-    gap: 12px;
-
+  align-items: flex-end;
+  bottom: 0;
+  right: 0;
+  gap: 12px;
 }
 
 .changeBox {
-    position: relative;
+  position: relative;
 }
 
-
 .button {
-    position: relative;
+  position: relative;
 }
 
 .iconButton {
-    display: flex;
-    // border-radius: 50%;
-    stroke: black;
-    fill: transparent;
-    width: 16px;
-    height: 16px;
+  display: flex;
+  stroke: var(--primary-text-color);
+  fill: transparent;
+  width: 16px;
+  height: 16px;
+  transition: all linear 350ms;
 
-    &:hover, &:focus {
-        stroke: #3E85F3
-    }
+  &:hover,
+  &:focus {
+    stroke: var(--button-background-color);
+  }
 }
 
 .movesBox {
-    display: flex;
-    position: absolute;
-    background-color: #ffffff;
-    padding: 16px 20px 16px 20px;
-    box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.1);
-    border-radius: 8px;
-    width: 147px;
-    height: 90px;
-    justify-content: space-between;
-    top: -85px;
-    right: -4px;
-    z-index: 99;
+  display: flex;
+  position: absolute;
+  background-color: var(--task-bg-move-box);
+  padding: 16px 20px 16px 20px;
+  box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.1);
+  border-radius: 8px;
+  width: 147px;
+  height: 90px;
+  justify-content: space-between;
+  top: -85px;
+  right: -4px;
+  z-index: 99;
+  border: var(--border-task-column);
 }
 
 .line {
-    width: 100px;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    padding: 4px;
-    position: relative;
-    cursor: pointer;
-    border-radius: 8px;
-    &:first-child{margin-bottom: 6px};
-    &:hover, &:focus {
-        background-color: #cae8ff;
-        .iconMove {
-            stroke: #3E85F3
-        }
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  padding: 4px;
+  position: relative;
+  cursor: pointer;
+  border-radius: 8px;
+  stroke: var(--primary-text-color);
+  transition: all linear 350ms;
+
+  &:first-child {
+    margin-bottom: 6px;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: var(--active-button-period-type);
+
+    .iconMove {
+      stroke: var(--accent-add-btn-background);
     }
+  }
 }
 
-
 .text {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    color: #616161;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    position: relative;
+  font-family: $primary-font;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--task-text-color-light);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
 }
 
 .iconMove {
-    display: flex;
-    // border-radius: 50%;
-    stroke: black;
-    fill: transparent;
-    width: 16px;
-    height: 16px;
-
+  display: flex;
+  fill: transparent;
+  width: 16px;
+  height: 16px;
+  transition: all linear 350ms;
 }

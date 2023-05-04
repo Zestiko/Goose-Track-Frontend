@@ -21,6 +21,7 @@
     display: block;
     margin-left: 32px;
   }
+
   
   .user {
     display: flex;
@@ -118,7 +119,7 @@
 .blockMessage {
   display: none;
   @media screen and (min-width: 1400px) {
-  margin-left: 32px;
+
   display: flex;
   }
 }
@@ -137,6 +138,16 @@
   background-repeat: no-repeat;
   width: 64px;
   height: 60px;
+  background-image: url('./Goose.png');
+  background-size: 64px 60px;
+}
+
+@media screen and (min-device-pixel-ratio: 2),
+screen and (min-resolution: 192dpi),
+screen and (min-resolution: 2dppx) {
+  .box {
+    background-image: url('../../../images/bar/desktop/goose-2-desktop-2x.png');
+  }
 }
 
 .div{

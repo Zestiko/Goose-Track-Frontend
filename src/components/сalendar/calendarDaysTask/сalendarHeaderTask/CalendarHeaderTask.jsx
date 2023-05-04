@@ -10,7 +10,6 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import css from './CalendarHeaderTask.module.scss';
 import moment from 'moment/moment';
 import { getCurrentDate, getDayOrMonth } from 'redux/calendar/selectors';
-import { fetchTasks } from 'redux/tasks/tasksOperations';
 
 export const CalendarHeaderTask = () => {
   const navigate = useNavigate();
@@ -24,7 +23,6 @@ export const CalendarHeaderTask = () => {
     if (isDayOrMonth) {
       navigate(`/calendar/month/${deserialized.format('YYYY-MM')}`);
     }
-    dispatch(fetchTasks(currentDate));
     dispatch(swichAction(isDayOrMonth));
   };
 
@@ -59,11 +57,11 @@ export const CalendarHeaderTask = () => {
               type="button"
               className={`${css.btn} ${css.prev} ${css.btn_arrow} `}
               onClick={() =>
-                handlePrev(deserialized.clone().subtract(1, 'month'))
+                handlePrev(deserialized.clone().subtract(1, 'day'))
               }
               disabled={
-                currentDateFormatted.slice(0, 7) ===
-                deserialized.format('YYYY-MM')
+                currentDateFormatted.slice(0, 10) ===
+                deserialized.format('YYYY-MM-DD')
               }
             >
               <FaChevronLeft />
@@ -72,7 +70,7 @@ export const CalendarHeaderTask = () => {
             <button
               type="button"
               className={`${css.btn} ${css.next} ${css.btn_arrow} `}
-              onClick={() => handleNext(deserialized.clone().add(1, 'month'))}
+              onClick={() => handleNext(deserialized.clone().add(1, 'day'))}
             >
               <FaChevronRight />
             </button>
