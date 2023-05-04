@@ -51,7 +51,7 @@ const CalendarHeaderWeek = () => {
                             `${css.days_wrap} ${css.column} ${css.back}  ${css.scale}`
                         }
                         onClick={
-                        (currentDateFormatted.slice(0, 10) <= item.format('YYYY-MM-DD'))
+                        (currentDateFormatted.slice(0,8)+"01" <= item.format('YYYY-MM-DD'))
                         
                             ?
                         () => clickDay(item)

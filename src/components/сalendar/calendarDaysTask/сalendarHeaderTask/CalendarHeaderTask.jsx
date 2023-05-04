@@ -60,7 +60,7 @@ export const CalendarHeaderTask = () => {
                 handlePrev(deserialized.clone().subtract(1, 'day'))
               }
               disabled={
-                currentDateFormatted.slice(0, 10) ===
+                currentDateFormatted.slice(0, 8)+"01" ===
                 deserialized.format('YYYY-MM-DD')
               }
             >
