@@ -10,7 +10,6 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import css from './CalendarHeaderTask.module.scss';
 import moment from 'moment/moment';
 import { getCurrentDate, getDayOrMonth } from 'redux/calendar/selectors';
-import { fetchTasks } from 'redux/tasks/tasksOperations';
 
 export const CalendarHeaderTask = () => {
   const navigate = useNavigate();
@@ -24,7 +23,6 @@ export const CalendarHeaderTask = () => {
     if (isDayOrMonth) {
       navigate(`/calendar/month/${deserialized.format('YYYY-MM')}`);
     }
-    dispatch(fetchTasks(currentDate));
     dispatch(swichAction(isDayOrMonth));
   };
 
