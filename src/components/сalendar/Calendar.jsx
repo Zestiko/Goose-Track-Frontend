@@ -1,7 +1,9 @@
 
 
+
 import css from "./Calendar.module.scss";
 import { useEffect } from "react";
+
 import { CalendarHeaderDays } from "./calendarHeaderDays/CalendarHeaderDays";
 import { CalendarGrid } from "./сalendarGrid/CalendarGrid";
 import { CalendarHeader } from "./сalendarHeader/CalendarHeader";
@@ -18,12 +20,12 @@ const Calendar = () => {
   },[currentDate, dispatch])
 
     return (
-    <div className={css.calendar_wrapper}>
+    <div className=''>
         <CalendarHeader/>
         <CalendarHeaderDays/>
         <CalendarGrid/>
       </div>
-      
-  ) 
-} 
+
+  )
+}
 export default Calendar;

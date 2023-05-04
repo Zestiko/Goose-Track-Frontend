@@ -1,9 +1,7 @@
 import PropTypes from 'prop-types';
-// import { COLUMNS } from 'constants/columns.constans';
 
 import TasksColumn from 'components/ChoosedDay/TasksColumn/TasksColumn';
 import scss from './TasksColumnsList.module.scss';
-
 import { COLUMNS_OPTIONS, COLUMNS } from 'constants/columns.constans';
 
 const TasksColumnsList = ({dayTasks}) => {
