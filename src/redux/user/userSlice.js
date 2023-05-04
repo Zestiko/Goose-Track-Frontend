@@ -73,6 +73,7 @@ const userSlice = createSlice({
       .addCase(authRegisterThunk.rejected, handleRejected)
       .addCase(authCurrentThunk.rejected, state => {
         state.isRefreshing = false;
+        state.isLoggedIn = false;
       });
   },
 });
