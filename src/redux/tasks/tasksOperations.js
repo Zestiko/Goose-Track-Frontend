@@ -8,12 +8,9 @@ export const fetchTasks = createAsyncThunk(
   async (date, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.user.token;
-
     if (persistedToken === null) {
-      // If there is no token, exit without performing any request
       return thunkAPI.rejectWithValue('Unable to fetch user');
     }
-
     try {
       token.set(persistedToken);
       const { data } = await publicApi.get(`/tasks`, { params: { date } });

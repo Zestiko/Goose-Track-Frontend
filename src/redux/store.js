@@ -13,7 +13,10 @@ import {
 } from 'redux-persist';
 import { userInitialState } from './user/user.init-state';
 import { calendarState } from 'redux/calendar/calendarState';
-import { calendarReducer } from 'redux/calendar/reducers';
+import {
+  calendarReducer,
+  fetchTasksOnDateChange,
+} from 'redux/calendar/reducers';
 
 const initState = {
   user: userInitialState,
@@ -29,12 +32,14 @@ export const store = configureStore({
     tasks: tasksReducer,
     calendar: calendarReducer,
   },
-  middleware: getDefaultMiddleware =>
-    getDefaultMiddleware({
+  middleware: getDefaultMiddleware => [
+    ...getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
+    fetchTasksOnDateChange,
+  ],
 });
 
 export const persistor = persistStore(store);
