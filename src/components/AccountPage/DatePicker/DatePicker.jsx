@@ -57,6 +57,7 @@ const MyDatePicker = ({ name = '', birthday }) => {
       calendarStartDay={1}
       placeholderText={birthday || 'Choose a date'}
       formatWeekDay={formatWeekDay}
+      showPopperArrow={false}
     />
   );
 };
