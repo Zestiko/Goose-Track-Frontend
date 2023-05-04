@@ -56,7 +56,8 @@ const userSlice = createSlice({
     
       .addCase(updateUserProfile.fulfilled, (state, { payload }) => {
          
-          state.user = payload.user;
+        state.user = payload.user;
+        state.status = STATUS.success;
     
       })
       .addCase(authCurrentThunk.pending, state => {
