@@ -20,13 +20,16 @@ const NotFoundPage = lazy(() => import('../pages/NotFoundPage/NotFoundPage'));
 
 export const App = () => {
   const dispatch = useDispatch();
-  const { isRefreshing } = useAuth();
+  const { isRefreshing, isLoggedIn } = useAuth();
   const currentDate = useSelector(getCurrentDate);
 
   useEffect(() => {
     dispatch(authCurrentThunk());
-    dispatch(fetchTasks());
-  }, [dispatch]);
+    if (isLoggedIn) {
+      dispatch(fetchTasks());
+    }
+  }, [dispatch, isLoggedIn]);
+
   return isRefreshing ? (
     <b>Refreshing user...</b>
   ) : (
