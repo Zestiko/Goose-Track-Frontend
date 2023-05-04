@@ -23,7 +23,7 @@ const Header = ({ handleBurgerMenuClick, handleToggleThemeClick, theme }) => {
         className={`${css.burger} ${theme}`}
         onClick={handleBurgerMenuClick}
       />
-      {((tasks.length === 0) ? <h1 className={css.title}>{title}</h1> : <div className={css.blockMessage}><div className={css.img}></div>
+      {((tasks.length === 0) ? <div className={css.blockHeader}><h1 className={css.title}>{title}</h1></div> : <div className={css.blockMessage}><div className={css.img}></div>
         <div className={css.div}>
         <h1  className={css.titleTask}>{title}</h1>
         <p className={css.message}><span className={css.spanMsg}>Let go </span>of the past and focus on the present!</p>

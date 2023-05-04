@@ -12,16 +12,16 @@
   }
 
   .title{
-    display: none;
-    @media screen and (min-width: 1400px) {
+
     font-family: 'Inter';
     font-weight: 700;
     font-size: 32px;
     line-height: 1;
     color: var(--userpage-text);
     display: block;
-  
-  }}
+    margin-left: 32px;
+  }
+
   
   .user {
     display: flex;
@@ -123,14 +123,19 @@
   display: flex;
   }
 }
-// .img{
-//   background-image: url('./Goose.png');
-//   background-repeat: no-repeat;
-//   width: 64px;
-//   height: 60px;
-// }
 
-.img {
+.blockHeader{
+    display: none;
+    @media screen and (min-width: 1400px) {
+      display: flex;
+      margin-bottom: 14px;
+      margin-top: 14px;
+    }
+}
+
+.img{
+  background-image: url('./Goose.png');
+  background-repeat: no-repeat;
   width: 64px;
   height: 60px;
   background-image: url('./Goose.png');

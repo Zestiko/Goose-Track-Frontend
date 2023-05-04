@@ -1,7 +1,7 @@
 import { Header } from './header_b/header_b';
 import { Main } from './main_c/main_c';
-import { Footer } from './footer_f/footer_f';
 import { Team } from './our_team/our_team';
+import Slider from './reviews/reviews';
 
 export default function HomePage() {
     return (
@@ -9,7 +9,7 @@ export default function HomePage() {
             <Header />
             <Main />
             <Team />
-            <Footer />
+            <Slider/>
         </div>
     );
 }
