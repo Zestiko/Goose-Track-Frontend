@@ -6,9 +6,9 @@
   padding: 7px 0px;
   margin: 0 18px 24px 18px;
 
-    @media screen and (min-width: 768px) {
-        margin: 0 20px 28px 20px;
-      }
+  @media screen and (min-width: 768px) {
+    margin: 0 20px 28px 20px;
+  }
 }
 
 .columnTitle {
@@ -45,5 +45,5 @@
 
 .iconButton:hover .icon,
 .iconButton:focus .icon {
-  stroke: #3E85F3
+  stroke: #3e85f3;
 }
