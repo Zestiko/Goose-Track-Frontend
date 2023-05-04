@@ -1,0 +1,19 @@
+[
+	{
+        "name": "Alieksieiev Vladyslav",
+        "role": "Team-Lead",
+        "img": "./img/ph01.jpg",
+        "GitHub": "https://github.com/Zestiko",
+        "LinkedIn": "https://www.linkedin.com/in/vladyslav-alieksieiev/"
+	},
+
+	{
+        "name": "Averkin Maksym",
+        "role": "Scrum master",
+        "img": "./img/ph02.jpg",
+        "GitHub": "https://github.com/Maxoverking",
+        "LinkedIn": "https://www.linkedin.com/in/maksym-averkin/"
+	}
+
+
+]
