@@ -1,6 +1,5 @@
 import TasksColumn from 'components/ChoosedDay/TasksColumn/TasksColumn';
 import scss from './TasksColumnsList.module.scss';
-
 import { COLUMNS_OPTIONS, COLUMNS } from 'constants/columns.constans';
 import { useSelector } from 'react-redux';
 import { getCurrentDate } from 'redux/calendar/selectors';
