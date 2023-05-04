@@ -10,10 +10,7 @@ export const infoUserSchema = Yup.object().shape({
     /^\+380\d{9}$/,
     'Phone number must be in the format +380XXXXXXXXX'
   ),
-  telegram: Yup.string().matches(
-    /^[a-zA-Z0-9_@]*$/,
-    'value contains only latin letters, numbers, underscore and "@" symbol'
-  ),
+  telegram: Yup.string('value contains only latin letters, numbers, underscore and "@" symbol or start with t.me/'),
   avatar: Yup.string('Invalid avatar'),
   birthday: Yup.date(),
 });
