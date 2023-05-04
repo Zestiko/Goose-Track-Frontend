@@ -10,6 +10,8 @@ import Calendar from './сalendar/Calendar';
 import CalendarDaysTask from './сalendar/calendarDaysTask/CalendarDaysTask';
 import { getCurrentDate } from '../redux/calendar/selectors';
 import { fetchTasks } from 'redux/tasks/tasksOperations';
+import { Loader } from './Loader/Loader';
+import { selectorAuthStatus } from 'redux/user/selectors';
 
 const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
@@ -22,6 +24,8 @@ export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing, isLoggedIn } = useAuth();
   const currentDate = useSelector(getCurrentDate);
+  const status = useSelector(selectorAuthStatus);
+  console.log("🚀 ~ file: App.jsx:28 ~ App ~ status:", status)
 
   useEffect(() => {
     dispatch(authCurrentThunk());
@@ -31,9 +35,10 @@ export const App = () => {
   }, [dispatch, isLoggedIn]);
 
   return isRefreshing ? (
-    <b>Refreshing user...</b>
+    <Loader />
   ) : (
     <>
+      {status === "loading" && <Loader />}
       <Suspense>
         <Routes>
           <Route path="/welcome" index element={<HomePage />} />
