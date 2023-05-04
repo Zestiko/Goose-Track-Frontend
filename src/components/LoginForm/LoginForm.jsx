@@ -15,6 +15,7 @@ import { BsEyeSlashFill } from 'react-icons/bs';
 import { BsEyeFill } from 'react-icons/bs';
 import { useState } from 'react';
 import { getCurrentDate } from 'redux/calendar/selectors';
+import { spriteIcons } from 'images/icons';
 
 const initialState = {
   email: '',
@@ -71,7 +72,11 @@ const LoginForm = () => {
             <h1 className={scss.title}>Log In</h1>
             <label
               className={
-                errors.email && touched.email ? scss.isInvalidLabel : scss.label
+                errors.email && touched.email
+                  ? scss.isInvalidLabel
+                  : touched.email
+                  ? scss.isValidLabel
+                  : scss.label
               }
             >
               <p className={scss.labelText}>Email</p>
@@ -81,21 +86,40 @@ const LoginForm = () => {
                 type="email"
                 placeholder="Enter email"
                 className={
-                  errors.email && touched.email ? scss.isInvalid : scss.input
+                  errors.email && touched.email
+                    ? scss.isInvalid
+                    : touched.email
+                    ? scss.isValid
+                    : scss.input
                 }
               />
               <div className={scss.feedback}>
+                {touched.email && !errors.email ? (
+                  <div className={scss.validFeedback}>
+                    This is an CORRECT email
+                    <svg className={scss.iconCorrect}>
+                      <use href={spriteIcons + '#icon-check'}></use>
+                    </svg>
+                  </div>
+                ) : null}
                 <ErrorMessage
                   name="email"
                   component="div"
                   className={scss.invalidFeedback}
                 ></ErrorMessage>
+                {touched.email && errors.email ? (
+                  <svg className={scss.iconCorrect}>
+                    <use href={spriteIcons + '#icon-alert'}></use>
+                  </svg>
+                ) : null}
               </div>
             </label>
             <label
               className={
                 errors.password && touched.password
                   ? scss.isInvalidLabel
+                  : touched.password
+                  ? scss.isValidLabel
                   : scss.label
               }
             >
@@ -108,6 +132,8 @@ const LoginForm = () => {
                 className={
                   errors.password && touched.password
                     ? scss.isInvalid
+                    : touched.password
+                    ? scss.isValid
                     : scss.input
                 }
               />
@@ -119,6 +145,11 @@ const LoginForm = () => {
                 <div className={scss.spanIcon}>{icon}</div>
               </button>
               <div className={scss.feedback}>
+                {touched.password && !errors.password ? (
+                  <div className={scss.validFeedback}>
+                    This is an CORRECT password
+                  </div>
+                ) : null}
                 <ErrorMessage
                   name="password"
                   component="div"

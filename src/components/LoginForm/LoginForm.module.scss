@@ -207,9 +207,14 @@
   font-size: 12px;
 }
 .feedback {
+  position: relative;
   height: 24px;
-//   margin-top: 8px;
+  margin-top: 8px;
   margin-left: 10px;
+}
+.validFeedback {
+    color: #3CBC81;
+    font-size: 12px;
 }
 .isInvalidLabel {
   position: relative;
@@ -253,4 +258,54 @@
   bottom: 45px;
   height: 24px;
   width: 24px;
+}
+
+.isValidLabel{
+    position: relative;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 1.25;
+        color: #3CBC81;
+        margin-bottom: 8px;
+
+        @media screen and (min-width: 768px) {
+            font-size: 14px;
+            line-height: 1.2;
+        }
+}
+
+.isValid{
+    position: relative;
+        background: $btn-text-color;
+        border: 1px solid #3CBC81;
+        border-radius: 8px;
+        padding: 14px;
+        width: 100%;
+        font-size: 14px;
+        line-height: 1.29;
+        color: $primary-text-color;
+
+        &:focus {
+            border: 1px solid #111111;
+        }
+
+        &:hover {
+            border: 1px solid #111111;
+        }
+
+        &::placeholder {
+            color: #dce3e5;
+            font-size: 14px;
+        }
+
+        @media screen and (min-width: 768px) {
+            padding: 18px;
+        }
+}
+.iconCorrect{
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: -46px;
+  right: 13px;
 }
