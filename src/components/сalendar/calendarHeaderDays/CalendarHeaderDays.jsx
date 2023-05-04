@@ -32,7 +32,3 @@ const CalendarHeaderDays = () => {
     )
 }
 export { CalendarHeaderDays }
-// {windowSize.width > 768 ? `${itemDay.text.slice(0, 7)}...`
-//                                         : windowSize.width < 768 ? `${itemDay.text.slice(0, 3)}...`
-//                                             : windowSize.width < 660 ? `${itemDay.text.slice(0, 3)}...`
-//                                                 // : `${itemDay.text.slice(0, 2)}.`}

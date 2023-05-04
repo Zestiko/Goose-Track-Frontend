@@ -53,7 +53,7 @@ const [windowSize, setWindowSize] = useState({
     const boxClick = (day) => {
         dispatch(swichAction(false))
         navigate(`/calendar/day/${day.format("YYYY-MM-DD")}`);
-        dispatch(chosedDateAction(moment(day).format()));
+        dispatch(chosedDateAction(moment(day).format("YYYY-MM-DD")));
     };
 
     //сравнение это тот день или не тот день
@@ -97,7 +97,8 @@ const [windowSize, setWindowSize] = useState({
                             .map((itemDay, i) => (
                                 // {isCurrentMonth(itemDay) ? }
                                 <p key={i} className={
-                                    isCurrentMonth(item)
+                                    isCurrentMonth(itemDay.taskDate)
+                                    // isCurrentDay(item)
                                         ?
                                     itemDay.priority === "high"
                                         ?`${css.notice} ${css.high}`
@@ -106,7 +107,8 @@ const [windowSize, setWindowSize] = useState({
                                         ?
                                         `${css.notice} ${css.medium}`
                                         :
-                                        `${css.notice}`: `${css.not_current_month}`
+                                                `${css.notice}`
+                                        : `${css.not_current_month}`
                                 }> {windowSize.width > 768 ? `${itemDay.title.slice(0, 7)}...`
                                         : windowSize.width < 768 ? `${itemDay.title.slice(0, 3)}...`
                                             : windowSize.width < 660 ? `${itemDay.title.slice(0, 3)}...`
