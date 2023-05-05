@@ -6,6 +6,7 @@
   padding: 14px;
   border: var(--border-task-column);
   border-radius: 8px;
+  position: relative;
 
   &:last-child {
     margin-bottom: 17px;
@@ -81,10 +82,13 @@
 }
 
 .timeText {
+  position: absolute;
   font-family: $primary-font;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
   color: var(--primary-text-color);
-  margin-left: 24px;
+  top: 44px;
+  right: 16px;
+
 }
