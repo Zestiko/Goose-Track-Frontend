@@ -66,14 +66,7 @@ export const TaskForm = ({ props, onClose }) => {
             formik.setFieldValue('startTime', startTime);
             formik.setFieldValue('endTime', endTime);
           };
-          const handleEndTimeChange = event => {
-            const endTime = event.target.value;
-            const startTime = moment(endTime, 'HH:mm')
-              .subtract(1, 'hour')
-              .format('HH:mm');
-            formik.setFieldValue('endTime', endTime);
-            formik.setFieldValue('startTime', startTime);
-          };
+
           return (
             <Form className={clsx(styles.form, theme)}>
               <label htmlFor="title" className={clsx(styles.title, theme)}>
@@ -129,7 +122,6 @@ export const TaskForm = ({ props, onClose }) => {
                   <Field
                     name="endTime"
                     type="time"
-                    onChange={handleEndTimeChange}
                     min={formik.values.startTime || formik.values.endTime}
                     className={clsx(
                       styles.timeInput,
