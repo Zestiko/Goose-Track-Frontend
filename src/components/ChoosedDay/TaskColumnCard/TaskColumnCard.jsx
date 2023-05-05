@@ -13,10 +13,7 @@ const TaskColumnCard = ({ task }) => {
   return (
     <li className={scss.card}>
       <p className={scss.title}>{title}</p>
-      <p className={scss.timeText}>
-        {' '}
-        From {startTime} to {endTime}
-      </p>
+      <p className={scss.timeText}>From {startTime} to {endTime}</p>
       <div className={scss.block}>
         <div className={scss.user}>
           {!avatarPath ? (
