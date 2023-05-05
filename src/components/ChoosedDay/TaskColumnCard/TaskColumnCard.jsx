@@ -26,9 +26,7 @@ const TaskColumnCard = ({ task }) => {
           ) : (
             <img className={scss.userAvatar} src={avatarPath} alt="avatar" />
           )}
-
           <p className={clsx(scss.priority, scss[priority])}> {priority} </p>
-
           <TaskToolbar task={task} />
         </div>
       </div>
