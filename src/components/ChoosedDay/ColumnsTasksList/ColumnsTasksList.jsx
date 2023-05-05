@@ -9,8 +9,8 @@ const ColumnsTasksList = ({ tasks }) => {
   });
   return (
     <ul className={scss.column}>
-      {tasks.map((task, i) => (
-        <TaskColumnCard task={taskSortedByStartTime} key={i} />
+      {taskSortedByStartTime.map((task, i) => (
+        <TaskColumnCard task={task} key={i} />
       ))}
     </ul>
   );
