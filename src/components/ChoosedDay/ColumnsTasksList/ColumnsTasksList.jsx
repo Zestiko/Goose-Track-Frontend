@@ -7,7 +7,6 @@ const ColumnsTasksList = ({ tasks }) => {
     if (a.startTime > b.startTime) return 1;
     return 0;
   });
-  console.log(taskSortedByStartTime);
   return (
     <ul className={scss.column}>
       {tasks.map((task, i) => (
