@@ -4,9 +4,16 @@ import Sidebar from './Sidebar/Sidebar';
 import css from './MainPage.module.scss';
 
 import { useState, useEffect, Suspense } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getCurrentDate } from '../../redux/calendar/selectors';
 
 const MainPage = () => {
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+
+  const currentDate = useSelector(getCurrentDate);
+
   const [theme, setTheme] = useState(
     localStorage.getItem('theme') || 'lightTheme'
   );
@@ -16,6 +23,12 @@ const MainPage = () => {
     localStorage.setItem('theme', theme);
   }, [theme]);
 
+  useEffect(() => {
+    if (pathname === '/') {
+      navigate(`/calendar/month/${currentDate.slice(0, 7)}`);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
   const handleBurgerMenuClick = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
