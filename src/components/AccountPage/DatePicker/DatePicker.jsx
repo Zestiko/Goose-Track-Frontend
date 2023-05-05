@@ -7,10 +7,9 @@ const today = new Date().toISOString().split('T')[0];
 
 const MyDatePicker = ({ name = '', birthday }) => {
   const [field, meta, helpers] = useField('date');
-  const [currentMonth, setCurrentMonth] = useState(moment());
-
   const { value } = meta;
   const { setValue } = helpers;
+  const [currentMonth, setCurrentMonth] = useState(moment());
 
   const isWeekend = useCallback(date => {
     const day = moment(date).format('dddd');
@@ -36,15 +35,17 @@ const MyDatePicker = ({ name = '', birthday }) => {
     },
     [currentMonth, isWeekend]
   );
-  const formatWeekDay = (weekdayShort, dayOfWeek) => weekdayShort.charAt(0);
+  const formatWeekDay = (weekdayShort) => weekdayShort.charAt(0);
 
   const handleMonthChange = useCallback(date => {
     setCurrentMonth(moment(date));
   }, []);
 
   const handleCloseDatePicker = useCallback(() => {
-    setCurrentMonth(moment());
-  }, []);
+
+      setCurrentMonth(value || new Date(birthday || today));
+
+  }, [value, birthday]);
 
   return (
     <DatePicker
@@ -52,12 +53,12 @@ const MyDatePicker = ({ name = '', birthday }) => {
       selected={value || new Date(birthday || today)}
       onChange={date => setValue(date)}
       onMonthChange={handleMonthChange}
-      onFocus={handleCloseDatePicker}
       dayClassName={dayClassNames}
       calendarStartDay={1}
       placeholderText={birthday || 'Choose a date'}
       formatWeekDay={formatWeekDay}
       showPopperArrow={false}
+      onCalendarClose={handleCloseDatePicker}
     />
   );
 };
