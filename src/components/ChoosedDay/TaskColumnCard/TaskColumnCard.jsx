@@ -6,7 +6,7 @@ import { spriteIcons } from 'images/icons';
 import clsx from "clsx";
 
 const TaskColumnCard = ({ task }) => {
-  const { title, priority } = task;
+  const { title, priority, startTime, endTime } = task;
 
   const avatarPath = useSelector(selectorGetUserAvatar);
 
@@ -24,6 +24,7 @@ const TaskColumnCard = ({ task }) => {
           )}
 
           <p className={clsx(scss.priority, scss[priority])} >{priority}</p>
+          <p className={scss.timeText} > From {startTime} to {endTime}</p>
           <TaskToolbar task={task} />
         </div>
       </div>

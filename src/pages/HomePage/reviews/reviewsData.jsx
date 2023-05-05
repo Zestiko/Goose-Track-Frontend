@@ -18,7 +18,7 @@ export const data = [
     name: 'Vyshnevska Maryna',
     avatar: 'https://i.postimg.cc/NfDF8zsQ/IMG-0999.jpg',
     rating: 5,
-    text: 'I thank Goit and our mentors for their support! And now I can say that I know what a dream team is! This is our team! I wish everyone to find the best job in their lives and be happy!',
+    text: 'I thank Goit and our mentors for their support! And now I can say that I know what a Dream team is! This is our team! I wish everyone to find the best job in their lives and be happy!',
   },
   {
     id: 4,
