@@ -1,17 +1,17 @@
 import styles from './CustomRadio.module.scss';
 
-const CustomRadio = ({ options, value, setFieldValue, theme }) => {
+const CustomRadio = ({ options, value, setFieldValue }) => {
   return (
-    <div className={`${styles.radioGroup} ${theme}`}>
+    <div className={`${styles.radioGroup}`}>
       {options.map((option, index) => (
         <label
-          className={`${styles.radioLabel} ${theme}  ${
+          className={`${styles.radioLabel}  ${
             value === option.value ? styles.activeRadioInput : ''
           }`}
           key={index}
         >
           <input
-            className={`${styles.radioInput} ${theme}`}
+            className={`${styles.radioInput}`}
             type="radio"
             value={option.value}
             checked={value === option.value}
@@ -20,7 +20,7 @@ const CustomRadio = ({ options, value, setFieldValue, theme }) => {
           <span
             className={`${styles.radioButton} ${
               value === option.value ? styles.active : ''
-            } ${styles[option.color]} ${theme}`}
+            } ${styles[option.color]}`}
           />
           {option.label}
         </label>

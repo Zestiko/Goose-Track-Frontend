@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { tasksInitState } from './tasks/tasks.init-state';
+import { initState } from './store.init-state';
 import { userReducer } from './user/userSlice';
 import { tasksReducer } from './tasks/taskSlice';
 import {
@@ -11,18 +11,6 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import { userInitialState } from './user/user.init-state';
-import { calendarState } from 'redux/calendar/calendarState';
-import {
-  calendarReducer,
-  fetchTasksOnDateChange,
-} from 'redux/calendar/reducers';
-
-const initState = {
-  user: userInitialState,
-  tasks: tasksInitState,
-  calendar: calendarState,
-};
 
 export const store = configureStore({
   preloadedState: initState,
@@ -30,16 +18,13 @@ export const store = configureStore({
   reducer: {
     user: userReducer,
     tasks: tasksReducer,
-    calendar: calendarReducer,
   },
-  middleware: getDefaultMiddleware => [
-    ...getDefaultMiddleware({
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
-    fetchTasksOnDateChange,
-  ],
 });
 
 export const persistor = persistStore(store);

@@ -7,25 +7,33 @@ import { useToggle } from 'hooks/useToggle';
 
 import TaskModal from 'components/TaskModal/TaskModal';
 import scss from './TaskToolbar.module.scss';
-import {
-  removeTask,
-  updateTask,
-} from 'redux/tasks/tasksOperations';
+import { removeTask } from 'redux/tasks/tasksOperations';
+import ColumnToggler from '../ColumnToggler/ColumnToggler';
 
 const TaskToolbar = ({ task }) => {
   const dispatch = useDispatch();
-  const { column, _id, title, startTime, endTime, priority, taskDate } = task;
+  const { column } = task;
   const [openChoice, setOpenChoice] = useState(false);
   const { isOpen, onOpen, onClose } = useToggle();
-
+  const [togglerPosition, setTogglerPosition] = useState({ top: 0, left: 0 });
 
   const otherColumns = COLUMNS.filter(item => item !== column);
 
-  const columnRef = useRef();
   const iconRef = useRef();
+  const popupRef = useRef(null);
 
   const handleDeleteTask = async () => {
     await dispatch(removeTask(task._id));
+  };
+
+  const openOpenChoise = e => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setTogglerPosition({ top: rect.top, left: rect.left });
+    setOpenChoice(true);
+  };
+
+  const closeOpenChoise = () => {
+    setOpenChoice(false);
   };
 
   return (
@@ -36,48 +44,10 @@ const TaskToolbar = ({ task }) => {
             <svg
               ref={iconRef}
               className={scss.iconButton}
-              onClick={() => setOpenChoice(!openChoice)}
+              onClick={openOpenChoise}
             >
               <use href={spriteIcons + '#icon-arrow-circle-broken-right'}></use>
             </svg>
-            {openChoice && (
-              <div className={scss.movesBox}>
-                <ul>
-                  {otherColumns.map(item => (
-                    <li
-                      ref={columnRef}
-                      key={item}
-                      className={scss.line}
-                      onClick={e => {
-                        const newTaskData = {
-                          column: item,
-                          title,
-                          startTime,
-                          endTime,
-                          priority,
-                          taskDate,
-                        };
-                        dispatch(
-                          updateTask({ taskId: _id, updatedTask: newTaskData })
-                        );
-                        setOpenChoice(false);
-                      }}
-                    >
-                      <p className={scss.text}>
-                        {item}
-                        <svg className={scss.iconMove}>
-                          <use
-                            href={
-                              spriteIcons + '#icon-arrow-circle-broken-right'
-                            }
-                          ></use>
-                        </svg>
-                      </p>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
           </button>
         </li>
         <li>
@@ -97,6 +67,15 @@ const TaskToolbar = ({ task }) => {
       </ul>
 
       {isOpen && <TaskModal taskData={task} onClose={onClose} />}
+      {openChoice && (
+        <ColumnToggler
+          columns={otherColumns}
+          taskData={task}
+          onClose={closeOpenChoise}
+          popupRef={popupRef}
+          position={togglerPosition}
+        />
+      )}
     </>
   );
 };

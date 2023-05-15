@@ -7,29 +7,25 @@ import gooseDesk3x from '../../../images/bar/desktop/goose-1-desktop-3x.png';
 import gooseDesk2x from '../../../images/bar/desktop/goose-1-desktop-2x.png';
 import gooseDesk1x from '../../../images/bar/desktop/goose-1-desktop-1x.png';
 
-
 import css from './Sidebar.module.scss';
 
-const Sidebar = ({ isSidebarOpen, handleBurgerMenuClick, theme }) => (
-  <div className={`${css.sidebar} ${isSidebarOpen ? css.open : ''} ${theme}`}>
+const Sidebar = ({ isSidebarOpen, handleBurgerMenuClick }) => (
+  <div className={`${css.sidebar} ${isSidebarOpen ? css.open : ''}`}>
     <div className={css.logo}>
-
-    <picture>
+      <picture>
         <source
-            
-            srcSet={`${gooseDesk1x} 1x, ${gooseDesk2x} 2x, ${gooseDesk3x} 3x`} 
-            alt="Goose"
+          srcSet={`${gooseDesk1x} 1x, ${gooseDesk2x} 2x, ${gooseDesk3x} 3x`}
+          alt="Goose"
         />
-        <img className={css.logoImg} src={logoImg} alt="logoImage"/>       
-    </picture>    
-    {/* <img className={css.logoImg} src={logoImg} alt="logoImage"></img> */}
-      
+        <img className={css.logoImg} src={logoImg} alt="logoImage" />
+      </picture>
+
       <p className={css.logoText}>
         G<i>oo</i>seTrack
       </p>
-      <Xclose className={`${css.closeIcon} ${theme}`} onClick={handleBurgerMenuClick} />
+      <Xclose className={css.closeIcon} onClick={handleBurgerMenuClick} />
     </div>
-    <Navigation theme={theme} />
+    <Navigation />
   </div>
 );
 

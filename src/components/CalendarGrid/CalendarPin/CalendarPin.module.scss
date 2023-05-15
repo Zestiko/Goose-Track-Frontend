@@ -1,0 +1,23 @@
+.pin {
+  display: inline-block;
+  height: 26px;
+  width: 26px;
+  border-radius: 8px;
+
+  @media screen and (min-width: 768px) {
+  }
+}
+
+.high {
+  background: var(--priority-high-bg-color);
+  color: #ea3d65;
+}
+.low {
+  background: var(--priority-low-bg-color);
+  color: #3e85f3;
+}
+
+.medium {
+  background: var(--priority-medium-bg-сolor);
+  color: #f3b249;
+}

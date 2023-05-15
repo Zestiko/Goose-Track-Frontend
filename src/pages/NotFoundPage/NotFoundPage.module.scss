@@ -1,14 +1,12 @@
-@import './../../styles/vars';
-
 .pageBox {
   padding: 40px 0;
   text-align: center;
   background: #fff;
-  font-family: $secondary-font;
+  font-family: var(--secondary-font);
 }
 .sectionTitle {
   font-size: 80px;
-  color: $secondary-text-color;
+  color: var(--secondary-text-color);
 }
 
 .wrapper {
@@ -20,10 +18,10 @@
 
 .infoTitle {
   font-size: 24px;
-  color: $secondary-text-color;
+  color: var(--secondary-text-color);
 }
 .infoMeta {
-  color: $secondary-text-color;
+  color: var(--secondary-text-color);
   margin-bottom: 32px;
 }
 
@@ -39,8 +37,8 @@
   margin-right: auto;
   width: 220px;
   padding: 14px;
-  color: $btn-text-color;
-  background: $accent-background-color;
+  color: var(--btn-text-color);
+  background: var(--accent-background-color);
   box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
   border-radius: 16px;
   font-weight: 600;

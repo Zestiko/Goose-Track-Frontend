@@ -35,7 +35,7 @@
   .closeIcon {
     display: none;
   }
-    @media screen and (max-width: 1400px) {
+  @media screen and (max-width: 1400px) {
     width: 289px;
     height: 100%;
     position: fixed;
@@ -93,9 +93,7 @@
       display: block;
       width: 24px;
       height: 24px;
-      stroke:var(--primary-text-color)
+      stroke: var(--primary-text-color);
     }
   }
-
-
 }

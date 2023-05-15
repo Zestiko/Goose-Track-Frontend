@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addTask, updateTask } from 'redux/tasks/tasksOperations';
-import { getCurrentDate } from 'redux/calendar/selectors';
 
 import { PRIORITY_OPTIONS } from 'constants/priority.constans';
 import { taskSchema } from './validationTasks/validationTasks';
@@ -15,11 +14,13 @@ import CustomRadio from './CustomRadio/CustomRadio';
 import styles from './TaskForm.module.scss';
 import { ReactComponent as Plus } from '../../images/icons/icon-plus.svg';
 import { BsPencil } from 'react-icons/bs';
+import { useParams } from 'react-router-dom';
 
 export const TaskForm = ({ props, onClose }) => {
-  const theme = localStorage.getItem('theme') || 'lightTheme';
   const dispatch = useDispatch();
-  const currentDate = useSelector(getCurrentDate);
+
+  const { currentDay: currentDate } = useParams();
+
   const { taskData, column } = props;
   const initialFormikValues = taskData
     ? {
@@ -68,8 +69,8 @@ export const TaskForm = ({ props, onClose }) => {
           };
 
           return (
-            <Form className={clsx(styles.form, theme)}>
-              <label htmlFor="title" className={clsx(styles.title, theme)}>
+            <Form className={clsx(styles.form)}>
+              <label htmlFor="title" className={clsx(styles.title)}>
                 Title
                 <Field
                   name="title"
@@ -78,7 +79,6 @@ export const TaskForm = ({ props, onClose }) => {
                   placeholder="Enter some text..."
                   className={clsx(
                     styles.input,
-                    theme,
                     formik.errors.title && formik.touched.title
                       ? styles.isInvalid
                       : '',
@@ -94,10 +94,7 @@ export const TaskForm = ({ props, onClose }) => {
                 />
               </label>
               <div className={styles.flex}>
-                <label
-                  htmlFor="startTime"
-                  className={clsx(styles.title, theme)}
-                >
+                <label htmlFor="startTime" className={clsx(styles.title)}>
                   Start
                   <Field
                     name="startTime"
@@ -105,7 +102,6 @@ export const TaskForm = ({ props, onClose }) => {
                     onChange={handleStartTimeChange}
                     className={clsx(
                       styles.timeInput,
-                      theme,
                       formik.errors.startTime && formik.touched.startTime
                         ? styles.is_invalid
                         : ''
@@ -117,7 +113,7 @@ export const TaskForm = ({ props, onClose }) => {
                     className={styles.invalid_startTime}
                   />
                 </label>
-                <label htmlFor="endTime" className={clsx(styles.title, theme)}>
+                <label htmlFor="endTime" className={clsx(styles.title)}>
                   End
                   <Field
                     name="endTime"
@@ -125,7 +121,6 @@ export const TaskForm = ({ props, onClose }) => {
                     min={formik.values.startTime || formik.values.endTime}
                     className={clsx(
                       styles.timeInput,
-                      theme,
                       formik.errors.endTime && formik.touched.endTime
                         ? styles.is_invalid
                         : ''
@@ -146,19 +141,19 @@ export const TaskForm = ({ props, onClose }) => {
                 />
               </div>
 
-              <div className={clsx(styles.submit, theme)}>
+              <div className={clsx(styles.submit)}>
                 {!taskData ? (
                   <>
                     <button
                       type="submit"
-                      className={clsx(styles.button, theme)}
+                      className={clsx(styles.button)}
                       disabled={!formik.dirty || !formik.isValid}
                     >
-                      <Plus className={clsx(styles.logo, theme)} />
+                      <Plus className={clsx(styles.logo)} />
                       Add
                     </button>
                     <button
-                      className={clsx(styles.btn_cansel, theme)}
+                      className={clsx(styles.btn_cansel)}
                       onClick={onClose}
                     >
                       Cancel
@@ -167,10 +162,10 @@ export const TaskForm = ({ props, onClose }) => {
                 ) : (
                   <button
                     type="submit"
-                    className={clsx(styles.buttonEdit, theme)}
+                    className={clsx(styles.buttonEdit)}
                     disabled={!formik.dirty || !formik.isValid}
                   >
-                    <BsPencil className={clsx(styles.logo, theme)} />
+                    <BsPencil className={clsx(styles.logo)} />
                     Edit
                   </button>
                 )}

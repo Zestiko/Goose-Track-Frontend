@@ -1,13 +1,13 @@
 @charset "UTF-8";
 :root {
-  --bgColor: #DCDCDC;
+  --bgColor: #dcdcdc;
   --birdColor: royalblue;
   --tailColor: royalblue;
   --eyesColor: #fff;
-  --pupilsColor: #413A50;
-  --legsColor: #EEBE24;
-  --noseColor: #EEBE24;
-  --knifeColor: #91C1C6;
+  --pupilsColor: #413a50;
+  --legsColor: #eebe24;
+  --noseColor: #eebe24;
+  --knifeColor: #91c1c6;
   --white: #fff;
 }
 
@@ -28,7 +28,6 @@
   height: 100%;
   width: 100%;
   z-index: 10;
- 
 }
 
 .wrapper {
@@ -94,8 +93,9 @@
   animation-duration: 5s;
   animation-fill-mode: both;
 }
-.eye__inner_right::before, .eye__inner_left::before {
-  content: "";
+.eye__inner_right::before,
+.eye__inner_left::before {
+  content: '';
   position: absolute;
   left: 0;
   right: 0;
@@ -108,8 +108,9 @@
   animation-duration: 5s;
   animation-fill-mode: both;
 }
-.eye__inner_right::after, .eye__inner_left::after {
-  content: "";
+.eye__inner_right::after,
+.eye__inner_left::after {
+  content: '';
   position: absolute;
   left: 0;
   right: 0;
@@ -192,7 +193,7 @@
   background-color: var(--birdColor);
 }
 .body3::after {
-  content: "";
+  content: '';
   position: absolute;
   display: block;
   width: 87px;
@@ -254,7 +255,11 @@
   position: absolute;
   border-radius: 50%;
   clip-path: polygon(50% 58%, 15% 0, 88% 0);
-  background: radial-gradient(var(--knifeColor) 25%, var(--white) 25% 45%, var(--knifeColor) 45% 100%);
+  background: radial-gradient(
+    var(--knifeColor) 25%,
+    var(--white) 25% 45%,
+    var(--knifeColor) 45% 100%
+  );
   transform: rotate(-153deg);
 }
 .pseudo-knife__handle {
@@ -280,7 +285,7 @@
   animation-fill-mode: both;
 }
 .knife::before {
-  content: "✦";
+  content: '✦';
   position: absolute;
   top: -13px;
   right: -8px;
@@ -297,12 +302,12 @@
   position: relative;
   width: 22px;
   height: 86px;
-  background-color: #91C1C6;
+  background-color: #91c1c6;
   border-radius: 92% 6% 0 100%/100% 6% 94% 0;
   overflow: hidden;
 }
 .knife__blade::after {
-  content: "";
+  content: '';
   display: block;
   width: 80px;
   height: 20px;
@@ -329,7 +334,7 @@
   border-radius: 25px;
 }
 .knife__handle::after {
-  content: "";
+  content: '';
   width: 21px;
   height: 43px;
   background: #383048;

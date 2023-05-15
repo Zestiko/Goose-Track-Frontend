@@ -14,7 +14,7 @@ import MyDatePicker from './DatePicker/DatePicker';
 import { Notify } from 'notiflix';
 import { userInfoKeys } from 'constants/userInfo.constants';
 
-const UserForm = ({ theme }) => {
+const UserForm = () => {
   const dispatch = useDispatch();
   const userInfo = useSelector(selectorGetUser);
   const [previewImageUrl, setPreviewImageUrl] = useState(null);
@@ -69,7 +69,7 @@ const UserForm = ({ theme }) => {
   };
 
   return (
-    <section className={`${css.user_page} ${theme}`}>
+    <section className={`${css.user_page}`}>
       <Formik
         initialValues={initialUserInfo}
         validationSchema={infoUserSchema}
@@ -79,13 +79,13 @@ const UserForm = ({ theme }) => {
         {formik => {
           return (
             <Form>
-              <div className={`${css.user_page__avatar_container} ${theme}`}>
+              <div className={`${css.user_page__avatar_container}`}>
                 <img
-                  className={`${css.user_page__avatar} ${theme}`}
+                  className={`${css.user_page__avatar}`}
                   src={previewImageUrl || userInfo.avatar || userAvatar}
                   alt="User Avatar"
                 />
-                <div className={`${css.avatar_upload_container} ${theme}`}>
+                <div className={`${css.avatar_upload_container}`}>
                   <Field
                     id="avatar-upload"
                     name="avatar"
@@ -96,25 +96,25 @@ const UserForm = ({ theme }) => {
                   />
                   <label
                     htmlFor="avatar-upload"
-                    className={`${css.avatar_upload_btn} ${theme}`}
+                    className={`${css.avatar_upload_btn}`}
                   ></label>
                 </div>
-                <h3 className={`${css.user_page__name} ${theme}`}>
+                <h3 className={`${css.user_page__name}`}>
                   {userInfo.userName || 'Username'}
                 </h3>
-                <p className={`${css.user_page__role} ${theme}`}>User</p>
+                <p className={`${css.user_page__role}`}>User</p>
               </div>
-              <div className={`${css.username_form} ${theme}`}>
+              <div className={`${css.username_form}`}>
                 <label
                   htmlFor="userName"
-                  className={`${css.username_form__label} ${theme}`}
+                  className={`${css.username_form__label}`}
                 >
                   Username
                   <Field
                     name="userName"
                     type="text"
                     className={
-                      `${css.username_form_input} ${theme}` +
+                      `${css.username_form_input}` +
                       (formik.errors.userName && formik.touched.userName
                         ? css.is_invalid
                         : '')
@@ -130,7 +130,7 @@ const UserForm = ({ theme }) => {
 
                 <label
                   htmlFor="birthday"
-                  className={`${css.username_form__label} ${theme}`}
+                  className={`${css.username_form__label}`}
                 >
                   Birthday:
                   <MyDatePicker
@@ -147,13 +147,13 @@ const UserForm = ({ theme }) => {
 
                 <label
                   htmlFor="email"
-                  className={`${css.username_form__label} ${theme}`}
+                  className={`${css.username_form__label}`}
                 >
                   Email Address
                   <Field
                     name="email"
                     type="email"
-                    className={`${css.username_form_input} ${theme}`}
+                    className={`${css.username_form_input}`}
                   />
                   <ErrorMessage
                     name="email"
@@ -163,11 +163,11 @@ const UserForm = ({ theme }) => {
                 </label>
                 <label
                   htmlFor="phone"
-                  className={`${css.username_form__label} ${theme}`}
+                  className={`${css.username_form__label}`}
                 >
                   Phone:
                   <Field
-                    className={`${css.username_form_input} ${theme}`}
+                    className={`${css.username_form_input}`}
                     id="phone"
                     name="phone"
                     type="text"
@@ -182,11 +182,11 @@ const UserForm = ({ theme }) => {
 
                 <label
                   htmlFor="telegram"
-                  className={`${css.username_form__label} ${theme}`}
+                  className={`${css.username_form__label}`}
                 >
                   Telegram:
                   <Field
-                    className={`${css.username_form_input} ${theme}`}
+                    className={`${css.username_form_input}`}
                     id="telegram"
                     name="telegram"
                     type="text"
@@ -200,7 +200,7 @@ const UserForm = ({ theme }) => {
                 </label>
                 <button
                   type="submit"
-                  className={`${css.username_form__submit} ${theme}`}
+                  className={`${css.username_form__submit}`}
                   disabled={
                     formik.isSubmitting || !formik.touched || !formik.dirty
                   }

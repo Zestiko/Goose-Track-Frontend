@@ -2,7 +2,7 @@
   "name": "goose_track",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://zestiko.github.io/Goose-Track-Frontend/",
+  "homepage": ".",
   "dependencies": {
     "@babel/eslint-parser": "^7.21.3",
     "@reduxjs/toolkit": "^1.9.5",

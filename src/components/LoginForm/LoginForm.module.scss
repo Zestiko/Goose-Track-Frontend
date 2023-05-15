@@ -1,19 +1,17 @@
-@import './../../styles/vars';
-/* (375, 768, 1440) */
 .container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 20px;
-  background-color: $auth-bg-color;
+  background-color: var(--auth-bg-color);
   height: 100vh;
   width: 100%;
 }
 .form {
   display: flex;
   flex-direction: column;
-  background-color: $btn-text-color;
+  background-color: var(--btn-text-color);
   border-radius: 8px;
   padding-top: 40px;
   padding-bottom: 40px;
@@ -28,7 +26,7 @@
 .title {
   text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07),
     0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
-  color: $accent-background-color;
+  color: var(--accent-background-color);
   font-weight: 600;
   font-size: 18px;
   line-height: 1.33;
@@ -41,29 +39,28 @@
 }
 .label {
   position: relative;
-  font-family: $primary-font;
+  font-family: var(--primary-font);
   font-weight: 600;
   font-size: 12px;
   line-height: 1.25;
-  color: $close-btn-color;
+  color: var(--close-btn-color);
   @media screen and (min-width: 768px) {
     font-size: 14px;
     line-height: 1.2;
+  }
 }
-}
-.labelText{
-    margin-bottom: 8px;
-
+.labelText {
+  margin-bottom: 8px;
 }
 .input {
-  background: $btn-text-color;
-  border: $border-auth;
+  background: var(--btn-text-color);
+  border: var(--border-auth);
   border-radius: 8px;
   padding: 14px;
   width: 100%;
   font-size: 14px;
   line-height: 1.29;
-  color: $primary-text-color;
+  color: var(--primary-text-color);
 
   @media screen and (min-width: 768px) {
     padding: 18px;
@@ -77,7 +74,7 @@
     border: 1px solid #111111;
   }
   &::placeholder {
-    color: $auth-placeholder-color;
+    color: var(--auth-placeholder-color);
     font-size: 14px;
     @media screen and (min-width: 768px) {
       font-size: 16px;
@@ -85,13 +82,13 @@
   }
 }
 .button {
-  background: $accent-background-color;
+  background: var(--accent-background-color);
   box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
   border-radius: 16px;
   font-weight: 600;
   font-size: 14px;
   line-height: 18px;
-  color: $btn-text-color;
+  color: var(--btn-text-color);
   padding: 14px;
   width: 100%;
   margin-top: 10px;
@@ -115,7 +112,7 @@
   font-weight: 600;
   font-size: 12px;
   line-height: 1.16;
-  color: $accent-background-color;
+  color: var(--accent-background-color);
   text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07),
     0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
   margin: 18px auto;
@@ -178,7 +175,7 @@
     text-align: center;
     margin-top: 32px;
     margin-left: 20px;
-    font-family: $primary-font;
+    font-family: var(--primary-font);
     font-weight: 600;
     font-size: 14px;
     line-height: 1.14;
@@ -189,10 +186,10 @@
   }
 }
 .span {
-  color: $accent-background-color;
+  color: var(--accent-background-color);
 }
 .spanIcon {
-  color: $accent-background-color;
+  color: var(--accent-background-color);
   &:focus {
     transform: scale(1.4);
     transition-duration: 200ms;
@@ -213,8 +210,8 @@
   margin-left: 10px;
 }
 .validFeedback {
-    color: #3CBC81;
-    font-size: 12px;
+  color: #3cbc81;
+  font-size: 12px;
 }
 .isInvalidLabel {
   position: relative;
@@ -230,14 +227,14 @@
 }
 .isInvalid {
   position: relative;
-  background: $btn-text-color;
+  background: var(--btn-text-color);
   border: 1px solid #dc3545;
   border-radius: 8px;
   padding: 14px;
   width: 100%;
   font-size: 14px;
   line-height: 1.29;
-  color: $primary-text-color;
+  color: var(--primary-text-color);
   &:focus {
     border: 1px solid #111111;
   }
@@ -260,49 +257,49 @@
   width: 24px;
 }
 
-.isValidLabel{
-    position: relative;
-        font-weight: 600;
-        font-size: 12px;
-        line-height: 1.25;
-        color: #3CBC81;
-        margin-bottom: 8px;
+.isValidLabel {
+  position: relative;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.25;
+  color: #3cbc81;
+  margin-bottom: 8px;
 
-        @media screen and (min-width: 768px) {
-            font-size: 14px;
-            line-height: 1.2;
-        }
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+    line-height: 1.2;
+  }
 }
 
-.isValid{
-    position: relative;
-        background: $btn-text-color;
-        border: 1px solid #3CBC81;
-        border-radius: 8px;
-        padding: 14px;
-        width: 100%;
-        font-size: 14px;
-        line-height: 1.29;
-        color: $primary-text-color;
+.isValid {
+  position: relative;
+  background: var(--btn-text-color);
+  border: 1px solid #3cbc81;
+  border-radius: 8px;
+  padding: 14px;
+  width: 100%;
+  font-size: 14px;
+  line-height: 1.29;
+  color: var(--primary-text-color);
 
-        &:focus {
-            border: 1px solid #111111;
-        }
+  &:focus {
+    border: 1px solid #111111;
+  }
 
-        &:hover {
-            border: 1px solid #111111;
-        }
+  &:hover {
+    border: 1px solid #111111;
+  }
 
-        &::placeholder {
-            color: #dce3e5;
-            font-size: 14px;
-        }
+  &::placeholder {
+    color: #dce3e5;
+    font-size: 14px;
+  }
 
-        @media screen and (min-width: 768px) {
-            padding: 18px;
-        }
+  @media screen and (min-width: 768px) {
+    padding: 18px;
+  }
 }
-.iconCorrect{
+.iconCorrect {
   position: absolute;
   width: 20px;
   height: 20px;

@@ -23,8 +23,6 @@ import { MdClose } from 'react-icons/md';
  */
 
 const Modal = ({ onClose, children }) => {
-  const theme = localStorage.getItem('theme') || 'lightTheme';
-
   useEffect(() => {
     const handleKeyDown = e => {
       if (e.key === 'Escape') {
@@ -49,18 +47,18 @@ const Modal = ({ onClose, children }) => {
   };
 
   return createPortal(
-    <div className={clsx(scss.modalBox, theme)}>
+    <>
       <div
-        className={clsx(scss.modalOverlay, theme)}
+        className={clsx(scss.modalOverlay)}
         onClick={handleClickBackdrop}
       ></div>
-      <div className={clsx(scss.modalBody, theme)}>
-        <button onClick={handleClose} className={clsx(scss.closeButton, theme)}>
-          <MdClose className={clsx(scss.closeButtonIcon, theme)} />
+      <div className={clsx(scss.modalBody)}>
+        <button onClick={handleClose} className={clsx(scss.closeButton)}>
+          <MdClose className={clsx(scss.closeButtonIcon)} />
         </button>
         {children}
       </div>
-    </div>,
+    </>,
     document.getElementById('portal')
   );
 };

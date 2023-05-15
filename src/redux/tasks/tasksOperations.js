@@ -24,9 +24,8 @@ export const changeMonth = createAsyncThunk(
   'month/changeMonth',
   async (month, thunkAPI) => {
     try {
-      const response = await thunkAPI.dispatch(fetchTasks(month));
-      await thunkAPI.dispatch(setDate(month));
-      return response;
+      await thunkAPI.dispatch(fetchTasks(month));
+      thunkAPI.dispatch(setDate(month));
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -78,3 +77,14 @@ export const updateTask = createAsyncThunk(
     }
   }
 );
+
+// export const fetchTasksOnDateChange = store => next => action => {
+//   const result = next(action);
+//   if (action.type === chosedDateAction.type) {
+//     const currenChoosedMonth = moment(action.payload).format('YYYY-MM');
+//     const monthFromSate = moment(store.getState().tasks.date).format('YYYY-MM');
+//     currenChoosedMonth !== monthFromSate &&
+//       store.dispatch(changeMonth(currenChoosedMonth));
+//   }
+//   return result;
+// };

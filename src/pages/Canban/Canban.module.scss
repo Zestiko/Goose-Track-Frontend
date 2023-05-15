@@ -1,0 +1,44 @@
+.listBox {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 16px;
+
+  overflow-x: scroll;
+  margin: auto;
+
+  @media screen and (min-width: 1280px) {
+    justify-content: center;
+    overflow-x: hidden;
+  }
+}
+
+/* width */
+::-webkit-scrollbar {
+  height: 14px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-bg-color);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-color);
+  border-radius: 12px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #c6c5c5;
+}
+
+.titleTask {
+  font-family: 'Inter';
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1;
+  color: var(--userpage-text);
+  display: block;
+  margin-bottom: 8px;
+}

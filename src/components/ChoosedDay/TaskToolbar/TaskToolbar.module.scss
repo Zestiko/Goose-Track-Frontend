@@ -1,6 +1,3 @@
-@import '../../../styles/vars';
-/* (375, 768, 1440) */
-
 .cardBox {
   position: absolute;
   height: 100%;
@@ -32,67 +29,4 @@
   &:focus {
     stroke: var(--button-background-color);
   }
-}
-
-.movesBox {
-  display: flex;
-  position: absolute;
-  background-color: var(--task-bg-move-box);
-  padding: 16px 20px 16px 20px;
-  box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.1);
-  border-radius: 8px;
-  width: 147px;
-  height: 90px;
-  justify-content: space-between;
-  top: -85px;
-  right: -4px;
-  z-index: 99;
-  border: var(--border-task-column);
-}
-
-.line {
-  width: 100px;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  padding: 4px;
-  position: relative;
-  cursor: pointer;
-  border-radius: 8px;
-  stroke: var(--primary-text-color);
-  transition: all linear 350ms;
-
-  &:first-child {
-    margin-bottom: 6px;
-  }
-
-  &:hover,
-  &:focus {
-    background-color: var(--active-button-period-type);
-
-    .iconMove {
-      stroke: var(--accent-add-btn-background);
-    }
-  }
-}
-
-.text {
-  font-family: $primary-font;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  color: var(--task-text-color-light);
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
-  position: relative;
-}
-
-.iconMove {
-  display: flex;
-  fill: transparent;
-  width: 16px;
-  height: 16px;
-  transition: all linear 350ms;
 }
