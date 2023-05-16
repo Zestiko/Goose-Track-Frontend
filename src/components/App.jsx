@@ -17,7 +17,7 @@ const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
 const WelcomePage = lazy(() => import('../pages/HomePage/WelcomePage'));
 const UserPage = lazy(() => import('../pages/AccountPage/AccountPage'));
-const MainPage = lazy(() => import('../pages/MainPage/MainPage'));
+const Layout = lazy(() => import('./Layout/Layout'));
 const Canban = lazy(() => import('../pages/Canban/Canban'));
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage/NotFoundPage'));
 
@@ -56,7 +56,7 @@ export const App = () => {
         <Route
           path="/"
           element={
-            <PrivateRoute redirectTo="/welcome" component={<MainPage />} />
+            <PrivateRoute redirectTo="/welcome" component={<Layout />} />
           }
         >
           <Route path="account" element={<UserPage />} />

@@ -1,57 +1,48 @@
-import { COLUMNS } from 'constants/columns.constans';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useRef, useState } from 'react';
+import { removeTask } from 'redux/tasks/tasksOperations';
 
-import { spriteIcons } from 'images/icons';
 import { useToggle } from 'hooks/useToggle';
+import { spriteIcons } from 'images/icons';
+import { COLUMNS } from 'constants/columns.constans';
 
 import TaskModal from 'components/TaskModal/TaskModal';
-import scss from './TaskToolbar.module.scss';
-import { removeTask } from 'redux/tasks/tasksOperations';
+import Modal from 'components/Modal/Modal';
 import ColumnToggler from '../ColumnToggler/ColumnToggler';
+import scss from './TaskToolbar.module.scss';
 
 const TaskToolbar = ({ task }) => {
   const dispatch = useDispatch();
   const { column } = task;
-  const [openChoice, setOpenChoice] = useState(false);
-  const { isOpen, onOpen, onClose } = useToggle();
-  const [togglerPosition, setTogglerPosition] = useState({ top: 0, left: 0 });
 
-  const otherColumns = COLUMNS.filter(item => item !== column);
+  const taskModal = useToggle();
+  const columnToggler = useToggle();
+  const [togglerPosition, setTogglerPosition] = useState({});
 
-  const iconRef = useRef();
-  const popupRef = useRef(null);
+  const openColumnToggler = e => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setTogglerPosition({ top: rect.top, left: rect.left });
+    columnToggler.onOpen();
+  };
+
+  const otherColumns = COLUMNS.filter(colmn => colmn !== column);
 
   const handleDeleteTask = async () => {
     await dispatch(removeTask(task._id));
-  };
-
-  const openOpenChoise = e => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setTogglerPosition({ top: rect.top, left: rect.left });
-    setOpenChoice(true);
-  };
-
-  const closeOpenChoise = () => {
-    setOpenChoice(false);
   };
 
   return (
     <>
       <ul className={scss.cardBox}>
         <li className={scss.itemChoice}>
-          <button>
-            <svg
-              ref={iconRef}
-              className={scss.iconButton}
-              onClick={openOpenChoise}
-            >
+          <button onClick={openColumnToggler}>
+            <svg className={scss.iconButton}>
               <use href={spriteIcons + '#icon-arrow-circle-broken-right'}></use>
             </svg>
           </button>
         </li>
         <li>
-          <button onClick={onOpen}>
+          <button onClick={taskModal.onOpen}>
             <svg className={scss.iconButton}>
               <use href={spriteIcons + '#icon-pencil'}></use>
             </svg>
@@ -66,15 +57,22 @@ const TaskToolbar = ({ task }) => {
         </li>
       </ul>
 
-      {isOpen && <TaskModal taskData={task} onClose={onClose} />}
-      {openChoice && (
-        <ColumnToggler
-          columns={otherColumns}
-          taskData={task}
-          onClose={closeOpenChoise}
-          popupRef={popupRef}
+      {taskModal.isOpen && (
+        <TaskModal taskData={task} onClose={taskModal.onClose} />
+      )}
+
+      {columnToggler.isOpen && (
+        <Modal
+          onClose={columnToggler.onClose}
+          notStyled={true}
           position={togglerPosition}
-        />
+        >
+          <ColumnToggler
+            columns={otherColumns}
+            taskData={task}
+            onClose={columnToggler.onClose}
+          />
+        </Modal>
       )}
     </>
   );

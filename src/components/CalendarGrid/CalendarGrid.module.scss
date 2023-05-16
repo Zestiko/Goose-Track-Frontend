@@ -12,14 +12,12 @@
 .box {
   background-color: var(--primary-background-color);
   width: 100%;
+  aspect-ratio: 1;
   overflow: hidden;
-  min-height: 94px;
-  max-height: 94px;
   cursor: pointer;
 
-  @media screen and (min-width: 768px) {
-    min-height: 144px;
-    max-height: 144px;
+  @media screen and (min-width: 1280px) {
+    aspect-ratio: 16 / 9;
   }
 }
 

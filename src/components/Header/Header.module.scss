@@ -1,5 +1,3 @@
-
-
 .header {
   display: flex;
   align-items: center;
@@ -11,8 +9,7 @@
     }
   }
 
-  .title{
-
+  .title {
     font-family: 'Inter';
     font-weight: 700;
     font-size: 32px;
@@ -22,22 +19,21 @@
     margin-left: 32px;
   }
 
-  
   .user {
     display: flex;
     align-items: center;
 
     gap: 14px;
     margin-left: auto;
-    
+
     & > .userName {
       font-weight: 700;
       font-size: 18px;
       line-height: 1;
-      color:var(--userpage-text);
+      color: var(--userpage-text);
       text-transform: capitalize;
     }
-    
+
     & > .userAvatar {
       height: 44px;
       width: 44px;
@@ -45,7 +41,7 @@
       border-radius: 50%;
     }
   }
-  
+
   @media screen and (max-width: 1400px) {
     & > svg {
       width: 34px;
@@ -72,19 +68,17 @@
         width: 44px;
       }
     }
-        .burger {
+    .burger {
       stroke: var(--primary-text-color);
     }
- 
-
   }
-  
+
   @media screen and (max-width: 375px) {
     & > svg {
       width: 24px;
       height: 24px;
     }
-    
+
     .themeIcon {
       & > svg {
         width: 24px;
@@ -107,7 +101,6 @@
     }
   }
 
-
   @media screen and (min-width: 1400px) {
     .burger {
       display: none;
@@ -115,25 +108,23 @@
   }
 }
 
-
 .blockMessage {
   display: none;
   @media screen and (min-width: 1400px) {
-
-  display: flex;
+    display: flex;
   }
 }
 
-.blockHeader{
-    display: none;
-    @media screen and (min-width: 1400px) {
-      display: flex;
-      margin-bottom: 14px;
-      margin-top: 14px;
-    }
+.blockHeader {
+  display: none;
+  @media screen and (min-width: 1400px) {
+    display: flex;
+    margin-bottom: 14px;
+    margin-top: 14px;
+  }
 }
 
-.img{
+.img {
   background-image: url('./Goose.png');
   background-repeat: no-repeat;
   width: 64px;
@@ -143,20 +134,20 @@
 }
 
 @media screen and (min-device-pixel-ratio: 2),
-screen and (min-resolution: 192dpi),
-screen and (min-resolution: 2dppx) {
+  screen and (min-resolution: 192dpi),
+  screen and (min-resolution: 2dppx) {
   .box {
-    background-image: url('../../../images/bar/desktop/goose-2-desktop-2x.png');
+    background-image: url('../../images/bar/desktop/goose-2-desktop-2x.png');
   }
 }
 
-.div{
+.div {
   display: flex;
   flex-direction: column;
   margin-left: 8px;
 }
 
-.titleTask{
+.titleTask {
   font-family: 'Inter';
   font-weight: 700;
   font-size: 32px;
@@ -166,14 +157,13 @@ screen and (min-resolution: 2dppx) {
   margin-bottom: 8px;
 }
 
-
-.message{
+.message {
   font-weight: 600;
   font-size: 14px;
   line-height: 1.3;
   color: var(--primary-text-color);
 }
 
-.spanMsg{
-  color: #3E85F3;
+.spanMsg {
+  color: #3e85f3;
 }

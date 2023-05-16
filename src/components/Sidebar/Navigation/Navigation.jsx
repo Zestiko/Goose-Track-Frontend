@@ -1,22 +1,23 @@
-import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { authLogoutThunk } from 'redux/user/user-operations';
 
 import classNames from 'classnames';
-import { ReactComponent as LoginOutSvg } from '../../../../images/icons/log-out.svg';
+import { ReactComponent as LoginOutSvg } from 'images/icons/log-out.svg';
 import { BsListStars, BsCalendar4 } from 'react-icons/bs';
 import { FiUserCheck } from 'react-icons/fi';
-
+import { useToggle } from 'hooks/useToggle';
 import css from './Navigation.module.scss';
+import Modal from 'components/Modal/Modal';
+import Logout from 'components/Logout/Logout';
 
-const getActiveClassName = ({ isActive }) =>
-  isActive ? 'selected' : 'unselected';
+const Navigation = ({ onCloseMenu }) => {
+  const { isOpen, onOpen, onClose } = useToggle();
 
-const Navigation = () => {
-  const dispatch = useDispatch();
-
-  const handleLogout = () => {
-    dispatch(authLogoutThunk());
+  const closeMobileMenu = () => {
+    onCloseMenu && onCloseMenu();
+  };
+  const onLogout = () => {
+    onOpen();
+    onCloseMenu && onCloseMenu();
   };
 
   return (
@@ -24,12 +25,14 @@ const Navigation = () => {
       <p className={css.navLabel}>User Panel</p>
       <NavLink
         to="/account"
+        onClick={closeMobileMenu}
         className={({ isActive }) => (isActive ? css.activeLink : css.navLink)}
       >
         <FiUserCheck />
         My account
       </NavLink>
       <NavLink
+        onClick={closeMobileMenu}
         to={`/calendar`}
         className={({ isActive }) => (isActive ? css.activeLink : css.navLink)}
       >
@@ -37,20 +40,22 @@ const Navigation = () => {
         Calendar
       </NavLink>
       <NavLink
+        onClick={closeMobileMenu}
         to="/canban"
         className={({ isActive }) => (isActive ? css.activeLink : css.navLink)}
       >
         <BsListStars />
         Canban
       </NavLink>
-      <NavLink
-        to="/login"
-        onClick={handleLogout}
-        className={classNames([{ getActiveClassName }, css.button])}
-      >
+      <button onClick={onLogout} className={classNames(css.button)}>
         Log out
         <LoginOutSvg />
-      </NavLink>
+      </button>
+      {isOpen && (
+        <Modal onClose={onClose}>
+          <Logout onClose={onClose} />
+        </Modal>
+      )}
     </div>
   );
 };

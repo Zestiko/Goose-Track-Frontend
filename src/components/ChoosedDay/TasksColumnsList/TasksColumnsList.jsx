@@ -3,8 +3,8 @@ import scss from './TasksColumnsList.module.scss';
 import { COLUMNS_OPTIONS, COLUMNS } from 'constants/columns.constans';
 import { useTasksByChoosedDay } from 'hooks/useTasksByChoosedDay';
 
-const TasksColumnsList = ({ currentDate }) => {
-  const { tasks } = useTasksByChoosedDay(currentDate);
+const TasksColumnsList = ({ currentDay }) => {
+  const { tasks } = useTasksByChoosedDay(currentDay);
 
   const tasksByColumns = COLUMNS.reduce((acc, column) => {
     return {

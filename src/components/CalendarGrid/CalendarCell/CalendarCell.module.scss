@@ -1,7 +1,9 @@
 .noticeBox {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: 2px;
+  @media screen and (min-width: 680px) {
+    flex-wrap: wrap;
+  }
 }

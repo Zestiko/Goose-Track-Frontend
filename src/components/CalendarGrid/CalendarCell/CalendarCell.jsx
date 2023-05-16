@@ -12,13 +12,15 @@ const CalendarCell = ({ item }) => {
   const countTask = tasks.length > 3;
   return (
     <ul className={classNames([countTask && scss.noticeBox])}>
-      {tasks.map(task => {
-        return countTask ? (
-          <CalendarPin key={task._id} {...task} />
-        ) : (
-          <CalendarNotice key={task._id} {...task} />
-        );
-      })}
+      {tasks
+        .filter((e, i) => i < 10)
+        .map(task => {
+          return countTask ? (
+            <CalendarPin key={task._id} {...task} />
+          ) : (
+            <CalendarNotice key={task._id} {...task} />
+          );
+        })}
     </ul>
   );
 };

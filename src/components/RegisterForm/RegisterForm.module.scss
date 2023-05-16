@@ -8,6 +8,12 @@
   height: 100vh;
   width: 100%;
 }
+.titleWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -26,7 +32,7 @@
 .title {
   text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07),
     0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
-  color: var(--accent-background-color);
+  color: var(--button-background-color);
   font-weight: 600;
   font-size: 18px;
   line-height: 1.33;
@@ -39,11 +45,11 @@
 }
 .label {
   position: relative;
+  font-family: var(--primary-font);
   font-weight: 600;
   font-size: 12px;
   line-height: 1.25;
-  color: var(--close-btn-color);
-  margin-bottom: 8px;
+  color: var(--userpage-text);
   @media screen and (min-width: 768px) {
     font-size: 14px;
     line-height: 1.2;
@@ -74,25 +80,26 @@
   }
 }
 .button {
-  background: var(--accent-background-color);
-  box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
+  background: var(--button-background-color);
   border-radius: 16px;
   font-weight: 600;
   font-size: 14px;
   line-height: 18px;
-  color: var(--btn-text-color);
+  color: white;
   padding: 14px;
   width: 100%;
   margin-top: 10px;
   align-items: center;
   display: flex;
   justify-content: center;
+  transition: box-shadow linear 350ms;
+
   &:focus {
-    background: #2b78ef;
+    border: 2px solid var(--accent-background-color);
     box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
   }
   &:hover {
-    background: #2b78ef;
+    border: 2px solid var(--accent-background-color);
     box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
   }
   @media screen and (min-width: 768px) {
@@ -104,13 +111,16 @@
   font-weight: 600;
   font-size: 12px;
   line-height: 1.16;
-  color: var(--accent-background-color);
+  color: var(--button-background-color);
   text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07),
     0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
   margin: 18px auto;
   text-decoration: underline;
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+  }
   &:focus {
-    transform: scale(1.2);
+    transform: scale(1.5);
     transition-duration: 500ms;
   }
   &:hover {
@@ -167,17 +177,17 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 1.14;
-    color: var(--primary-text-color);
+    color: black;
     transform: rotate(-27deg);
     width: 140px;
     height: 48px;
   }
 }
 .span {
-  color: var(--accent-background-color);
+  color: var(--button-background-color);
 }
 .spanIcon {
-  color: var(--accent-background-color);
+  color: var(--button-background-color);
   &:focus {
     transform: scale(1.4);
     transition-duration: 500ms;

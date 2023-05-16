@@ -1,12 +1,11 @@
 import { Outlet } from 'react-router-dom';
 import { useState, Suspense } from 'react';
 
-import Header from './Header/Header';
-import Sidebar from './Sidebar/Sidebar';
+import css from './Layout.module.scss';
+import Sidebar from 'components/Sidebar/Sidebar';
+import Header from 'components/Header/Header';
 
-import css from './MainPage.module.scss';
-
-const MainPage = () => {
+const Layout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const handleBurgerMenuClick = () => {
@@ -20,15 +19,13 @@ const MainPage = () => {
         handleBurgerMenuClick={handleBurgerMenuClick}
       />
       <main className={css.appPage}>
-        <Header header="HEADER" handleBurgerMenuClick={handleBurgerMenuClick} />
-        <div>
-          <Suspense fallback={null}>
-            <Outlet />
-          </Suspense>
-        </div>
+        <Header handleBurgerMenuClick={handleBurgerMenuClick} />
+        <Suspense fallback={null}>
+          <Outlet />
+        </Suspense>
       </main>
     </div>
   );
 };
 
-export default MainPage;
+export default Layout;

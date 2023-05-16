@@ -15,14 +15,14 @@ import { MdClose } from 'react-icons/md';
  * <button type='button' onClick={onOpen}>Open Modal</button>
  *
  * { isOpen &&
- * <BasicModal onClose={onClose}>
+ * <Modal onClose={onClose}>
  * <h2>Modal title</h2>
  * <p>Modal content goes here</p>
  * <button type='submit' onClick={onClose}>DONE</button>
- * </BasicModal>}
+ * </Modal>}
  */
 
-const Modal = ({ onClose, children }) => {
+const Modal = ({ onClose, notStyled = false, position = null, children }) => {
   useEffect(() => {
     const handleKeyDown = e => {
       if (e.key === 'Escape') {
@@ -51,11 +51,20 @@ const Modal = ({ onClose, children }) => {
       <div
         className={clsx(scss.modalOverlay)}
         onClick={handleClickBackdrop}
+        style={{ ...(notStyled && { backgroundColor: 'transparent' }) }}
       ></div>
-      <div className={clsx(scss.modalBody)}>
-        <button onClick={handleClose} className={clsx(scss.closeButton)}>
-          <MdClose className={clsx(scss.closeButtonIcon)} />
-        </button>
+      <div
+        className={clsx(scss.modalBody)}
+        style={{
+          ...(position && { top: position.top, left: position.left }),
+          ...(notStyled && { padding: 0 }),
+        }}
+      >
+        {!notStyled && (
+          <button onClick={handleClose} className={clsx(scss.closeButton)}>
+            <MdClose className={clsx(scss.closeButtonIcon)} />
+          </button>
+        )}
         {children}
       </div>
     </>,

@@ -10,7 +10,6 @@ const Canban = () => {
   let tasksByColumns;
   if (tasks.length > 0) {
     clmns = [...new Set(tasks.map(({ column }) => column))];
-    console.log(clmns);
     tasksByColumns = clmns.reduce((acc, column) => {
       return {
         ...acc,
@@ -25,11 +24,6 @@ const Canban = () => {
       <div className={scss.listBox}>
         {clmns &&
           clmns.map(column => {
-            //   const columnOptions = COLUMNS_OPTIONS.find(
-            //     option => option.column === column
-            //   );
-            //   const title = columnOptions ? columnOptions.title : '';
-
             return (
               <TasksColumn
                 key={column}

@@ -1,15 +1,17 @@
+import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { fetchTasks } from 'redux/tasks/tasksOperations';
+import classNames from 'classnames';
 import moment from 'moment/moment';
+import CalendarCell from './CalendarCell/CalendarCell';
 
 import scss from './CalendarGrid.module.scss';
-import classNames from 'classnames';
-import CalendarCell from './CalendarCell/CalendarCell';
-import createCalendCells from 'components/utils/createCalenCells';
-import { useEffect } from 'react';
-import { fetchTasks } from 'redux/tasks/tasksOperations';
-import { useDispatch } from 'react-redux';
-import { isCurrentMonth } from 'components/utils/IsCurrentMonth';
-import { isCurrentDay } from 'components/utils/IsCurrentDay';
+import {
+  isCurrentMonth,
+  isCurrentDay,
+  createCalendCells,
+} from 'components/utils';
 
 const CalendarGrid = () => {
   const navigate = useNavigate();

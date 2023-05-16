@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import moment from 'moment/moment';
 import classNames from 'classnames';
 import scss from './DayCalendarHead.module.scss';
-import { newWeek } from 'components/utils/createNewWeek';
+import { newWeek, isCurrentDay, isCurrentChosedDay } from 'components/utils';
 
 const DayCalendarHead = ({ currentDay }) => {
   const chosedDay = moment(currentDay);
@@ -19,12 +19,11 @@ const DayCalendarHead = ({ currentDay }) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const isCurrentChosedDay = item => chosedDay.isSame(item, 'D');
-
   return (
     <div className={classNames([scss.days_wrapper, scss.days_wrapp])}>
       {week.map((day, i) => {
-        const checkDay = isCurrentChosedDay(day);
+        const checkDay = isCurrentChosedDay(chosedDay, day);
+        const currentDay = isCurrentDay(day);
         return (
           <NavLink
             key={i}
@@ -36,10 +35,19 @@ const DayCalendarHead = ({ currentDay }) => {
             to={`/calendar/day/${day.format('YYYY-MM-DD')}`}
           >
             <div className={scss.days}>
-              {windowSize < 768 ? `${day.format('d')}` : `${day.format('ddd')}`}
+              {windowSize < 768
+                ? `${day.format('ddd').charAt(0)}`
+                : `${day.format('ddd')}`}
             </div>
-            <div className={scss.date}>
-              <span>{day.format('D')}</span>
+            <div
+              className={classNames([
+                scss.date,
+                !currentDay ? scss.min_scale : [scss.current_day, scss.scale],
+              ])}
+            >
+              <span className={classNames(currentDay && scss.current_day)}>
+                {day.format('D')}
+              </span>
             </div>
           </NavLink>
         );

@@ -2,5 +2,5 @@
   "compilerOptions": {
     "baseUrl": "src"
   },
-  "include": ["src", "src/components/PeriodTypeSelect/PeriodTypeSelect.jsx"]
+  "include": ["src"]
 }

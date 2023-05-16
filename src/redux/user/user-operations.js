@@ -32,9 +32,8 @@ export const authLogoutThunk = createAsyncThunk(
   'user/logout',
   async (values, thunkAPI) => {
     try {
-      const { data } = await publicApi.post('/user/logout', values);
+      await publicApi.post('/user/logout', values);
       token.unset();
-      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue('Sorry, something went wrong');
     }
@@ -43,8 +42,7 @@ export const authLogoutThunk = createAsyncThunk(
 
 export const authCurrentThunk = createAsyncThunk(
   'user/current',
-  async (values, thunkAPI) => {
-    // Reading the token from the state via getState()
+  async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.user.token;
 
@@ -63,10 +61,6 @@ export const authCurrentThunk = createAsyncThunk(
   }
 );
 
-
-
-
-  
 export const updateUserProfile = createAsyncThunk(
   'user/info',
   async (formData, thunkAPI) => {
@@ -74,10 +68,9 @@ export const updateUserProfile = createAsyncThunk(
     const persistedToken = state.user.token;
 
     if (persistedToken === null) {
-      // If there is no token, exit without performing any request
       return thunkAPI.rejectWithValue('Unable to fetch user');
     }
-    
+
     try {
       token.set(persistedToken);
       const { data } = await publicApi.patch('/user/info', formData);
@@ -90,9 +83,7 @@ export const updateUserProfile = createAsyncThunk(
       );
     }
   }
-); 
-
-
+);
 
 export const uploadAvatar = async file => {
   const formData = new FormData();
@@ -103,7 +94,7 @@ export const uploadAvatar = async file => {
       'https://api.cloudinary.com/v1_1/dyflrqz4u/image/upload',
       formData
     );
-    
+
     return data.secure_url;
   } catch (error) {
     return null;

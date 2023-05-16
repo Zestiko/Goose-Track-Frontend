@@ -24,6 +24,7 @@
   width: 16px;
   height: 16px;
   transition: all linear 350ms;
+  pointer-events: none;
 
   &:hover,
   &:focus {

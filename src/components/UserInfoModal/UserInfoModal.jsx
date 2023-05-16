@@ -1,73 +1,55 @@
-import { useState, useRef, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
-import { ReactComponent as UserCheckSvg } from '../../images/icons/user-check-01.svg';
-import { ReactComponent as LoginOutSvg } from '../../images/icons/log-out.svg';
-import { ReactComponent as DefaultAvatarSvg } from '../../images/icons/profile-avatar-f.svg';
-import { useDispatch, useSelector } from 'react-redux';
-import { authLogoutThunk } from 'redux/user/user-operations';
+import { useSelector } from 'react-redux';
+import { selectorGetUserName } from 'redux/user/selectors';
+import { useToggle } from 'hooks/useToggle';
+
+import Logout from 'components/Logout/Logout';
+import Modal from 'components/Modal/Modal';
+import UserPopup from './UserPopup/UserPopup';
+import UserAvatar from './UserAvatar/UserAvatar';
 import scss from './UserInfoModal.module.scss';
-import { selectorGetUserAvatar, selectorGetUserName } from 'redux/user/selectors';
+import { useState } from 'react';
 
 function UserInfoModal() {
-  const [isOpen, setIsOpen] = useState(false);
-  const popupRef = useRef(null);
-  const dispatch = useDispatch();
-
   const userName = useSelector(selectorGetUserName);
-  const avatarPath = useSelector(selectorGetUserAvatar);
+  const popup = useToggle();
+  const modal = useToggle();
+  const [popupPosition, setPopupPosition] = useState({ top: 0, left: 0 });
 
-  const handleLogout = () => {
-    dispatch(authLogoutThunk());
+  const openPopup = e => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setPopupPosition({ top: rect.top + 150, left: rect.left });
+    popup.onOpen();
   };
 
-  const handlePopupToggle = () => {
-    setIsOpen(!isOpen);
+  const handleLogout = e => {
+    popup.onClose();
+    modal.onOpen();
   };
-
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (popupRef.current && !popupRef.current.contains(event.target)) {
-        setIsOpen(false);
-      }
-    }
-
-    document.addEventListener('mousedown', handleClickOutside);
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [popupRef]);
-
   return (
-    <div className={scss.userHeader} onClick={handlePopupToggle}>
-      <p className={scss.userNameHeader}>{userName}</p>
-      {avatarPath === undefined ? (
-        <DefaultAvatarSvg className={scss.userAvatarHeader} />
-      ) : (
-        <img className={scss.userAvatarHeader} src={avatarPath} alt="avatar" />
+    <>
+      <div className={scss.userHeader} onClick={openPopup}>
+        <p className={scss.userNameHeader}>{userName}</p>
+        <UserAvatar />
+      </div>
+      {popup.isOpen && (
+        <Modal
+          onClose={popup.onClose}
+          notStyled={true}
+          position={popupPosition}
+        >
+          <UserPopup
+            onClose={popup.onClose}
+            handleLogout={handleLogout}
+            userName={userName}
+          />
+        </Modal>
       )}
-      {isOpen && (
-        <div className={scss.container} ref={popupRef}>
-          <div className={scss.user}>
-            {avatarPath === undefined ? (
-              <DefaultAvatarSvg className={scss.userAvatar} />
-            ) : (
-              <img className={scss.userAvatar} src={avatarPath} alt="avatar" />
-            )}
-
-            <p className={scss.userName}>{userName}</p>
-          </div>
-          <NavLink className={scss.account} to="/account">
-            <UserCheckSvg />
-            My account
-          </NavLink>
-          <NavLink className={scss.logOut} to="/login" onClick={handleLogout}>
-            Log out
-            <LoginOutSvg />
-          </NavLink>
-        </div>
+      {modal.isOpen && (
+        <Modal onClose={modal.onClose}>
+          <Logout onClose={modal.onClose} />
+        </Modal>
       )}
-    </div>
+    </>
   );
 }
 

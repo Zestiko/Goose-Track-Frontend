@@ -97,3 +97,13 @@
     }
   }
 }
+
+.overlay {
+  background-color: rgba(208, 208, 208, 0);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+}

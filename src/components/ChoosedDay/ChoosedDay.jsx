@@ -11,6 +11,7 @@ import { selectMonth } from 'redux/tasks/taskSelectors';
 const ChoosedDay = () => {
   const dispatch = useDispatch();
   const { currentDay } = useParams();
+
   const date = useSelector(selectMonth);
 
   useEffect(() => {

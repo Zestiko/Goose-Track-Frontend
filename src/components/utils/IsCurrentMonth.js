@@ -1,2 +1,3 @@
-export const isCurrentMonth = (currentDate, day) =>
-  currentDate.isSame(day, 'month');
+const isCurrentMonth = (currentDate, day) => currentDate.isSame(day, 'month');
+
+export default isCurrentMonth;

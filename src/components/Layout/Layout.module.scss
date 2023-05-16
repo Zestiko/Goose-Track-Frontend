@@ -5,7 +5,7 @@
 .appPage {
   padding: 40px 32px 32px;
   flex: 1;
-
+  overflow: hidden;
   & > *:first-child {
     margin-bottom: 32px;
   }

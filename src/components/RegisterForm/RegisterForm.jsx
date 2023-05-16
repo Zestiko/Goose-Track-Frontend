@@ -8,6 +8,7 @@ import { authRegisterThunk } from '../../redux/user/user-operations';
 import { BsEyeSlashFill } from 'react-icons/bs';
 import { BsEyeFill } from 'react-icons/bs';
 import { useState } from 'react';
+import ThemeToggler from 'components/ThemeToggler/ThemeToggler';
 
 const initialState = {
   name: '',
@@ -57,7 +58,10 @@ export const RegisterForm = () => {
         >
           {({ errors, touched }) => (
             <Form autoComplete="off" className={scss.form}>
-              <h1 className={scss.title}>Sing Up</h1>
+              <div className={scss.titleWrapper}>
+                <h1 className={scss.title}>Sing Up</h1>
+                <ThemeToggler />
+              </div>
               <label
                 className={
                   errors.name && touched.name
@@ -98,7 +102,7 @@ export const RegisterForm = () => {
                     : scss.label
                 }
               >
-                Email
+                <p className={scss.labelText}>E-mail</p>
                 <Field
                   id="email"
                   name="email"
@@ -129,7 +133,7 @@ export const RegisterForm = () => {
                     : scss.label
                 }
               >
-                Password
+                <p className={scss.labelText}>Password</p>
                 <Field
                   id="password"
                   name="password"

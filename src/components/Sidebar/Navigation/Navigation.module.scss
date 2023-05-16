@@ -78,10 +78,8 @@
   background-color: var(--button-background-color);
   box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
   border-radius: 16px;
-
+  width: fit-content;
   margin-top: auto;
-
-  width: 100%;
 
   & > svg {
     width: 20px;

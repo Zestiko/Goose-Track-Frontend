@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 export const useToggle = (initialState = false) => {
   const [isOpen, setIsOpen] = useState(initialState);
   const onOpen = () => setIsOpen(true);
@@ -7,4 +8,3 @@ export const useToggle = (initialState = false) => {
 
   return { isOpen, onOpen, onClose, toggle };
 };
-  

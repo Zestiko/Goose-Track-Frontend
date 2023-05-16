@@ -11,6 +11,7 @@ import { BsEyeSlashFill } from 'react-icons/bs';
 import { BsEyeFill } from 'react-icons/bs';
 import { useState } from 'react';
 import { spriteIcons } from 'images/icons';
+import ThemeToggler from 'components/ThemeToggler/ThemeToggler';
 
 const initialState = {
   email: '',
@@ -61,8 +62,11 @@ const LoginForm = () => {
         onSubmit={handleSubmit}
       >
         {({ errors, touched, resetForm }) => (
-          <Form autoComplete="off" className={scss.form}>
-            <h1 className={scss.title}>Log In</h1>
+          <Form className={scss.form}>
+            <div className={scss.titleWrapper}>
+              <h1 className={scss.title}>Log In</h1>
+              <ThemeToggler />
+            </div>
             <label
               className={
                 errors.email && touched.email
@@ -76,6 +80,7 @@ const LoginForm = () => {
               <Field
                 id="email"
                 name="email"
+                autoComplete="off"
                 type="email"
                 placeholder="Enter email"
                 className={
@@ -120,6 +125,7 @@ const LoginForm = () => {
               <Field
                 id="password"
                 name="password"
+                autoComplete="off"
                 type={type}
                 placeholder="Enter password"
                 className={
