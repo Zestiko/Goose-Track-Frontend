@@ -5,7 +5,8 @@ export const taskSchema = Yup.object().shape({
   title: Yup.string()
     .min(3, 'Too Short!')
     .max(250, 'Too Long!')
-    .required('Type something title'),
+    .required('Type something title')
+    .trim(),
   startTime: Yup.string('Set start time').required('Set start time'),
   endTime: Yup.string('Invalid endTime')
     .required('Set end time')
