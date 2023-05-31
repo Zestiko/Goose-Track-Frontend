@@ -102,14 +102,12 @@
   align-items: center;
   display: flex;
   justify-content: center;
+  border: 2px solid var(--accent-background-color);
+
   transition: box-shadow linear 350ms;
 
+  &:hover,
   &:focus {
-    background: #2b78ef;
-    box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
-  }
-  &:hover {
-    border: 2px solid var(--accent-background-color);
     box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
   }
   @media screen and (min-width: 768px) {
