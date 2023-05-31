@@ -1,3 +1,11 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  max-height: 960px;
+}
+
 .userPanel {
   display: flex;
   flex-direction: column;
@@ -79,7 +87,7 @@
   box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
   border-radius: 16px;
   width: fit-content;
-  margin-top: auto;
+  // margin-top: auto;
 
   & > svg {
     width: 20px;

@@ -13,17 +13,19 @@ const Layout = () => {
   };
 
   return (
-    <div className={css.mainPage}>
-      <Sidebar
-        isSidebarOpen={isSidebarOpen}
-        handleBurgerMenuClick={handleBurgerMenuClick}
-      />
-      <main className={css.appPage}>
-        <Header handleBurgerMenuClick={handleBurgerMenuClick} />
-        <Suspense fallback={null}>
-          <Outlet />
-        </Suspense>
-      </main>
+    <div className={css.container}>
+      <div className={css.mainPage}>
+        <Sidebar
+          isSidebarOpen={isSidebarOpen}
+          handleBurgerMenuClick={handleBurgerMenuClick}
+        />
+        <main className={css.appPage}>
+          <Header handleBurgerMenuClick={handleBurgerMenuClick} />
+          <Suspense fallback={null}>
+            <Outlet />
+          </Suspense>
+        </main>
+      </div>
     </div>
   );
 };

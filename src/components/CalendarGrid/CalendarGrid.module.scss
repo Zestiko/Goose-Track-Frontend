@@ -13,17 +13,25 @@
   background-color: var(--primary-background-color);
   width: 100%;
   aspect-ratio: 1;
+  position: relative;
   overflow: hidden;
   cursor: pointer;
-
+  padding: 4px;
+  @media screen and (min-width: 560px) {
+    padding-top: 42px;
+    aspect-ratio: 9/16;
+  }
   @media screen and (min-width: 1280px) {
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 4/3;
   }
 }
 
 .box_wrap {
-  display: flex;
-  justify-content: flex-end;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  // display: flex;
+  // justify-content: flex-end;
 }
 
 .box_day {
@@ -32,7 +40,7 @@
   font-family: 'Inter';
   font-size: 12px;
   line-height: 1.2;
-  margin: 14px 14px 8px 0;
+  // margin: 14px 14px 8px 0;
   width: 27px;
   height: 26px;
   text-align: center;
@@ -70,7 +78,7 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-
+  margin-top: 44px;
   @media screen and (min-width: 768px) {
     padding: 2px 4px;
     min-width: 92px;

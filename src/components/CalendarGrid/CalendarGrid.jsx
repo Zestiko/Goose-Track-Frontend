@@ -53,9 +53,7 @@ const CalendarGrid = () => {
               </div>
             </div>
 
-            <div className={classNames([scss.notice_wrap])}>
-              <CalendarCell item={day} />
-            </div>
+            <CalendarCell item={day} />
           </div>
         ))}
       </div>

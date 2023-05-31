@@ -1,17 +1,24 @@
 .notice {
-  max-height: 26px;
-  padding: 4px 2px;
-  border-radius: 8px;
-  background: var(--priority-low-bg-color);
-  margin-top: 6px;
-  border: none;
-  margin-bottom: 1px;
-  color: #3e85f3;
-  font-weight: 700;
-  font-family: 'Inter';
-  line-height: 1.4;
-  font-size: 10px;
-  text-overflow: ellipsis;
+  @media screen and (max-width: 559px) {
+    visibility: hidden;
+    pointer-events: none;
+  }
+  @media screen and (min-width: 560px) {
+    max-height: 24px;
+    padding: 4px 2px;
+    border-radius: 8px;
+    background: var(--priority-low-bg-color);
+    border: none;
+    color: #3e85f3;
+    font-weight: 600;
+    font-family: 'Inter';
+    line-height: 1.2;
+    font-size: 10px;
+    text-overflow: ellipsis;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
 
   @media screen and (min-width: 768px) {
     font-size: 14px;

@@ -21,32 +21,40 @@ const Navigation = ({ onCloseMenu }) => {
   };
 
   return (
-    <div className={css.userPanel}>
-      <p className={css.navLabel}>User Panel</p>
-      <NavLink
-        to="/account"
-        onClick={closeMobileMenu}
-        className={({ isActive }) => (isActive ? css.activeLink : css.navLink)}
-      >
-        <FiUserCheck />
-        My account
-      </NavLink>
-      <NavLink
-        onClick={closeMobileMenu}
-        to={`/calendar`}
-        className={({ isActive }) => (isActive ? css.activeLink : css.navLink)}
-      >
-        <BsCalendar4 />
-        Calendar
-      </NavLink>
-      <NavLink
-        onClick={closeMobileMenu}
-        to="/canban"
-        className={({ isActive }) => (isActive ? css.activeLink : css.navLink)}
-      >
-        <BsListStars />
-        Canban
-      </NavLink>
+    <div className={css.container}>
+      <div className={css.userPanel}>
+        <p className={css.navLabel}>User Panel</p>
+        <NavLink
+          to="/account"
+          onClick={closeMobileMenu}
+          className={({ isActive }) =>
+            isActive ? css.activeLink : css.navLink
+          }
+        >
+          <FiUserCheck />
+          My account
+        </NavLink>
+        <NavLink
+          onClick={closeMobileMenu}
+          to={`/calendar`}
+          className={({ isActive }) =>
+            isActive ? css.activeLink : css.navLink
+          }
+        >
+          <BsCalendar4 />
+          Calendar
+        </NavLink>
+        <NavLink
+          onClick={closeMobileMenu}
+          to="/canban"
+          className={({ isActive }) =>
+            isActive ? css.activeLink : css.navLink
+          }
+        >
+          <BsListStars />
+          Canban
+        </NavLink>
+      </div>
       <button onClick={onLogout} className={classNames(css.button)}>
         Log out
         <LoginOutSvg />
