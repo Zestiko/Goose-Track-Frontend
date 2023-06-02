@@ -19,6 +19,9 @@ const tasksSlice = createSlice({
     setDate: (state, action) => {
       state.date = action.payload;
     },
+    setFilter: (state, action) => {
+      state.filter = action.payload;
+    },
   },
   extraReducers: builder =>
     builder
@@ -43,18 +46,17 @@ const tasksSlice = createSlice({
         const idx = state.tasks.findIndex(
           task => task._id === action.payload.task._id
         );
-       state.tasks[idx] = action.payload.task;
+        state.tasks[idx] = action.payload.task;
       })
       .addCase(removeTask.fulfilled, (state, action) => {
         state.status = STATUS.success;
         const idx = state.tasks.findIndex(
           task => task._id === action.payload._id
         );
-        
+
         state.tasks.splice(idx, 1);
       }),
-         
 });
 
-export const { setDate } = tasksSlice.actions;
+export const { setDate, setFilter } = tasksSlice.actions;
 export const tasksReducer = tasksSlice.reducer;

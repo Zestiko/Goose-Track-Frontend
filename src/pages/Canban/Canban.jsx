@@ -1,11 +1,12 @@
 import { useSelector } from 'react-redux';
-import { selectTasks } from 'redux/tasks/taskSelectors';
+import { selectTasksByFilter } from 'redux/tasks/taskSelectors';
 import TasksColumn from 'components/ChoosedDay/TasksColumn/TasksColumn';
 import scss from './Canban.module.scss';
+import Filter from 'components/Filter/Filter';
 
 const Canban = () => {
-  const tasks = useSelector(selectTasks);
-
+  const tasks = useSelector(selectTasksByFilter);
+  console.log('🚀 ~ Canban ~ tasks:', tasks);
   let clmns;
   let tasksByColumns;
   if (tasks.length > 0) {
@@ -21,6 +22,7 @@ const Canban = () => {
   return (
     <>
       <h1 className={scss.titleTask}>Canban</h1>
+      <Filter />
       <div className={scss.listBox}>
         {clmns &&
           clmns.map(column => {
