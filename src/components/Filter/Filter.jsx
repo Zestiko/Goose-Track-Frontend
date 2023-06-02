@@ -1,32 +1,31 @@
 import React from 'react';
 import scss from './Filter.module.scss';
-// import PropTypes from 'prop-types';
-import { useInput } from 'hooks/useInput';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { selectFilter } from 'redux/tasks/taskSelectors';
+import { setFilter } from 'redux/tasks/taskSlice';
 import { TiDeleteOutline } from 'react-icons/ti';
-// const propTypes = {};
-
-// const defaultProps = {};
-
-/**
- *
- */
 const Filter = () => {
-  const [filterProps, resetFilter] = useInput('');
+  const dispatch = useDispatch();
+
+  const filterValue = useSelector(selectFilter);
+
   return (
     <div className={scss.filterBox}>
       <input
         id="floatingInput"
         className={scss.input}
         placeholder=" "
-        {...filterProps}
+        value={filterValue}
+        onChange={e => dispatch(setFilter(e.target.value))}
         type="text"
       />
       <label htmlFor="floatingInput">Search...</label>
-      {filterProps.value && (
+      {filterValue && (
         <TiDeleteOutline
           size={24}
-          onClick={resetFilter}
-          className={scss.clearFilterIcon}
+          onClick={() => dispatch(setFilter(''))}
+          className={scss.clearFilter}
         />
       )}
     </div>

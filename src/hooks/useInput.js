@@ -1,23 +1,9 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { selectFilter } from 'redux/tasks/taskSelectors';
-import { setFilter } from 'redux/tasks/taskSlice';
-import { tasksInitState } from 'redux/tasks/tasks.init-state';
+const { useState } = require('react');
 
-export const useInput = () => {
-  const dispatch = useDispatch();
-  const filter = useSelector(selectFilter);
-
+export const useInput = initialValue => {
+  const [value, setValue] = useState(initialValue);
   return [
-    { filter, onChange: e => dispatch(setFilter(e.target.value)) },
-    () => setFilter(tasksInitState.filter),
+    { value, onChange: e => setValue(e.target.value) },
+    () => setValue(initialValue),
   ];
 };
-// const { useState } = require('react');
-
-// export const useInput = initialValue => {
-//   const [value, setValue] = useState(initialValue);
-//   return [
-//     { value, onChange: e => setValue(e.target.value) },
-//     () => setValue(initialValue),
-//   ];
-// };

@@ -6,7 +6,7 @@ import Filter from 'components/Filter/Filter';
 
 const Canban = () => {
   const tasks = useSelector(selectTasksByFilter);
-
+  console.log('🚀 ~ Canban ~ tasks:', tasks);
   let clmns;
   let tasksByColumns;
   if (tasks.length > 0) {
